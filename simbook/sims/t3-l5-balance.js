@@ -142,7 +142,8 @@
         const solved = (L.x === 1 && L.c === 0 && R.x === 0) || (R.x === 1 && R.c === 0 && L.x === 0);
         if (solved) {
           const v = L.x ? R.c : L.c;
-          msg.append(pill(true, `Solved: x = ${v}`, ""), h("p", { class: "note" }, `${L.x ? "" : `${v} = x, so x = ${v} (Symmetric Property). `}Check in the first equation: ${side({ x: start.L.x, c: 0 }).replace("x", `(${v})`)}${start.L.c ? ` + ${start.L.c}` : ""} = ${start.L.x * v + start.L.c} and ${start.R.x ? `${start.R.x === 1 ? "" : start.R.x}(${v})${start.R.c ? ` + ${start.R.c}` : ""}` : start.R.c} = ${start.R.x * v + start.R.c} ✓`));
+          const subIn = (q) => ((q.x ? `${q.x === 1 ? "" : q.x}(${v})` : "") + (q.c ? `${q.x ? " + " : ""}${q.c}` : "") || "0") + (q.x ? ` = ${weight(q)}` : "");
+          msg.append(pill(true, `Solved: x = ${v}`, ""), h("p", { class: "note" }, `${L.x ? "" : `${v} = x, so x = ${v} (Symmetric Property). `}Check in the first equation ${eqText(start.L, start.R)}: left ${subIn(start.L)}, right ${subIn(start.R)} ✓`));
         }
       }
       work.textContent = log.length ? log.slice(-6).join("\n") : "Get x alone on one side. Every button does the same thing to BOTH sides and names the property it uses.";

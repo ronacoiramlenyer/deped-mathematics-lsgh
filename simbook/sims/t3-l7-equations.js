@@ -3,6 +3,8 @@
   "use strict";
   const { h, s, clear, randInt, pick, shuffle, fmt, tabs, segmented, stat, pill, Spring, elasticSlider, clamp } = Sim;
 
+  const fm = (x) => fmt(x, 2).replace("-", "−");
+
   /** Slides an element from an offset back to where it now sits (a springy FLIP move). */
   function fly(el, dx, dy, springs) {
     const sp = new Spring([dx, dy], ([x, y]) => { el.style.transform = x || y ? `translate(${x}px,${y}px)` : ""; }, { stiffness: 230, damping: 17 });
@@ -61,7 +63,7 @@
     const intro = h("p", {}), eqEl = h("p", { class: "unit-big" }), sliderBox = h("div", { class: "controls" }), out = h("div", { "aria-live": "polite" }), work = h("pre", { class: "workings" }), table = h("p", { class: "note" });
     function draw() {
       clear(svg);
-      const g = Math.round(v), L = it.f(Math.max(0, v)), R = it.target;
+      const g = Math.round(v), L = Math.max(0, it.f(Math.max(0, v))), R = it.target;
       if (picture) it.draw(svg, Math.max(0, v));
       else {
         const top = Math.max(R, it.f(it.max)) * 1.05, Y = (x) => 200 - (x / top) * 170;
@@ -71,12 +73,12 @@
           s("line", { x1: 120, y1: Y(R), x2: 480, y2: Y(R), stroke: "var(--shape-b)", "stroke-dasharray": "6 5" }),
           s("text", { x: 195, y: 224, "text-anchor": "middle", class: "svg-text", style: "font-size:16px" }, "left side"),
           s("text", { x: 405, y: 224, "text-anchor": "middle", class: "svg-text", style: "font-size:16px" }, "right side"),
-          s("text", { x: 195, y: Y(L) - 8, "text-anchor": "middle", class: "svg-text", style: "font-size:20px", "font-weight": 700 }, fmt(it.f(g), 2)),
+          s("text", { x: 195, y: Y(L) - 8, "text-anchor": "middle", class: "svg-text", style: "font-size:20px", "font-weight": 700 }, fm(it.f(g))),
           s("text", { x: 405, y: Y(R) - 8, "text-anchor": "middle", class: "svg-text", style: "font-size:20px", "font-weight": 700 }, fmt(R, 2)));
       }
       const lv = it.f(g), sign = Math.abs(lv - R) < 1e-9 ? "=" : lv < R ? "<" : ">";
       clear(out);
-      out.append(h("p", { class: "unit-big" }, `${it.v} = ${g}:  ${it.show(g)} = ${fmt(lv, 2)} ${sign} ${fmt(R, 2)}`));
+      out.append(h("p", { class: "unit-big" }, `${it.v} = ${g}:  ${it.show(g)} = ${fm(lv)} ${sign} ${fm(R)}`));
       const solved = sign === "=" && Math.abs(v - g) < 0.05;
       if (solved) {
         out.append(pill(true, `${it.v} = ${g} makes both sides equal – it is the solution.`, ""));
@@ -87,7 +89,7 @@
     function settled(x) {
       const g = Math.round(x);
       guesses = [...guesses.filter((q) => q !== g), g].slice(-6);
-      table.textContent = "Guesses so far: " + guesses.map((q) => `${it.v} = ${q} → ${fmt(it.f(q), 2)}`).join(" · ");
+      table.textContent = "Guesses so far: " + guesses.map((q) => `${it.v} = ${q} → ${fm(it.f(q))}`).join(" · ");
     }
     function setup(x) {
       it = x; guesses = []; v = 0;
@@ -115,28 +117,28 @@
   // ------------------------------------------------------------ problem solving pictures
 
   function garden(svg, l) {
-    const sc = 26, W = l * sc, H = 5 * sc, x = 300 - W / 2;
+    const sc = 30, W = l * sc, H = 5 * sc, x = 300 - W / 2;
     svg.append(s("rect", { x, y: 50, width: Math.max(0, W), height: H, fill: "var(--shape-a-soft)", stroke: "var(--shape-a)", "stroke-width": 3 }),
-      s("text", { x: 300, y: 40, "text-anchor": "middle", class: "svg-text", style: "font-size:17px" }, `l = ${fmt(l, 1)} m`),
-      s("text", { x: x + W + 8, y: 120, class: "svg-text", style: "font-size:17px" }, "5 m"),
-      s("text", { x: 300, y: 222, "text-anchor": "middle", class: "svg-text", style: "font-size:19px", "font-weight": 700 }, `P = 2(${fmt(l, 1)}) + 2(5) = ${fmt(2 * l + 10, 1)} m`));
+      s("text", { x: 300, y: 40, "text-anchor": "middle", class: "svg-text", style: "font-size:20px" }, `l = ${fmt(l, 1)} m`),
+      s("text", { x: x + W + 8, y: 120, class: "svg-text", style: "font-size:20px" }, "5 m"),
+      s("text", { x: 300, y: 222, "text-anchor": "middle", class: "svg-text", style: "font-size:22px", "font-weight": 700 }, `P = 2(${fmt(l, 1)}) + 2(5) = ${fmt(2 * l + 10, 1)} m`));
   }
   function tickets(svg, t) {
     const n = Math.round(t);
-    for (let i = 0; i < n; i++) svg.append(s("rect", { x: 30 + i * 46, y: 40, width: 40, height: 30, rx: 5, fill: "var(--gold-soft)", stroke: "var(--gold)", "stroke-width": 2 }), s("text", { x: 50 + i * 46, y: 61, "text-anchor": "middle", class: "svg-text", style: "font-size:14px" }, "₱20"));
-    svg.append(s("rect", { x: 30 + n * 46, y: 40, width: 60, height: 30, rx: 15, fill: "var(--shape-b-soft)", stroke: "var(--shape-b)", "stroke-width": 2 }), s("text", { x: 60 + n * 46, y: 61, "text-anchor": "middle", class: "svg-text", style: "font-size:14px" }, "₱30"));
+    for (let i = 0; i < n; i++) svg.append(s("rect", { x: 30 + i * 46, y: 40, width: 40, height: 30, rx: 5, fill: "var(--gold-soft)", stroke: "var(--gold)", "stroke-width": 2 }), s("text", { x: 50 + i * 46, y: 61, "text-anchor": "middle", class: "svg-text", style: "font-size:15px" }, "₱20"));
+    svg.append(s("rect", { x: 30 + n * 46, y: 40, width: 60, height: 30, rx: 15, fill: "var(--shape-b-soft)", stroke: "var(--shape-b)", "stroke-width": 2 }), s("text", { x: 60 + n * 46, y: 61, "text-anchor": "middle", class: "svg-text", style: "font-size:15px" }, "₱30"));
     const k = 480 / 220, cost = 20 * t + 30;
     svg.append(s("rect", { x: 60, y: 110, width: 150 * k, height: 34, fill: "none", stroke: "var(--ink)", "stroke-width": 2, "stroke-dasharray": "6 4" }),
       s("rect", { x: 60, y: 114, width: cost * k, height: 26, fill: cost > 150.01 ? "var(--bad)" : "var(--shape-a)", opacity: 0.7 }),
-      s("text", { x: 60 + 150 * k, y: 166, "text-anchor": "middle", class: "svg-text", style: "font-size:15px" }, "₱150 budget"),
-      s("text", { x: 300, y: 214, "text-anchor": "middle", class: "svg-text", style: "font-size:19px", "font-weight": 700 }, `20(${fmt(t, 1)}) + 30 = ₱${fmt(cost, 1)}`));
+      s("text", { x: 60 + 150 * k, y: 166, "text-anchor": "middle", class: "svg-text", style: "font-size:18px" }, "₱150 budget"),
+      s("text", { x: 300, y: 214, "text-anchor": "middle", class: "svg-text", style: "font-size:22px", "font-weight": 700 }, `20(${fmt(t, 1)}) + 30 = ₱${fmt(cost, 1)}`));
   }
   function banner(svg, ht) {
     const b = 8, sc = 15, base = 190, x0 = 300 - (b * sc) / 2;
     svg.append(s("path", { d: `M${x0},${base} L${x0 + b * sc},${base} L${300},${base - ht * sc} Z`, fill: "var(--shape-b-soft)", stroke: "var(--shape-b)", "stroke-width": 3 }),
       s("line", { x1: 300, y1: base, x2: 300, y2: base - ht * sc, stroke: "var(--ink)", "stroke-dasharray": "4 4" }),
-      s("text", { x: 306, y: base - (ht * sc) / 2, class: "svg-text", style: "font-size:16px" }, `h = ${fmt(ht, 1)}`),
-      s("text", { x: 300, y: base + 22, "text-anchor": "middle", class: "svg-text", style: "font-size:16px" }, "b = 8 dm"),
+      s("text", { x: 306, y: base - (ht * sc) / 2, class: "svg-text", style: "font-size:19px" }, `h = ${fmt(ht, 1)}`),
+      s("text", { x: 300, y: base + 22, "text-anchor": "middle", class: "svg-text", style: "font-size:19px" }, "b = 8 dm"),
       s("text", { x: 470, y: 90, "text-anchor": "middle", class: "svg-text", style: "font-size:18px", "font-weight": 700 }, `A = ½(8)(${fmt(ht, 1)})`),
       s("text", { x: 470, y: 118, "text-anchor": "middle", class: "svg-text", style: "font-size:18px", "font-weight": 700 }, `= ${fmt(4 * ht, 1)} dm²`));
   }
@@ -146,9 +148,9 @@
     const part = d - Math.floor(d);
     if (part > 0.01) svg.append(s("rect", { x: 50 + Math.floor(d) * 15 * k, y: 70, width: part * 15 * k, height: 50, fill: "var(--gold-soft)", stroke: "var(--ink)", opacity: 0.6 }));
     svg.append(s("line", { x1: 50 + 120 * k, y1: 50, x2: 50 + 120 * k, y2: 140, stroke: "var(--shape-b)", "stroke-width": 3 }),
-      s("text", { x: 50 + 120 * k, y: 40, "text-anchor": "middle", class: "svg-text", style: "font-size:15px" }, "goal ₱120"),
-      s("text", { x: 50, y: 160, class: "svg-label", style: "font-size:15px" }, "Each block = ₱15 saved in one day (₱50 − ₱35)"),
-      s("text", { x: 300, y: 210, "text-anchor": "middle", class: "svg-text", style: "font-size:19px", "font-weight": 700 }, `savings = 15(${fmt(d, 1)}) = ₱${fmt(15 * d, 1)}`));
+      s("text", { x: 50 + 120 * k, y: 40, "text-anchor": "middle", class: "svg-text", style: "font-size:18px" }, "goal ₱120"),
+      s("text", { x: 50, y: 160, class: "svg-label", style: "font-size:18px" }, "Each block = ₱15 saved in one day (₱50 − ₱35)"),
+      s("text", { x: 300, y: 210, "text-anchor": "middle", class: "svg-text", style: "font-size:22px", "font-weight": 700 }, `savings = 15(${fmt(d, 1)}) = ₱${fmt(15 * d, 1)}`));
   }
 
   const PROBLEMS = [

@@ -180,8 +180,13 @@ details.discover summary { cursor: pointer; font-weight: 700; }
 .feedback.ok { color: var(--good); }
 .feedback.bad { color: var(--bad); }
 .score { font-family: var(--mono); font-size: .85rem; color: var(--muted); }
-.svg-text { font-family: var(--mono); font-size: 13px; fill: var(--ink); }
-.svg-label { font-family: var(--body); font-size: 13px; fill: var(--muted); }
+.svg-text { font-family: var(--mono); }
+/* defaults only: a sim's own font-size / fill attributes win */
+.svg-text:not([font-size]) { font-size: 13px; }
+.svg-text:not([fill]) { fill: var(--ink); }
+.svg-label { font-family: var(--body); }
+.svg-label:not([font-size]) { font-size: 13px; }
+.svg-label:not([fill]) { fill: var(--muted); }
 .handle { fill: var(--paper); stroke: var(--accent); stroke-width: 3; cursor: grab; }
 .handle:active { cursor: grabbing; }
 .footer-nav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }

@@ -96,7 +96,7 @@
       if (a && b && sa !== sb) steps.push({ text: `Match each + chip with a − chip. Each zero pair is worth 0, so remove ${plural(Math.min(Math.abs(a), Math.abs(b)), "zero pair")}.`, act: (B) => B.pairOff() });
     } else if (b !== 0) {
       const have = a && sa === sb ? Math.abs(a) : 0, need = Math.abs(b) - have;
-      if (need > 0) steps.push({ text: `You must take away ${plural(Math.abs(b), kind(sb) + " chip")}, but there ${have === 1 ? "is" : "are"} only ${have}. Add ${plural(need, "zero pair")} – that adds 0, so the board still shows ${neg(a)}.`, act: (B) => { B.add(1, need, { x: 300, y: 160 }); B.add(-1, need, { x: 300, y: 160 }); } });
+      if (need > 0) steps.push({ text: `You must take away ${plural(Math.abs(b), kind(sb) + " chip")}, but there ${have === 0 ? "are none" : have === 1 ? "is only 1" : "are only " + have}. Add ${plural(need, "zero pair")} – that adds 0, so the board still shows ${neg(a)}.`, act: (B) => { B.add(1, need, { x: 300, y: 160 }); B.add(-1, need, { x: 300, y: 160 }); } });
       steps.push({ text: `Now take away ${plural(Math.abs(b), kind(sb) + " chip")}.`, act: (B) => B.takeAway(sb, Math.abs(b)) });
     }
     const r = op === "+" ? a + b : a - b;

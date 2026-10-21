@@ -231,7 +231,7 @@
   // ------------------------------------------------------------ tab 3: GEMDAS stepper
 
   function stepper(root) {
-    let toks = [], busy = false, hide = false, tries = 0, right = 0;
+    let toks = [], busy = false, hide = false, tries = 0, right = 0, active = null;
     const springs = new Set();
     const style = h("style", {}, `
       .gm-expr{display:flex;flex-wrap:wrap;gap:6px 0;align-items:baseline;justify-content:center;font-family:var(--mono);font-size:clamp(1.15rem,4.6vw,1.7rem);padding:16px 8px;min-height:3.4em;background:var(--bg);border:1px solid var(--line);border-radius:10px}
@@ -282,13 +282,16 @@
     }
     function load(str) {
       springs.forEach((sp) => sp.stop()); springs.clear();
-      busy = false;
+      busy = false; active = null;
       toks = tokenize(str);
       hist.textContent = "  " + exprText(toks);
       fb.className = "feedback"; fb.textContent = hide ? "Predict: tap the operation that comes next." : "Press Step, or tap the operation you think comes next.";
       build();
     }
+    /** Finishes a running animation at once, so quick clicks are never lost. */
+    function flush() { for (let k = 0; k < 3 && busy && active; k++) active.jump(active.target); }
     function step() {
+      if (busy) flush();
       if (busy || toks.length < 2) return;
       const nx = nextOp(toks);
       if (nx.i < 0) return;
@@ -301,7 +304,7 @@
         group.forEach((el) => { el.style.transform = `scale(${(1 - 0.55 * v).toFixed(3)})`; el.style.opacity = String(clamp(1 - v, 0, 1)); });
         if (!sp.raf && v >= 0.999) { springs.delete(sp); finish(st, nx); }
       }, { stiffness: 260, damping: 32 });
-      squash.set(1);
+      active = squash; squash.set(1);
     }
     function finish(st, nx) {
       const before = spans.map((el) => el.getBoundingClientRect());
@@ -320,13 +323,14 @@
         moves.forEach((m) => { m.el.style.transform = `translate(${(m.dx * (1 - v)).toFixed(1)}px,${(m.dy * (1 - v)).toFixed(1)}px)`; });
       };
       paintPop(0);
-      const pop = spring(0, (v, sp) => { paintPop(v); if (!sp.raf) { springs.delete(sp); busy = false; } }, { stiffness: 230, damping: 15 });
-      pop.set(1);
+      const pop = spring(0, (v, sp) => { paintPop(v); if (!sp.raf) { springs.delete(sp); busy = false; active = null; } }, { stiffness: 230, damping: 15 });
+      active = pop; pop.set(1);
       const opText = st.op === "^" ? `${par(st.a)}${SUP[st.b] || "^" + st.b}` : `${par(st.a)} ${st.op} ${par(st.b)}`;
       hist.textContent += `\n= ${exprText(toks)}`.padEnd(28) + `  ← ${nx.inGroup ? "G" : nx.kind === "E" ? "E" : nx.kind}: ${opText} = ${neg(st.r)}`;
       if (toks.length > 1) { fb.className = "feedback"; fb.textContent = hide ? "Predict again: which operation is next?" : "Next one is highlighted."; }
     }
     function predict(i) {
+      if (busy) flush();
       if (busy || toks.length < 2) return;
       const nx = nextOp(toks);
       tries++;

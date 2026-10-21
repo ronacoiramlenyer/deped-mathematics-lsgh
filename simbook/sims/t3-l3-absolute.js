@@ -25,7 +25,7 @@
       base.append(s("line", { x1: X(n), y1: Y0 - 8, x2: X(n), y2: Y0 + 8, stroke: "var(--ink)", "stroke-width": n === 0 ? 3 : 1.4 }));
       base.append(s("text", { x: X(n), y: Y0 + 28, "text-anchor": "middle", class: "svg-text", style: "font-size:11px", fill: sideColor(n) }, neg(n)));
     }
-    marker.append(s("circle", { r: 13, fill: "var(--accent)", stroke: "var(--paper)", "stroke-width": 3 }), s("text", { y: 58, "text-anchor": "middle", class: "svg-text", "font-weight": 700 }, ""));
+    marker.append(s("rect", { x: -20, y: -20, width: 40, height: 84, fill: "transparent" }), s("circle", { r: 13, fill: "var(--accent)", stroke: "var(--paper)", "stroke-width": 3 }), s("text", { y: 58, "text-anchor": "middle", class: "svg-text", "font-weight": 700 }, ""));
     ghostEl.append(s("circle", { r: 11, fill: "none", stroke: "var(--accent)", "stroke-width": 2.5, "stroke-dasharray": "4 3" }), s("text", { y: 58, "text-anchor": "middle", class: "svg-text" }, ""));
     const out = h("p", { class: "unit-big", "aria-live": "polite" }), info = h("div", { class: "readout" }), why = h("p", { class: "note" });
     const heightFor = (v) => 14 + Math.abs(v) * 8.5;
@@ -140,7 +140,7 @@
     }
     const mk = (name, color, up) => {
       const g = s("g", { class: "token", tabindex: 0, "aria-label": `Marker ${name}` });
-      g.append(s("path", { d: up ? "M0,0 l-13,24 h26 z" : "M0,0 l-13,-24 h26 z", fill: color }), s("text", { y: up ? 22 : -30, "text-anchor": "middle", class: "svg-text", "font-weight": 700 }, ""));
+      g.append(s("rect", { x: -22, y: up ? 0 : -48, width: 44, height: up ? 56 : 48, fill: "transparent" }), s("path", { d: up ? "M0,0 l-13,24 h26 z" : "M0,0 l-13,-24 h26 z", fill: color }), s("text", { y: up ? 22 : -30, "text-anchor": "middle", class: "svg-text", "font-weight": 700 }, ""));
       svg.append(g);
       return g;
     };
