@@ -27,9 +27,11 @@ performance standards, and competencies marked ★ in the CMs are quoted verbati
 
 | Path | Contents |
 | --- | --- |
-| `content/` | CM content as Python data (one file per grade/term) |
-| `tools/cm_builder.py` | Generates the LSGH-format CM `.docx` from a content file |
+| `content/` | CM and LG content as Python data (one file per grade/term) |
+| `tools/cm_builder.py` | Generates the LSGH-format Curriculum Map `.docx` (landscape) |
+| `tools/lg_builder.py` | Generates the LSGH-format Learning Guide `.docx` (portrait) |
 | `templates/lsgh_template.docx` | LSGH header (logo, page numbers), landscape letter page |
+| `templates/lsgh_template_portrait.docx` | LSGH header, portrait letter page (for LGs) |
 | `output/` | Generated documents |
 
 ## Building
@@ -38,7 +40,17 @@ performance standards, and competencies marked ★ in the CMs are quoted verbati
 pip install python-docx
 python3 tools/cm_builder.py content/grade7_term1_cm.py \
   output/grade7/Grade7-CM-1st_Trim-SY2026-2027-Mathematics.docx
+python3 tools/lg_builder.py content/grade7_term1_lg.py \
+  output/grade7/Grade7-LG-1st_Trim-SY2026-2027-Mathematics.docx
 ```
+
+## Learning Guide conventions
+
+- Lesson development follows DRAW (Acquisition), TUNE (Make-Meaning), and RELEASE
+  (Transfer), as in the LSGH sample LG.
+- ID# tags mirror the sample's usage: ID#1 objectives, ID#2 recall/hook, ID#3 presenting
+  the concept, ID#4 discussion, ID#5 guided practice, ID#6 hands-on performance,
+  ID#7 sharing/feedback, ID#8 valuing, ID#9 assessment and reflection.
 
 ## Codes used
 
