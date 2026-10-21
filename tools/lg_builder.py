@@ -18,6 +18,8 @@ Lesson bodies are lists of blocks:
     ("bul", [items])           bullet list
     ("obj", [items], [pillar keys])  objectives, then the pillars they focus on
     ("ex", title, [lines])     shaded worked-example / expected-output box
+    ("sim", {...})             SIM LAB / LIVE SIM card: kind, title, tool, link,
+                               setup, mission [..], questions [..], discovery
     ("table", [header], [[row], ...])  small grid, e.g. a pattern table
     ("pillar", [keys], [reasons])    pillar focus with optional reasons
     ("res", [items])           RESOURCES list
@@ -287,6 +289,8 @@ def render_blocks(cell, blocks, first=True):
                          label="Pillar focus:")
         elif kind == "ex":
             example_box(cell, block[1], block[2])
+        elif kind == "sim":
+            sim_box(cell, block[1])
         elif kind == "table":
             grid(cell, block[1], block[2])
         elif kind == "res":
@@ -336,6 +340,40 @@ def example_box(cell, title, lines):
             runs(par_in(inner, False, 1, indent=400), line.strip(), size=9.5)
         else:
             runs(par_in(inner, False, 2), line, size=9.5)
+    cell.add_paragraph().paragraph_format.space_after = Pt(0)
+
+
+def sim_box(cell, sim):
+    """A simulation card: digital SIM LAB (blue) or LIVE SIM role-play (orange)."""
+    live = sim.get("kind") == "LIVE SIM"
+    fill, border, ink = (("FCE4D6", "F4B183", "843C0C") if live
+                         else ("DDEBF7", "9DC3E6", "1F4E79"))
+    width = PLAN_COLS[1] - 700
+    box = cell.add_table(rows=1, cols=1)
+    cm.set_table_borders(box, color=border, size=8)
+    cm.fix_table_layout(box, [width])
+    cm.no_split(box.rows[0])
+    inner = box.rows[0].cells[0]
+    inner.width = Twips(width)
+    cm.set_cell_fill(inner, fill)
+    cm.set_cell_margins(inner, 90, 90, 150, 150)
+    par = par_in(inner, True, 3)
+    cm.add_runs(par, f"{sim.get('kind', 'SIM LAB')}  ·  ", size=10, bold=True, color=ink)
+    cm.add_runs(par, sim["title"], size=10, bold=True, color=ink)
+    for label, key in (("Tool", "tool"), ("Link", "link"), ("Set-up", "setup")):
+        if sim.get(key):
+            runs(par_in(inner, False, 1), f"**{label}:** {sim[key]}", size=9)
+    if sim.get("mission"):
+        runs(par_in(inner, False, 1), "**Mission:**", size=9.5)
+        for n, step in enumerate(sim["mission"], 1):
+            marker_par(inner, f"{n}.", step, size=9.5, space_after=1)
+    if sim.get("questions"):
+        runs(par_in(inner, False, 1), "**Notice and Wonder:**", size=9.5)
+        for q in sim["questions"]:
+            marker_par(inner, "?", q, size=9.5, space_after=1)
+    if sim.get("discovery"):
+        runs(par_in(inner, False, 1), f"**Expected discovery:** __{sim['discovery']}__",
+             size=9.5)
     cell.add_paragraph().paragraph_format.space_after = Pt(0)
 
 

@@ -1,0 +1,199 @@
+<title>Math 7 SimBook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a textbook spread – lesson rail on the left, the sim as the page's main
+   figure, and a margin column for the mission, discovery, and self-check. */
+:root {
+  --bg: #f3f6f2;
+  --paper: #ffffff;
+  --ink: #14231b;
+  --muted: #56675d;
+  --line: #d6dfd8;
+  --accent: #0b6b3a;      /* La Salle green */
+  --accent-ink: #ffffff;
+  --accent-soft: #e2f0e7;
+  --gold: #c98a0b;
+  --gold-soft: #fbf0d6;
+  --shape-a: #2a74b8;
+  --shape-a-soft: rgba(42, 116, 184, .16);
+  --shape-b: #d9542b;
+  --shape-b-soft: rgba(217, 84, 43, .16);
+  --good: #1f8a4c;
+  --bad: #c2362b;
+  --grid: #e7ece8;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1713; --paper: #17221c; --ink: #e6eee8; --muted: #9db0a4; --line: #2b3a31;
+    --accent: #3fbf78; --accent-ink: #06170d; --accent-soft: #1d3527;
+    --gold: #f0b43c; --gold-soft: #3a2f14;
+    --shape-a: #6fb2ee; --shape-a-soft: rgba(111, 178, 238, .2);
+    --shape-b: #f08a63; --shape-b-soft: rgba(240, 138, 99, .2);
+    --good: #4cc67f; --bad: #f07267; --grid: #22312a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1713; --paper: #17221c; --ink: #e6eee8; --muted: #9db0a4; --line: #2b3a31;
+  --accent: #3fbf78; --accent-ink: #06170d; --accent-soft: #1d3527;
+  --gold: #f0b43c; --gold-soft: #3a2f14;
+  --shape-a: #6fb2ee; --shape-a-soft: rgba(111, 178, 238, .2);
+  --shape-b: #f08a63; --shape-b-soft: rgba(240, 138, 99, .2);
+  --good: #4cc67f; --bad: #f07267; --grid: #22312a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px;
+  line-height: 1.5; margin: 0;
+}
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- top bar ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--accent); }
+.topbar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--accent); color: var(--accent-ink);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 10px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: inherit; }
+.brand b { font-family: var(--display); font-weight: 800; font-size: 1.35rem; letter-spacing: -.01em; }
+.brand span { font-size: .8rem; opacity: .85; letter-spacing: .06em; text-transform: uppercase; }
+.topbar .spacer { flex: 1; }
+.topbar select { background: var(--paper); color: var(--ink); border: 0; border-radius: 8px; padding: 6px 10px; max-width: 100%; }
+
+/* ---------- page frame ---------- */
+.frame {
+  display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 24px; max-width: 1400px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 40px;
+}
+.rail { position: sticky; top: 70px; align-self: start; display: grid; gap: 14px; }
+.rail h3 { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; font-family: var(--body); }
+.rail a {
+  display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: start; padding: 7px 8px; border-radius: 8px;
+  color: var(--ink); text-decoration: none; font-size: .92rem; line-height: 1.3;
+}
+.rail a:hover { background: var(--accent-soft); }
+.rail a.on { background: var(--accent); color: var(--accent-ink); }
+.rail a .n { font-family: var(--mono); font-size: .8rem; opacity: .8; padding-top: 1px; }
+.rail a .done { color: var(--good); font-weight: 700; }
+.rail a.on .done { color: var(--accent-ink); }
+@media (max-width: 900px) { .frame { grid-template-columns: minmax(0, 1fr); } .rail { display: none; } }
+@media (min-width: 901px) { .topbar select { display: none; } }
+@media (max-width: 520px) { .brand span { display: none; } }
+
+/* ---------- cover ---------- */
+.cover { display: grid; gap: 24px; }
+.cover-hero { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 28px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px; align-items: center; }
+.cover-hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -.02em; }
+.cover-hero h1 em { font-style: normal; color: var(--accent); }
+.cover-hero p { color: var(--muted); max-width: 60ch; }
+.cover-hero svg { width: 100%; height: auto; max-width: 100%; }
+@media (max-width: 700px) { .cover-hero { grid-template-columns: minmax(0, 1fr); padding: 20px; } }
+.unit { display: grid; gap: 12px; }
+.unit-head { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.unit-head h2 { font-size: 1.4rem; }
+.unit-head .tag { font-size: .8rem; color: var(--muted); letter-spacing: .04em; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 6px; text-decoration: none; color: var(--ink); align-content: start; }
+.card:hover { border-color: var(--accent); }
+.card .k { font-family: var(--mono); font-size: .78rem; color: var(--accent); }
+.card h3 { font-size: 1.1rem; }
+.card p { margin: 0; font-size: .9rem; color: var(--muted); }
+
+/* ---------- lesson ---------- */
+.lesson { display: grid; gap: 18px; }
+.lesson-head { display: grid; gap: 8px; }
+.eyebrow { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.lesson-head h1 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; letter-spacing: -.015em; }
+.meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { font-size: .78rem; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+.chip.gold { background: var(--gold-soft); }
+.bigq { background: var(--gold-soft); border-left: 4px solid var(--gold); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 1.02rem; }
+.spread { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr); gap: 18px; align-items: start; }
+@media (max-width: 1100px) { .spread { grid-template-columns: minmax(0, 1fr); } }
+.panel { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 12px; min-width: 0; }
+.panel h2 { font-size: 1.1rem; }
+.panel ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tabs button { border: 1px solid var(--line); background: var(--bg); padding: 6px 12px; border-radius: 999px; cursor: pointer; font-size: .9rem; }
+.tabs button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.stage { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 14px; display: grid; gap: 12px; min-width: 0; }
+.stage-body { display: grid; gap: 12px; min-width: 0; }
+.stage svg { width: 100%; height: auto; display: block; touch-action: none; user-select: none; }
+.controls { display: flex; gap: 10px 16px; flex-wrap: wrap; align-items: center; }
+.controls label { display: flex; gap: 6px; align-items: center; font-size: .92rem; }
+.controls input[type="number"], .controls input[type="text"] { width: 6.5em; padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+.controls input[type="range"] { accent-color: var(--accent); }
+.btn { border: 0; background: var(--accent); color: var(--accent-ink); padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight: 700; }
+.btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.btn:disabled { opacity: .5; cursor: default; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; flex-wrap: wrap; }
+.seg button { border: 0; background: var(--bg); padding: 6px 11px; cursor: pointer; font-family: var(--mono); font-size: .88rem; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.readout { display: flex; gap: 8px; flex-wrap: wrap; }
+.stat { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font-size: .88rem; }
+.stat b { font-family: var(--mono); font-weight: 500; }
+.pill { font-size: .82rem; padding: 3px 10px; border-radius: 999px; font-weight: 700; }
+.pill.yes { background: color-mix(in srgb, var(--good) 18%, transparent); color: var(--good); }
+.pill.no { background: color-mix(in srgb, var(--bad) 16%, transparent); color: var(--bad); }
+.note { font-size: .9rem; color: var(--muted); margin: 0; }
+.workings { font-family: var(--mono); font-size: .88rem; background: var(--bg); border: 1px dashed var(--line); border-radius: 8px; padding: 10px 12px; white-space: pre-wrap; overflow-x: auto; margin: 0; }
+.table-wrap { overflow-x: auto; }
+table.data { border-collapse: collapse; width: 100%; font-size: .9rem; }
+table.data th, table.data td { border-bottom: 1px solid var(--line); padding: 5px 8px; text-align: left; }
+table.data th { font-size: .78rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+table.data td.num { text-align: right; }
+details.discover { background: var(--accent-soft); border-radius: 8px; padding: 10px 12px; }
+details.discover summary { cursor: pointer; font-weight: 700; }
+.check-q { display: grid; gap: 8px; }
+.check-q .q { font-size: 1rem; }
+.check-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.check-row input { width: 9em; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+.choices { display: flex; gap: 6px; flex-wrap: wrap; }
+.choices button { border: 1px solid var(--line); background: var(--bg); padding: 7px 12px; border-radius: 8px; cursor: pointer; }
+.feedback { font-size: .92rem; margin: 0; }
+.feedback.ok { color: var(--good); }
+.feedback.bad { color: var(--bad); }
+.score { font-family: var(--mono); font-size: .85rem; color: var(--muted); }
+.svg-text { font-family: var(--mono); font-size: 13px; fill: var(--ink); }
+.svg-label { font-family: var(--body); font-size: 13px; fill: var(--muted); }
+.handle { fill: var(--paper); stroke: var(--accent); stroke-width: 3; cursor: grab; }
+.handle:active { cursor: grabbing; }
+.footer-nav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.footer-nav a { color: var(--accent); font-weight: 700; text-decoration: none; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<header class="topbar">
+  <a class="brand" href="#home"><b>Math 7 SimBook</b><span>La Salle Green Hills · Term 1</span></a>
+  <div class="spacer"></div>
+  <label for="jump" hidden>Go to lesson</label>
+  <select id="jump" aria-label="Go to lesson"></select>
+</header>
+<div class="frame">
+  <nav class="rail" id="rail" aria-label="Lessons"></nav>
+  <main id="main"></main>
+</div>
+
+<script src="core.js"></script>
+<script src="sims/l1-polygons.js"></script>
+<script src="sims/l2-angle-pairs.js"></script>
+<script src="sims/l3-angle-sums.js"></script>
+<script src="sims/l4-mini-mall.js"></script>
+<script src="sims/l5-baon-life.js"></script>
+<script src="sims/l6-rate-racer.js"></script>
+<script src="sims/l7-number-line.js"></script>
+<script src="sims/l8-fraction-kitchen.js"></script>
+<script src="sims/l9-roots.js"></script>
+<script src="app.js"></script>

@@ -32,6 +32,7 @@ performance standards, and competencies marked ★ in the CMs are quoted verbati
 | `tools/lg_builder.py` | Generates the LSGH-format Learning Guide `.docx` (portrait) |
 | `templates/lsgh_template.docx` | LSGH header (logo, page numbers), landscape letter page |
 | `templates/lsgh_template_portrait.docx` | LSGH header, portrait letter page (for LGs) |
+| `simbook/` | LSGH Math 7 SimBook – interactive book with one custom simulation per lesson |
 | `output/` | Generated documents |
 
 ## Building
@@ -43,6 +44,30 @@ python3 tools/cm_builder.py content/grade7_term1_cm.py \
 python3 tools/lg_builder.py content/grade7_term1_lg.py \
   output/grade7/Grade7-LG-1st_Trim-SY2026-2027-Mathematics.docx
 ```
+
+## Math 7 SimBook
+
+`simbook/` is a dependency-free web book (HTML, CSS, vanilla JS, SVG). Each Term 1 lesson
+has its own simulation, a mission, a discovery reveal, and a 5-item self-check with
+instant feedback (4/5 marks the lesson as mastered on that device).
+
+| Lesson | Sim | Tabs |
+| --- | --- | --- |
+| 1 · A. Drawing Polygons | Polygon Studio | Explore, Build It |
+| 2 · B. Angle Pairs and Classifying Polygons | Angle Pair Lab | Intersecting Lines, Split an Angle, Classify Polygons |
+| 3 · C. Angles of Polygons | Angle Sum Machine | Triangle Split, Turtle Walk, Honeycomb Test |
+| 4 · D. Percentages in Real Life | LSGH Mini Mall | Promo Lab, Price Change, Money Tools |
+| 5 · E. Creating a Financial Plan | Baon Life Sim | Plan, Live the Week, Savings Goal |
+| 6 · F. Rates | Rate Racer | Race, Best Buy |
+| 7 · G. Rational Numbers | Number Line Explorer | Converter, Order It, Zoom Between |
+| 8 · H. Operations on Rational Numbers | Fraction Kitchen | Fraction Bars, Kakanin Kitchen, Decimal Grid |
+| 9 · I. Square Roots, Cube Roots, and Irrational Numbers | Roots Lab | Square Builder, Cube Builder, Root Estimator, Square of Area 2 |
+
+Add a lesson by writing `simbook/sims/<file>.js` that calls `Sim.register({...})`
+(id, unit, title, competencies, mission, discovery, `mount(stage)`, `check()`) and adding
+its `<script>` tag to `simbook/index.html`. The published copy lives at
+https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr (lesson pages: `#lesson1` … `#lesson9`).
+The LG's SIM LAB cards and the CM's activities point to these sims.
 
 ## Learning Guide conventions
 
