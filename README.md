@@ -47,9 +47,17 @@ python3 tools/lg_builder.py content/grade7_term1_lg.py \
 
 ## Math 7 SimBook
 
-`simbook/` is a dependency-free web book (HTML, CSS, vanilla JS, SVG). Each Term 1 lesson
-has its own simulation, a mission, a discovery reveal, and a 5-item self-check with
-instant feedback (4/5 marks the lesson as mastered on that device).
+`simbook/` is a dependency-free web book (HTML, CSS, vanilla JS, SVG). Every Term 1 lesson
+page has four parts:
+
+1. **Hook** – the lesson's own simulation, with a mission and a discovery reveal.
+2. **Lesson** – the traditional exposition: definitions, rules, step-by-step worked
+   examples, and a Remember box (`simbook/content/lN.js`, `learn`).
+3. **Check Yourself** – 5 auto-generated formative items with instant feedback
+   (4/5 marks the lesson as mastered on that device).
+4. **Exercises** – 14 fixed, numbered items in Part A Skills Practice, Part B Problem
+   Solving, and Part C Challenge, each with answer checking, a worked solution, and an
+   answer key (`simbook/content/lN.js`, `exercises`).
 
 | Lesson | Sim | Tabs |
 | --- | --- | --- |

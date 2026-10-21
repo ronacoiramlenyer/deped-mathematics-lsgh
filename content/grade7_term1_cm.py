@@ -215,12 +215,12 @@ ROWS = [
         "acts": [
             "^^HOOK:^^ “Polygon Spotting” – find polygons in a parol, floor tiles, road "
             "signs, and honeycombs.",
-            "^^SIM LAB:^^ SimBook – Polygon Studio (Explore, Build It)",
+            "^^SIM HOOK:^^ SimBook – Polygon Studio (Explore, Build It)",
             "Teacher demo: measuring and drawing angles with a protractor.",
             "“Draw-It-Right” pair challenge – one partner dictates measures, the other draws.",
             "LW1.1 – Polygon Construction Lab",
         ],
-        "res": ["LSGH Math 7 SimBook – Lesson 1", SLIDES, "Ruler, protractor, and grid paper", "GeoGebra (polygon tools)",
+        "res": ["LSGH Math 7 SimBook – Lesson 1 (hook, lesson, and Exercises 1)", SLIDES, "Ruler, protractor, and grid paper", "GeoGebra (polygon tools)",
                 R360, "Student’s LW1.1 output uploaded in Ranger 360"],
         "pillars": ["ZS"],
     },
@@ -252,12 +252,12 @@ ROWS = [
         "acts": [
             "^^HOOK:^^ “Scissors and Clocks” – what angle pairs do open scissors and clock "
             "hands make?",
-            "^^SIM LAB:^^ SimBook – Angle Pair Lab (Intersecting Lines, Split an Angle, Classify Polygons)",
+            "^^SIM HOOK:^^ SimBook – Angle Pair Lab (Intersecting Lines, Split an Angle, Classify Polygons)",
             "LW1.2 – Angle Hunt: photograph, measure, and name angle pairs around the campus.",
             "“Polygon Sort” card game – regular/irregular, convex/non-convex.",
             "CP1.2 – Practice Set #1",
         ],
-        "res": ["LSGH Math 7 SimBook – Lesson 2", SLIDES, "Protractor and device camera", "Polygon Sort cards", R360,
+        "res": ["LSGH Math 7 SimBook – Lesson 2 (hook, lesson, and Exercises 2)", SLIDES, "Protractor and device camera", "Polygon Sort cards", R360,
                 "Student’s LW1.2 output uploaded in Ranger 360"],
         "pillars": ["CM", "ZS"],
     },
@@ -288,13 +288,13 @@ ROWS = [
         "acts": [
             "^^HOOK:^^ “Tear-and-Tape Triangle” – tear off the corners of a paper triangle: "
             "what do they always make?",
-            "^^SIM LAB:^^ SimBook – Angle Sum Machine (Triangle Split, Turtle Walk, Honeycomb Test)",
+            "^^SIM HOOK:^^ SimBook – Angle Sum Machine (Triangle Split, Turtle Walk, Honeycomb Test)",
             "“Triangle Split” discovery table – find the angle-sum pattern.",
             "“Walk the Polygon” – walk a taped floor polygon and turn at each corner to feel "
             "the exterior angles.",
             "SA1.1 – Polygon Design Challenge",
         ],
-        "res": ["LSGH Math 7 SimBook – Lesson 3", SLIDES, "Paper, scissors, and masking tape", "GeoGebra", R360,
+        "res": ["LSGH Math 7 SimBook – Lesson 3 (hook, lesson, and Exercises 3)", SLIDES, "Paper, scissors, and masking tape", "GeoGebra", R360,
                 "Student’s SA1.1 output uploaded in Ranger 360"],
         "pillars": ["ZS"],
     },
@@ -346,7 +346,7 @@ ROWS = [
         "acts": [
             "^^HOOK:^^ “Sale Ka Ba?” – vote on which mall promo is the better deal, then "
             "check with math.",
-            "^^SIM LAB:^^ SimBook – LSGH Mini Mall (Promo Lab, Price Change, Money Tools)",
+            "^^SIM HOOK:^^ SimBook – LSGH Mini Mall (Promo Lab, Price Change, Money Tools)",
             "“Price Watch” – compute percentage increase/decrease from news on fare and rice "
             "prices.",
             "LW1.3 – Discount Showdown: compute discounts, sales tax, and final prices from "
@@ -354,7 +354,7 @@ ROWS = [
             "“Sari-Sari Store Simulation” – commission and simple interest role play.",
             "CP1.3 – Practice Set #2",
         ],
-        "res": ["LSGH Math 7 SimBook – Lesson 4", SLIDES, "Mall flyers and online store screenshots", "Calculator", R360,
+        "res": ["LSGH Math 7 SimBook – Lesson 4 (hook, lesson, and Exercises 4)", SLIDES, "Mall flyers and online store screenshots", "Calculator", R360,
                 "Student’s LW1.3 output uploaded in Ranger 360"],
         "pillars": ["SF", "ZS"],
     },
@@ -381,12 +381,12 @@ ROWS = [
         ],
         "acts": [
             "^^HOOK:^^ “₱500 Baon Challenge” – how would you make ₱500 last a whole week?",
-            "^^SIM LAB:^^ SimBook – Baon Life Sim (Plan, Live the Week, Savings Goal)",
+            "^^SIM HOOK:^^ SimBook – Baon Life Sim (Plan, Live the Week, Savings Goal)",
             "“Needs or Wants?” quick-sort game",
             "Budget Builder – plan a weekly baon budget in a Google Sheets template.",
             "Launch of PT1.1 “Budget for a Cause”; Scaffold #1",
         ],
-        "res": ["LSGH Math 7 SimBook – Lesson 5", SLIDES, "Google Sheets budget template",
+        "res": ["LSGH Math 7 SimBook – Lesson 5 (hook, lesson, and Exercises 5)", SLIDES, "Google Sheets budget template",
                 "Teacher-prepared PT1.1 Guidelines and Rubric", R360],
         "pillars": ["ZS", "CM"],
     },
@@ -414,12 +414,12 @@ ROWS = [
         ],
         "acts": [
             "^^HOOK:^^ “Hallway Speed Trial” – time a 20-meter walk and compute your speed.",
-            "^^SIM LAB:^^ SimBook – Rate Racer (Race, Best Buy)",
+            "^^SIM HOOK:^^ SimBook – Rate Racer (Race, Best Buy)",
             "“Commute Check” – compare jeepney, bus, and train travel rates.",
             "SA1.2 – Best Buy Battle: sachet vs. bottle vs. bulk – which is cheaper per unit?",
             "PT1.1 – Scaffold #2",
         ],
-        "res": ["LSGH Math 7 SimBook – Lesson 6", SLIDES, "Stopwatch app and measuring tape", "Grocery price lists and receipts",
+        "res": ["LSGH Math 7 SimBook – Lesson 6 (hook, lesson, and Exercises 6)", SLIDES, "Stopwatch app and measuring tape", "Grocery price lists and receipts",
                 R360, "Student’s SA1.2 output uploaded in Ranger 360"],
         "pillars": ["ZS"],
     },
@@ -467,12 +467,12 @@ ROWS = [
         ],
         "acts": [
             "^^HOOK:^^ “Same Number, Different Outfit” – race to match ½, 0.5, and 50%.",
-            "^^SIM LAB:^^ SimBook – Number Line Explorer (Converter, Order It, Zoom Between)",
+            "^^SIM HOOK:^^ SimBook – Number Line Explorer (Converter, Order It, Zoom Between)",
             "“Conversion Dominoes” in small groups",
             "LW1.4 – Human Number Line: learners holding number cards order themselves.",
             "“Which Is Bigger?” mini-debates",
         ],
-        "res": ["LSGH Math 7 SimBook – Lesson 7", SLIDES, "Number cards and a rope number line", "Desmos or GeoGebra number line",
+        "res": ["LSGH Math 7 SimBook – Lesson 7 (hook, lesson, and Exercises 7)", SLIDES, "Number cards and a rope number line", "Desmos or GeoGebra number line",
                 R360],
         "pillars": ["CM"],
     },
@@ -502,13 +502,13 @@ ROWS = [
         "acts": [
             "^^HOOK:^^ “Recipe Rescale” – halve or triple a leche flan recipe with fractional "
             "measures.",
-            "^^SIM LAB:^^ SimBook – Fraction Kitchen (Fraction Bars, Kakanin Kitchen, Decimal Grid)",
+            "^^SIM HOOK:^^ SimBook – Fraction Kitchen (Fraction Bars, Kakanin Kitchen, Decimal Grid)",
             "Fraction wall and area models for multiplying and dividing",
             "“Mental Math Sprint” warm-ups",
             "SA1.3 – Rational Relay team challenge",
             "PT1.1 – Scaffold #3",
         ],
-        "res": ["LSGH Math 7 SimBook – Lesson 8", SLIDES, "Fraction tiles and recipe cards", R360,
+        "res": ["LSGH Math 7 SimBook – Lesson 8 (hook, lesson, and Exercises 8)", SLIDES, "Fraction tiles and recipe cards", R360,
                 "Teacher-prepared PT1.1 Guidelines and Rubric",
                 "Student’s SA1.3 output uploaded in Ranger 360"],
         "pillars": ["ZS", "CM"],
@@ -538,13 +538,13 @@ ROWS = [
         "acts": [
             "^^HOOK:^^ “Build the Square” – which numbers of tiles make perfect squares? "
             "Which cubes make perfect cubes?",
-            "^^SIM LAB:^^ SimBook – Roots Lab (Square and Cube Builders, Root Estimator, Square of Area 2)",
+            "^^SIM HOOK:^^ SimBook – Roots Lab (Square and Cube Builders, Root Estimator, Square of Area 2)",
             "“Perfect Square Bingo”",
             "LW1.5 – Root Locator: estimate and plot roots like √2, √10, and ∛20 on a "
             "number line.",
             "“Rational or Irrational?” sorting game",
         ],
-        "res": ["LSGH Math 7 SimBook – Lesson 9", SLIDES, "Square tiles and unit cubes", "Calculator and GeoGebra", R360,
+        "res": ["LSGH Math 7 SimBook – Lesson 9 (hook, lesson, and Exercises 9)", SLIDES, "Square tiles and unit cubes", "Calculator and GeoGebra", R360,
                 "Student’s LW1.5 output uploaded in Ranger 360"],
         "pillars": ["ZS"],
     },

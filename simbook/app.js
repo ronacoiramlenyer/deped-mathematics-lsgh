@@ -96,12 +96,22 @@
   function renderLesson(l) {
     const unit = UNITS.find((u) => u.key === l.unit);
     const idx = lessons.indexOf(l);
+    const content = Sim.content[l.id] || { learn: [], exercises: [] };
     const stage = h("section", { class: "stage", "aria-label": l.simName });
     const side = h("aside", { class: "panel" },
       h("h2", {}, "Your mission"),
       h("ol", {}, l.mission.map((m) => h("li", {}, m))),
       h("details", { class: "discover" }, h("summary", {}, "What did you discover?"), h("p", {}, l.discovery)),
-      checkPanel(l));
+      h("p", { class: "note" }, "Now read the lesson below to see how mathematicians describe what you found."));
+    const sections = [
+      { id: "hook", label: "1 · Hook", title: `Hook · ${l.simName}`, body: h("div", { class: "spread" }, stage, side),
+        intro: "Start here. Play with the simulation and look for a pattern before the lesson." },
+      { id: "learn", label: "2 · Lesson", title: "Lesson", body: Sim.renderLearn(content.learn) },
+      { id: "check", label: "3 · Check Yourself", title: "Check Yourself", body: h("div", { class: "panel check-panel" }, checkPanel(l)),
+        intro: "Five quick questions, new every time. Get 4 out of 5 to master the lesson." },
+      { id: "exercises", label: "4 · Exercises", title: `Exercises ${l.num}`, body: Sim.renderExercises(l, content.exercises) },
+    ];
+    const jumpTo = (id) => document.getElementById(`sec-${id}`).scrollIntoView({ behavior: Sim.reducedMotion() ? "auto" : "smooth", block: "start" });
     main.append(h("article", { class: "lesson" },
       h("header", { class: "lesson-head" },
         h("p", { class: "eyebrow" }, `Unit ${unit.key} · ${unit.title} · Lesson ${l.num}`),
@@ -110,8 +120,10 @@
           h("span", { class: "chip" }, `Sim: ${l.simName}`),
           h("span", { class: "chip" }, `Competencies ${l.comps.join(", ")}`),
           h("span", { class: "chip gold" }, `${l.cycles} · ${l.deped}`)),
-        h("p", { class: "bigq" }, h("b", {}, "Big question: "), l.bigQuestion)),
-      h("div", { class: "spread" }, stage, side),
+        h("p", { class: "bigq" }, h("b", {}, "Big question: "), l.bigQuestion),
+        h("nav", { class: "section-nav", "aria-label": "Lesson sections" }, sections.map((sec) => h("button", { type: "button", onclick: () => jumpTo(sec.id) }, sec.label)))),
+      sections.map((sec) => h("section", { class: "lesson-section", id: `sec-${sec.id}` },
+        h("h2", { class: "section-title" }, sec.title), sec.intro ? h("p", { class: "note" }, sec.intro) : null, sec.body)),
       h("nav", { class: "footer-nav" },
         idx > 0 ? h("a", { href: "#" + lessons[idx - 1].id }, `← ${lessons[idx - 1].title}`) : h("span"),
         idx < lessons.length - 1 ? h("a", { href: "#" + lessons[idx + 1].id }, `${lessons[idx + 1].title} →`) : h("a", { href: "#home" }, "Back to contents"))));
@@ -120,7 +132,7 @@
 
   function checkPanel(l) {
     const box = h("div", { class: "check-q" });
-    const head = h("div", { class: "check-row" }, h("h2", {}, "Check yourself"));
+    const head = h("div", { class: "check-row" });
     const score = h("span", { class: "score" });
     head.append(score);
     const panel = h("div", { class: "check-q" }, head, box);
