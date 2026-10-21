@@ -1,0 +1,1196 @@
+           Republic of the Philippines
+            Department of Education
+     DepEd Complex, Meralco Avenue, Pasig City
+
+
+
+
+MATATAG CURRICULUM
+    MATHEMATICS
+   GRADES 1, 4 and 7
+                                        THE SHAPE OF THE
+                             GRADES 1 TO 10 MATHEMATICS CURRICULUM
+
+      Mathematics is a powerful means of identification, description, and application of patterns and relationships; generalization;
+and communication. It provides opportunities for challenge, creativity, and users’ recognition and appreciation of the nature, beauty
+and power of mathematical processes, strategies, and reasoning.
+
+      The successful study of mathematics in Grades 1 to 10 is a key component of Filipino learners’ preparation for life in the 21st
+century. For full participation in society, learners need to develop sound mathematical knowledge, skills, and understanding for
+making informed decisions and for solving problems in a variety of contexts relevant to their daily lives.
+        Historically, mathematics arose from necessity of the human society, with real-world problems giving birth to its existence,
+emphasizing problem solving at its core. In schools, mathematics serves as an ideal training ground, fostering the problem-solving
+ability learners.
+       Additionally, in this age of scientific and technological innovations, being “numerate” is crucial for engaging in various
+endeavors. The Organisation for Economic Co-operation and Development (OECD) defines numeracy as “the ability to access, use,
+interpret, and communicate mathematical information and ideas, in order to engage in and manage the mathematics demands of a
+range of situations in adult life.”
+      “Numeracy, a significant ancillary to problem solving, relates to a high proportion of the mathematics content of the Grades 1
+to 10 Mathematics curriculum. Learners become increasingly ‘numerate’ as they develop the confidence and ability to:
+
+      • choose and use mathematics effectively in its application to situations that arise in their life at home, at work, and in the
+        community; and
+      • apply, evaluate, and communicate their mathematical thinking.
+
+
+
+
+                                                                                                                          Page 2 of 36
+Development of the Curriculum
+Curriculum Goals
+
+      The main goal of the curriculum is for Filipino learners to become mathematically proficient and critical problem solvers.
+       The development of mathematical proficiency among learners involves the development of confidence and competence in
+different aspects of mathematics and includes becoming increasingly aware of the value and usefulness of mathematics.
+       According to Polya (1981), problem solving is “finding a way out of a difficulty, a way around an obstacle, attaining an aim
+which was not immediately attainable” (p. ix). Further, the National Council of Teachers of Mathematics (NCTM), (2000) asserts that
+“solving problems is not only a goal of learning mathematics but also a major means of doing so” (p. 52).
+       In mathematics education, problem solving has been considered as a goal, as a process, and as a basic skill. The processes
+involved in solving mathematical problems, from recognizing and understanding a problem, to modelling the problem through different
+representations, to planning a solution, to executing the solution, and to finally checking whether the problem has been solved,
+demonstrate that problem solving is a very important life skill for 21st-century citizens to possess.
+
+
+
+Theoretical and Philosophical Bases
+     Mathematics is a diverse discipline. With its universal applicability, it finds widespread use in various fields of endeavor,
+especially in solving real-world problems. It is essential that learners be mathematically proficient and critical thinkers to effectively
+tackle such problems.
+
+      Effective mathematics teaching requires understanding what students know and need to learn, and then challenging and
+supporting them to learn it well. It also requires knowing and understanding mathematics, students as learners, and pedagogical
+strategies (NCTM, 2000).
+     The teaching practices recommended by NCTM are grounded in views of knowledge, learning, and teaching informed by a
+constructivist perspective (e.g., Ball & Bass; Confrey, 1991; Gelman, 1994; Smith, diSessa & Roschelle, 1993). Teaching mathematics
+through constructivist methods allows students to deepen their knowledge beyond rote memorization, to develop meaningful contexts,
+and to take charge of the learning process as active participants rather than mere observers (WGU, 2020). These constructivist
+theories point to active learning, cognitive development in the context of social interaction, and conceptual understanding as critical
+in the teaching of mathematics.
+
+
+                                                                                                                               Page 3 of 36
+       Piaget’s theory of cognitive development (1977) states that all knowledge is constructed, and the instrument of instruction
+includes cognitive structures that themselves are products of continued construction. In the preoperational stage, Piaget suggests
+that elementary school children need concrete objects, pictures, actions, and symbols to develop a deep understanding of
+mathematical concepts. In addition, Bruner concurs that conceptual learning begins from active engagement or experiences with
+concrete tasks (‘enactive’), moves towards perceptual images (‘iconic’), and then to abstract (‘symbolic’) representations (Bruner, 1966).
+For instance, when teaching addition with regrouping for obtaining, for example, 8 + 6, Grade 1 learners should move blocks in two
+groups to act out the idea of using part of one addend so that the other addend will become a complete “ten.” This hands-on approach
+views numbers as quantities and not mere numerals, and progresses to pictorial representation of the same problem type. Learners’
+advancement leads to mental visualization and application of manipulations to abstract problems. Thus, the ultimate objective of
+mathematics education, as outlined in the Concrete-Representational-Abstract (CRA) Model, is to guide learners towards
+representations and operations that involve abstract symbols (Hui et al., 2017).
+       Vygotsky (1978), on the other hand, states that an individual cannot develop without interacting with the environment as
+emphasized in his zone of proximal development. By incorporating this theory into their teaching practices, teachers can tailor
+strategic instructional plans for groups or individual learners at various developmental stages. By effectively connecting complex
+material to familiar concepts, teachers can offer appropriate scaffolding such as strategic social interactions, tailored learning
+experiences, and instructions aligned with a learner’s prior performance, intuition, and current thought processes. This improves the
+learner’s ability to make sense of new situations, build on prior knowledge, and transfer learning. In teaching mathematics, these
+strategic instructional plans include the use of manipulatives, games, models, partial solutions, or making use of contextual problems
+based on the learner’s interest.
+       Meanwhile, Glasersfeld (1987) claims that knowledge is not passively received but actively built up by the cognizing individual
+and thus, knowledge is the result of a self-organized cognitive process. This suggests that all knowledge is constructed rather than
+perceived through the senses. For instance, learning multiplication is not just about memorizing the multiplication facts, but it is
+also important for learners to understand the concepts underlying multiplication. Learners who lack understanding of fundamental
+concepts are more likely to struggle with higher-order thinking.
+      The use of representations in mathematics helps to demonstrate a learner’s thinking. Whether these representations are
+concrete or abstract, they help them analyze the problem at hand, formulate an idea, and extend their reasoning. The NCTM
+Standards (2000) include that curriculum should emphasize that learners create and use representations to organize, record, and
+communicate mathematical ideas; select, apply, and translate mathematical representations to solve problems; and use
+representations to model and interpret physical, social, and mathematical phenomena (cited in Fennell & Rowan, 2001).
+
+
+
+
+                                                                                                                               Page 4 of 36
+Curriculum Framework
+     The framework designed for the revised Mathematics curriculum for Grades 1 to 10 guides teachers in their preparation of
+mathematically rich lessons and helps them in working towards the main curriculum goal.
+      To achieve the main goal, three facilitating facets have been developed: content, skills, and disposition.
+      The three facilitating facets are further reinforced by three supporting components: pedagogy, assessment, and resources, with
+each of these being relevant to the learning context, the curriculum content, and the learning phases of the learners.
+      Figure 1 shows the diagrammatic representation of the framework designed for the revised curriculum.
+
+
+
+
+                             Figure 1. The Revised Grades 1 – 10 Mathematics Curriculum Framework
+
+
+      Through the teaching and learning of the revised curriculum, it is also intended that learners exhibit the qualities emanating
+from the five intertwining strands of mathematical proficiency as defined by the National Research Council (NRC, 2001).
+
+
+
+                                                                                                                         Page 5 of 36
+These strands are:
+
+   •   Conceptual Understanding – comprehension of mathematical concepts, operations, and relations;
+
+   •   Procedural Fluency – skill in carrying out procedures flexibly, accurately, efficiently, and appropriately;
+   •   Strategic Competence – ability to formulate, represent, and solve mathematical problems;
+   •   Adaptive Reasoning – capacity for logical thought, reflection, explanation, and justification; and
+   •   Productive Disposition – habitual inclination to see mathematics as sensible, useful, and worthwhile, coupled with a belief in
+       diligence and one’s own efficacy (p. 116).
+
+
+       These intertwining strands of mathematical proficiency are also covered in the SEAMEO Basic Education Standards (SEA-
+BES): Common Core Regional Learning Standards (CCRLS) in Mathematics and Science (2017). The SEA-BES CCRLS refers to: (1)
+cultivating basic human characters through mathematical values, attitudes and habits of mind; (2) developing creative human capital
+and process skills; and (3) the importance of knowledge of mathematics in cultivating well-qualified citizens.
+       Facione and Gittens (2016) define critical thinking as “the process of purposeful, reflective judgment” (p. 386). They further
+asserted that “the critical thinking process applies cognitive skills of interpretation, analysis, inference, evaluation, explanation, and
+self-regulation in an effort to judge what to believe or what to do” (p. 36).
+        The revised Mathematics curriculum will aim to develop among learners’ proficiency in solving mathematical problems
+critically, grounded in strong conceptual knowledge, strategic use of mathematical skills and processes, and desirable values and
+disposition in mathematics, thus assisting them to become productive and successful 21st-century citizens.
+
+
+
+The Facilitating Facets
+
+      The three facilitating facets for achieving the curriculum goal of the Grades 1 to 10 Mathematics curriculum are content, skills,
+and disposition.
+Content
+      To become mathematically proficient and critical problem solvers, learners need to be equipped with strong mathematical
+knowledge and understanding. Lessons that are logically sequenced and interconnected enable students to learn deeply and flexibly.
+
+
+                                                                                                                               Page 6 of 36
+       The revised mathematics curriculum will have three content domains: (1) Number and Algebra; (2) Measurement and Geometry;
+and (3) Data and Probability.
+Skills
+      As proficient problem solvers, learners need to possess a range of mathematical skills. Such skills enhance the ability to analyze
+and evaluate mathematical situations and obtain solutions to real-world problems.
+       In today’s highly technological world, the teaching and learning of mathematics needs to include, and also go beyond,
+calculations and algorithmic procedures. This is because such calculations and procedures can be carried out by calculation devices
+and software applications.
+Disposition
+       Disposition is closely related to “attitude” and “value.” Values are the “guiding principles that underpin what people believe to
+be important when making decisions in private and public life … [while] attitudes are underpinned by values and beliefs and have an
+influence on behaviour” (Organization for Economic Co-operation and Development [OECD], 2019, p. 4). Mathematical disposition
+also incorporates appreciation of values intrinsic to mathematics such as its coherence and consistency, precision and clarity, and
+generality and extendibility.
+        A sound mathematical disposition facilitates genuine learning and the development of the mathematical proficiency needed for
+efficient and successful problem solving.
+
+
+
+The Supporting Components
+
+     The three components designed to support the facilitating facets for achieving the curriculum goal of the Grades 1 to 10
+Mathematics curriculum are pedagogy, assessment, and resources.
+Pedagogy
+       Pedagogy is concerned with the methods used to deliver a curriculum. The quality of mathematics learning depends on the
+quality of the various learning experiences employed to engage and instruct learners.
+Assessment
+         Assessment complements pedagogical approaches and is a vital aspect of curriculum implementation in mathematics.
+
+
+
+                                                                                                                             Page 7 of 36
+      With the curriculum goal centered on developing mathematical proficiency, critical thinking, and problem solving, the
+assessment process should not only record learners’ level of achievement in understanding concepts, reasoning, and the solution of
+mathematics problems, but should also result in the development of appropriate feedback for improving instruction.
+       Assessments, whether for formative or summative purposes, should be administered in various forms.
+Resources
+      The learning of mathematics needs to be supported with a variety of teaching and learning resources. Electronic and print
+resources need to be carefully selected and judiciously used. Teachers and other instructional leaders are acknowledged as key
+resources in the implementation of the curriculum.
+
+
+
+Structure of the Learning Area
+Big Ideas
+
+     Charles (2005) defines a big idea as “a statement of an idea that is central to the learning of mathematics, one that links
+numerous mathematical understandings into a coherent whole” (p. 10).
+       The notion of Big Ideas lays the foundation for defining the context of the curriculum in terms of its mathematics content. The
+formulation of these Big Ideas illustrates the connections across the various mathematical concepts in the different stages of the
+learning process.
+       These Big Ideas are present in curriculum content domains and across the curriculum stages. They are interconnected and
+support and reinforce the integration of key concepts, while supporting and reinforcing each other. With the notion of Big Ideas,
+“mathematics is no longer seen as a set of disconnected concepts, skills, and facts. Rather, mathematics becomes a coherent set of
+ideas” (p. 10).
+  The revised curriculum identifies twelve Big Ideas:
+
+  1.    Numbers – Real numbers can be paired one-to-one with the points on the number line, and so can quantify and describe a
+        mathematical or real-world object and its attributes.
+
+  2.    Measures – Some attributes of a mathematical or real-world object can be quantified by using measures, so that they can be
+        studied further.
+
+
+                                                                                                                           Page 8 of 36
+  3.    Shapes, Space, and Graphs – Mathematical objects such as geometric figures, solids, equations, inequalities, relations, and
+        data can be visualized using shapes and graphs and in space.
+  4.    Patterns, Relations, and Functions – Mathematical rule, graph, or table can be used to assign object(s) from one set to object(s)
+        from another set to show specific relations between the two sets.
+  5.    Data – Data can be collected and processed to obtain meaningful information.
+  6.    Chance – The number 0 and 1 (inclusive) can be used to quantify and describe the chances for an event to occur.
+  7.    Representations and Communications – Mathematical objects, properties, operations, and quantities (known or unknown)
+        can be translated, represented, and communicated concretely or visually in a precise manner by using numbers, symbols,
+        notations, variables, expressions, equations, geometric figures, flowcharts, tables, and graphs.
+  8.    Relationships – The relationships that exists between mathematical concepts (e.g. objects, statements) can be used to generate
+        more properties about them and to connect them to other concept in mathematics.
+  9.    Operations and Transformations – Meaningful operations or transformations can be performed on a collection of mathematical
+        objects or statements to obtain another mathematical object or statement that models a situation.
+  10.   Properties and Applications – A mathematical object has properties that define the object or describe its attributes, and these
+        properties and their logical consequences can be applied to mathematical and real-world problems.
+  11.   Equivalence – Mathematical objects or statements can be represented or stated in different ways that have the same value,
+        form, or logical meaning.
+  12.   Reasoning and Proof – Mathematical reasoning and proofs establish and communicate the truth and falsity of a mathematical
+        statement, computational and/or verbal procedure, and problem-solving process.
+
+
+       Through these Big Ideas, concepts and their competencies that are essential in the succeeding levels of the curriculum and
+that prepare the learners for higher-level mathematics are selected. A concept or a skill is “essential” if it is indispensable in building
+concepts and skills to equip learners for subsequent grade levels and, at the same time, for lifelong learning.
+
+
+
+Developmental Sequence of Concepts
+
+      “Any subject can be taught in some intellectually honest form to any child at any stage of development (Bruner, 1977, p.33).”
+Even the most complex mathematical concept can be learned at a young age if it is properly structured, suitably scaffolded, and
+progressively revisited over a span of time, gaining mastery and rigor along the way.
+
+
+                                                                                                                                Page 9 of 36
+      Harden and Stamper (1999) present the following features of a curriculum that incorporates a developmental sequence of
+concepts:
+
+  •     topics are revisited;
+  •     there are increasing levels of difficulty;
+  •     new learning is related to previous learning;
+  •     the competence of students increases as learning progresses (p. 141).
+
+
+       Developmental sequence of concepts is proposed in the structuring of the curriculum. Through this, mathematical knowledge
+and skills increase in depth and breadth as the grade level increases. Mathematical concepts are revisited in higher grade levels
+leading to increased complexity, increased conceptual understanding, and enhanced problem-solving skills.
+
+
+Vertical and Horizontal Articulation
+       Vertical and horizontal articulation are used with the aim of ensuring that standards and competencies are logically sequenced
+within the mathematics curriculum and across learning areas.
+
+
+ Vertical Articulation
+       Vertical articulation is concerned with the development of mathematical knowledge, skills, and understanding across the
+grades in the curriculum. Key Stage 1 centers on foundational competencies in the three content domains. These competencies
+gradually progress to Key Stages 2 and 3, with an emphasis on analysis, reasoning, and communicating mathematically to confidently
+solve mathematical problems.
+       Emphasizing the key concepts identified, the Big Ideas reinforce the learning to achieve mathematical proficiency. Learners are
+equipped with skills and processes to carry out mathematical procedures and to solve problems. They are then able to communicate
+their reasoning and successfully complete tasks of higher cognitive demand.
+
+
+Horizontal Articulation
+      Horizontal articulation is concerned with the role of mathematics across the curriculum. For instance, the concepts and skills
+in Key Stage 1 are indispensable in the development of foundational skills in other learning areas. Predominantly falling under
+languages learning areas, foundational skills in reading and writing are requisite to a fuller understanding of mathematical concepts
+and skills, including in reading and writing numbers expressed using numerals and in words, determining place value, and counting.
+
+
+                                                                                                                          Page 10 of 36
+       Meanwhile, concepts and skills in Mathematics are articulated vis-à-vis those in other learning areas. For example, describing
+the motion of an object in terms of distance, velocity, and acceleration in Science requires knowledge of formulating equations and
+finding solutions.    Mensuration and calculation are core competencies in Edukasyon Pantahanan at Pangkabuhayan
+(EPP)/Technology Livelihood Education (TLE).
+        It is also clear that skills in data management and analysis are required by learners, especially for dealing with big data.
+Knowledge and skills in Number and in the use of money are fundamentally important in daily-life activities, including in budgeting,
+spending, saving, and earning, which are key to the development of strong financial literacy. Proficiency in Mathematics arguably
+facilitates better understanding in other learning areas, where it is used as a tool for learning the concepts and skills in those learning
+areas.
+
+Development of 21st Century Skills
+
+      The knowledge, skills, attitudes, and competencies that learners need to develop so that they can prepare for and succeed in
+work and life in the 21st century are referred to as “21st century skills.” Through the facilitating facets and supporting components,
+the mathematics curriculum promotes and develops information, media and technology skills; learning and innovation skills;
+communication skills; and life and career skills (DepEd Order 21 S. 2019, p. 6).
+       To support learners in meeting the challenges of the 21st century, it is important to nurture their abilities to create innovative
+solutions to real-world problems. This gives further emphasis to the main curriculum goal.
+       Through the various mathematical tasks that they undertake, learners are engaged in cognitive processes to understand and
+solve problems using a variety of approaches, such as modelling, data analysis, and logical reasoning. Such approaches to solving
+problems encourage learners to pursue other Learning and Innovation Skills such as creativity, critical thinking, and reflective
+thinking. Presented with non-routine problems, learners can identify new connections between concepts and ideas, examine them
+from various perspectives, consider alternative ideas or solutions, and demonstrate willingness to try other methods or strategies in
+spite of previous unsuccessful attempts.
+       In developing skills in Information, Media and Technology, learners closely examine, interpret, and communicate
+understanding of various objects, shapes, symbols, and text types to stimulate and nurture visual literacy. By considering different
+objects, shapes and symbols, learners are able to bring their understanding of number, geometry, or data management to the
+interpretation of data sets presented in tables and graphs, and to the creation of engaging presentations and infographics.
+        The development of communication skills is critical for learners to be able to express their ideas, explain their solutions, and
+justify their reasoning in oral and/or written form. Learning tasks that involve activities that require teamwork and collaboration are
+also avenues for the development of interpersonal skills, intrapersonal skills, interactive communication, and non-verbal
+communication.
+
+                                                                                                                               Page 11 of 36
+       Life and career skills are evidenced in the curriculum through tasks that require skills for informed decision-making and
+collaboration that foster adaptive leadership. Self-discipline, resilience, and adversity management may be manifested through
+learners’ perseverance in solving mathematical problems by using different approaches or strategies.
+
+Social Issues and Government Priorities
+
+       The learning competencies and performance standards of the curriculum are relevant in the address of some societal issues.
+        The curriculum equips learners with the mathematical concepts and skills that may be relevant to social justice, cultural
+diversity, sustainable development, and disaster risk reduction and management. Mathematical modelling, for example, could be
+utilized to address simple problems related to sustainable development and disaster risk reduction and management.
+STEM
+       Science, Technology, Engineering, and Mathematics (STEM) is a government priority and is significant in the development of
+problem solvers and innovative thinkers. As depicted in the STEM Framework, this is achieved through three learning areas in the K
+to 12 curriculum – Science, Mathematics, and Technology and Livelihood Education (TLE), which may collectively employ the
+Engineering Design Process (EDP) to attain curriculum goals. Though distinct and taught separately, these three learning areas are
+interrelated, and each contributes knowledge and skills for the solution of real-world problems. Figure 2 shows a diagrammatic
+representation of the STEM Framework.
+
+
+
+
+                                Figure 2. The diagrammatic representation of the STEM Framework
+
+
+                                                                                                                       Page 12 of 36
+       Utilizing the EDP in the instruction allows learners to repeat steps as many times as needed to make improvements, learn from
+unsuccessful attempts, and discover different or novel design possibilities to arrive at optimal solutions. In the curriculum, EDP is
+exhibited through problem solving and investigative approaches where learners apply their mathematical, scientific, and technological
+understanding to formulate, conjecture, reason, create and evaluate a solution to a real-world problem.
+
+
+Financial Literacy
+       Financial literacy is “the ability to use knowledge and skills to manage one’s financial resources effectively for lifetime financial
+security” (Mandell, 2009).
+       The Financial Education Policy (DO 22, s. 2021) targets the financial literacy and capability of learners. The policy reiterates
+the need to integrate financial concepts across learning areas at different levels. In Mathematics, learners focus on concepts relating
+to the identification and value of money and use these concepts to solve specific problems on investment, saving, budgeting, and
+spending.
+
+
+
+Pedagogy, Assessment and Resources
+
+      The achievement of the Mathematics curriculum goals requires explicit guidance on instruction, on the role of assessment, on
+the use of resources for teaching and learning, and on the use of student context.
+Pedagogy
+       In broader terms, there are two types of knowledge at play in a mathematics classroom: the mathematical knowledge that the
+learners have gained from their everyday experiences and the mathematical knowledge articulated in the curriculum. Relating
+learners’ informal knowledge of mathematical concepts and facilitating learners’ internalization of school mathematics are major tasks
+of teaching. It necessitates teaching strategies that bring into the fore what learners already know, such as using in tasks situations
+that are familiar to the learners to draw out the mathematics that they already know in this context.
+        For achieving the Mathematics curriculum goal, a variety of pedagogical approaches can be used. Strategies that can be adopted
+include: guided discovery learning, inquiry-based learning, reflective learning, experiential learning, and the concrete-
+representational-abstract (CRA) instructional approach, among others. In addition, pedagogical approaches that include guided or
+direct instruction coupled with opportunities for learners’ inquiry in generating their own solutions, collaborative learning with peers,
+and independent learning, may also be employed. Mastery learning is also emphasized to ensure that learners reach a certain level
+of proficiency to be able to engage in a new learning task successfully.
+
+                                                                                                                                Page 13 of 36
+       The curriculum views the attainment of its goals with all learners in mind. Through its standards and competencies, the
+curriculum acknowledges the different needs of learners, fosters their engagement with learning, and promotes the use of appropriate
+language and technologies to make learning accessible.
+       The curriculum is informed by reviews that have identified the different levels of performance of Filipino learners. At the same
+time, diversity, equity, and inclusion need to be continually considered throughout the teaching and learning of Mathematics.
+Assessment
+      As a vital aspect of curriculum implementation in Mathematics, assessment plays a key role in shaping learners’ thinking
+about their mathematical potential, moving away from performance and towards an emphasis on growth and learning (Boaler, Dance
+& Woodbury, 2018).
+       Regardless of whether assessment is formal or informal, assessment tools should be varied in order to understand the different
+dimensions of students’ learning (SEI-DOST, 2011). While examinations and quizzes have a place in measuring skills learned, and
+knowledge development and acquisition, many aspects of mathematical learning could be effectively measured by other means such
+as interview tasks, analysis of student work samples, presentations by learners, and questioning by teachers.
+       Formative and summative assessment tasks that are appropriate to the grade level and relevant conceptual understanding
+and skills, should be developed in conjunction with other learning areas. For example, developing a healthy menu plan for a week
+may be primarily in Health or Science, may include Mathematics on the computation of a budget for the daily meal, English for the
+written presentation of the menu, and Arts for the visual presentation of the menu.
+      Together with data from international assessments, results from classroom assessments need to be analyzed and used to
+improve planning for further instruction and learning.
+        Formative and summative assessments provide opportunities for learners to demonstrate higher-order mathematical thinking,
+justify their solutions, communicate their understanding, and express their ideas well in written and/or oral form. For instance,
+portfolios of learner’s mathematical work on meaningful tasks (e.g., drawing interconnections of mathematical concepts across various
+disciplines), as well as reports, including mathematical investigations, may be employed.
+      As envisioned for the revised curriculum, the continuous interaction of teaching and learning may be realized through
+assessment tasks that are information driven and are seamlessly designed to communicate the goals of successful learning.
+Resources
+      Appropriate resources are fundamental to supporting the delivery of a quality curriculum. Such resources are developed and
+disseminated to schools for the various learning areas and grades.
+
+
+
+                                                                                                                           Page 14 of 36
+       Teaching and learning have been assisted and made more inclusive through the use of technology. From calculating devices,
+instructional manipulatives and software applications, to assistive and adaptive devices, the curriculum strongly recommends the
+use of these available technologies to facilitate the teaching and learning of concepts and skills, and to enhance problem solving.
+       In particular, the curriculum presupposes the use of instructional manipulatives and software applications in Key Stages 1, 2
+and 3, calculating devices as additional technological support in Key Stage 3, and assistive and adaptive devices for learners with
+special needs.
+       The TIMSS 2019 results show that “there is a modest positive association between home educational resources and average
+mathematics achievement at the country level” (Mullis et al., 2020, p. 285). Relevant to the level of these home resources are the
+availability of Internet connection, books, and one’s own room, as well as parents’ level of education. The learners’ home environment,
+together with the availability of technological resources, plays a significant role in supporting the implementation of the curriculum.
+
+
+
+The Role of Language
+     Mathematics has its own specialized terminology to name objects such as numbers, polygons and functions; its own specialized
+symbolic and representational system; and its own rules for working with these objects.
+       Foundational understanding of mathematics is contingent on the learner’s ability to communicate in the language of
+mathematics. The use of particular mathematical terms and representations demonstrates how a learner’s thinking processes evolve.
+For example, at an early stage of learning, a learner may describe a square as “a shape with four equal sides,” then at a middle stage,
+“a rectangle with four equal sides,” and, at a later stage, “a quadrilateral with four equal angles and four equal sides.”
+       For mathematical terms in a multi-lingual classrooms, it is recommended that the English terms be adopted. Furthermore, the
+learner’s language can be used as a tool in learning and understanding mathematics across all levels.
+
+
+
+
+                                                                                                                           Page 15 of 36
+Key Stage Curriculum and Standards
+Key Stage 1 Curriculum
+       Key Stage 1 (KS 1) of the Mathematics curriculum focuses on Grades 1 to 3 learners. At this stage, the curriculum addresses
+the development of early numeracy by focusing on the learners’ understanding of 1-to-4-digit numbers, measures, basic shapes, and
+simple data. It also develops their fluency in carrying out procedures or operations involving these mathematical objects in their
+various representations (concrete, contextual, verbal, visual, and symbolic). Mastery of early numeracy concepts lays the groundwork
+for understanding more complex mathematical concepts and solving more complex problems.
+Learning experiences include basic mathematical explorations of these objects and operations that will engage learners in a variety
+of thinking processes in real, in situated, and in purely mathematical contexts. The goal of learning experiences is to support and
+strengthen the young learners’ interest and appreciation of mathematics as a tool for solving problems and for communicating ideas
+in everyday situations.
+     The learning standards of the Key Stage 1 Mathematics curriculum aim to ensure that learners:
+     ●   accurately understand and apply concepts, operations, procedures, and relationships in solving routine and non-routine
+         problems related to their day-to-day lives.
+     ●   acquire high-level skills and fluency in the procedures and processes of mathematics through varied frequent practice and
+         meaningful learning experiences.
+     ●   communicate and represent mathematical concepts and understanding using developmentally appropriate language.
+     ●   acquire problem-solving and critical thinking skills through real, situated or purely mathematical problems.
+     ●   develop appreciation, curiosity, interest, creativity, and other desirable values, attitudes and dispositions in mathematics.
+
+
+Key Stage 1 Standards
+       At the end of Grade 3, the learner demonstrates knowledge, skills, and understanding in relation to the curriculum content
+domain Number and Algebra (whole numbers up to 10 000; ordinal numbers up to 100th; addition and subtraction of numbers of up
+to 4 digits, and money up to ₱10 000; multiplication and division using 6, 7, 8 and 9 multiplication tables; estimation of products of
+two numbers; determination of missing terms contained in patterns; generation of patterns; division of 2- to 4-digit numbers;
+estimation of quotients; addition and subtraction of similar fractions); Measurement and Geometry (areas of squares and rectangles;
+points, lines, line segments, and rays; parallel, perpendicular, and intersecting lines; measures of mass and capacity; line symmetry;
+resulting figure translation; duration of time, elapsed time, and telling and writing time in hours and minutes (using a.m. and p.m.);
+composite figures made up of squares, rectangles, triangles, circles, half-circles, and quarter-circles; perimeter of triangles, squares,
+and rectangles); Data and Probability (data presented in tables, pictographs, and single bar graphs; outcomes from experiments and
+
+                                                                                                                             Page 16 of 36
+real-life situations). This knowledge, skills and understanding is applied, with the use of technology, to the processes within
+Mathematics of critical thinking, problem solving, communicating, reasoning, and making connections between topic areas.
+
+
+Key Stage 2 Curriculum
+      Key Stage 2 (KS 2) of the Mathematics curriculum focuses on Grades 4 to 6 learners. At this stage, the curriculum extends
+numbers, algebra, measures, geometry, data and probability. The coverage includes more complex properties, operations, and
+problems in different contexts that demand efficient written and mental methods of calculation.
+       The learning standards of the KS 2 Mathematics curriculum aim to ensure that learners:
+   ●   use efficient mental and written mathematical concepts, operations, procedures, relationships, and tools to solve routine and
+       non-routine real-world problems.
+   ●   reason and communicate using precise mathematical language to discuss ideas, investigate problems, and justify solutions.
+   ●   exhibit willingness and confidence to explore alternative solutions, and to take risks necessary to solve real-world problems.
+   ●   acquire problem-solving and critical thinking skills through real, situated, or purely mathematical problems; and
+   ●   enhance appreciation, curiosity, interest, creativity, and other desirable values, attitudes and dispositions in mathematics.
+
+
+Key Stage 2 Standards
+        At the end of Grade 6, the learner demonstrates knowledge, skills, and understanding in relation to the curriculum content
+domain Number and Algebra (the four operations with decimals; the four operations with different combinations of fractions, whole
+numbers, and mixed numbers; ratio and proportion; percentages, and their relationships with fractions and decimals; exponential
+form, including calculation using the GEMDAS rules; greatest common factors, least common multiples); Measurement and Geometry
+(right, acute, and obtuse; tessellation of shapes; resulting figure after translation, reflection and rotation; units of volume and capacity;
+volume of cubes and rectangular prisms; properties of triangles and quadrilaterals; perimeter and area of triangles, parallelograms,
+trapezoids; parts of a circle, including circumference; area of a circle; composite figures composed of any two or more of: triangle,
+square, rectangle, circle, semi-circle; prisms and pyramids; surface area of solid figures; symmetric figures and designs; 12- and 24-
+hour time, and world time zones); Data and Probability (presentation and interpretation of data in tabular form and in a single line
+graph; double bar graphs and double line graphs; theoretical probability; pie graphs). This knowledge, skills and understanding is
+applied, with the use of technology, to the processes within Mathematics of critical thinking, problem solving, communicating,
+reasoning, and making connections between topic areas.
+
+
+
+
+                                                                                                                                 Page 17 of 36
+Key Stage 3 Curriculum
+       Key Stage 3 (KS 3) of the Mathematics curriculum focuses on Grades 7 to 10 learners. At this stage, the curriculum covers
+algebra, measurement, geometry, and data and probability with greater emphasis on cognitive development towards self-directed
+learning.
+      Dealing with more complex and abstract forms, Key Stage 3 concentrates on sets and real numbers, functions, equations,
+inequalities, sequences, axiomatic structure of geometry, triangle congruence and similarity, basic trigonometry, basic statistical
+measures, and probability.
+     The learning standards of the KS 3 Mathematics curriculum aim to ensure that learners:
+     ●   apply mathematical concepts, operations, procedures, facts, relationships, and tools to describe, explain, investigate, model,
+         and predict phenomena.
+     ●   reason mathematically, construct plausible arguments, evaluate the reasoning of others, and ask useful questions to clarify
+         or improve arguments.
+     ●   access, use, interpret and communicate mathematical information and ideas to engage in and manage the mathematical
+         demands in various 21st-century contexts.
+     ●   utilize mathematical thinking in decision making and acquire problem-solving and critical thinking skills through real,
+         situated, or purely mathematical problems; and
+     ●   strengthen appreciation, curiosity, interest, creativity, and other desirable values, attitudes, and dispositions in
+         mathematics.
+
+
+Key Stage 3 Standards
+       At the end of Grade 10, the learner demonstrates knowledge, skills, and understanding in relation to the curriculum content
+domain Number and Algebra (use of rates; sets and subsets, and the union and intersection of sets; Venn diagrams; operations using
+scientific notation; rules for obtaining terms in sequences; earning money, profit and loss, ‘best buys’, buying on terms; relations and
+functions; graphs of linear functions, and the identification of domain and range, slope, intercepts, and zeros; direct and inverse
+variation; quadratic inequalities in one variable and in two variables; absolute value equations and inequalities in one variable, and
+their graphs; radical expressions; the roots of a quadratic equation; quadratic functions; equations reducible to quadratic equations;
+equation of a circle and the graph of a circle; compound interest and depreciation); Measurement and Geometry (volume of square
+and rectangular pyramids, and cylinders; measures of length, area, surface area, volume, time, and temperature; volume of pyramids,
+cones, and spheres; the Pythagorean Theorem; triangle inequality theorems; perpendicular and parallel lines, and angles formed by
+parallel lines cut by a transversal; congruence of triangles; congruence proofs; similarity of polygons; special triangles; triangle
+theorems and triangle inequality theorems; the laws of sines and the laws of cosines; translations, reflections, and rotations in the
+
+                                                                                                                            Page 18 of 36
+Cartesian plane; central angles, inscribed angles, and angles and lengths formed by intersecting chords, secants, and tangents of a
+circle; sectors and segments of a circle, and their areas); Data and Probability (Fundamental Counting Principle; probabilities of simple
+and compound events; box-and-whisker plots, and cumulative frequency histograms and polygons; quartiles, deciles, and percentiles;
+interquartile range, and outliers; evaluation of statistical reports; union and intersection of events, dependent and independent events,
+and complementary events). This knowledge, skills and understanding is applied, with the use of technology, to the processes within
+Mathematics of critical thinking, problem solving, communicating, reasoning, and making connections between topic areas.
+
+
+GRADE LEVEL STANDARDS
+ GRADE LEVEL                                                   GRADE LEVEL STANDARDS
+    GRADE 1         The learner demonstrates knowledge, skills, and understanding in relation to the curriculum content domains
+                    Number and Algebra (whole numbers up to 100; ordinal numbers up to 10th; addition of numbers with sums up
+                    to 20; place value in any 2-digit number; addition of numbers, with sums up to 100; subtraction of numbers
+                    where both numbers are less than 100; repeating patterns, fractions ½ and ¼; the denominations and values of
+                    Philippine coins and bills up to ₱100; addition of money where the sum is up to ₱100 and subtraction of money
+                    where both amounts are less than ₱100); Measurement and Geometry (simple 2-dimensional shapes;
+                    measurement of length and distance using non-standard units; the movement of objects in half turn or quarter
+                    turn, in clockwise or counter clockwise direction; time measured in hours, half-hours, quarter hours, days,
+                    weeks, months, years); and Data and Probability (pictographs without a scale for the representation of data). This
+                    knowledge, skills, and understanding is applied, with the use of technology, to the processes within Mathematics
+                    of critical thinking, problem solving, communicating, reasoning, and making connections between topic areas.
+    GRADE 4         The learner demonstrates knowledge, skills, and understanding in relation to the curriculum content domains
+                    Number and Algebra (whole numbers up to 1 000 000; addition of numbers with sums up to 1 000 000 and
+                    subtraction of numbers where both numbers are less than 1 000 000; multiplication of whole numbers with
+                    products-up to 1 000 000; division of up to 4-digit numbers by up to 2-digit numbers, and the MDAS rules;
+                    addition and subtraction of similar fractions, including mixed numbers; dissimilar and equivalent fractions;
+                    factors and multiples of numbers up to 100; addition and subtraction of dissimilar fractions; simple patterns;
+                    number sentences; decimal numbers and their relationship to fractions); Measurement and Geometry (right,
+                    acute, and obtuse angles; properties of triangles and quadrilaterals; perimeter of quadrilaterals, and composite
+                    figures composed of triangles and quadrilaterals; conversion of units of length, mass, capacity, and time;
+                    symmetric figures and designs; reflection with shapes); and Data and Probability (presentation and interpretation
+                    of data in tabular form and in a single line graph). This knowledge, skills, and understanding is applied, with the
+                    use of technology, to the processes within Mathematics of critical thinking, problem solving, communicating,
+                    reasoning, and making connections between topic areas.
+
+                                                                                                                             Page 19 of 36
+GRADE 7   The learner demonstrates knowledge, skills, and understanding in relation to the curriculum content domains
+          Number and Algebra (application of percentages; use of rates; rational numbers; square roots of perfect squares,
+          cube roots of perfect cubes, and irrational numbers; sets and subsets, and the union and intersection of sets;
+          Venn diagrams; the set of integers, and comparing and ordering integers; the four operations with integers;
+          simplification of numerical expressions involving integers; absolute value of an integer; the solution of simple
+          equations; the evaluation of algebraic expressions following substitution; the rearrangement of a formula to make
+          a different variable the subject of the formula; operations using scientific notation); Measurement and Geometry
+          (regular and irregular polygons and their features/properties; determination of measures of angles and number
+          of sides of polygons; conversion of units of measure; volume of square and rectangular pyramids, and cylinders);
+          and Data and Probability (data collection and sampling techniques, and the presentation of data in appropriate
+          tables and graphs; interpretation of statistical graphs; outcomes from experiments). This knowledge, skills, and
+          understanding is applied, with the use of technology, to the processes within Mathematics of critical thinking,
+          problem solving, communicating, reasoning, and making connections between topic areas.
+
+
+
+
+                                                                                                                Page 20 of 36
+Grade 1
+CONTENT                CONTENT STANDARDS                                              LEARNING COMPETENCIES
+DOMAIN            The learners should have knowledge    The learners …
+                  and understanding of ...
+Quarter 1
+Measurement       1. simple 2-dimensional shapes         1.  identify simple 2-dimensional shapes (triangle, rectangle, square) of different size and
+and                  and their features.                     in different orientation.
+Geometry                                                 2. compare and distinguish 2-dimensional shapes according to features such as sides and
+(MG)                                                         corners.
+                                                         3. compose and decompose triangles, squares, and rectangles.
+Number            2. whole numbers up to 100.            4. count up to 100 (includes counting up or down from a given number and identifying a
+and                                                          number that is 1 more or 1 less than a given number).
+                  3. ordinal numbers up to 10th.
+Algebra                                                  5. read and write numerals up to 100.
+(NA)              4. addition of numbers with sums       6. recognize and represent numbers up to 100 using a variety of concrete and pictorial
+                     up to 20.                               models (e.g., number line, block or bar models, and numerals).
+                                                         7. compare two numbers up to 20.
+                                                         8. order numbers up to 20 from smallest to largest, and vice versa.
+                                                         9. describe the position of objects using ordinal numbers: 1st, 2nd, 3rd, up to 10th.
+                                                         10. compose and decompose numbers up to 10 using concrete materials (e.g., 5 is 5 and 0;
+                                                             4 and 1; 3 and 2; 2 and 3; 1 and 4; 0 and 5).
+                                                         11. illustrate addition of numbers with sums up to 20 using a variety of concrete and
+                                                             pictorial models and describes addition as “counting up,” and “putting together.”
+                                                         12. illustrate by applying the following properties of addition, using sums up to 20:
+                                                             a. the sum of zero and any number is equal to the number, and
+                                                             b. changing the order of the addends does not change the sum.
+                                                         13. solve problems (given orally or in pictures) involving addition with sums up to 20.
+
+
+
+Performance Standards
+By the end of the quarter, the learners are able to …
+•   identify and distinguish simple 2-dimensional shapes. (MG)
+•   count, recognize and represent whole numbers up to 100. (NA)
+•   use ordinal numbers up to 10th to describe position. (NA)
+•   compare and order numbers up to 20 and perform addition of numbers with sums up to 20. (NA)
+
+
+
+
+                                                                                                                                     Page 21 of 36
+Grade 1
+Quarter 2
+Measurement        1. measurement of length and         1.  measure the length of an object and the distance between two objects using non-standard
+and                   distance using non-standard           units.
+Geometry              units.                            2. compare lengths and distances using non-standard units.
+(MG)                                                    3. solve problems involving lengths and distances using non-standard units.
+Number             2. place value in any 2-digit        4. order numbers up to 100 from smallest to largest, and vice versa.
+and                   number.                           5. counts by 2s, 5s and 10s up to 100.
+Algebra                                                 6. determine
+                   3. addition of numbers, with
+(NA)                                                        a. the place value of a digit in a 2-digit number,
+                      sums up to 100.
+                                                            b. the value of a digit, and
+                                                            c. the digit of a number, given its place value
+                                                        7. decompose any 2-digit number into tens and ones.
+                                                        8. add numbers by expressing addends as tens and ones (expanded form).
+                                                        9. add numbers with sums up to 100 without regrouping, using a variety of concrete and
+                                                            pictorial models for:
+                                                            a. 2-digit and 1-digit numbers, and
+                                                            b. 2-digit and 2-digit numbers.
+                                                        10. solve problems (given orally or in pictures) involving addition with sums up to 100 without
+                                                            regrouping.
+Performance Standards
+By the end of the quarter, the learners are able to …
+•   use non-standard units to compare and measure length and distance. (MG)
+•   order and decompose (into tens and ones) numbers up to 100. (NA)
+•   perform addition of numbers with sums up to 100. (NA)
+
+
+
+
+                                                                                                                                        Page 22 of 36
+Grade 1
+Quarter 3
+Data               1. a pictograph without a scale      1.  collect data in one variable through a simple interview.
+and                   for the representation of data.   2.  present data in a pictograph without a scale.
+Probability                                             3.  interpret a pictograph without a scale.
+(DP)                                                    4.  organize data in a pictograph without a scale into a table.
+Number             2. subtraction of numbers where      5.  illustrate subtraction involving numbers up to 20 using a variety of concrete and
+and                   both numbers are less than            pictorial models, and describes subtraction as “taking away.”
+Algebra               100.                              6. find the missing number in addition or subtraction sentences involving numbers up to
+(NA)                                                        20.
+                   3. repeating patterns.
+                                                        7. write an equivalent expression to a given addition or subtraction expression (e.g., 2+3 =
+                                                            1+4; 10-5 = 6-1).
+                                                        8. solve subtraction problems (given orally or in pictures) where both numbers are less
+                                                            than 20.
+                                                        9. subtract numbers where both numbers are less than 100 using concrete and pictorial
+                                                            models, without regrouping:
+                                                            a. 2-digit minus 1-digit numbers, and
+                                                            b. 2-digit minus 2-digit numbers.
+                                                        10. subtract numbers by expressing minuends and subtrahends as tens and ones
+                                                            (expanded form), without regrouping.
+                                                        11. determine the next term/s in a repeating pattern (patterns could use rhythmic
+                                                            properties, visual elements in the arts, …)
+                                                            (e.g., numbers: 2, 4, 2, 4__, __; letters: a, b, c, a, b, c, a, __, __,).
+                                                        12. create repeating patterns using objects, images, or numbers.
+Performance Standards
+By the end of the quarter, the learners are able to …
+• represent and interpret data in a pictograph without a scale. (DP)
+• perform subtraction of numbers where both numbers are less than 100. (NA)
+• extend existing repeating patterns and create new repeating patterns. (NA)
+
+
+
+
+                                                                                                                                      Page 23 of 36
+Grade 1
+Quarter 4
+Number             1. fractions
+                                  1      1
+                                      and .                    1.   illustrate
+                                                                                 1
+                                                                                      and
+                                                                                            1
+                                                                                                 as parts of a whole.
+                                  2      4                                        2          4
+and                                                                              1          1
+Algebra            2. the denominations and                    2.  compare and using models.
+                                                                             2      4
+(NA)                  values of Philippine coins               3.  count halves and quarters
+                      and bills up to ₱100.                    4.  recognize coins (excluding centavo coins) and bills up to ₱100 and their notations.
+                                                               5.  determine the value of a number of bills and/or a number of coins (excluding centavo
+                   3. addition of money where the                  coins) up to ₱100.
+                      sum is up to ₱100 and                    6. compare different denominations of peso coins (excluding centavo coins) and bills up to
+                      subtraction of money where                   ₱100.
+                      both amounts are less than               7. solve 1-step problems (given orally or in pictures) involving addition of money where the
+                      ₱100.                                        sum is up to ₱100, or subtraction of money where both amounts are less than ₱100.
+Measurement        4. the movement of objects in               8. identify the position of objects moved in half turn or in quarter turn, in clockwise or in
+and                   half turn or quarter turn, in                counter-clockwise direction, given an initial facing direction.
+Geometry              clockwise or counter                     9. read and write time by the hour, half hour, and quarter hour using an analog clock.
+(MG)                                                           10. give the days of the week and months of the year in the correct order.
+                      clockwise direction.
+                                                               11. determine the day and month of the year using a calendar.
+                   5. time measured in hours, half             12. solve problems involving time (hour, half hour, quarter hour, days in a week, and months
+                      hours, quarter hours, days,                  in a year).
+                      weeks, months, and years.
+
+Performance Standards
+By the end of the quarter, the learners are able to …
+                                              1       1
+•   illustrate and compare the fractions          and . (NA)
+                                              2       4
+•   recognize, and determine the value of, Philippine coins and bills up to ₱100. (NA)
+•   add money where the sum is up to ₱100 and subtract money where both amounts are less than ₱100. (NA)
+•   identify the position of an object following a half turn or quarter turn, in clockwise or counter-clockwise direction. (MG)
+•   identify and work with time measured in hours, half hours, quarter hours, days, weeks, months, and years. (MG)
+
+
+
+
+                                                                                                                                             Page 24 of 36
+Grade 4
+    CONTENT           CONTENT STANDARDS                                                   LEARNING COMPETENCIES
+     DOMAIN       The learners should have               The learners …
+                  knowledge and understanding of ...
+Quarter 1
+Measurement       1. measures of angles                  1.   illustrate different angles (right, acute, and obtuse) using models.
+and                                                      2.   measure and draw angles using a protractor.
+                  2. properties of triangles and
+Geometry                                                 3.   draw and state the properties of triangles and quadrilaterals.
+                     quadrilaterals.
+(MG)                                                     4.   classify triangles and quadrilaterals according to sides and angles.
+                  3. perimeter of quadrilaterals, and    5.   differentiate different quadrilaterals.
+                     composite figures composed of       6.   find the perimeter of quadrilaterals that are not squares or rectangles.
+                     triangles and quadrilaterals.       7.   find the perimeter of composite figures composed of triangles and quadrilaterals.
+Number            4. whole numbers up to                 8.  read and write numbers up to 1 000 000 in numerals and in words.
+and                  1 000 000.                          9.  determine
+Algebra                                                      a. the place value of a digit in a 6-digit number,
+                  5. addition of numbers with sums
+(NA)                                                         b. the value of a digit, and
+                     up to 1 000 000 and
+                                                             c. the digit of number, given its place value.
+                     subtraction of numbers where
+                                                         10. compare numbers up to 1 000 000 using =, < and >.
+                     both numbers are less than
+                                                         11. round numbers to the nearest hundred thousand.
+                     1 000 000.
+                                                         12. estimate the sum and difference of two 5- to 6-digit numbers by rounding the addends to
+                                                             the nearest large place value of the numbers.
+                                                         13. add numbers with sums up to 1 000 000 and subtracts numbers where both numbers
+                                                             are less than 1 000 000, with and without regrouping.
+Performance Standards
+By the end of the quarter, the learners are able to …
+•    illustrate and measure different angles (MG)
+•    classify triangles and quadrilateral, and differentiate quadrilaterals, by applying their properties. (MG)
+•    find the perimeter of quadrilaterals and composite figures composed of triangles and quadrilaterals. (MG)
+•    read, write, and compare whole numbers up to 1 000 000. (NA)
+•    performs addition of numbers with sums up to 1 000 000 and subtraction of numbers where both numbers are less than 1 000 000. (NA)
+
+
+
+
+                                                                                                                                        Page 25 of 36
+Grade 4
+Quarter 2
+Number         1. multiplication of whole          1.   multiply two numbers with and without regrouping:
+and               numbers with products-up to           a. 3- to 4-digit numbers by a 1-digit number, and
+Algebra           1 000 000, division of up to          b. 2- to 3-digit numbers by 2-digit numbers, with products up to 1 000 000.
+(NA)              4-digit numbers by up to         2. estimate the result of multiplying two numbers where the product is less than
+                  2-digit numbers, and the              1 000 000.
+                  MDAS rules.                      3. solve multi-step problems involving one or more of the four operations with results of
+                                                        calculations up to 1 000 000, including problems involving money.
+                                                   4. divide two numbers with and without regrouping
+                                                         a. 3- to 4-digit numbers by 1-digit numbers
+                                                         b. 2- to 3-digit numbers by 2-digit numbers
+                                                   5. estimate the quotient when dividing 3- to 4-digit dividends by 1- to 2-digit divisors, by first
+                                                        estimating the dividends and divisors using multiples of 10.
+                                                   6. represent situations involving one or more of the four operations using a number sentence.
+                                                   7. perform two or more different operations by applying the MDAS rules.
+Measurement    2. conversion of units of length,   8. convert common units of measure from larger to smaller units, and vice versa:
+and               mass, capacity, and time.             a. meter and centimeter,
+Geometry                                                b. kilometer and meter,
+(MG)                                                    c. kilogram and gram,
+                                                        d. gram and milligram, and
+                                                        e. liter and milliliter.
+                                                   9. convert time measures from smaller to larger units, and vice versa:
+                                                        a. seconds to minutes,
+                                                        b. minutes to hours,
+                                                        c. hours to days,
+                                                        d. days to weeks
+                                                        e. weeks to months, and
+                                                        f. months to years.
+                                                   10. solve problems involving conversion of units of length, mass, capacity, and time, including
+                                                       problems involving elapsed time in hours and minutes.
+
+Number and     3. addition and subtraction of      11. identify proper fractions, improper fractions, and mixed numbers.
+Algebra (NA)      similar fractions, including     12. rewrite improper fractions into mixed numbers, and vice versa.
+                  mixed numbers.                   13. plot fraction (proper fractions, improper fractions, and mixed numbers) with denominators
+                                                        2, 4, 5, and 10 on the number line.
+                                                   14. add and subtract similar fractions:
+                                                        a. two proper fractions,
+                                                        b. two mixed numbers,
+                                                        c. a mixed number and a proper fraction,
+                                                        d. a whole number and a proper fraction, and
+                                                        e. a whole number and a mixed number.
+                                                                                                                                     Page 26 of 36
+Performance Standards
+By the end of the quarter, the learners are able to …
+• perform multiplication of whole numbers with products up to 1 000 000. (NA)
+• perform division of up to 4-digit numbers by up to 2-digit numbers. (NA)
+• perform different operations by applying the MDAS rules. (NA)
+• convert units of length, mass, capacity, and time. (MG)
+• perform addition and subtraction of similar fractions, including mixed numbers. (NA)
+
+
+
+
+                                                                                         Page 27 of 36
+Grade 4
+Quarter 3
+Number          1. dissimilar and equivalent            1.    represent dissimilar fractions, with denominators up to 10, using models.
+and                fractions.                           2.    compare dissimilar fractions using the symbols =, >, and <.
+Algebra                                                 3.    order dissimilar fractions from smallest to largest, and vice versa.
+                2. factors and multiples of
+(NA)                                                    4.    generate equivalent fractions using models.
+                   numbers up to 100.
+                                                        5.    determine equivalent fractions.
+                3. addition and subtraction of          6.    identify the multiples of given numbers up to 100.
+                   dissimilar fractions.                7.    find all the factors of a given number up to 100.
+                                                        8.    reduce fractions to simplest form.
+                                                        9.    add and subtract dissimilar fractions using models.
+                                                        10.   add and subtract dissimilar fractions:
+                                                              a. two proper fractions,
+                                                              b. two mixed numbers,
+                                                              c. a mixed number and a proper fraction,
+                                                              d. a whole number and a proper fraction, and
+                                                              e. a whole number and a mixed number.
+                                                        11.   solve multi-step problems involving addition and/or subtraction of fractions.
+Measurement 4. symmetric figures with respect           12.   identify symmetry with respect to a line.
+and            to a line                                13.   complete a figure that is symmetric with respect to a line.
+Geometry                                                14.   draws the image of an object after applying reflection with respect to a line, including glide
+            5. resulting images after
+(MG)                                                          reflection.
+               applying reflection with
+               respect to a line.
+Performance Standards
+By the end of the quarter, the learners are able to …
+• represent, compare, and order dissimilar fractions. (NA)
+• find factors and multiples of numbers up to 100. (NA)
+• identify symmetry with respect to a line, and create figures that have line symmetry. (MG)
+• perform reflection with respect to a line, including glide reflection, to obtain images of shapes. (MG)
+
+
+
+
+                                                                                                                                             Page 28 of 36
+Grade 4
+Quarter 4
+Data             1. presentation and             1.    collect data with time element using appropriate sources.
+and                 interpretation of data in    2.    present data in a tabular form, or in a single line graph.
+Probability         tabular form and in a        3.    interpret data presented in a tabular form, or in a single line graph.
+(DP)                single line graph.           4.    solve problems using data for at most two variables in a tabular form, or in a single line
+                                                       graph.
+Number           2. simple patterns.             5.    describe the rule used to generate a given simple pattern.
+and                                              6.    complete a number sentence:
+                 3. number sentences.
+Algebra                                                a. to represent a property of operations (e.g., 4 + 3 = 3 + __) (commutative property of addition)
+(NA)             4. decimal numbers and                b. to represent equivalent number facts (e.g., 4 + __ = 6 + 3)
+                    their relationship to        7.    represent decimal numbers using models and manipulatives to show the relationship to
+                    fractions.                         fractions.
+                                                 8.    read and write decimal numbers with decimal parts to hundredths.
+                                                 9.    determine
+                                                       a. the place value to hundredths of a digit in a given decimal number,
+                                                       b. the value of a digit, and
+                                                       c. the digit of number, given its place value.
+                                                 10.   convert decimal numbers to fractions, and fractions with denominators 10 or 100 to decimals.
+                                                 11.   plot decimal numbers with tenth decimal part on the number line.
+                                                 12.   compare and order decimal numbers with decimal parts to hundredths.
+                                                 13.   round decimal numbers to the nearest whole number and to the nearest tenth.
+Performance Standards
+By the end of the quarter, the learners are able to …
+• present and interpret data in tabular form and in a single line graph. (DP)
+• generate a simple pattern and describe the rule used. (NA)
+• complete number sentences to represent number properties and number facts. (NA)
+• represent, compare, order, and round decimal numbers. (NA)
+• convert decimal numbers to fractions and fractions (with denominators 10 or 100) to decimals. (NA)
+
+
+
+
+                                                                                                                                        Page 29 of 36
+Grade 7
+    CONTENT            CONTENT STANDARDS                                                LEARNING COMPETENCIES
+     DOMAIN       The learners should have              The learners …
+                  knowledge and understanding of ...
+Quarter 1
+Measurement       1.   regular and irregular            1.    draw and describe regular and irregular polygons with 5, 6, 8, or 10 sides, based on
+and Geometry           polygons and their                     measurements of sides and angles, using a ruler and protractor.
+(MG)                   features/properties.             2.    draw triangles, quadrilaterals, and regular polygons (5, 6, 8, or 10 sides) with given
+                                                              angle measures.
+                  2.   determination of measures of
+                                                        3.    describe and explain the relationships between angle pairs based on their measures.
+                       angles and number of sides of
+                                                        4.    classify polygons according to the number of sides, whether they are regular or irregular,
+                       polygons.
+                                                              and whether they are convex or non-convex.
+                                                        5.    deduce the relationship between the exterior angle and adjacent interior angle of a
+                                                              polygon.
+                                                        6.    determine the measures of angles and the number of sides of polygons.
+Number            3.   application of percentages.      7.    solve problems involving:
+and                                                           a. percentage increase, and
+                  4.   use of rates.
+Algebra                                                       b. percentage decrease.
+(NA)              5.   rational numbers.                8.    solve money problems involving percentages (e. g., discount, commission, sales tax,
+                                                              simple interest).
+                                                        9.    create a financial plan.
+                                                        10.   identify and explain the uses of rates.
+                                                        11.   solve problems involving rates (e.g., speed).
+                                                        12.   describe given rational numbers as fractions, decimals, or percentages.
+                                                        13.   order rational numbers on a number line.
+                                                        14.   perform operations on rational numbers.
+Performance Standards
+By the end of the quarter, the learners are able to …
+•   draw, and describe the features/properties of, regular and irregular polygons. (MG)
+•   use percentages in different contexts. (NA)
+•   identify and use rates. (NA)
+•   create a financial plan. (NA)
+•   describe, order, and perform operations on, rational numbers. (NA)
+
+
+
+
+                                                                                                                                         Page 30 of 36
+Grade 7
+Quarter 2
+Number           1.   square roots of perfect           1.   determine the square roots of perfect squares and the cube roots of perfect cubes.
+and                   squares, cube roots of perfect    2.   identify irrational numbers involving square roots and cube roots, and their locations on
+Algebra               cubes, and irrational                  the number line.
+(NA)                  numbers.
+Measurement      2.   conversion of units of            3.   convert units of measure within the International System of Units (SI) and across
+and                   measure.                               different systems of measure.
+Geometry                                                4.   explain inductively the volume of a cylinder using the area of a circle, leading to the
+                 3.   volume of square and
+(MG)                                                         identification of the formula.
+                      rectangular pyramids, and
+                                                        5.   find the volume of a cylinder.
+                      cylinders.
+                                                        6.   solve problems involving the volumes of cylinders.
+                                                        7.   explore inductively the volume of square and rectangular pyramids using rectangular
+                                                             prisms, leading to the identification of the formula.
+                                                        8.   estimate volumes of square and rectangular pyramids.
+                                                        9.   solve problems involving volumes of square or rectangular pyramids.
+
+Number           4.    sets and subsets, and the        10. describe sets and their subsets, the union of sets, and the intersection of sets
+and                    union and intersection of sets   11. illustrate sets and their subsets, the union of sets, and the intersection of sets, through
+Algebra                using Venn diagrams                  the use of Venn diagrams.
+(NA)                                                    12. illustrate the different subsets of real numbers.
+                 5.   subset of real numbers.
+Performance Standards
+By the end of the quarter, the learners are able to …
+• determine square roots of perfect squares and cube roots of perfect cubes, and identify irrational numbers. (NA)
+• convert units of measure from different systems of measure. (MG)
+• find the volume of square and rectangular pyramids, and the volume of cylinders. (MG)
+• describe sets and their subsets, and the union and intersection of sets. (NA)
+• illustrates sets and subsets, and union and intersection of sets, using Venn diagrams. (NA)
+
+
+
+
+                                                                                                                                         Page 31 of 36
+Grade 7
+Quarter 3
+Data             1. data collection and sampling        1.   investigate different data collection and sampling techniques.
+and                 techniques, and the                 2.   organize statistical data in a frequency distribution table.
+Probability         presentation of data in             3.   use appropriate graphs to represent organized data: pie graph, bar graph, line graph,
+(DP)                appropriate tables and graphs.           and stem-and-leaf plot.
+                                                        4.   interpret statistical graphs.
+                 2. interpretation of statistical
+                    graphs.
+Number           3. the set of integers, and            5.  describe the set of integers.
+and                 comparing and ordering              6.  use positive and negative numbers to describe directions or opposites in real-life
+Algebra             integers.                               situations.
+(NA)                                                    7. locate integers on the number line.
+                 4. the four operations with
+                                                        8. compare and order integers.
+                    integers.
+                                                        9. add and subtract integers; using concrete models (e.g., counters, integer chips), pictorial
+                 5. simplification of numerical             models (e.g., bar models, number lines), and with integers written as numerals.
+                    expressions involving integers.     10. multiply and divide integers.
+                                                        11. simplify numerical expressions involving integers using number properties and the order
+                 6. absolute value of an integer.
+                                                            of operations (GEMDAS).
+                                                        12. identify the absolute value of an integer, and its meaning on the number line.
+
+Performance Standards
+By the end of the quarter, the learners are able to …
+• collect data, and organize data in a frequency distribution table. (DP)
+• represent and interpret data in different types of graphs. (DP)
+• compare and order integers, including through the use of the number line. (NA)
+• perform the four operations with integers. (NA)
+• simplify numerical expressions involving integers. (NA)
+• identify the absolute value of an integer. (NA)
+
+
+
+
+                                                                                                                                       Page 32 of 36
+Grade 7
+Quarter 4
+Number           1.   the solution of simple            1.   solve simple equations represented by bar models to find unknowns.
+and                   equations.                        2.   distinguish a variable from a constant in an algebraic expression.
+Algebra                                                 3.   evaluate algebraic expressions given the value/s of the variable/s.
+(NA)             2.   the evaluation of algebraic       4.   translate verbal phrases into algebraic expressions.
+                      expressions following             5.   illustrate the properties of equality.
+                      substitution.                     6.   solve one variable in terms of the other variables in a formula.
+                 3.   the rearrangement of a            7.   write equations in algebraic form.
+                      formula to make a different       8.   find the value of an unknown in an equation where the unknown is non-negative.
+                      variable the subject of the       9.   solve problems involving algebraic expressions and formulas
+                      formula.
+Data             4.   outcomes from experiments.        10. collect data from experiments (e.g., number of heads obtained when tossing a coin, a
+and                                                         number of times, number of prime numbers obtained when rolling a die a number of
+Probability                                                 times).
+(DP)                                                    11. express outcomes in words and/or symbols, and represents outcomes in tables and/or
+                                                            graphs.
+                                                        12. solve problems using the outcomes of experiments.
+Number           5.   operations using scientific       11. write numbers in scientific notation to represent very large or very small numbers, and
+and                   notation.                             vice versa.
+Algebra                                                 12. perform operations on numbers expressed in scientific notation.
+(NA)
+Performance Standards
+By the end of the quarter, the learners are able to …
+• solve simple equations. (NA)
+• substitute into an algebraic expression to evaluate the expression. (NA)
+• rearrange a formula to make a different variable the subject of the formula. (NA)
+• gather data from experiments and represent the data in different forms. (DP)
+• write numbers in scientific notation and perform operations on numbers written in scientific notation. (NA)
+
+
+
+
+                                                                                                                                      Page 33 of 36
+Curriculum Organization
+      It is proposed that the curriculum organizers described below are used together to form the curriculum description in the
+Grades 1 to 10 Mathematics Curriculum Guide. The definitions (in italics) within this section are drawn from DepEd Order No. 8, s.
+2015 and DepEd Order No. 21, s. 2019.
+     1)   Standard – In its broadest sense, it is something against which other things can be compared to for the purpose of determining
+          accuracy, estimating quantity or judging quality. It is a stated expectation of what one should know and be able to do.
+     2)   Key Stage – This refers to stages in the K to 12 Program reflecting distinct developmental milestones. These are Key Stage 1
+          (Kindergarten – Grade 3), Key Stage 2 (Grades 4 – 6), Key Stage 3 (Grades 7 – 10), and Key Stage 4 (Grades 11 and 12).
+     3)   Key Stage Standard* – This shows the degree or quality of proficiency that the learner is able to demonstrate in each key stage
+          after learning a particular learning area in relation to the core learning area standard.
+     4)   Grade Level Standard – This shows the degree or quality of proficiency that the learner is able to demonstrate in each Grade
+          after learning a particular learning area in relation to the core learning area standard.
+     5)   Content Domain** – This is a particular strand (or ‘domain’) of the curriculum in which the scope and sequence of a set of
+          related topics and skills are covered.
+     6)   Content Standard – The content standards identify and set the essential knowledge and understanding that should be learned.
+          They cover a specified scope of sequential topics within each learning strand, domain, theme, or component. Content standards
+          answer the question, “What should the learners know?”
+     7)   Learning Competency – This refers to a specific skill performed with varying degrees of independence. It has different degrees
+          of difficulty and performance levels. It also refers to the ability to perform activities according to the standards expected by
+          drawing from one’s knowledge, skills, and attitudes.
+     8)   Performance Standard – The performance standards describe the abilities and skills that learners are expected to demonstrate
+          in relation to the content standards and integration of 21st century skills. The integration of knowledge, understanding, and
+          skills is expressed through creation, innovation, and adding value to products/performance during independent work or in
+          collaboration with others.
+
+
+*     To ensure that the components of mathematical proficiency focused on problem solving are articulated in the revised curriculum, the key stage standards
+      presented provide guidance in the writing of the content standards, learning competencies and performance standards.
+
+**    The content domains proposed for the K to 10 Mathematics curriculum are Number and Algebra, Measurement and Geometry, and Data and Probability.
+
+
+
+
+                                                                                                                                               Page 34 of 36
+References
+Ball, D.L., & Bass, H. (2003). Making mathematics reasonable in school. In J. Kilpatrick, W. G. Martin, and D. Schifter (Eds.). A Research
+      Companion to Principals and Standards for School Mathematics (pp. 27-44). Reston, VA: National Council of Teachers Mathematics.
+      https://www.researchgate.net/publication/312532588_Making_mathematics_reasonable_in_school#fullTextFileContent.
+
+Boaler, Dance & Woodbury (2018). From Performance to Learning: Assessing to Encourage Growth Mindsets. Stanford University. Source:
+     https://www.youcubed.org/wp-content/uploads/2018/04/Assessent-paper-final-4.23.18.pdf.
+
+Bruner, J.S. (1966). Toward a Theory of Instruction. Cambridge, MA: Harvard University Press.
+
+Bruner, J.S. (1977). The Process of Education. Cambridge, MA: Harvard University Press.
+
+Charles, R. (2005). Big ideas and understandings as the foundation for elementary and middle school Mathematics. National Council of Supervisors
+     of Mathematics (NCSM) Journal, 7 (3), 9–24.
+
+Confrey, Jere (1991). Steering a Course Between Vygotsky and Piaget. American Educational Research and Association. Volume 20, issue 8.
+     https://doi.org/10.3102/0013189X020008028. https://journals.sagepub.com/doi/10.3102/0013189X020008028?icid=int.sj-
+     abstract.similar-articles.2.
+
+DepEd Order 8, s. 2015. Policy Guidelines on Classroom Assessment for the K to 12 Basic Education Program. https://www.deped.gov.ph/wp-
+    content/uploads/2015/04/DO_s2015_08.pdf.
+
+DepEd Order 21 S. 2019. Policy Guidelines on the K to 12 Basic Education Program. Released 22 August 2019. Source:
+    https://www.deped.gov.ph/2019/08/22/august-22-2019-do-021-s-2019-policy-guidelines-on-the-k-to-12-basic-education-program/
+
+DepEd Order 22, s. 2021. Financial Education Policy. Released 3rd of June, 2021. Source: https://www.deped.gov.ph/wp-
+    content/uploads/2021/06/DO_s2021_022.pdf
+
+Department of Education (2016). Mathematics Curriculum Guide. Pasig City: DepEd.
+
+Disessa, Andrea A, Roschelle, Jeremy and Smith, John P. (1993). Misconceptions Reconceived: A Constructivist Analysis of Knowledge in
+     Transition. November 1993. Journal of the Learning Sciences 3(2). DOI:
+     10.1207/s15327809jls0302_1.https://www.researchgate.net/publication/242421838_Misconceptions_Reconceived_A_Constructivist_Anal
+     ysis_of_Knowledge_in_Transition.
+
+Facione, P., & Gittens, C.A. (2016). Think Critically. Boston, MA: Pearson Education, Inc.
+
+Fennell, F. & Rowan, T. (2001). Representation: an important process for teaching mathematics. Teaching Children Mathematics. January
+     2001. Reston, VA: National Council for Teachers of Mathematics.
+
+
+                                                                                                                                     Page 35 of 36
+Glasersfeld, Ernst   Von     (1987).   Constructivism  in   Education.     Source:                  https://www.vonglasersfeld.com/114#:~:text=
+     The%20two%20principles%20are%3A,the%20discovery%20of%20ontological%20reality.
+
+Gelman, S. A. (Eds.) & Hirschfeld, L. A.,. (1994). Mapping the mind: Domain specificity in cognition and culture. Cambridge University Press.
+    https://doi.org/10.1017/CBO9780511752902. https://psycnet.apa.org/record/1994-97940-000.
+
+Harden, R.M., & Stamper, N. (1999). What is a spiral curriculum? Medical Teacher, 21 (2), 141–143.
+
+Hui, C., Hoe, L., & Lee, K. (2017). Teaching and learning with concrete-pictorial-abstract sequence – a proposed model. The Mathematics Educator,
+      17, 1&2, 1–28
+
+Mandell, Lewis & Klein, L. S. (2009). The Impact of Financial Literacy Education on Subsequent Financial Behavior. Journal of Financial
+    Counseling and Planning, 20(1), 15-24. https://psycnet.apa.org/record/2009-19876-001.
+
+Mullis, I.V.S., Martin, M.O., Foy, P., Kelly, D.L., & Fishbein, B. (2020). TIMSS 2019 International Results in Mathematics and Science. MA:
+     International Association for the Evaluation of Educational Achievement (IEA).
+
+National Council of Teachers of Mathematics (NCTM). (2000). Principles and Standards for School Mathematics. VA: NCTM.
+
+National Research Council (NRC). (2001). Adding it up: Helping children learn mathematics. J. Kilpatrick, J. Swafford, and B. Findell (Eds.).
+     Mathematics Leaning Study Committee, Center for Education, Division of Behavioral and Social Sciences and Education. Washington, DC:
+     National Academy Press.
+
+Organization for Economic Co-operation and Development (OECD). (2019). Conception learning framework: Attitudes and values for 2030. OECD
+     Future of Education and Skills 2030. Paris: OECD.
+
+Piaget, Jean (1977). The development of thought: Equilibration of cognitive structures. (Trans A. Rosin). Viking.
+      https://scholar.google.com.ph/scholar?q=piaget,+1977&hl=en&as_sdt=0&as_vis=1&oi=scholart.
+
+Polya, G. (1981). Mathematical Discovery. NY: John Wiley & Sons, Inc.
+
+Science Education Institute-Department of Science and Technology (SEI-DOST) (2011). Framework For Philippine Mathematics Teacher
+     Education. Manila: SEI-DOST & MATHTED. https://www.sei.dost.gov.ph/images/downloads/publ/sei_mathteach.pdf.
+
+SEAMEO Basic Education Standards (SEA-BES): Common Core Regional Learning Standards (CCRLS) in Mathematics and Science (2017).
+UNICEF & SEAMEO. (2020). SEA-PLM 2019 Main Regional Report, Children’s learning in 6 Southeast Asian countries. Bangkok, Thailand: United
+    Nations Children’s Fund (UNICEF) & Southeast Asian Ministers of Education Organization (SEAMEO) – SEA-PLM Secretariat.
+Vygotsky, Lev (1978). Vygotsky’s Sociocultural Theory.
+     http://www.ceebl.manchester.ac.uk/events/archive/aligningcollaborativelearning/Vygotsky.pdf.
+WGU (2020). What is constructivism? Retrieved from: https://www.wgu.edu/blog/what-constructivism2005.html#close.
+                                                                                                                                     Page 36 of 36
+

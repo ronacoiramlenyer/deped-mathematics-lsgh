@@ -1,11 +1,13 @@
 """Grade 7 Mathematics – Curriculum Map, 1st Trimester, SY 2026-2027.
 
-Source of truth: DepEd MATATAG Grade 7 Mathematics Three-Term Budget of Work
-for Learning Competencies, First Term (last updated April 17, 2026) –
-sources/deped/MATATAG-Grade7-Mathematics-Three-Term-BOW-SY2026-2027.pdf
+Source of truth: DepEd MATATAG Mathematics Curriculum Guide, Grades 1, 4, and 7
+(sources/deped/MATATAG-Mathematics-CG-Grades1-4-and-7.pdf), Grade 7 Quarter 1
+competencies 1–14 and Quarter 2 competencies 1–2. The DepEd Three-Term Budget of
+Work (sources/deped/MATATAG-Grade7-Mathematics-Three-Term-BOW-SY2026-2027.pdf)
+assigns exactly these to the First Term and sets the week order used here.
 
 Content standards, performance standards, and every competency marked as
-DepEd (True, shown with ★) are copied verbatim from that document.
+DepEd (True, shown with ★) are copied verbatim from those documents.
 
 Schedule: 5 math meetings per 6-day cycle, 10 usable cycles (C1–C10 = 50
 meetings); C11 is a buffer. DepEd Week n ≈ Cycle n.
@@ -19,9 +21,10 @@ HEADER = {
         "1st Trimester, SY 2026 - 2027",
     ],
     "title": "CURRICULUM MAP",
-    "note": "Aligned with the DepEd MATATAG Grade 7 Mathematics Three-Term Budget of Work "
-            "for Learning Competencies (First Term). Competencies marked ★ are DepEd "
-            "learning competencies quoted verbatim.",
+    "note": "Aligned with the DepEd MATATAG Mathematics Curriculum Guide (Grade 7, Quarter 1 "
+            "and Quarter 2 items 1–2) as sequenced in the DepEd Three-Term Budget of Work "
+            "(First Term). Competencies marked ★ are DepEd learning competencies quoted "
+            "verbatim.",
 }
 
 STANDARDS = [
@@ -50,21 +53,20 @@ STANDARDS = [
             "identify irrational numbers.",
         ],
         "groups": [
-            {"title": "NCTM Process Standards:", "items": []},
-            {"title": "Problem Solving", "items": [
-                "Students build new mathematical knowledge and solve problems that arise in "
-                "mathematics and in other contexts."]},
-            {"title": "Reasoning and Proof", "items": [
-                "Students make and investigate mathematical conjectures and develop and "
-                "evaluate mathematical arguments."]},
-            {"title": "Communication", "items": [
-                "Students communicate their mathematical thinking coherently and clearly to "
-                "peers, teachers, and others."]},
-            {"title": "Connections", "items": [
-                "Students recognize and apply mathematics in contexts outside of mathematics."]},
-            {"title": "Representation", "items": [
-                "Students use representations (drawings, number lines, tables, models) to "
-                "model and interpret mathematical phenomena."]},
+            {"title": "Strands of Mathematical Proficiency (MATATAG Mathematics Curriculum "
+                      "Framework, from NRC 2001):", "items": []},
+            {"title": "Conceptual Understanding", "items": [
+                "comprehension of mathematical concepts, operations, and relations"]},
+            {"title": "Procedural Fluency", "items": [
+                "skill in carrying out procedures flexibly, accurately, efficiently, and "
+                "appropriately"]},
+            {"title": "Strategic Competence", "items": [
+                "ability to formulate, represent, and solve mathematical problems"]},
+            {"title": "Adaptive Reasoning", "items": [
+                "capacity for logical thought, reflection, explanation, and justification"]},
+            {"title": "Productive Disposition", "items": [
+                "habitual inclination to see mathematics as sensible, useful, and worthwhile, "
+                "coupled with a belief in diligence and one’s own efficacy"]},
         ],
     },
     {
@@ -321,7 +323,7 @@ ROWS = [
             "Money problems: discount, commission, sales tax, and simple interest",
         ],
         "comps": [
-            ("A7", True, "Solve problems involving: a. percentage increase; b. percentage "
+            ("A7", True, "Solve problems involving: a. percentage increase, and b. percentage "
                          "decrease."),
             ("A8", True, "Solve money problems involving percentages (e. g., discount, "
                          "commission, sales tax, simple interest)."),

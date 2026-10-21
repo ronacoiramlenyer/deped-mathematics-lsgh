@@ -5,14 +5,16 @@ the DepEd MATATAG curriculum and adapted to the LSGH trimester calendar.
 
 ## Source of truth
 
-`sources/deped/MATATAG-Grade7-Mathematics-Three-Term-BOW-SY2026-2027.pdf` – DepEd
-MATATAG Grade 7 Mathematics Three-Term Budget of Work for Learning Competencies
-(last updated April 17, 2026). DepEd's three-term BOW already redistributes the four
-MATATAG quarters into three terms of 10 weeks each. A text extract sits beside it for
-searching and checking.
+- `sources/deped/MATATAG-Mathematics-CG-Grades1-4-and-7.pdf` – DepEd MATATAG
+  Mathematics Curriculum Guide (Grades 1, 4, and 7): content standards, performance
+  standards, and learning competencies per quarter.
+- `sources/deped/MATATAG-Grade7-Mathematics-Three-Term-BOW-SY2026-2027.pdf` – DepEd
+  Grade 7 Mathematics Three-Term Budget of Work (updated April 17, 2026), which
+  redistributes the four quarters into three 10-week terms. Term 1 = CG Quarter 1
+  (competencies 1–14) + Quarter 2 competencies 1–2.
 
-Content standards, performance standards, and competencies marked ★ in the CMs are
-quoted verbatim from this document.
+Text extracts sit beside each PDF for searching and checking. Content standards,
+performance standards, and competencies marked ★ in the CMs are quoted verbatim.
 
 ## Calendar assumptions
 
