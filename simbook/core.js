@@ -39,6 +39,13 @@
 
   function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
 
+  // Sims often append optional badges (cond ? pill : null). Skip the empty ones
+  // instead of letting the browser print the word "null".
+  for (const proto of [Element.prototype, DocumentFragment.prototype]) {
+    const native = proto.append;
+    proto.append = function (...nodes) { return native.apply(this, nodes.filter((n) => n !== null && n !== undefined && n !== false)); };
+  }
+
   // ------------------------------------------------------------ numbers
 
   const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a || 1; };
@@ -81,7 +88,7 @@
 
   /** Parses "3/4", "1 1/2", "0.75", "75%", or "2" into a Frac (null if invalid). */
   function parseNumber(text) {
-    const t = String(text).trim().replace(/,/g, "").replace(/₱/g, "");
+    const t = String(text).trim().replace(/,/g, "").replace(/₱/g, "").replace(/[−–]/g, "-").replace(/\s+/g, " ");
     if (!t) return null;
     let m;
     if ((m = t.match(/^(-?\d+)\s+(\d+)\s*\/\s*(\d+)$/))) {

@@ -43,16 +43,20 @@ python3 tools/cm_builder.py content/grade7_term1_cm.py \
   output/grade7/Grade7-CM-1st_Trim-SY2026-2027-Mathematics.docx
 python3 tools/lg_builder.py content/grade7_term1_lg.py \
   output/grade7/Grade7-LG-1st_Trim-SY2026-2027-Mathematics.docx
+python3 tools/cm_builder.py content/grade7_term2_cm.py \
+  output/grade7/Grade7-CM-2nd_Trim-SY2026-2027-Mathematics.docx
+python3 tools/lg_builder.py content/grade7_term2_lg.py \
+  output/grade7/Grade7-LG-2nd_Trim-SY2026-2027-Mathematics.docx
 ```
 
 ## Math 7 SimBook
 
-`simbook/` is a dependency-free web book (HTML, CSS, vanilla JS, SVG). Every Term 1 lesson
-page has four parts:
+`simbook/` is a dependency-free web book (HTML, CSS, vanilla JS, SVG). Every lesson page
+(Terms 1–2 so far) has four parts:
 
 1. **Hook** – the lesson's own simulation, with a mission and a discovery reveal.
 2. **Lesson** – the traditional exposition as a 16:9 slide deck with speaker notes on the
-   side (`simbook/deck.js`). Slides are generated from `simbook/content/lN.js` (`learn`):
+   side (`simbook/deck.js`). Slides are generated from `simbook/content/lN.js` / `t2-lN.js` (`learn`):
    headings start slides; definitions, rules, tables, and lists go on the slide; each
    worked example gets its own slide whose steps reveal one click at a time; explanations,
    full solutions, and teaching prompts go to the notes. Arrow keys or clicks advance;
@@ -74,6 +78,16 @@ page has four parts:
 | 7 · G. Rational Numbers | Number Line Explorer | Converter, Order It, Zoom Between |
 | 8 · H. Operations on Rational Numbers | Fraction Kitchen | Fraction Bars, Kakanin Kitchen, Decimal Grid |
 | 9 · I. Square Roots, Cube Roots, and Irrational Numbers | Roots Lab | Square Builder, Cube Builder, Root Estimator, Square of Area 2 |
+| **Term 2** | | |
+| 10 · A. Converting Units of Measure | Unit Ladder | Metric Staircase, Across Systems |
+| 11 · B. Volume of a Cylinder | Cylinder Lab | Stack the Circles, Which Holds More? |
+| 12 · C. Volume of Pyramids | Pyramid Lab | Pour Three Times, Estimate |
+| 13 · D. Sets, Subsets, Union, and Intersection | Venn Lab | – |
+| 14 · E. Subsets of Real Numbers | Real Number Map | – |
+| 15 · F. Data Collection and Sampling | Sampling Lab | Sampling Lab, Which Method? |
+| 16 · G. Organizing and Graphing Data | Graph Studio | Frequency Table, Bar ↔ Pie, Line Graph, Stem-and-Leaf |
+| 17 · H. The Set of Integers | Integer Elevator | – |
+| 18 · I. Comparing and Ordering Integers | Integer Number Line | Compare, Order |
 
 **Motion.** Manipulatives never jump. `Sim.Spring` eases every animated value with a
 slightly under-damped spring (a small elastic overshoot); `Sim.elasticSlider` follows the
@@ -86,7 +100,7 @@ settings turn the animation off.
 Add a lesson by writing `simbook/sims/<file>.js` that calls `Sim.register({...})`
 (id, unit, title, competencies, mission, discovery, `mount(stage)`, `check()`) and adding
 its `<script>` tag to `simbook/index.html`. The published copy lives at
-https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr (lesson pages: `#lesson1` … `#lesson9`).
+https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr (lesson pages: `#lesson1` … `#lesson18`; Term 2 starts at `#lesson10`).
 The LG's SIM HOOK cards and the CM's activities point to these sims.
 
 ## Learning Guide conventions

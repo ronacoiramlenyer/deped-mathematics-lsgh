@@ -4,13 +4,19 @@
   const { h, s, clear, lessons } = Sim;
 
   const UNITS = [
-    { key: "A", title: "Shape Up!", sub: "Polygons and Angles", domain: "Measurement and Geometry",
-      weeks: "DepEd Weeks 1–3" },
-    { key: "B", title: "Money Smart!", sub: "Percentages, Financial Planning, and Rates",
-      domain: "Number and Algebra", weeks: "DepEd Weeks 4–6" },
-    { key: "C", title: "Number Line Adventures!", sub: "Rational Numbers, Roots, and Irrational Numbers",
-      domain: "Number and Algebra", weeks: "DepEd Weeks 7–10" },
+    { term: 1, key: "A", title: "Shape Up!", sub: "Polygons and Angles", domain: "Measurement and Geometry", weeks: "DepEd Weeks 1–3" },
+    { term: 1, key: "B", title: "Money Smart!", sub: "Percentages, Financial Planning, and Rates", domain: "Number and Algebra", weeks: "DepEd Weeks 4–6" },
+    { term: 1, key: "C", title: "Number Line Adventures!", sub: "Rational Numbers, Roots, and Irrational Numbers", domain: "Number and Algebra", weeks: "DepEd Weeks 7–10" },
+    { term: 2, key: "D", title: "Measure Up!", sub: "Units of Measure and Volume", domain: "Measurement and Geometry", weeks: "DepEd Weeks 1–4" },
+    { term: 2, key: "E", title: "Set It Up!", sub: "Sets and the Real Numbers", domain: "Number and Algebra", weeks: "DepEd Weeks 5–6" },
+    { term: 2, key: "F", title: "Data Detectives!", sub: "Sampling, Tables, and Graphs", domain: "Data and Probability", weeks: "DepEd Weeks 6–8" },
+    { term: 2, key: "G", title: "Integer World!", sub: "The Set of Integers", domain: "Number and Algebra", weeks: "DepEd Weeks 9–10" },
+    { term: 3, key: "H", title: "Integer Power!", sub: "Operations on Integers", domain: "Number and Algebra", weeks: "DepEd Weeks 1–3" },
+    { term: 3, key: "I", title: "Algebra Starter!", sub: "Expressions, Equality, Formulas, and Equations", domain: "Number and Algebra", weeks: "DepEd Weeks 4–7" },
+    { term: 3, key: "J", title: "Chance and Scale!", sub: "Experiments and Scientific Notation", domain: "Data and Probability · Number and Algebra", weeks: "DepEd Weeks 8–10" },
   ];
+  const TERMS = [1, 2, 3];
+  const termOf = (l) => (UNITS.find((u) => u.key === l.unit) || {}).term || 1;
 
   const STORE_KEY = "math7-simbook-mastered";
   function mastered() {
@@ -31,8 +37,10 @@
     rail.append(h("a", { href: "#home", class: current === "home" ? "on" : "" }, h("span", { class: "n" }, "◎"), h("span", {}, "Contents")));
     jump.append(h("option", { value: "home" }, "Contents"));
     for (const u of UNITS) {
+      if (!lessons.some((x) => x.unit === u.key)) continue;
+      if (u === UNITS.find((v) => v.term === u.term)) rail.append(h("p", { class: "rail-term" }, `Term ${u.term}`));
       const group = h("div", {}, h("h3", {}, `Unit ${u.key} · ${u.title}`));
-      const og = h("optgroup", { label: `Unit ${u.key} · ${u.title}` });
+      const og = h("optgroup", { label: `Term ${u.term} · Unit ${u.key} · ${u.title}` });
       for (const l of lessons.filter((x) => x.unit === u.key)) {
         group.append(h("a", { href: "#" + l.id, class: current === l.id ? "on" : "" },
           h("span", { class: "n" }, String(l.num)),
@@ -69,12 +77,17 @@
     const wrap = h("div", { class: "cover" });
     wrap.append(h("section", { class: "cover-hero" },
       h("div", {},
-        h("p", { class: "eyebrow" }, "Grade 7 Mathematics · 1st Trimester · SY 2026–2027"),
+        h("p", { class: "eyebrow" }, "Grade 7 Mathematics · SY 2026–2027"),
         h("h1", {}, "Learn math by ", h("em", {}, "playing with it.")),
-        h("p", {}, "Every lesson in this book has its own simulation. Drag, build, shop, race, and cook your way to each rule – then check yourself. Aligned with the DepEd MATATAG Grade 7 competencies for Term 1."),
+        h("p", {}, "Every lesson in this book has its own simulation. Drag, build, shop, race, and cook your way to each rule – then check yourself. Aligned with the DepEd MATATAG Grade 7 competencies for Terms 1 to 3."),
         h("p", { class: "note" }, `${done.size} of ${lessons.length} lessons mastered on this device.`)),
       coverArt()));
     for (const u of UNITS) {
+      if (!lessons.some((x) => x.unit === u.key)) continue;
+      if (u === UNITS.find((v) => v.term === u.term)) {
+        const n = lessons.filter((x) => termOf(x) === u.term).length;
+        wrap.append(h("h2", { class: "term-head" }, `Term ${u.term}`, h("span", {}, ` · ${n} lessons`)));
+      }
       const unit = h("section", { class: "unit" },
         h("div", { class: "unit-head" }, h("h2", {}, `Unit ${u.key} · ${u.title}`), h("span", { class: "tag" }, `${u.sub} · ${u.domain} · ${u.weeks}`)));
       const cards = h("div", { class: "cards" });
@@ -115,7 +128,7 @@
     const jumpTo = (id) => document.getElementById(`sec-${id}`).scrollIntoView({ behavior: Sim.reducedMotion() ? "auto" : "smooth", block: "start" });
     main.append(h("article", { class: "lesson" },
       h("header", { class: "lesson-head" },
-        h("p", { class: "eyebrow" }, `Unit ${unit.key} · ${unit.title} · Lesson ${l.num}`),
+        h("p", { class: "eyebrow" }, `Term ${unit.term} · Unit ${unit.key} · ${unit.title} · Lesson ${l.num}`),
         h("h1", {}, `${l.letter}. ${l.title}`),
         h("div", { class: "meta" },
           h("span", { class: "chip" }, `Sim: ${l.simName}`),
