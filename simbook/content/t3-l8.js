@@ -1,0 +1,53 @@
+/* Term 3 · Lesson 8 · H. Experiments and Outcomes – lesson and exercises */
+Sim.addContent("lesson26", {
+  learn: [
+    { t: "h", text: "Experiments, outcomes, and events" },
+    { t: "p", text: "Tossing a coin or rolling a die is an **experiment**: we know what could happen, but not what will happen on a given try. Each try is a **trial**, and each possible result is an **outcome**." },
+    { t: "defs", items: [
+      ["Experiment", "an activity with results that cannot be known ahead of time, such as tossing a coin"],
+      ["Trial", "one try of the experiment, such as one toss"],
+      ["Outcome", "one possible result, such as heads (H)"],
+      ["Sample space S", "the set of all possible outcomes: tossing a coin gives S = {H, T}"],
+      ["Event E", "a set of outcomes we are counting, such as “rolling an even number”"],
+    ] },
+    { t: "ex", title: "Words and symbols", problem: "A die is rolled. Write the sample space and the event “rolling a prime number” in set notation.", steps: ["The die can show 1, 2, 3, 4, 5, or 6: S = {1, 2, 3, 4, 5, 6}.", "The prime numbers among these are 2, 3, and 5 (1 is not prime).", "E = {2, 3, 5}"], answer: "S = {1, 2, 3, 4, 5, 6} and E = {2, 3, 5}; E has 3 outcomes." },
+    { t: "h", text: "Collecting data: tally and frequency table" },
+    { t: "p", text: "During an experiment, record each outcome with a tally mark. Count the tallies to get the **frequency** of each outcome. The frequencies add up to the number of trials." },
+    { t: "table", head: ["Outcome", "Tally", "Frequency", "Relative frequency"], rows: [["Heads", "|||| |||| |", "11", "11/20 = 0.55 = 55%"], ["Tails", "|||| ||||", "9", "9/20 = 0.45 = 45%"], ["Total", "", "20", "20/20 = 1 = 100%"]] },
+    { t: "p", text: "A **bar graph** shows the same results: one bar for each outcome, with height equal to its frequency." },
+    { t: "h", text: "Relative frequency" },
+    { t: "rule", title: "Relative frequency of an event", text: ["relative frequency of E = (number of times E happened) ÷ (number of trials)", "Write it as a fraction, a decimal, or a percent. It is always from 0 to 1 (0% to 100%)."] },
+    { t: "ex", title: "Rolling a die 30 times", problem: "A die was rolled 30 times. Frequencies – 1: 4, 2: 6, 3: 5, 4: 3, 5: 7, 6: 5. Find the relative frequency of rolling a prime number.", steps: ["E = {2, 3, 5}", "E happened 6 + 5 + 7 = 18 times.", "Relative frequency = 18/30 = 3/5", "= 0.6 = 60%"], answer: "18/30 = 3/5 = 0.6 = 60%." },
+    { t: "h", text: "Solving problems with experimental results" },
+    { t: "p", text: "The relative frequency from an experiment helps us predict what will happen with many more trials: multiply it by the new number of trials." },
+    { t: "ex", title: "Planning the Family Day booth", problem: "A booth spinner was spun 80 times, and “Win” came up 20 times. About how many of 200 players should the booth expect to win?", steps: ["Relative frequency of winning = 20/80 = 1/4 = 0.25", "Predicted winners ≈ 0.25 × 200", "= 50"], answer: "About 50 winners, so prepare about 50 prizes." },
+    { t: "ex", title: "Is the game fair?", problem: "In 100 spins, players won 31 times and lost 69 times. Is winning and losing about equally likely?", steps: ["Relative frequency of winning = 31/100 = 31%", "A fair game would give wins about half the time (about 50%).", "31% is far from 50%: players lost more than twice as often as they won."], answer: "No. The results suggest the game favours the booth." },
+    { t: "h", text: "Why do results vary?" },
+    { t: "p", text: "Each trial is random, so two groups doing the same experiment usually get different results. Short experiments vary a lot. With many trials, the relative frequency changes less and less and settles near one value." },
+    { t: "table", head: ["Group", "Tosses", "Heads", "Fraction of heads"], rows: [["A", "10", "7", "0.7"], ["B", "100", "52", "0.52"], ["C", "1 000", "497", "0.497"]] },
+    { t: "p", text: "So in 100 tosses expect __about__ 50 heads – but not exactly 50 every time. (In Grade 8 you will compare these experimental results with theoretical probability.)" },
+    { t: "remember", items: ["S lists every possible outcome; an event E is a set of outcomes we count.", "Relative frequency = times the event happened ÷ number of trials (fraction, decimal, or percent).", "Predict: relative frequency × new number of trials.", "Results vary between experiments, but settle as the number of trials grows."] },
+  ],
+  exercises: [
+    { title: "A. Skills Practice", items: [
+      { q: "What is the sample space for tossing one coin?", choices: ["S = {H, T}", "S = {H}", "S = {1, 2}", "S = {HH, TT}"], answer: "S = {H, T}", solution: "One toss can land heads (H) or tails (T)." },
+      { q: "What is the sample space for rolling one die?", choices: ["S = {1, 2, 3, 4, 5, 6}", "S = {1, 6}", "S = {0, 1, 2, 3, 4, 5, 6}", "S = {2, 3, 5}"], answer: "S = {1, 2, 3, 4, 5, 6}", solution: "A die has six faces numbered 1 to 6." },
+      { q: "A die is rolled. Which set shows the event “rolling a prime number”?", choices: ["{2, 3, 5}", "{1, 2, 3, 5}", "{2, 4, 6}", "{1, 3, 5}"], answer: "{2, 3, 5}", solution: ["The primes from 1 to 6 are 2, 3, and 5.", "1 is not a prime number."] },
+      { q: "A die is rolled. How many outcomes are in the event “rolling a number greater than 4”?", num: 2, solution: "E = {5, 6}, so E has 2 outcomes." },
+      { q: "A coin was tossed 50 times and landed heads 27 times. How many times did it land tails?", num: 23, solution: "50 − 27 = 23." },
+      { q: "In the same 50 tosses (27 heads), what is the relative frequency of heads as a fraction?", frac: "27/50", hint: "Answer as a fraction.", solution: "27 heads out of 50 tosses: 27/50." },
+      { q: "Write the relative frequency of heads in 50 tosses (27 heads) as a percent.", num: 54, unit: "%", solution: ["27/50 = 0.54", "0.54 × 100% = 54%"] },
+      { q: "A die was rolled 30 times. Frequencies – 1: 4, 2: 6, 3: 5, 4: 3, 5: 7, 6: 5. How many times was an even number rolled?", num: 14, solution: ["Even numbers: E = {2, 4, 6}", "6 + 3 + 5 = 14"] },
+    ] },
+    { title: "B. Problem Solving", items: [
+      { q: "Using the same 30 rolls (1: 4, 2: 6, 3: 5, 4: 3, 5: 7, 6: 5), find the relative frequency of rolling a prime number as a decimal.", num: 0.6, tol: 0.001, solution: ["E = {2, 3, 5}: 6 + 5 + 7 = 18 times", "18/30 = 0.6"] },
+      { q: "A Family Day booth spinner was spun 80 times, and “Win” came up 20 times. Based on these results, about how many of 200 players will win?", num: 50, tol: 0, solution: ["Relative frequency of winning = 20/80 = 0.25", "0.25 × 200 = 50"] },
+      { q: "In 100 spins of a booth game, players won 31 times and lost 69 times. Is the game fair (winning and losing about equally likely)?", choices: ["No – players lost more than twice as often as they won", "Yes – every player had a chance to win", "Yes – 31 is close to 69", "It cannot be decided from data"], answer: "No – players lost more than twice as often as they won", solution: ["Wins: 31/100 = 31%, far from 50%.", "The results suggest the game favours the booth."] },
+      { q: "Group A tossed a coin 10 times (7 heads), Group B 100 times (52 heads), and Group C 1 000 times (497 heads). Whose fraction of heads is closest to 1/2?", choices: ["Group A", "Group B", "Group C"], answer: "Group C", solution: ["A: 7/10 = 0.7; B: 52/100 = 0.52; C: 497/1 000 = 0.497", "0.497 is only 0.003 away from 0.5. More trials, closer to 1/2."] },
+    ] },
+    { title: "C. Challenge", items: [
+      { q: "A booth spinner was spun 40 times: Keychain 6, Candy 14, Try again 20. The class expects 300 players on Family Day. Based on the experiment, how many keychains should they prepare?", num: 45, tol: 0, solution: ["Relative frequency of keychain = 6/40 = 0.15", "0.15 × 300 = 45 keychains"] },
+      { q: "Two groups each tossed a coin 20 times: one got 13 heads and the other got 8. Explain why their results differ, and what would happen if each group tossed 1 000 times.", open: true, solution: ["Each toss is random, so short experiments give different numbers of heads; neither group made a mistake.", "With 1 000 tosses, both fractions of heads would settle close to 1/2 (about 500 heads), and the two results would be much closer to each other."] },
+    ] },
+  ],
+});
