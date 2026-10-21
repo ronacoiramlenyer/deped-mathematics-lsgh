@@ -51,8 +51,12 @@ python3 tools/lg_builder.py content/grade7_term1_lg.py \
 page has four parts:
 
 1. **Hook** – the lesson's own simulation, with a mission and a discovery reveal.
-2. **Lesson** – the traditional exposition: definitions, rules, step-by-step worked
-   examples, and a Remember box (`simbook/content/lN.js`, `learn`).
+2. **Lesson** – the traditional exposition as a 16:9 slide deck with speaker notes on the
+   side (`simbook/deck.js`). Slides are generated from `simbook/content/lN.js` (`learn`):
+   headings start slides; definitions, rules, tables, and lists go on the slide; each
+   worked example gets its own slide whose steps reveal one click at a time; explanations,
+   full solutions, and teaching prompts go to the notes. Arrow keys or clicks advance;
+   Present opens full screen for the projector.
 3. **Check Yourself** – 5 auto-generated formative items with instant feedback
    (4/5 marks the lesson as mastered on that device).
 4. **Exercises** – 14 fixed, numbered items in Part A Skills Practice, Part B Problem
@@ -83,7 +87,7 @@ Add a lesson by writing `simbook/sims/<file>.js` that calls `Sim.register({...})
 (id, unit, title, competencies, mission, discovery, `mount(stage)`, `check()`) and adding
 its `<script>` tag to `simbook/index.html`. The published copy lives at
 https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr (lesson pages: `#lesson1` … `#lesson9`).
-The LG's SIM LAB cards and the CM's activities point to these sims.
+The LG's SIM HOOK cards and the CM's activities point to these sims.
 
 ## Learning Guide conventions
 

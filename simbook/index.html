@@ -221,6 +221,62 @@ details.solution[open] { background: var(--bg); border-radius: 8px; padding: 8px
 .ex-footer { display: grid; gap: 8px; }
 details.answer-key summary { cursor: pointer; font-weight: 700; }
 details.answer-key ol { columns: 2 220px; margin: 8px 0 0; font-family: var(--mono); font-size: .9rem; }
+/* ---------- lesson deck ---------- */
+.deck { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(260px, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 1000px) { .deck { grid-template-columns: minmax(0, 1fr); } }
+.deck-main { display: grid; gap: 10px; min-width: 0; }
+.slide-frame { container-type: inline-size; aspect-ratio: 16 / 9; width: 100%; max-width: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 6px 22px rgba(10, 40, 25, .16); outline-offset: 4px; cursor: pointer; background: var(--paper); }
+.slide { --fit: 1; height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr); background: var(--paper); border: 1px solid var(--line); border-radius: 10px; }
+.s-band { display: flex; justify-content: space-between; gap: 12px; background: var(--accent); color: var(--accent-ink); font-size: 1.5cqw; padding: .9cqw 3cqw; letter-spacing: .04em; }
+.s-inner { overflow: hidden; padding: 2.6cqw 4cqw 3cqw; display: flex; flex-direction: column; gap: calc(1.3cqw * var(--fit)); min-height: 0; }
+.s-kicker { margin: 0; color: var(--accent); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: calc(1.6cqw * var(--fit)); }
+.s-title { font-size: calc(3.5cqw * var(--fit)); font-weight: 800; color: var(--ink); }
+.s-titlesub { color: var(--accent); font-weight: 600; }
+.slide-title .s-title { font-size: calc(5.6cqw * var(--fit)); margin-top: 3cqw; }
+.slide-title .s-inner, .slide-end .s-inner { justify-content: center; }
+.s-inner p, .s-inner dd, .s-inner td, .s-inner th { font-size: calc(2.15cqw * var(--fit)); line-height: 1.35; margin: 0; }
+.s-bigq { background: var(--gold-soft); border-left: .6cqw solid var(--gold); padding: 1.2cqw 1.8cqw; border-radius: 0 1cqw 1cqw 0; font-size: calc(2.6cqw * var(--fit)) !important; }
+.s-bigq span { display: block; font-size: .6em; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+.s-meta { color: var(--muted); }
+.s-defs { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .5cqw 2cqw; margin: 0; }
+.s-defs dt { font-weight: 700; color: var(--accent); font-size: calc(2.15cqw * var(--fit)); }
+.s-defs dd { margin: 0; }
+.s-rule { border: .25cqw solid var(--accent); background: var(--accent-soft); border-radius: 1cqw; padding: 1.2cqw 2cqw; display: grid; gap: .4cqw; }
+.s-rule p { font-family: var(--mono); font-size: calc(2.2cqw * var(--fit)) !important; }
+.s-rule .s-rule-title { font-family: var(--body); font-weight: 700; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; font-size: calc(1.5cqw * var(--fit)) !important; }
+.s-table { border-collapse: collapse; width: 100%; }
+.s-table th, .s-table td { border-bottom: .12cqw solid var(--line); padding: .5cqw 1cqw; text-align: left; }
+.s-table th { color: var(--accent); }
+.s-sub { font-weight: 700; }
+.s-bullet, .s-step { display: grid; grid-template-columns: 3cqw minmax(0, 1fr); align-items: baseline; }
+.s-dot { width: 1cqw; height: 1cqw; border-radius: 50%; background: var(--gold); transform: translateY(-.2cqw); }
+.s-num { font-family: var(--mono); font-weight: 700; color: var(--accent); }
+.s-problem { font-size: calc(2.5cqw * var(--fit)) !important; font-weight: 700; }
+.s-answer { background: var(--accent-soft); border-radius: 1cqw; padding: .9cqw 1.6cqw; }
+.s-text { font-size: calc(2.5cqw * var(--fit)) !important; max-width: 60ch; }
+.slide-example .s-title { color: var(--shape-a); }
+.build { transition: opacity .35s ease, transform .35s ease; }
+.hidden-build { opacity: 0; transform: translateY(1cqw); }
+.deck-bar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.deck-count { color: var(--muted); font-size: .9rem; min-width: 8em; text-align: center; }
+.deck-strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 6px; }
+.deck-strip .thumb { text-align: left; border: 1px solid var(--line); background: var(--paper); border-radius: 8px; padding: 6px 9px; cursor: pointer; font-size: .85rem; }
+.deck-strip .thumb[aria-current="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.notes { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 6px; align-content: start; max-height: 80vh; overflow: auto; position: sticky; top: 70px; }
+.notes-label { margin: 0; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.notes-head { margin: 6px 0 0; font-weight: 700; color: var(--accent); }
+.notes ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; font-size: .95rem; }
+.exit-present { display: none; }
+.deck.presenting .deck-main { position: fixed; inset: 0; z-index: 50; background: #0d1511; padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); align-content: center; justify-items: center; }
+.deck.presenting .slide-frame { width: min(100%, calc((100vh - 90px) * 16 / 9)); }
+.deck.presenting .deck-strip { display: none; }
+.deck.presenting .deck-count { color: #d7e3dc; }
+.deck.presenting .btn.ghost, .deck-main:fullscreen .btn.ghost { color: #e6f2ea; border-color: #8fb9a0; background: transparent; }
+.deck-main:fullscreen .deck-count { color: #d7e3dc; }
+.deck-main:fullscreen .exit-present { display: inline-block; position: absolute; top: 12px; right: 12px; }
+.deck.presenting .exit-present { display: inline-block; position: absolute; top: max(12px, env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); color: #d7e3dc; border-color: #d7e3dc; }
+.deck-main:fullscreen { background: #0d1511; display: grid; align-content: center; justify-items: center; padding: 12px; }
+.deck-main:fullscreen .slide-frame { width: min(100%, calc((100vh - 90px) * 16 / 9)); }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 
@@ -237,6 +293,7 @@ details.answer-key ol { columns: 2 220px; margin: 8px 0 0; font-family: var(--mo
 
 <script src="core.js"></script>
 <script src="textbook.js"></script>
+<script src="deck.js"></script>
 <script src="sims/l1-polygons.js"></script>
 <script src="sims/l2-angle-pairs.js"></script>
 <script src="sims/l3-angle-sums.js"></script>

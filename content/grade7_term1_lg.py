@@ -36,8 +36,8 @@ OVERVIEW = [
     "practicing responsible stewardship of resources in the service of others.",
     "Each lesson opens with a short simulation from the **LSGH Math 7 SimBook** as its hook, "
     "to spark curiosity and a first look at the pattern. The lesson itself is then taught in "
-    "the usual way – the teacher’s discussion, definitions, and step-by-step worked examples "
-    "– and practiced through the SimBook’s Check Yourself items and its Exercises (Part A "
+    "the usual way – the teacher’s discussion, definitions, and step-by-step worked examples, "
+    "presented on the SimBook’s lesson slides with speaker notes – and practiced through the SimBook’s Check Yourself items and its Exercises (Part A "
     "Skills Practice, Part B Problem Solving, Part C Challenge). Each lesson below shows its "
     "SIM HOOK cards: the sim, the tab, the mission, and the expected discovery.",
 ]
@@ -583,6 +583,7 @@ LESSON_A = [
           "protractor. Next meeting, we will explore how angles relate to one another and how "
           "to classify polygons."),
     ("res", ["LSGH Math 7 SimBook - Lesson 1 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson1)",
+             "SimBook Lesson 1 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 1 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 1: Drawing Polygons",
              "Ruler, protractor, and grid paper", "GeoGebra (polygon tools)", R360,
@@ -701,6 +702,7 @@ LESSON_B = [
           "regular or irregular, and whether they are convex or non-convex. Next, we will "
           "discover the rules for the angles inside and outside polygons."),
     ("res", ["LSGH Math 7 SimBook - Lesson 2 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson2)",
+             "SimBook Lesson 2 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 2 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 2: Angle Pairs and Classifying Polygons",
              "Protractor and device camera", "Polygon Sort cards", R360,
@@ -812,6 +814,7 @@ LESSON_C = [
           "exterior angles add up to 360°. With these, we can find any angle of a regular "
           "polygon, or its number of sides."),
     ("res", ["LSGH Math 7 SimBook - Lesson 3 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson3)",
+             "SimBook Lesson 3 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 3 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 3: Angles of Polygons",
              "Paper, scissors, and masking tape", "GeoGebra", R360,
@@ -937,6 +940,7 @@ LESSON_D = [
           "commission, and simple interest. We also learned to look closely before trusting "
           "a promo. Next, we will use these skills to build our own financial plan."),
     ("res", ["LSGH Math 7 SimBook - Lesson 4 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson4)",
+             "SimBook Lesson 4 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 4 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 4: Percentages in Real Life",
              "Mall flyers and online store screenshots", "Calculator", R360,
@@ -1019,6 +1023,7 @@ LESSON_E = [
     ("bul", ["Why is a contingency reserve important in a financial plan?",
              "Give one need and one want in your own weekly budget."]),
     ("res", ["LSGH Math 7 SimBook - Lesson 5 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson5)",
+             "SimBook Lesson 5 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 5 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 5: Creating a Financial Plan",
              "Google Sheets budget template",
@@ -1095,6 +1100,7 @@ LESSON_F = [
     ("bul", ["A faucet fills a 36-L pail in 4 minutes. What is the rate of flow? (9 L/min)",
              "Name one rate you used this week outside of school."]),
     ("res", ["LSGH Math 7 SimBook - Lesson 6 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson6)",
+             "SimBook Lesson 6 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 6 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 6: Rates",
              "Stopwatch app and measuring tape", "Grocery price lists and receipts", R360,
@@ -1184,6 +1190,7 @@ LESSON_G = [
     ("bul", ["Will 7/40 give a terminating or a repeating decimal? Why?",
              "Order from least to greatest: 0.4, 3/8, 45%."]),
     ("res", ["LSGH Math 7 SimBook - Lesson 7 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson7)",
+             "SimBook Lesson 7 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 7 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 7: Rational Numbers",
              "Number cards and a rope number line", "Desmos or GeoGebra number line", R360]),
@@ -1299,6 +1306,7 @@ LESSON_H = [
              "easier?",
              "How many ⅓-cup servings are in 2½ cups of juice? (7½)"]),
     ("res", ["LSGH Math 7 SimBook - Lesson 8 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson8)",
+             "SimBook Lesson 8 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 8 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 8: Operations on Rational Numbers",
              "Fraction tiles and recipe cards", R360,
@@ -1380,6 +1388,7 @@ LESSON_I = [
     ("bul", ["Between which two consecutive whole numbers is √30? (5 and 6)",
              "Is √36 rational or irrational? Explain."]),
     ("res", ["LSGH Math 7 SimBook - Lesson 9 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson9)",
+             "SimBook Lesson 9 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 9 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 9: Square Roots, Cube Roots, and "
              "Irrational Numbers", "Square tiles, unit cubes, and dot paper",

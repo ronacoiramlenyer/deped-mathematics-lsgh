@@ -106,7 +106,8 @@
     const sections = [
       { id: "hook", label: "1 · Hook", title: `Hook · ${l.simName}`, body: h("div", { class: "spread" }, stage, side),
         intro: "Start here. Play with the simulation and look for a pattern before the lesson." },
-      { id: "learn", label: "2 · Lesson", title: "Lesson", body: Sim.renderLearn(content.learn) },
+      { id: "learn", label: "2 · Lesson", title: "Lesson", body: Sim.renderDeck(l, content.learn),
+        intro: "Click the slide or press → to reveal each step. The notes on the side have the details. Press Present for full screen." },
       { id: "check", label: "3 · Check Yourself", title: "Check Yourself", body: h("div", { class: "panel check-panel" }, checkPanel(l)),
         intro: "Five quick questions, new every time. Get 4 out of 5 to master the lesson." },
       { id: "exercises", label: "4 · Exercises", title: `Exercises ${l.num}`, body: Sim.renderExercises(l, content.exercises) },
