@@ -47,16 +47,20 @@ python3 tools/cm_builder.py content/grade7_term2_cm.py \
   output/grade7/Grade7-CM-2nd_Trim-SY2026-2027-Mathematics.docx
 python3 tools/lg_builder.py content/grade7_term2_lg.py \
   output/grade7/Grade7-LG-2nd_Trim-SY2026-2027-Mathematics.docx
+python3 tools/cm_builder.py content/grade7_term3_cm.py \
+  output/grade7/Grade7-CM-3rd_Trim-SY2026-2027-Mathematics.docx
+python3 tools/lg_builder.py content/grade7_term3_lg.py \
+  output/grade7/Grade7-LG-3rd_Trim-SY2026-2027-Mathematics.docx
 ```
 
 ## Math 7 SimBook
 
 `simbook/` is a dependency-free web book (HTML, CSS, vanilla JS, SVG). Every lesson page
-(Terms 1–2 so far) has four parts:
+(Terms 1–3, 27 lessons) has four parts:
 
 1. **Hook** – the lesson's own simulation, with a mission and a discovery reveal.
 2. **Lesson** – the traditional exposition as a 16:9 slide deck with speaker notes on the
-   side (`simbook/deck.js`). Slides are generated from `simbook/content/lN.js` / `t2-lN.js` (`learn`):
+   side (`simbook/deck.js`). Slides are generated from `simbook/content/lN.js` / `t2-lN.js` / `t3-lN.js` (`learn`):
    headings start slides; definitions, rules, tables, and lists go on the slide; each
    worked example gets its own slide whose steps reveal one click at a time; explanations,
    full solutions, and teaching prompts go to the notes. Arrow keys or clicks advance;
@@ -88,6 +92,16 @@ python3 tools/lg_builder.py content/grade7_term2_lg.py \
 | 16 · G. Organizing and Graphing Data | Graph Studio | Frequency Table, Bar ↔ Pie, Line Graph, Stem-and-Leaf |
 | 17 · H. The Set of Integers | Integer Elevator | – |
 | 18 · I. Comparing and Ordering Integers | Integer Number Line | Compare, Order |
+| **Term 3** | | |
+| 19 · A. Adding and Subtracting Integers | Integer Chips | Chip Board, Number Line Hops, Bar Model |
+| 20 · B. Multiplying and Dividing Integers; Order of Operations | Sign Machine | Groups of Chips, Sign Patterns, GEMDAS Stepper |
+| 21 · C. Absolute Value | Distance Finder | Distance from Zero, Real Distances |
+| 22 · D. Variables, Constants, and Algebraic Expressions | Expression Machine | Variable or Constant?, Evaluate, Translate |
+| 23 · E. Bar Models and the Properties of Equality | Balance Lab | Bar Model, Balance Scale, Name the Property |
+| 24 · F. Formulas: Solving for a Variable | Formula Rearranger | Rearrange, Use It |
+| 25 · G. Writing and Solving Equations | Equation Builder | Story to Equation, Solve It, Problem Solving |
+| 26 · H. Experiments and Outcomes | Chance Lab | Coin Toss, Die Roll, Spinner Booth |
+| 27 · I. Scientific Notation | Powers-of-Ten Zoom | Zoom, Convert, Operate |
 
 **Motion.** Manipulatives never jump. `Sim.Spring` eases every animated value with a
 slightly under-damped spring (a small elastic overshoot); `Sim.elasticSlider` follows the
@@ -100,7 +114,7 @@ settings turn the animation off.
 Add a lesson by writing `simbook/sims/<file>.js` that calls `Sim.register({...})`
 (id, unit, title, competencies, mission, discovery, `mount(stage)`, `check()`) and adding
 its `<script>` tag to `simbook/index.html`. The published copy lives at
-https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr (lesson pages: `#lesson1` … `#lesson18`; Term 2 starts at `#lesson10`).
+https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr (lesson pages: `#lesson1` … `#lesson27`; Term 2 starts at `#lesson10`, Term 3 at `#lesson19`).
 The LG's SIM HOOK cards and the CM's activities point to these sims.
 
 ## Learning Guide conventions
