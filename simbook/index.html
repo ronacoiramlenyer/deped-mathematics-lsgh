@@ -141,6 +141,14 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; flex-wrap: wrap; }
 .seg button { border: 0; background: var(--bg); padding: 6px 11px; cursor: pointer; font-family: var(--mono); font-size: .88rem; }
 .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.eslider { display: grid; grid-template-columns: auto minmax(120px, 1fr) 4.8em; gap: 10px; align-items: center; min-width: min(100%, 300px); flex: 1 1 300px; }
+.eslider-label { font-size: .92rem; }
+.eslider-value { text-align: right; font-size: .9rem; }
+.eslider-track { position: relative; height: 34px; cursor: pointer; touch-action: none; }
+.eslider-track::before { content: ""; position: absolute; left: 0; right: 0; top: 15px; height: 4px; border-radius: 2px; background: var(--line); }
+.eslider-fill { position: absolute; left: 0; top: 15px; height: 4px; border-radius: 2px; background: var(--accent); }
+.eslider-thumb { position: absolute; top: 5px; width: 24px; height: 24px; margin-left: -12px; border-radius: 50%; background: var(--paper); border: 3px solid var(--accent); box-shadow: 0 1px 3px rgba(0, 0, 0, .2); cursor: grab; }
+.eslider-track:active .eslider-thumb { cursor: grabbing; transform: scale(1.12); }
 .readout { display: flex; gap: 8px; flex-wrap: wrap; }
 .stat { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font-size: .88rem; }
 .stat b { font-family: var(--mono); font-weight: 500; }

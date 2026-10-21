@@ -1,7 +1,7 @@
 /* Lesson 6 · F. Rates – Rate Racer */
 (function () {
   "use strict";
-  const { h, s, clear, randInt, pick, fmt, peso, tabs, stat, pill, animate } = Sim;
+  const { h, s, clear, randInt, pick, fmt, peso, tabs, stat, pill, animate, Spring, elasticSlider } = Sim;
 
   // ------------------------------------------------------------ race
 
@@ -12,9 +12,12 @@
 
   function race(root) {
     let stop = () => {};
-    const inputs = RACERS.map((r, i) => ({
-      d: h("input", { type: "number", id: `l6-d${i}`, min: 1, max: 100, step: 0.5, value: r.d }),
-      t: h("input", { type: "number", id: `l6-t${i}`, min: 1, max: 300, step: 1, value: r.t }),
+    const vals = RACERS.map((r) => ({ d: r.d, t: r.t }));
+    let ready = false;
+    const onSlide = (i, key) => (v) => { vals[i][key] = v; if (ready) { stop(); setup(); } };
+    const sliders = RACERS.map((r, i) => ({
+      d: elasticSlider({ id: `l6-d${i}`, label: "Distance", min: 1, max: 40, value: r.d, step: 0.5, format: (v) => `${fmt(v, 1)} km`, onInput: onSlide(i, "d") }),
+      t: elasticSlider({ id: `l6-t${i}`, label: "Time", min: 5, max: 120, value: r.t, step: 1, format: (v) => `${fmt(v, 0)} min`, onInput: onSlide(i, "t") }),
     }));
     const svg = s("svg", { viewBox: "0 0 600 250", role: "img", "aria-label": "Race track" });
     const clock = stat("Time:", "0 min");
@@ -23,7 +26,6 @@
 
     function setup() {
       clear(svg); clear(out); clear(lines);
-      const vals = inputs.map((x) => ({ d: Math.max(0.5, Number(x.d.value) || 1), t: Math.max(1, Number(x.t.value) || 1) }));
       const maxD = Math.max(...vals.map((v) => v.d));
       const X = (km) => 40 + (km / maxD) * 520;
       const dots = vals.map((v, i) => {
@@ -57,11 +59,10 @@
     }
 
     root.append(
-      ...RACERS.map((r, i) => h("div", { class: "controls" }, h("b", {}, r.name),
-        h("label", { for: `l6-d${i}` }, "Distance (km)", inputs[i].d), h("label", { for: `l6-t${i}` }, "Time (min)", inputs[i].t))),
+      ...RACERS.map((r, i) => h("div", { class: "controls" }, h("b", {}, r.name), sliders[i].d.el, sliders[i].t.el)),
       h("div", { class: "controls" }, h("button", { class: "btn", type: "button", onclick: run }, "Race!"), clock.el),
       svg, out, lines, h("p", { class: "note" }, "speed = distance ÷ time. To get km/h, divide the km by the time in hours (minutes ÷ 60)."));
-    inputs.forEach((x) => { x.d.addEventListener("input", setup); x.t.addEventListener("input", setup); });
+    ready = true;
     setup();
     return () => stop();
   }
@@ -90,7 +91,7 @@
   ];
 
   function bestBuy(root) {
-    let set = 0, guessed = null;
+    let set = 0, guessed = null, grow = null;
     const pickSet = h("select", { id: "l6-set" }, SETS.map((st, i) => h("option", { value: i }, st.item)));
     const area = h("div", { class: "stage" });
     function draw() {
@@ -104,12 +105,18 @@
       if (guessed === null) return;
       const max = Math.max(...rates), W = 520;
       const svg = s("svg", { viewBox: "0 0 600 " + (st.packs.length * 50 + 20), role: "img", "aria-label": "Unit price bars" });
-      st.packs.forEach((p, i) => {
-        const y = 10 + i * 50, w = (rates[i] / max) * (W - 160);
+      const rows = st.packs.map((p, i) => {
+        const y = 10 + i * 50;
         svg.append(s("text", { x: 0, y: y + 22, class: "svg-label" }, p.label));
-        svg.append(s("rect", { x: 110, y, width: w, height: 32, fill: i === best ? "var(--accent-soft)" : "var(--grid)", stroke: i === best ? "var(--accent)" : "none" }));
-        svg.append(s("text", { x: 118 + w, y: y + 22, class: "svg-text" }, `${peso(rates[i])} per ${st.unit}`));
+        const rect = s("rect", { x: 110, y, width: 0, height: 32, fill: i === best ? "var(--accent-soft)" : "var(--grid)", stroke: i === best ? "var(--accent)" : "none" });
+        const label = s("text", { x: 118, y: y + 22, class: "svg-text" }, `${peso(rates[i])} per ${st.unit}`);
+        svg.append(rect, label);
+        return { rect, label, w: (rates[i] / max) * (W - 160) };
       });
+      // Bars grow out from zero and settle with a small bounce.
+      if (grow) grow.stop();
+      grow = new Spring(0, (k) => rows.forEach((r) => { const w = Math.max(0, r.w * k); r.rect.setAttribute("width", w); r.label.setAttribute("x", 118 + w); }), { stiffness: 150, damping: 12 });
+      grow.set(1);
       area.append(svg, pill(guessed === best, "Your prediction was right!", `The lowest unit price is the ${st.packs[best].label.toLowerCase()}.`),
         h("pre", { class: "workings" }, st.packs.map((p, i) => `${p.label.padEnd(12)} ${peso(p.price)} ÷ ${fmt(p.size)} ${st.unit} = ${peso(rates[i])} per ${st.unit}`).join("\n")),
         h("p", { class: "note" }, "The lowest unit price is not always the best choice. Think about your budget today, storage, and whether you will use it all."));
@@ -117,6 +124,7 @@
     pickSet.addEventListener("change", () => { set = Number(pickSet.value); guessed = null; draw(); });
     root.append(h("div", { class: "controls" }, h("label", { for: "l6-set" }, "Product", pickSet)), area);
     draw();
+    return () => { if (grow) grow.stop(); };
   }
 
   // ------------------------------------------------------------ lesson
@@ -127,7 +135,7 @@
     bigQuestion: "Which is cheaper – shampoo in sachets or in a bottle?",
     mission: [
       "Race: the jeepney travels 12 km in 45 min and the train 12 km in 30 min. Predict the faster one, then race.",
-      "Change the train’s distance and time so that the two have the SAME speed. What do you notice about their double number lines?",
+      "Slide the train’s distance and time until the two have the SAME speed. What do you notice about their double number lines?",
       "Best Buy: predict the cheapest pack for each product before revealing the unit prices.",
       "Find a product where the cheapest pack per unit might NOT be the best choice for a student. Explain why.",
     ],

@@ -63,6 +63,14 @@ instant feedback (4/5 marks the lesson as mastered on that device).
 | 8 · H. Operations on Rational Numbers | Fraction Kitchen | Fraction Bars, Kakanin Kitchen, Decimal Grid |
 | 9 · I. Square Roots, Cube Roots, and Irrational Numbers | Roots Lab | Square Builder, Cube Builder, Root Estimator, Square of Area 2 |
 
+**Motion.** Manipulatives never jump. `Sim.Spring` eases every animated value with a
+slightly under-damped spring (a small elastic overshoot); `Sim.elasticSlider` follows the
+pointer continuously and, on release, springs to the nearest allowed value (`step` or
+`snaps`), rubber-banding past either end; `Sim.morphRegular` grows a new vertex out of a
+side, so side counts morph instead of switching; `Sim.handleSet` keeps drag handles alive
+across redraws and springs dragged points back inside their bounds. Reduced-motion
+settings turn the animation off.
+
 Add a lesson by writing `simbook/sims/<file>.js` that calls `Sim.register({...})`
 (id, unit, title, competencies, mission, discovery, `mount(stage)`, `check()`) and adding
 its `<script>` tag to `simbook/index.html`. The published copy lives at

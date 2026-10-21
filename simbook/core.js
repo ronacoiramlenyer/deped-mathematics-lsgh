@@ -251,6 +251,161 @@
     return () => cancelAnimationFrame(raf);
   }
 
+  // ------------------------------------------------------------ motion
+
+  const reducedMotion = () => !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+  /**
+   * A damped spring that eases a number (or an array of numbers) toward a target.
+   * Slightly under-damped, so values settle with a small elastic overshoot.
+   * onUpdate(value) runs on every frame; set() retargets smoothly mid-flight.
+   */
+  class Spring {
+    constructor(value, onUpdate, { stiffness = 210, damping = 19 } = {}) {
+      this.isArray = Array.isArray(value);
+      this.value = this.isArray ? value.slice() : value;
+      this.target = this.isArray ? value.slice() : value;
+      this.vel = this.isArray ? value.map(() => 0) : 0;
+      this.k = stiffness; this.c = damping; this.onUpdate = onUpdate; this.raf = 0;
+    }
+    set(target) {
+      this.target = this.isArray ? target.slice() : target;
+      if (this.isArray && this.value.length !== target.length) { this.jump(target); return; }
+      if (reducedMotion()) { this.jump(target); return; }
+      if (!this.raf) { this.last = performance.now(); this.raf = requestAnimationFrame((t) => this.tick(t)); }
+    }
+    jump(v) {
+      this.stop();
+      this.value = this.isArray ? v.slice() : v; this.target = this.isArray ? v.slice() : v;
+      this.vel = this.isArray ? v.map(() => 0) : 0;
+      this.onUpdate(this.value);
+    }
+    stop() { if (this.raf) cancelAnimationFrame(this.raf); this.raf = 0; }
+    tick(now) {
+      const dt = Math.min(1 / 30, (now - this.last) / 1000); this.last = now;
+      let moving = false;
+      const step = (x, v, t) => {
+        const a = -this.k * (x - t) - this.c * v;
+        v += a * dt; x += v * dt;
+        if (Math.abs(x - t) > 1e-3 || Math.abs(v) > 1e-3) moving = true;
+        return [x, v];
+      };
+      if (this.isArray) {
+        for (let i = 0; i < this.value.length; i++) [this.value[i], this.vel[i]] = step(this.value[i], this.vel[i], this.target[i]);
+      } else [this.value, this.vel] = step(this.value, this.vel, this.target);
+      if (!moving) { this.value = this.isArray ? this.target.slice() : this.target; this.raf = 0; this.onUpdate(this.value); return; }
+      this.onUpdate(this.value);
+      this.raf = requestAnimationFrame((t) => this.tick(t));
+    }
+  }
+
+  const flat = (pts) => pts.flatMap((p) => [p.x, p.y]);
+  const unflat = (arr) => { const out = []; for (let i = 0; i < arr.length; i += 2) out.push({ x: arr[i], y: arr[i + 1] }); return out; };
+
+  /**
+   * Regular polygon for a fractional number of sides: between n and n + 1, a new
+   * vertex grows out of the last side, so changing the side count is a smooth morph.
+   */
+  function morphRegular(v, cx, cy, r, rot = -90) {
+    const n = Math.floor(v + 1e-9), f = v - n;
+    if (f < 1e-6) return regularPolygon(n, cx, cy, r, rot);
+    const A = regularPolygon(n, cx, cy, r, rot); A.push({ ...A[0] });
+    const B = regularPolygon(n + 1, cx, cy, r, rot);
+    return A.map((p, i) => ({ x: p.x + (B[i].x - p.x) * f, y: p.y + (B[i].y - p.y) * f }));
+  }
+
+  /** Rubber-band a value that is dragged past [lo, hi]: it follows with resistance. */
+  function rubber(x, lo, hi, give = 0.35) {
+    if (x < lo) return lo - (lo - x) * give;
+    if (x > hi) return hi + (x - hi) * give;
+    return x;
+  }
+
+  /**
+   * Elastic slider. While dragging, the value follows the pointer continuously
+   * (onInput gets every in-between value). On release it springs to the nearest
+   * allowed value – `step`, or the nearest entry of `snaps` – with a little overshoot.
+   * Past either end it stretches like a rubber band and springs back.
+   */
+  function elasticSlider({ id, label, min, max, value, step = 0, snaps = null, format = (v) => fmt(v, 2), onInput, onChange }) {
+    const wrap = h("div", { class: "eslider" });
+    const name = h("span", { class: "eslider-label" }, label);
+    const out = h("b", { class: "num eslider-value" });
+    const track = h("div", { class: "eslider-track" });
+    const fill = h("div", { class: "eslider-fill" });
+    const thumb = h("div", { class: "eslider-thumb", role: "slider", tabindex: 0, id, "aria-label": label, "aria-valuemin": min, "aria-valuemax": max });
+    track.append(fill, thumb);
+    wrap.append(name, track, out);
+    const snapTo = (x) => {
+      x = clamp(x, min, max);
+      if (snaps) return snaps.reduce((b, s) => (Math.abs(s - x) < Math.abs(b - x) ? s : b), snaps[0]);
+      if (!step) return x;
+      return clamp(Math.round((x - min) / step) * step + min, min, max);
+    };
+    let current = snapTo(value);
+    const paint = (x) => {
+      const k = (x - min) / (max - min);
+      thumb.style.left = `${k * 100}%`;
+      fill.style.width = `${clamp(k, 0, 1) * 100}%`;
+      const shown = clamp(x, min, max);
+      out.textContent = format(shown);
+      thumb.setAttribute("aria-valuenow", String(round(shown, 4)));
+      if (onInput) onInput(shown);
+    };
+    const spring = new Spring(current, paint, { stiffness: 260, damping: 16 });
+    const fromPointer = (ev) => {
+      const r = track.getBoundingClientRect();
+      return min + ((ev.clientX - r.left) / r.width) * (max - min);
+    };
+    const settle = (target) => { current = snapTo(target); spring.set(current); if (onChange) onChange(current); };
+    track.addEventListener("pointerdown", (ev) => {
+      ev.preventDefault(); thumb.focus();
+      track.setPointerCapture(ev.pointerId);
+      spring.stop();
+      const move = (e) => { const x = rubber(fromPointer(e), min, max); spring.value = x; spring.vel = 0; paint(x); };
+      move(ev);
+      const up = (e) => {
+        track.removeEventListener("pointermove", move); track.removeEventListener("pointerup", up); track.removeEventListener("pointercancel", up);
+        settle(fromPointer(e));
+      };
+      track.addEventListener("pointermove", move); track.addEventListener("pointerup", up); track.addEventListener("pointercancel", up);
+    });
+    thumb.addEventListener("keydown", (e) => {
+      const delta = step || (snaps ? 0 : (max - min) / 100);
+      let next = null;
+      if (e.key === "ArrowRight" || e.key === "ArrowUp") next = snaps ? snaps[Math.min(snaps.length - 1, snaps.indexOf(current) + 1)] : current + delta;
+      if (e.key === "ArrowLeft" || e.key === "ArrowDown") next = snaps ? snaps[Math.max(0, snaps.indexOf(current) - 1)] : current - delta;
+      if (e.key === "Home") next = min;
+      if (e.key === "End") next = max;
+      if (next !== null) { e.preventDefault(); settle(next); }
+    });
+    paint(current);
+    return { el: wrap, get value() { return current; }, set(v) { settle(v); }, jump(v) { current = snapTo(v); spring.jump(current); } };
+  }
+
+  /**
+   * Persistent drag handles. The circles survive redraws (so a drag never loses its
+   * pointer), and dragging past `bounds` rubber-bands, then springs back on release.
+   * onMove(i, point) gets the live point; sync(points) repositions every handle.
+   */
+  function handleSet(svg, layer, { onMove, onEnd, bounds, label = "Point", r = 12 }) {
+    let nodes = [];
+    function make(i) {
+      const c = s("circle", { r, class: "handle", tabindex: 0, "aria-label": `${label} ${i + 1}` });
+      draggable(svg, c,
+        (p) => onMove(i, bounds ? { x: rubber(p.x, bounds.x0, bounds.x1), y: rubber(p.y, bounds.y0, bounds.y1) } : p),
+        (p) => { if (onEnd) onEnd(i, bounds ? { x: clamp(p.x, bounds.x0, bounds.x1), y: clamp(p.y, bounds.y0, bounds.y1) } : p); });
+      return c;
+    }
+    return {
+      sync(points) {
+        while (nodes.length < points.length) { const c = make(nodes.length); nodes.push(c); layer.append(c); }
+        while (nodes.length > points.length) nodes.pop().remove();
+        points.forEach((p, i) => { nodes[i].setAttribute("cx", p.x); nodes[i].setAttribute("cy", p.y); });
+      },
+    };
+  }
+
   // ------------------------------------------------------------ registry
 
   const lessons = [];
@@ -260,5 +415,6 @@
     h, s, clear, gcd, lcm, randInt, pick, shuffle, round, clamp, fmt, peso, Frac, parseNumber,
     longDivision, primeFactors, toRad, toDeg, dist, interiorAngles, isSimple, regularPolygon,
     arcPath, draggable, svgPoint, tabs, segmented, stat, pill, animate, register, lessons,
+    Spring, flat, unflat, morphRegular, rubber, elasticSlider, reducedMotion, handleSet,
   };
 })();

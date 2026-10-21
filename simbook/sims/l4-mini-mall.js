@@ -1,7 +1,7 @@
 /* Lesson 4 · D. Percentages in Real Life – LSGH Mini Mall */
 (function () {
   "use strict";
-  const { h, s, clear, randInt, pick, round, fmt, peso, tabs, stat, pill } = Sim;
+  const { h, s, clear, randInt, pick, round, fmt, peso, tabs, stat, pill, Spring, elasticSlider } = Sim;
 
   const SHELF = [
     { name: "Rubber shoes", price: 2400 },
@@ -10,8 +10,6 @@
     { name: "Headphones", price: 1850 },
     { name: "Notebook pack", price: 350 },
   ];
-
-  function num(id, value, attrs = {}) { return h("input", { type: "number", id, value, ...attrs }); }
 
   /** Horizontal bar: 100% = original; shows discount removed and tax added. */
   function percentBar(parts) {
@@ -28,113 +26,127 @@
     return svg;
   }
 
+  /** A box whose picture eases toward new values instead of jumping. */
+  function smoothBox(initial, render) {
+    const box = h("div");
+    const sp = new Spring(initial, (v) => { clear(box); box.append(render(v)); }, { stiffness: 170, damping: 17 });
+    sp.jump(initial);
+    return { el: box, set: (v) => sp.set(v), stop: () => sp.stop() };
+  }
+
   // ------------------------------------------------------------ promo lab
 
   function promo(root) {
+    const st = { item: 0, q: 2, d1: 30, d2: 20, b1t1: false, vat: true };
     const item = h("select", { id: "l4-item" }, SHELF.map((it, i) => h("option", { value: i }, `${it.name} – ${peso(it.price)}`)));
-    const qty = num("l4-qty", 2, { min: 1, max: 6 });
-    const off = h("input", { type: "range", id: "l4-off", min: 0, max: 70, step: 5, value: 30 });
-    const extra = h("input", { type: "range", id: "l4-extra", min: 0, max: 50, step: 5, value: 20 });
     const b1t1 = h("input", { type: "checkbox", id: "l4-b1t1" });
     const vat = h("input", { type: "checkbox", id: "l4-vat", checked: true });
-    const offL = h("b", { class: "num" }), extraL = h("b", { class: "num" });
     const receipt = h("pre", { class: "workings", "aria-live": "polite" });
-    const barBox = h("div");
     const summary = h("div", { class: "readout" });
+    const bar = smoothBox([70 * 0.8, 70 * 0.8 * 1.12], ([sale, total]) => percentBar([
+      { start: 0, end: sale, fill: "var(--shape-a-soft)", label: `pay ${fmt(sale, 1)}%` },
+      { start: sale, end: 100, fill: "var(--grid)", label: 100 - sale > 8 ? `saved ${fmt(100 - sale, 1)}%` : "" },
+      st.vat ? { start: sale, end: total, fill: "var(--gold-soft)", stroke: "var(--gold)", dash: "4 3" } : null,
+    ].filter(Boolean)));
 
     function update() {
-      const it = SHELF[Number(item.value)], q = Math.max(1, Math.round(Number(qty.value) || 1));
-      const d1 = Number(off.value) / 100, d2 = Number(extra.value) / 100;
-      offL.textContent = `${off.value}%`; extraL.textContent = `${extra.value}%`;
-      const paidUnits = b1t1.checked ? Math.ceil(q / 2) : q;
+      const it = SHELF[st.item], q = Math.max(1, Math.round(st.q));
+      const d1 = st.d1 / 100, d2 = st.d2 / 100;
+      const paidUnits = st.b1t1 ? Math.ceil(q / 2) : q;
       const original = it.price * q;
-      let lines = [`${q} × ${it.name} @ ${peso(it.price)}      ${peso(original)}`];
+      const lines = [`${q} × ${it.name} @ ${peso(it.price)}      ${peso(original)}`];
       let price = it.price * paidUnits;
-      if (b1t1.checked) lines.push(`Buy 1, Take 1: pay for ${paidUnits}        −${peso(original - price)}`);
-      const a1 = round(price * d1); if (d1) { lines.push(`${off.value}% off ${peso(price)}             −${peso(a1)}`); price = round(price - a1); }
-      const a2 = round(price * d2); if (d2) { lines.push(`Extra ${extra.value}% off ${peso(price)}       −${peso(a2)}`); price = round(price - a2); }
+      if (st.b1t1) lines.push(`Buy 1, Take 1: pay for ${paidUnits}        −${peso(original - price)}`);
+      const a1 = round(price * d1); if (d1) { lines.push(`${fmt(st.d1, 0)}% off ${peso(price)}             −${peso(a1)}`); price = round(price - a1); }
+      const a2 = round(price * d2); if (d2) { lines.push(`Extra ${fmt(st.d2, 0)}% off ${peso(price)}       −${peso(a2)}`); price = round(price - a2); }
       lines.push(`Sale price                     ${peso(price)}`);
       let total = price;
-      if (vat.checked) { const t = round(price * 0.12); lines.push(`12% VAT on ${peso(price)}         +${peso(t)}`); total = round(price + t); }
+      if (st.vat) { const t = round(price * 0.12); lines.push(`12% VAT on ${peso(price)}         +${peso(t)}`); total = round(price + t); }
       lines.push("─".repeat(38), `TOTAL                          ${peso(total)}`);
       receipt.textContent = lines.join("\n");
       const salePct = (price / original) * 100, totalPct = (total / original) * 100;
-      clear(barBox);
-      barBox.append(percentBar([
-        { start: 0, end: salePct, fill: "var(--shape-a-soft)", label: `pay ${fmt(salePct, 1)}%` },
-        { start: salePct, end: 100, fill: "var(--grid)", label: 100 - salePct > 8 ? `saved ${fmt(100 - salePct, 1)}%` : "" },
-        vat.checked ? { start: salePct, end: totalPct, fill: "var(--gold-soft)", stroke: "var(--gold)", dash: "4 3" } : null,
-      ].filter(Boolean)));
+      bar.set([salePct, totalPct]);
       clear(summary);
       summary.append(stat("Original:", peso(original)).el, stat("You pay:", peso(total)).el,
         stat("Real discount:", `${fmt(100 - salePct, 1)}%`).el,
-        d1 && d2 ? pill(false, "", `${off.value}% + ${extra.value}% is NOT ${Number(off.value) + Number(extra.value)}% off`) : null);
+        d1 && d2 ? pill(false, "", `${fmt(st.d1, 0)}% + ${fmt(st.d2, 0)}% is NOT ${fmt(st.d1 + st.d2, 0)}% off`) : null);
     }
-    [item, qty, off, extra, b1t1, vat].forEach((el) => el.addEventListener("input", update));
+    item.addEventListener("input", () => { st.item = Number(item.value); update(); });
+    b1t1.addEventListener("input", () => { st.b1t1 = b1t1.checked; update(); });
+    vat.addEventListener("input", () => { st.vat = vat.checked; update(); });
+    const pct = (v) => `${fmt(v, 0)}%`;
     root.append(
-      h("div", { class: "controls" }, h("label", { for: "l4-item" }, "Item", item), h("label", { for: "l4-qty" }, "Quantity", qty)),
+      h("div", { class: "controls" }, h("label", { for: "l4-item" }, "Item", item),
+        elasticSlider({ id: "l4-qty", label: "Quantity", min: 1, max: 6, value: 2, step: 1, format: (v) => fmt(Math.round(v), 0), onInput: (v) => { st.q = v; update(); } }).el),
       h("div", { class: "controls" },
-        h("label", { for: "l4-off" }, "Discount", off, offL), h("label", { for: "l4-extra" }, "Extra discount", extra, extraL),
-        h("label", { for: "l4-b1t1" }, b1t1, "Buy 1, Take 1"), h("label", { for: "l4-vat" }, vat, "Add 12% VAT")),
-      barBox, summary, receipt);
+        elasticSlider({ id: "l4-off", label: "Discount", min: 0, max: 70, value: 30, step: 1, format: pct, onInput: (v) => { st.d1 = v; update(); } }).el,
+        elasticSlider({ id: "l4-extra", label: "Extra discount", min: 0, max: 50, value: 20, step: 1, format: pct, onInput: (v) => { st.d2 = v; update(); } }).el),
+      h("div", { class: "controls" }, h("label", { for: "l4-b1t1" }, b1t1, "Buy 1, Take 1"), h("label", { for: "l4-vat" }, vat, "Add 12% VAT")),
+      bar.el, summary, receipt);
     update();
+    return () => bar.stop();
   }
 
   // ------------------------------------------------------------ price change
 
   function change(root) {
-    const oldP = num("l4-old", 50, { min: 1 }), newP = num("l4-new", 55, { min: 1 });
-    const out = h("div", { class: "readout" }), work = h("pre", { class: "workings" }), barBox = h("div");
+    const st = { a: 50, b: 55 };
+    const out = h("div", { class: "readout" }), work = h("pre", { class: "workings" });
+    const bar = smoothBox([110], ([r]) => percentBar([{ start: 0, end: r, fill: r >= 100 ? "var(--shape-b-soft)" : "var(--shape-a-soft)", label: `new = ${fmt(r, 1)}% of original` }]));
     function update() {
-      const a = Number(oldP.value), b = Number(newP.value);
-      clear(out); clear(barBox);
-      if (!(a > 0) || !(b >= 0)) { work.textContent = "Enter prices greater than 0."; return; }
+      const a = st.a, b = st.b;
+      clear(out);
       const diff = b - a, pct = (diff / a) * 100;
       work.textContent = `change = new − original = ${fmt(b)} − ${fmt(a)} = ${fmt(diff)}\npercentage change = change ÷ ORIGINAL × 100%\n                  = ${fmt(diff)} ÷ ${fmt(a)} × 100% = ${fmt(pct, 2)}%`;
       out.append(pill(diff >= 0, `${fmt(Math.abs(pct), 2)}% increase`, `${fmt(Math.abs(pct), 2)}% decrease`),
         stat("Reverse change:", `${fmt((-diff / b) * 100, 2)}%`).el);
-      barBox.append(percentBar([{ start: 0, end: (b / a) * 100, fill: diff >= 0 ? "var(--shape-b-soft)" : "var(--shape-a-soft)", label: `new = ${fmt((b / a) * 100, 1)}% of original` }]));
+      bar.set([(b / a) * 100]);
     }
-    [oldP, newP].forEach((el) => el.addEventListener("input", update));
-    root.append(h("div", { class: "controls" }, h("label", { for: "l4-old" }, "Original ₱", oldP), h("label", { for: "l4-new" }, "New ₱", newP)),
-      barBox, out, work, h("p", { class: "note" }, "Try ₱600 → ₱800, then ₱800 → ₱600. Why are the percentages different?"));
+    const sA = elasticSlider({ id: "l4-old", label: "Original ₱", min: 10, max: 1500, value: 50, step: 5, format: (v) => peso(v), onInput: (v) => { st.a = v; update(); } });
+    const sB = elasticSlider({ id: "l4-new", label: "New ₱", min: 10, max: 1500, value: 55, step: 5, format: (v) => peso(v), onInput: (v) => { st.b = v; update(); } });
+    const preset = (a, b) => h("button", { class: "btn ghost", type: "button", onclick: () => { sA.set(a); sB.set(b); } }, `${peso(a)} → ${peso(b)}`);
+    root.append(h("div", { class: "controls" }, sA.el, sB.el), h("div", { class: "controls" }, preset(50, 55), preset(600, 800), preset(800, 600), preset(1200, 900)),
+      bar.el, out, work, h("p", { class: "note" }, "Try ₱600 → ₱800, then ₱800 → ₱600. Why are the percentages different?"));
     update();
+    return () => bar.stop();
   }
 
   // ------------------------------------------------------------ money tools
 
   function money(root) {
-    const sales = num("l4-sales", 80000, { min: 0, step: 1000 }), rate = num("l4-rate", 5, { min: 0, step: 0.5 });
-    const P = num("l4-P", 10000, { min: 0, step: 500 }), r = num("l4-r", 3, { min: 0, step: 0.5 }), t = num("l4-t", 2, { min: 1, max: 10 });
+    const st = { sales: 80000, rate: 5, P: 10000, r: 3, t: 2 };
     const comm = h("pre", { class: "workings" }), si = h("pre", { class: "workings" });
-    const chart = h("div");
-    function update() {
-      const sv = Number(sales.value), rv = Number(rate.value);
-      comm.textContent = `commission = rate × sales\n           = ${fmt(rv)}% × ${peso(sv)} = ${peso(sv * rv / 100)}`;
-      const p = Number(P.value), rr = Number(r.value) / 100, tt = Math.max(1, Math.min(10, Math.round(Number(t.value))));
-      const I = p * rr * tt;
-      si.textContent = `I = P × r × t = ${peso(p)} × ${fmt(rr * 100)}% × ${tt} = ${peso(I)}\namount = P + I = ${peso(p + I)}`;
-      clear(chart);
-      const W = 560, H = 160, max = p + I || 1;
+    const W = 560, H = 160;
+    const chart = smoothBox([10000, 2, 3], ([p, tt, rr]) => {
       const svg = s("svg", { viewBox: `0 0 ${W + 40} ${H + 40}`, role: "img", "aria-label": "Savings growth by year" });
-      const bw = Math.min(60, (W - 20) / (tt + 1) - 10);
-      for (let y = 0; y <= tt; y++) {
-        const amt = p + p * rr * y, x = 30 + y * (bw + 10);
-        const hp = (p / max) * H, hi = ((amt - p) / max) * H;
-        svg.append(s("rect", { x, y: 10 + H - hp, width: bw, height: hp, fill: "var(--shape-a-soft)", stroke: "var(--shape-a)" }));
+      const max = p * (1 + (rr / 100) * 10) * 1.05; // room for a 10-year horizon
+      const years = Math.max(1, tt), bw = Math.min(60, (W - 20) / 11 - 10);
+      for (let y = 0; y <= Math.ceil(years - 1e-9); y++) {
+        const grow = Math.min(1, years - y + 1); // the newest bar rises as the slider moves
+        const amt = p + (p * rr / 100) * y, x = 30 + y * (bw + 10);
+        const hp = (p / max) * H * Math.min(1, grow), hi = ((amt - p) / max) * H * Math.min(1, grow);
+        svg.append(s("rect", { x, y: 10 + H - hp, width: bw, height: Math.max(0, hp), fill: "var(--shape-a-soft)", stroke: "var(--shape-a)" }));
         if (hi > 0) svg.append(s("rect", { x, y: 10 + H - hp - hi, width: bw, height: hi, fill: "var(--gold-soft)", stroke: "var(--gold)" }));
         svg.append(s("text", { x: x + bw / 2, y: H + 30, "text-anchor": "middle", class: "svg-text" }, `Yr ${y}`));
       }
-      chart.append(svg);
+      return svg;
+    });
+    function update() {
+      comm.textContent = `commission = rate × sales\n           = ${fmt(st.rate)}% × ${peso(st.sales)} = ${peso(st.sales * st.rate / 100)}`;
+      const tt = Math.round(st.t), I = st.P * (st.r / 100) * tt;
+      si.textContent = `I = P × r × t = ${peso(st.P)} × ${fmt(st.r)}% × ${tt} = ${peso(I)}\namount = P + I = ${peso(st.P + I)}`;
+      chart.set([st.P, st.t, st.r]);
     }
-    [sales, rate, P, r, t].forEach((el) => el.addEventListener("input", update));
+    const slide = (id, label, min, max, value, step, key, format) => elasticSlider({ id, label, min, max, value, step, format, onInput: (v) => { st[key] = v; update(); } }).el;
     root.append(
       h("h2", {}, "Commission"),
-      h("div", { class: "controls" }, h("label", { for: "l4-sales" }, "Sales ₱", sales), h("label", { for: "l4-rate" }, "Rate %", rate)), comm,
+      h("div", { class: "controls" }, slide("l4-sales", "Sales", 0, 200000, 80000, 1000, "sales", peso), slide("l4-rate", "Rate", 0, 15, 5, 0.5, "rate", (v) => `${fmt(v, 1)}%`)), comm,
       h("h2", {}, "Simple interest – Bangko Lasalyano"),
-      h("div", { class: "controls" }, h("label", { for: "l4-P" }, "Principal ₱", P), h("label", { for: "l4-r" }, "Rate % per year", r), h("label", { for: "l4-t" }, "Years", t)),
-      chart, si, h("p", { class: "note" }, "Blue = principal; gold = interest earned. Simple interest grows by the same amount every year."));
+      h("div", { class: "controls" }, slide("l4-P", "Principal", 1000, 50000, 10000, 500, "P", peso), slide("l4-r", "Rate per year", 0.5, 10, 3, 0.5, "r", (v) => `${fmt(v, 1)}%`),
+        slide("l4-t", "Years", 1, 10, 2, 1, "t", (v) => fmt(Math.round(v), 0))),
+      chart.el, si, h("p", { class: "note" }, "Blue = principal; gold = interest earned. Drag Years and watch each new year’s bar rise."));
     update();
+    return () => chart.stop();
   }
 
   // ------------------------------------------------------------ lesson
@@ -153,9 +165,11 @@
     mount(stage) {
       const body = h("div", { class: "stage-body" });
       const views = [promo, change, money];
-      const t = tabs(["Promo Lab", "Price Change", "Money Tools"], (i) => { clear(body); views[i](body); });
+      let stopper = null;
+      const t = tabs(["Promo Lab", "Price Change", "Money Tools"], (i) => { if (stopper) stopper(); clear(body); stopper = views[i](body) || null; });
       stage.append(t.el, body);
-      promo(body);
+      stopper = promo(body);
+      return () => { if (stopper) stopper(); };
     },
     check() {
       const kind = randInt(0, 6);

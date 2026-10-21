@@ -1,7 +1,7 @@
 /* Lesson 5 · E. Creating a Financial Plan – Baon Life Sim */
 (function () {
   "use strict";
-  const { h, s, clear, randInt, pick, shuffle, fmt, peso, tabs, stat, pill } = Sim;
+  const { h, s, clear, randInt, pick, shuffle, fmt, peso, tabs, stat, pill, Spring, elasticSlider } = Sim;
 
   const DECK = [
     { text: "Rain! You take a tricycle home.", amt: -20 },
@@ -37,16 +37,9 @@
   // ------------------------------------------------------------ plan
 
   function plan(root) {
-    const baon = h("input", { type: "number", id: "l5-baon", min: 100, max: 2000, step: 50, value: state.baon });
-    const needs = h("input", { type: "range", id: "l5-needs", min: 0, max: 100, step: 5, value: state.needs });
-    const wants = h("input", { type: "range", id: "l5-wants", min: 0, max: 100, step: 5, value: state.wants });
-    const nL = h("b", { class: "num" }), wL = h("b", { class: "num" });
     const bar = h("div"), out = h("div", { class: "readout" }), work = h("pre", { class: "workings" });
-    function update(src) {
-      state.baon = Math.max(100, Number(baon.value) || 500);
-      state.needs = Number(needs.value); state.wants = Number(wants.value);
-      if (state.needs + state.wants > 100) { if (src === needs) state.wants = 100 - state.needs; else state.needs = 100 - state.wants; needs.value = state.needs; wants.value = state.wants; }
-      nL.textContent = `${state.needs}%`; wL.textContent = `${state.wants}%`;
+    let needsS, wantsS;
+    function update() {
       const sv = savingsPct(), B = state.baon;
       clear(bar); clear(out);
       bar.append(stackBar([
@@ -54,13 +47,19 @@
         { label: "Wants", value: (B * state.wants) / 100, fill: "var(--shape-b-soft)" },
         { label: "Savings", value: (B * sv) / 100, fill: "var(--gold-soft)" }], B));
       out.append(stat("Needs:", peso((B * state.needs) / 100)).el, stat("Wants:", peso((B * state.wants) / 100)).el, stat("Savings:", peso((B * sv) / 100)).el,
-        pill(sv >= 20, "Meets the 20% savings guide", "Below the 20% savings guide"));
-      work.textContent = `needs   = ${state.needs}% × ${peso(B)} = ${peso((B * state.needs) / 100)}\nwants   = ${state.wants}% × ${peso(B)} = ${peso((B * state.wants) / 100)}\nsavings = ${sv}% × ${peso(B)} = ${peso((B * sv) / 100)}`;
+        pill(sv >= 19.5, "Meets the 20% savings guide", "Below the 20% savings guide"));
+      work.textContent = `needs   = ${fmt(state.needs, 0)}% × ${peso(B)} = ${peso((B * state.needs) / 100)}\nwants   = ${fmt(state.wants, 0)}% × ${peso(B)} = ${peso((B * state.wants) / 100)}\nsavings = ${fmt(sv, 0)}% × ${peso(B)} = ${peso((B * sv) / 100)}`;
     }
-    [baon, needs, wants].forEach((el) => el.addEventListener("input", () => update(el)));
-    root.append(h("div", { class: "controls" }, h("label", { for: "l5-baon" }, "Weekly baon ₱", baon),
-      h("button", { class: "btn ghost", type: "button", onclick: () => { needs.value = 50; wants.value = 30; update(needs); } }, "Use 50-30-20")),
-    h("div", { class: "controls" }, h("label", { for: "l5-needs" }, "Needs", needs, nL), h("label", { for: "l5-wants" }, "Wants", wants, wL)),
+    const pct = (v) => `${fmt(v, 0)}%`;
+    // Needs and wants share 100%: pushing one past the limit pushes the other back.
+    needsS = elasticSlider({ id: "l5-needs", label: "Needs", min: 0, max: 100, value: state.needs, step: 1, format: pct,
+      onInput: (v) => { state.needs = v; if (v + state.wants > 100 && wantsS) wantsS.jump(100 - v); update(); } });
+    wantsS = elasticSlider({ id: "l5-wants", label: "Wants", min: 0, max: 100, value: state.wants, step: 1, format: pct,
+      onInput: (v) => { state.wants = v; if (v + state.needs > 100 && needsS) needsS.jump(100 - v); update(); } });
+    const baonS = elasticSlider({ id: "l5-baon", label: "Weekly baon", min: 100, max: 2000, value: state.baon, step: 50, format: (v) => peso(v), onInput: (v) => { state.baon = v; update(); } });
+    root.append(h("div", { class: "controls" }, baonS.el,
+      h("button", { class: "btn ghost", type: "button", onclick: () => { needsS.set(50); wantsS.set(30); } }, "Use 50-30-20")),
+    h("div", { class: "controls" }, needsS.el, wantsS.el),
     bar, out, work, h("p", { class: "note" }, "Your plan carries over to “Live the Week.”"));
     update();
   }
@@ -75,22 +74,31 @@
     const chart = h("div");
     const out = h("div", { class: "readout" });
     const startBtn = h("button", { class: "btn", type: "button", onclick: nextDay }, "Start Day 1");
+    // Bars glide to each day's balance; a new day's bar rises out of the axis.
+    const bars = new Spring([B], (v) => drawChart(v), { stiffness: 150, damping: 15 });
 
-    function render() {
-      clear(tbody);
-      log.forEach((r) => tbody.append(h("tr", {}, h("td", {}, `Day ${r.day}`), h("td", { class: "num" }, peso(r.planned)), h("td", {}, r.card), h("td", { class: "num" }, (r.extra >= 0 ? "+" : "−") + peso(Math.abs(r.extra))), h("td", { class: "num" }, peso(r.wallet)))));
+    function drawChart(values) {
       clear(chart);
       const W = 560, H = 140, max = B;
       const svg = s("svg", { viewBox: `0 0 ${W + 40} ${H + 40}`, role: "img", "aria-label": "Wallet balance by day" });
       const ty = 10 + H - (target / max) * H;
       svg.append(s("line", { x1: 20, y1: ty, x2: W + 20, y2: ty, stroke: "var(--gold)", "stroke-width": 2, "stroke-dasharray": "6 4" }));
       svg.append(s("text", { x: W + 18, y: ty - 6, "text-anchor": "end", class: "svg-label" }, `savings target ${peso(target)}`));
-      [{ day: 0, wallet: B }, ...log].forEach((r, i) => {
-        const bh = Math.max(0, (r.wallet / max) * H), x = 30 + i * 90;
-        svg.append(s("rect", { x, y: 10 + H - bh, width: 60, height: bh, fill: r.wallet >= target ? "var(--shape-a-soft)" : "var(--shape-b-soft)", stroke: r.wallet >= target ? "var(--shape-a)" : "var(--shape-b)" }));
+      values.forEach((w, i) => {
+        const bh = Math.max(0, (w / max) * H), x = 30 + i * 90;
+        const ok = w >= target;
+        svg.append(s("rect", { x, y: 10 + H - bh, width: 60, height: bh, fill: ok ? "var(--shape-a-soft)" : "var(--shape-b-soft)", stroke: ok ? "var(--shape-a)" : "var(--shape-b)" }));
         svg.append(s("text", { x: x + 30, y: H + 30, "text-anchor": "middle", class: "svg-text" }, i === 0 ? "Start" : `Day ${i}`));
       });
       chart.append(svg);
+    }
+
+    function render() {
+      clear(tbody);
+      log.forEach((r) => tbody.append(h("tr", {}, h("td", {}, `Day ${r.day}`), h("td", { class: "num" }, peso(r.planned)), h("td", {}, r.card), h("td", { class: "num" }, (r.extra >= 0 ? "+" : "−") + peso(Math.abs(r.extra))), h("td", { class: "num" }, peso(r.wallet)))));
+      const targets = [B, ...log.map((r) => r.wallet)];
+      if (bars.value.length < targets.length) { bars.value = [...bars.value, 0]; bars.vel = [...bars.vel, 0]; }
+      bars.set(targets);
       clear(out);
       out.append(stat("Wallet:", peso(wallet)).el, stat("Daily plan:", peso(daily)).el, stat("Savings target:", peso(target)).el);
     }
@@ -106,7 +114,7 @@
         card.append(h("h2", {}, "Week over!"), h("p", {}, `You ended with ${peso(wallet)} – that is ${fmt((wallet / B) * 100, 1)}% of your baon.`),
           pill(ok, "You reached your savings target!", `You missed your target by ${peso(target - wallet)}.`),
           h("p", { class: "note" }, "Go back to Plan and adjust your budget, then play again. A small reserve helps when Life Cards surprise you."),
-          h("button", { class: "btn", type: "button", onclick: () => { clear(root); week(root); } }, "Play again"));
+          h("button", { class: "btn", type: "button", onclick: () => { bars.stop(); clear(root); week(root); } }, "Play again"));
       } else {
         startBtn.textContent = `Start Day ${day + 1}`; card.append(h("p", {}, `Day ${day} done.`), startBtn);
       }
@@ -130,26 +138,26 @@
     card.append(h("p", {}, `Your plan: ${peso(B)} baon, ${peso(daily)} to spend each day, ${peso(target)} to save. Each day you draw a Life Card.`), startBtn);
     root.append(card, chart, out, h("div", { class: "table-wrap" }, h("table", { class: "data" },
       h("thead", {}, h("tr", {}, h("th", {}, "Day"), h("th", {}, "Planned"), h("th", {}, "Life Card"), h("th", {}, "Extra"), h("th", {}, "Wallet"))), tbody)));
+    drawChart([B]);
     render();
+    return () => bars.stop();
   }
 
   // ------------------------------------------------------------ savings goal
 
   function goal(root) {
-    const g = h("input", { type: "number", id: "l5-goal", min: 50, step: 50, value: 1800 });
-    const w = h("input", { type: "number", id: "l5-weekly", min: 10, step: 10, value: 100 });
-    const wk = h("input", { type: "number", id: "l5-weeks", min: 1, max: 52, step: 1, value: 12 });
+    const st = { G: 1800, W: 100, K: 12 };
     const a = h("pre", { class: "workings" }), b = h("pre", { class: "workings" });
     function update() {
-      const G = Number(g.value), W = Number(w.value), K = Math.max(1, Math.round(Number(wk.value)));
-      a.textContent = W > 0 ? `weeks = goal ÷ weekly savings = ${peso(G)} ÷ ${peso(W)} = ${fmt(G / W, 2)}\n→ about ${Math.ceil(G / W)} weeks` : "Enter a weekly saving greater than 0.";
+      const { G, W } = st, K = Math.max(1, Math.round(st.K));
+      a.textContent = `weeks = goal ÷ weekly savings = ${peso(G)} ÷ ${peso(W)} = ${fmt(G / W, 2)}\n→ about ${Math.ceil(G / W - 1e-9)} weeks`;
       const need = G / K;
       b.textContent = `weekly savings = goal ÷ weeks = ${peso(G)} ÷ ${K} = ${peso(need)}\nthat is ${fmt((need / state.baon) * 100, 1)}% of a ${peso(state.baon)} weekly baon`;
     }
-    [g, w, wk].forEach((el) => el.addEventListener("input", update));
-    root.append(h("div", { class: "controls" }, h("label", { for: "l5-goal" }, "Goal ₱", g)),
-      h("h2", {}, "How long will it take?"), h("div", { class: "controls" }, h("label", { for: "l5-weekly" }, "I save per week ₱", w)), a,
-      h("h2", {}, "How much per week?"), h("div", { class: "controls" }, h("label", { for: "l5-weeks" }, "I want it in (weeks)", wk)), b);
+    const slide = (id, label, min, max, value, step, key, format) => elasticSlider({ id, label, min, max, value, step, format, onInput: (v) => { st[key] = v; update(); } }).el;
+    root.append(h("div", { class: "controls" }, slide("l5-goal", "Goal", 100, 5000, 1800, 50, "G", peso)),
+      h("h2", {}, "How long will it take?"), h("div", { class: "controls" }, slide("l5-weekly", "I save per week", 10, 500, 100, 10, "W", peso)), a,
+      h("h2", {}, "How much per week?"), h("div", { class: "controls" }, slide("l5-weeks", "I want it in", 1, 52, 12, 1, "K", (v) => `${Math.round(v)} wk`)), b);
     update();
   }
 
@@ -169,9 +177,11 @@
     mount(stage) {
       const body = h("div", { class: "stage-body" });
       const views = [plan, week, goal];
-      const t = tabs(["Plan", "Live the Week", "Savings Goal"], (i) => { clear(body); views[i](body); });
+      let stopper = null;
+      const t = tabs(["Plan", "Live the Week", "Savings Goal"], (i) => { if (stopper) stopper(); clear(body); stopper = views[i](body) || null; });
       stage.append(t.el, body);
       plan(body);
+      return () => { if (stopper) stopper(); };
     },
     check() {
       const kind = randInt(0, 4);

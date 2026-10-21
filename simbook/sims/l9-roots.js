@@ -1,7 +1,7 @@
 /* Lesson 9 · I. Square Roots, Cube Roots, and Irrational Numbers – Roots Lab */
 (function () {
   "use strict";
-  const { h, s, clear, randInt, pick, shuffle, fmt, parseNumber, tabs, stat, pill } = Sim;
+  const { h, s, clear, randInt, pick, shuffle, fmt, parseNumber, tabs, stat, pill, Spring } = Sim;
 
   const isSquare = (n) => Number.isInteger(Math.sqrt(n));
   const isCube = (n) => Number.isInteger(Math.round(Math.cbrt(n))) && Math.round(Math.cbrt(n)) ** 3 === n;
@@ -10,52 +10,76 @@
   // ------------------------------------------------------------ square builder
 
   function squares(root) {
-    const N = h("input", { type: "range", id: "l9-n", min: 1, max: 100, value: 20 });
-    const NL = h("b", { class: "num" });
-    const pic = h("div"), out = h("div", { class: "readout" });
+    let N = 20;
+    const pic = s("svg", { viewBox: "0 0 330 360", role: "img", "aria-label": "Square tiles" });
+    const out = h("div", { class: "readout" });
     const found = new Set();
     const foundBox = h("p", { class: "workings" });
-    function update() {
-      const n = Number(N.value); NL.textContent = String(n);
+    const MAX = 100;
+    // Every tile has a home; when the count changes, tiles fly to their new places.
+    const rects = Array.from({ length: MAX }, () => { const r = s("rect", { rx: 3, width: 0, height: 0 }); pic.append(r); return r; });
+    function layout(n) {
       const k = Math.floor(Math.sqrt(n)), left = n - k * k;
-      const cell = Math.min(26, 300 / (k + 2));
-      const cols = Math.max(k, Math.min(left, 12));
-      const rowsLeft = Math.ceil(left / Math.max(1, cols));
-      const svg = s("svg", { viewBox: `0 0 ${Math.max(cols, k) * cell + 20} ${(k + rowsLeft) * cell + 30}`, role: "img", "aria-label": `${n} square tiles` });
-      for (let i = 0; i < k; i++) for (let j = 0; j < k; j++) svg.append(s("rect", { x: 10 + i * cell, y: 10 + j * cell, width: cell - 2, height: cell - 2, rx: 3, fill: "var(--shape-a-soft)", stroke: "var(--shape-a)" }));
-      for (let t = 0; t < left; t++) svg.append(s("rect", { x: 10 + (t % cols) * cell, y: 20 + (k + Math.floor(t / cols)) * cell, width: cell - 2, height: cell - 2, rx: 3, fill: "var(--shape-b-soft)", stroke: "var(--shape-b)" }));
-      clear(pic); pic.append(svg);
+      const cell = Math.min(30, 300 / (k + 2));
+      const cols = Math.max(k, 1);
+      return Array.from({ length: MAX }, (_, t) => {
+        if (t < k * k) return [10 + (t % k) * cell, 10 + Math.floor(t / k) * cell, cell - 2, 0];
+        if (t < n) { const u = t - k * k; return [10 + (u % cols) * cell, 22 + (k + Math.floor(u / cols)) * cell, cell - 2, 1]; }
+        return [320, 340, 0, 1];
+      }).flat();
+    }
+    const fly = new Spring(layout(N), (v) => {
+      for (let t = 0; t < MAX; t++) {
+        const [x, y, w, kind] = v.slice(t * 4, t * 4 + 4);
+        const r = rects[t];
+        r.setAttribute("x", x); r.setAttribute("y", y); r.setAttribute("width", Math.max(0, w)); r.setAttribute("height", Math.max(0, w));
+        const leftover = kind > 0.5;
+        r.setAttribute("fill", leftover ? "var(--shape-b-soft)" : "var(--shape-a-soft)");
+        r.setAttribute("stroke", leftover ? "var(--shape-b)" : "var(--shape-a)");
+      }
+    }, { stiffness: 160, damping: 15 });
+    fly.jump(layout(N));
+    function report(n) {
+      const k = Math.floor(Math.sqrt(n)), left = n - k * k;
       clear(out);
       if (left === 0) { found.add(n); out.append(pill(true, `${n} is a perfect square: ${k} × ${k} = ${n}, so √${n} = ${k}`, "")); }
       else out.append(stat("Biggest square:", `${k} × ${k} = ${k * k}`).el, stat("Leftover tiles:", String(left)).el, pill(false, "", `${n} is not a perfect square; √${n} is between ${k} and ${k + 1}`));
       foundBox.textContent = "Perfect squares you found: " + ([...found].sort((a, b) => a - b).join(", ") || "none yet");
     }
-    N.addEventListener("input", update);
-    root.append(h("div", { class: "controls" }, h("label", { for: "l9-n" }, "Number of tiles", N, NL)), pic, out, foundBox,
-      h("p", { class: "note" }, "Slide through 1 to 100. Which numbers of tiles make a complete square?"));
-    update();
+    const slider = Sim.elasticSlider({ id: "l9-n", label: "Tiles", min: 1, max: MAX, value: N, step: 1, format: (v) => String(Math.round(v)),
+      onInput: (v) => { const n = Math.round(v); if (n !== N) { N = n; fly.set(layout(N)); report(N); } } });
+    root.append(h("div", { class: "controls" }, slider.el), pic, out, foundBox,
+      h("p", { class: "note" }, "Slide through 1 to 100 and watch the tiles rearrange. Which numbers of tiles make a complete square?"));
+    report(N);
+    return () => fly.stop();
   }
 
   // ------------------------------------------------------------ cube builder
 
   function cubes(root) {
-    let n = 3;
+    let v = 3;
     const pic = h("div"), out = h("div", { class: "readout" });
-    function iso(x, y, z, u) { return { x: 200 + (x - y) * u * 0.866, y: 230 - z * u + (x + y) * u * 0.5 }; }
+    function iso(x, y, z, u) { return { x: 200 + (x - y) * u * 0.866, y: 235 - z * u + (x + y) * u * 0.5 }; }
     function draw() {
       clear(pic); clear(out);
-      const u = 150 / n;
-      const svg = s("svg", { viewBox: "0 0 400 300", role: "img", "aria-label": `${n} by ${n} by ${n} cube` });
-      const face = (pts, fill) => svg.append(s("polygon", { points: pts.map((p) => `${p.x},${p.y}`).join(" "), fill, stroke: "var(--ink)", "stroke-width": 1 }));
-      for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
-        face([iso(i, j, n, u), iso(i + 1, j, n, u), iso(i + 1, j + 1, n, u), iso(i, j + 1, n, u)], "var(--gold-soft)");
-        face([iso(n, i, j, u), iso(n, i + 1, j, u), iso(n, i + 1, j + 1, u), iso(n, i, j + 1, u)], "var(--shape-a-soft)");
-        face([iso(i, n, j, u), iso(i + 1, n, j, u), iso(i + 1, n, j + 1, u), iso(i, n, j + 1, u)], "var(--shape-b-soft)");
+      const u = 150 / Math.max(v, 1);
+      const svg = s("svg", { viewBox: "0 0 400 300", role: "img", "aria-label": "A growing cube" });
+      const poly = (pts, fill) => svg.append(s("polygon", { points: pts.map((p) => `${p.x},${p.y}`).join(" "), fill, stroke: "var(--ink)", "stroke-width": 1.5 }));
+      const ln = (p, q) => svg.append(s("line", { x1: p.x, y1: p.y, x2: q.x, y2: q.y, stroke: "var(--ink)", "stroke-width": 0.8 }));
+      poly([iso(0, 0, v, u), iso(v, 0, v, u), iso(v, v, v, u), iso(0, v, v, u)], "var(--gold-soft)");
+      poly([iso(v, 0, 0, u), iso(v, v, 0, u), iso(v, v, v, u), iso(v, 0, v, u)], "var(--shape-a-soft)");
+      poly([iso(0, v, 0, u), iso(v, v, 0, u), iso(v, v, v, u), iso(0, v, v, u)], "var(--shape-b-soft)");
+      for (let k = 1; k < v - 1e-6; k++) {
+        ln(iso(k, 0, v, u), iso(k, v, v, u)); ln(iso(0, k, v, u), iso(v, k, v, u));
+        ln(iso(v, k, 0, u), iso(v, k, v, u)); ln(iso(v, 0, k, u), iso(v, v, k, u));
+        ln(iso(k, v, 0, u), iso(k, v, v, u)); ln(iso(0, v, k, u), iso(v, v, k, u));
       }
       pic.append(svg);
-      out.append(stat("Edge:", String(n)).el, stat("Unit cubes:", `${n} × ${n} × ${n} = ${n ** 3}`).el, pill(true, `∛${n ** 3} = ${n}`, ""));
+      const n = Math.round(v), settled = Math.abs(v - n) < 0.01;
+      out.append(stat("Edge:", settled ? String(n) : fmt(v, 2)).el, stat("Volume:", settled ? `${n} × ${n} × ${n} = ${n ** 3}` : `≈ ${fmt(v ** 3, 1)}`).el,
+        settled ? pill(true, `∛${n ** 3} = ${n}`, "") : null);
     }
-    root.append(h("div", { class: "controls" }, h("span", {}, "Edge length"), Sim.segmented([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], n, (v) => { n = v; draw(); })), pic, out,
+    root.append(h("div", { class: "controls" }, Sim.elasticSlider({ id: "l9-edge", label: "Edge", min: 1, max: 10, value: 3, step: 1, format: (x) => fmt(x, 1), onInput: (x) => { v = x; draw(); } }).el), pic, out,
       h("p", { class: "note" }, "Perfect cubes: 1, 8, 27, 64, 125, 216, 343, 512, 729, 1 000."));
     draw();
   }
@@ -63,29 +87,37 @@
   // ------------------------------------------------------------ estimator
 
   function estimator(root) {
-    let N = 10, kind = 2, lo, hi, tries = [];
-    const nIn = h("input", { type: "number", id: "l9-est", min: 2, max: 999, value: 10 });
+    let N = 10, kind = 2, lo, hi, tries = [], view = [3, 4];
+    const zoom = new Sim.Spring([3, 4], (v) => { view = v; paintLine(); }, { stiffness: 120, damping: 18 });
     const guess = h("input", { type: "text", id: "l9-guess", autocomplete: "off", "aria-label": "Your guess" });
     const area = h("div"), log = h("pre", { class: "workings" });
     const pow = (x) => (kind === 2 ? x * x : x * x * x);
     const sym = () => (kind === 2 ? "√" : "∛");
     function reset() {
-      N = Math.max(2, Math.round(Number(nIn.value) || 10));
       const r = kind === 2 ? Math.sqrt(N) : Math.cbrt(N);
       lo = Math.floor(r + 1e-12); hi = lo + 1; tries = [];
       if (pow(lo) === N) hi = lo;
+      zoom.jump(lo === hi ? [lo - 1, lo + 1] : [lo, hi]);
       draw();
+    }
+    const lineBox = h("div");
+    function paintLine() {
+      clear(lineBox);
+      const [a, b] = view;
+      const W = 600, X = (v) => 30 + ((v - a) / ((b - a) || 1)) * (W - 60);
+      const svg = s("svg", { viewBox: `0 0 ${W} 100`, role: "img", "aria-label": "Zooming number line" });
+      svg.append(s("line", { x1: 30, y1: 50, x2: W - 30, y2: 50, stroke: "var(--ink)", "stroke-width": 2 }));
+      if (lo !== hi) svg.append(s("rect", { x: X(lo), y: 40, width: Math.max(0, X(hi) - X(lo)), height: 20, fill: "var(--accent-soft)" }));
+      [lo, hi].forEach((v) => { svg.append(s("line", { x1: X(v), y1: 40, x2: X(v), y2: 60, stroke: "var(--ink)", "stroke-width": 2 }), s("text", { x: X(v), y: 82, "text-anchor": "middle", class: "svg-text" }, fmt(v, 4))); });
+      tries.forEach((t) => { const x = X(t.g); if (x >= 20 && x <= W - 20) svg.append(s("circle", { cx: x, cy: 50, r: 5, fill: t.high ? "var(--shape-b)" : "var(--shape-a)" })); });
+      lineBox.append(svg);
     }
     function draw() {
       clear(area);
       const exact = lo === hi;
-      const W = 600, X = (v) => 30 + ((v - lo) / ((hi - lo) || 1)) * (W - 60);
-      const svg = s("svg", { viewBox: `0 0 ${W} 100`, role: "img", "aria-label": "Zooming number line" });
-      svg.append(s("line", { x1: 30, y1: 50, x2: W - 30, y2: 50, stroke: "var(--ink)", "stroke-width": 2 }));
-      [lo, hi].forEach((v) => { svg.append(s("line", { x1: X(v), y1: 40, x2: X(v), y2: 60, stroke: "var(--ink)", "stroke-width": 2 }), s("text", { x: X(v), y: 82, "text-anchor": "middle", class: "svg-text" }, fmt(v, 4))); });
-      tries.forEach((t) => { if (t.g >= lo && t.g <= hi) svg.append(s("circle", { cx: X(t.g), cy: 50, r: 5, fill: t.high ? "var(--shape-b)" : "var(--shape-a)" })); });
       area.append(exact ? pill(true, `${N} is a perfect ${kind === 2 ? "square" : "cube"}: ${sym()}${N} = ${lo}`, "") :
-        h("p", {}, `${sym()}${N} is between ${fmt(lo, 4)} and ${fmt(hi, 4)}. Type a guess in between.`), svg);
+        h("p", {}, `${sym()}${N} is between ${fmt(lo, 4)} and ${fmt(hi, 4)}. Type a guess in between.`), lineBox);
+      paintLine();
       log.textContent = tries.map((t) => `${fmt(t.g, 4)}${kind === 2 ? "²" : "³"} = ${fmt(pow(t.g), 4)}  → ${t.high ? "too high" : "too low"}`).join("\n") || "Your guesses will appear here.";
     }
     function tryGuess() {
@@ -96,15 +128,20 @@
       tries.push({ g: v, high });
       if (v > lo && v < hi) { if (high) hi = v; else lo = v; }
       guess.value = ""; draw();
+      const pad = (hi - lo) * 0.25;
+      zoom.set([lo - pad, hi + pad]);
     }
     guess.addEventListener("keydown", (e) => { if (e.key === "Enter") tryGuess(); });
-    nIn.addEventListener("input", reset);
-    root.append(h("div", { class: "controls" }, h("label", { for: "l9-est" }, "Number", nIn),
+    const nS = Sim.elasticSlider({ id: "l9-est", label: "Number", min: 2, max: 200, value: 10, step: 1, format: (v) => String(Math.round(v)),
+      onInput: (v) => { const n = Math.round(v); if (n !== N) { N = n; reset(); } } });
+    root.append(h("div", { class: "controls" }, nS.el),
+      h("div", { class: "controls" },
       Sim.segmented(["√", "∛"], "√", (v) => { kind = v === "√" ? 2 : 3; reset(); }),
       guess, h("button", { class: "btn", type: "button", onclick: tryGuess }, "Try"),
       h("button", { class: "btn ghost", type: "button", onclick: () => { const r = kind === 2 ? Math.sqrt(N) : Math.cbrt(N); log.textContent += `\nCalculator: ${sym()}${N} ≈ ${r.toFixed(6)}`; } }, "Reveal")),
-    area, log, h("p", { class: "note" }, "Each guess squeezes the interval. How many guesses do you need to get 2 decimal places right?"));
+    area, log, h("p", { class: "note" }, "Each guess squeezes the interval and the number line zooms in. How many guesses do you need to get 2 decimal places right?"));
     reset();
+    return () => zoom.stop();
   }
 
   // ------------------------------------------------------------ area 2
@@ -149,9 +186,11 @@
     mount(stage) {
       const body = h("div", { class: "stage-body" });
       const views = [squares, cubes, estimator, areaTwo];
-      const t = tabs(["Square Builder", "Cube Builder", "Root Estimator", "Square of Area 2"], (i) => { clear(body); views[i](body); });
+      let stopper = null;
+      const t = tabs(["Square Builder", "Cube Builder", "Root Estimator", "Square of Area 2"], (i) => { if (stopper) stopper(); clear(body); stopper = views[i](body) || null; });
       stage.append(t.el, body);
-      squares(body);
+      stopper = squares(body);
+      return () => { if (stopper) stopper(); };
     },
     check() {
       const kind = randInt(0, 5);

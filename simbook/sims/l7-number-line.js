@@ -1,7 +1,7 @@
 /* Lesson 7 · G. Rational Numbers – Number Line Explorer */
 (function () {
   "use strict";
-  const { h, s, clear, randInt, pick, shuffle, fmt, Frac, parseNumber, longDivision, primeFactors, tabs, stat, pill } = Sim;
+  const { h, s, clear, randInt, pick, shuffle, fmt, Frac, parseNumber, longDivision, primeFactors, tabs, stat, pill, Spring } = Sim;
 
   function decimalText(fr) {
     const { whole, digits, repeatStart } = longDivision(fr.n, fr.d);
@@ -19,7 +19,8 @@
     for (let i = 0; i <= ticks; i++) {
       const v = lo + ((hi - lo) * i) / ticks;
       svg.append(s("line", { x1: X(v), y1: 52, x2: X(v), y2: 68, stroke: "var(--ink)", "stroke-width": 2 }));
-      svg.append(s("text", { x: X(v), y: 88, "text-anchor": "middle", class: "svg-text" }, fmt(v, 4)));
+      const digits = Math.min(6, Math.max(0, Math.ceil(-Math.log10((hi - lo) / ticks) - 1e-9)));
+      svg.append(s("text", { x: X(v), y: 88, "text-anchor": "middle", class: "svg-text" }, fmt(v, digits)));
     }
     marks.forEach((m, i) => {
       const x = X(m.v);
@@ -34,8 +35,11 @@
   function converter(root) {
     const input = h("input", { type: "text", id: "l7-in", value: "5/12", autocomplete: "off" });
     const out = h("div", { class: "readout" }), work = h("pre", { class: "workings" }), why = h("p"), line = h("div");
+    let label = "";
+    // The point and the scale both glide to the new number.
+    const glide = new Spring([5 / 12, 2], ([v, hi]) => { clear(line); line.append(numberLine([{ v, label }], 0, hi, Math.round(hi) * 2)); }, { stiffness: 170, damping: 16 });
     function update() {
-      clear(out); clear(line);
+      clear(out);
       const fr = parseNumber(input.value);
       if (!fr || fr.n < 0) { work.textContent = "Type a fraction (3/8), a mixed number (1 1/4), a decimal (0.45), or a percentage (125%). Use zero or a positive number."; why.textContent = ""; return; }
       const dec = decimalText(fr);
@@ -47,13 +51,15 @@
       why.textContent = fr.d === 1 ? "A whole number is a rational number too." :
         `In lowest terms the denominator is ${fr.d} = ${f.join(" × ")}. ` + (f.every((p) => p === 2 || p === 5) ? "Its only prime factors are 2 and 5, so the decimal terminates." : "It has a prime factor other than 2 and 5, so the decimal repeats.");
       const hi = Math.max(2, Math.ceil(fr.value()));
-      line.append(numberLine([{ v: fr.value(), label: input.value.trim() }], 0, hi, hi * 2));
+      label = input.value.trim();
+      glide.set([fr.value(), hi]);
     }
     input.addEventListener("input", update);
     root.append(h("div", { class: "controls" }, h("label", { for: "l7-in" }, "Number", input),
       ...["3/8", "0.45", "2/3", "125%", "7/20", "1 1/4"].map((v) => h("button", { class: "btn ghost", type: "button", onclick: () => { input.value = v; update(); } }, v))),
     out, line, work, why);
     update();
+    return () => glide.stop();
   }
 
   // ------------------------------------------------------------ order it
@@ -94,8 +100,17 @@
       function finish() {
         const sorted = cards.slice().sort((a, b) => a.v - b.v);
         const ok = chosen.every((c, i) => c === sorted[i]);
-        result.append(pill(ok, "Perfect order!", "Not quite – compare with the number line below."),
-          numberLine(sorted.map((c, i) => ({ v: c.v, label: c.label, color: i % 2 ? "var(--shape-a)" : "var(--shape-b)" })), 0, 2, 8),
+        const lineBox = h("div");
+        // Each card slides from where you placed it in your order to its true position.
+        const fly = new Spring(0, (k) => {
+          clear(lineBox);
+          lineBox.append(numberLine(sorted.map((c, i) => {
+            const start = (chosen.indexOf(c) + 0.5) * (2 / sorted.length);
+            return { v: start + (c.v - start) * k, label: c.label, color: i % 2 ? "var(--shape-a)" : "var(--shape-b)" };
+          }), 0, 2, 8));
+        }, { stiffness: 120, damping: 14 });
+        fly.jump(0); fly.set(1);
+        result.append(pill(ok, "Perfect order!", "Not quite – watch the cards move to their true places."), lineBox,
           h("p", { class: "workings" }, "Correct order: " + sorted.map((c) => `${c.label} (${fmt(c.v, 3)})`).join("  <  ")),
           h("button", { class: "btn", type: "button", onclick: deal }, "Deal new cards"));
       }
@@ -110,7 +125,10 @@
   function between(root) {
     const a = h("input", { type: "text", id: "l7-a", value: "0.7" }), b = h("input", { type: "text", id: "l7-b", value: "0.72" });
     const area = h("div");
-    let level = 0, lo, hi;
+    let level = 0, lo = 0, hi = 1, view = [0, 1], marks = [];
+    const lineBox = h("div");
+    // Zooming eases the window of the number line instead of cutting to it.
+    const zoom = new Spring(view, (v) => { view = v; clear(lineBox); lineBox.append(numberLine(marks.filter((m) => m.v >= v[0] - 1e-12 && m.v <= v[1] + 1e-12), v[0], v[1], 10)); }, { stiffness: 110, damping: 19 });
     function reset() { level = 0; draw(); }
     function draw() {
       clear(area);
@@ -119,9 +137,11 @@
       const x = Math.min(fa.value(), fb.value()), y = Math.max(fa.value(), fb.value());
       if (level === 0) { lo = Math.floor(x); hi = Math.max(lo + 1, Math.ceil(y)); } else { lo = x; hi = y; }
       const mid = fa.add(fb).div(2);
-      const marks = [{ v: x, label: fmt(x, 6), color: "var(--shape-a)" }, { v: y, label: fmt(y, 6), color: "var(--shape-a)" }];
+      marks = [{ v: x, label: fmt(x, 6), color: "var(--shape-a)" }, { v: y, label: fmt(y, 6), color: "var(--shape-a)" }];
       if (level > 0) marks.push({ v: mid.value(), label: `${fmt(mid.value(), 6)}`, color: "var(--shape-b)" });
-      area.append(numberLine(marks, lo, hi, 10),
+      const pad = (hi - lo) * (level > 0 ? 0.15 : 0);
+      zoom.set([lo - pad, hi + pad]);
+      area.append(lineBox,
         h("div", { class: "readout" }, stat("Halfway:", `(${a.value} + ${b.value}) ÷ 2 = ${fmt(mid.value(), 6)}`).el),
         h("div", { class: "controls" }, h("button", { class: "btn", type: "button", onclick: () => { level = 1; draw(); } }, "Zoom in"),
           h("button", { class: "btn ghost", type: "button", onclick: () => { a.value = fmt(mid.value(), 8); draw(); } }, "Zoom again (use the halfway number)"),
@@ -131,6 +151,7 @@
     root.append(h("div", { class: "controls" }, h("label", { for: "l7-a" }, "First", a), h("label", { for: "l7-b" }, "Second", b)), area,
       h("p", { class: "note" }, "Keep zooming. Will you ever run out of numbers in between?"));
     draw();
+    return () => zoom.stop();
   }
 
   // ------------------------------------------------------------ lesson
@@ -149,9 +170,11 @@
     mount(stage) {
       const body = h("div", { class: "stage-body" });
       const views = [converter, orderIt, between];
-      const t = tabs(["Converter", "Order It", "Zoom Between"], (i) => { clear(body); views[i](body); });
+      let stopper = null;
+      const t = tabs(["Converter", "Order It", "Zoom Between"], (i) => { if (stopper) stopper(); clear(body); stopper = views[i](body) || null; });
       stage.append(t.el, body);
-      converter(body);
+      stopper = converter(body);
+      return () => { if (stopper) stopper(); };
     },
     check() {
       const kind = randInt(0, 5);
