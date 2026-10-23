@@ -10,7 +10,7 @@ document builders and LSGH templates are shared.
 | Course | Folder | Curriculum | Status |
 | --- | --- | --- | --- |
 | Mathematics (Grades 1–12) | [`courses/mathematics/`](courses/mathematics/README.md) | DepEd MATATAG | Grade 7 Terms 1–3: CM, LG, and the Math 7 SimBook (27 lessons) |
-| Fundamentals of Data Analytics | [`courses/data-analytics/`](courses/data-analytics/README.md) | DepEd Strengthened SHS Curriculum (Academic Elective) | Curriculum Map (80 one-hour sessions, 6 units, 29 CG competencies) and the Data Analytics SimBook (15 lessons) |
+| Fundamentals of Data Analytics | [`courses/data-analytics/`](courses/data-analytics/README.md) | DepEd Strengthened SHS Curriculum (Academic Elective) | Curriculum Map and Learning Guide (80 one-hour sessions, 6 units, 29 CG competencies) and the Data Analytics SimBook (15 lessons) |
 
 ## Layout
 

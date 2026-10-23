@@ -12,12 +12,16 @@ provisionally planned for Grade 12 · 80 hours for one term · no prerequisite.
 - [`cg-alignment.md`](cg-alignment.md) – how the spec's seven units map onto the CG's 29 competencies, and what to decide.
 - `content/data_analytics_cm.py` – Curriculum Map content (80 one-hour sessions, S1–S80).
 - `output/DataAnalytics-CM-SY2026-2027.docx` – the generated Curriculum Map.
+- `content/data_analytics_lg.py` – Learning Guide content (objectives are read from the CM rows).
+- `output/DataAnalytics-LG-SY2026-2027.docx` – the generated Learning Guide.
 
 Build from the repository root:
 
 ```bash
 python3 tools/cm_builder.py courses/data-analytics/content/data_analytics_cm.py \
   courses/data-analytics/output/DataAnalytics-CM-SY2026-2027.docx
+python3 tools/lg_builder.py courses/data-analytics/content/data_analytics_lg.py \
+  courses/data-analytics/output/DataAnalytics-LG-SY2026-2027.docx
 ```
 
 ## Data Analytics SimBook
@@ -57,6 +61,11 @@ All datasets are hand-made sample data with Filipino and LSGH contexts, not offi
 - Codes: A1.n / A2.n = CG Part 1 / Part 2 competencies (★, verbatim); M = meaning-making;
   T = transfer; L = LSGH-added Python skills. Assessments: CP participation, QZ quiz, LW lab work,
   SA challenge activity, PE practical exam, PM project milestone, FP final project.
+
+## Learning Guide grading (working assumption)
+
+Written Works 20% (CP 40%, QZ 60%) · Performance Task 60% (LW 25%, SA 25%, PE 50%) ·
+Culminating Project 20% (PM1–PM4 40%, FP 60%). Confirm against the LSGH SHS grading policy.
 
 ## Open items
 
