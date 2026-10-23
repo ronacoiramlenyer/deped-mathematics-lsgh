@@ -154,6 +154,26 @@ ROADMAP = {
 }
 
 R = "Course materials uploaded in Ranger 360"
+SIMBOOK = "Data Analytics SimBook"
+
+# Lesson letter -> (SimBook lesson number, sim name and tabs)
+SIMS = {
+    "A": (1, "Data Lens (Sort the Data, Life Cycle, Which Analysis?)"),
+    "B": (2, "Privacy Shield (Anonymize, Ethics Calls)"),
+    "C": (3, "Analytics Everywhere (Industry Map, Skill Builder)"),
+    "D": (4, "Collect It Three Ways (Source Sorter, Three Ways, Is It Reliable?)"),
+    "E": (5, "First Look (Explore, Version History)"),
+    "F": (6, "Data Cleaner (Spot the Problems, Clean It, Before / After)"),
+    "G": (7, "Formula Lab (Conditional, Lookup, Combine)"),
+    "H": (8, "Pivot Builder"),
+    "I": (9, "Spread Lab (Drag the Data, Box and Quartiles, Formulas)"),
+    "J": (10, "Test Lab (Two Groups, z-test, Correlation and Regression)"),
+    "K": (11, "Chart Chooser (Chart Types, Format It, Honest or Misleading?, Slicers)"),
+    "L": (12, "Dashboard Builder (Build, Explore, Choose the Visual)"),
+    "M": (13, "Story Builder (Story Arc, Emphasis, Know Your Audience)"),
+    "N": (14, "Project Pipeline (Workflow, Reproducibility Check)"),
+    "O": (15, "Verify It (Find the Issues, Write the Critique, Respond)"),
+}
 
 
 def row(sessions, rng, topic, subtopics, comps, assess, hook, acts, res, pillars, kind=None):
@@ -442,6 +462,15 @@ ROWS = [
          "Reflection: “How will I use data responsibly after this course?”"],
         [R], ["SF", "ZS"], kind="buffer"),
 ]
+
+# Every lettered lesson opens with its SimBook sim as the hook and lists the SimBook as a resource.
+for _r in ROWS:
+    _letter = _r.get("topic", "")[:2]
+    if _r.get("type") == "row" and len(_letter) == 2 and _letter[1] == "." and _letter[0] in SIMS:
+        _n, _sim = SIMS[_letter[0]]
+        _at = 1 if _r["acts"] and _r["acts"][0].startswith("^^HOOK") else 0
+        _r["acts"].insert(_at, f"^^SIM HOOK:^^ SimBook – {_sim}")
+        _r["res"].insert(0, f"{SIMBOOK} – Lesson {_n} (hook sim, lesson slides with notes, and Exercises)")
 
 SIGNATORIES = [
     {"label": "Prepared by:", "names": ["[Name of Teacher]", "[Name of Teacher]"],
