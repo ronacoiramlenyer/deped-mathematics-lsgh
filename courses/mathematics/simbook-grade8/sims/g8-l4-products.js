@@ -194,7 +194,7 @@
   function piece(g, x, y, w, ht, kind, label, sub) {
     g.append(s("rect", { x, y, width: Math.max(0, w), height: Math.max(0, ht), rx: 3, fill: TILE[kind][1], stroke: TILE[kind][0], "stroke-width": 2 }));
     if (w > 22 && ht > 18) {
-      const fs = Math.min(17, w / 3, ht / 1.8);
+      const fs = Math.min(17, w / Math.max(3, label.length * 0.66), ht / 1.8);
       g.append(s("text", { x: x + w / 2, y: y + ht / 2 + (sub && ht > 44 ? -2 : fs / 3), "text-anchor": "middle", class: "svg-text", "font-size": fs.toFixed(1), "font-weight": 700 }, label));
       if (sub && ht > 44 && w > 34) g.append(s("text", { x: x + w / 2, y: y + ht / 2 + 15, "text-anchor": "middle", class: "svg-text", "font-size": Math.min(12, w / 4).toFixed(1), fill: "var(--muted)" }, sub));
     }
@@ -247,12 +247,16 @@
       const c0 = { x: O.x + D / 2, y: O.y + D + B / 2 }, c1 = { x: O.x + A + B / 2, y: O.y + D / 2 };
       const cx = c0.x + (c1.x - c0.x) * k2, cy = c0.y + (c1.y - c0.y) * k2 - Math.sin(Math.PI * k2) * 30;
       const strip = s("g", { transform: `translate(${cx.toFixed(1)},${cy.toFixed(1)}) rotate(${(90 * k2).toFixed(1)})` });
-      piece(strip, -D / 2, -B / 2, D, B, 1, "b(a − b)", `${bi} × ${ai - bi}`);
+      piece(strip, -D / 2, -B / 2, D, B, 1, "", "");
+      // the label stays upright while the strip turns
+      const sw = D + (B - D) * k2, sh = B + (D - B) * k2;
+      const lab = s("g"); piece(lab, cx - sw / 2, cy - sh / 2, sw, sh, 1, "b(a − b)", `${bi} × ${ai - bi}`);
+      lab.firstChild.remove();
       // the corner b² slides away and leaves a dashed hole
       layer.append(s("rect", { x: O.x + D, y: O.y + D, width: B, height: B, fill: "none", stroke: "var(--muted)", "stroke-width": 1.5, "stroke-dasharray": "5 4", opacity: k1 }));
       const cg = s("g", { transform: `translate(${(k1 * 50).toFixed(1)},${(k1 * 60).toFixed(1)})`, opacity: (1 - 0.75 * k1).toFixed(2) });
       piece(cg, O.x + D, O.y + D, B, B, 0, "b²", `${bi * bi}`);
-      layer.append(cg, strip);
+      layer.append(cg, strip, lab);
       layer.append(s("text", { x: O.x + A / 2, y: O.y - 12, "text-anchor": "middle", class: "svg-text", "font-weight": 700 }, k2 > 0.5 ? "" : `a = ${ai}`));
       if (k2 > 0.95) {
         layer.append(s("text", { x: O.x + (A + B) / 2, y: O.y - 12, "text-anchor": "middle", class: "svg-text", "font-weight": 700 }, `a + b = ${ai + bi}`),

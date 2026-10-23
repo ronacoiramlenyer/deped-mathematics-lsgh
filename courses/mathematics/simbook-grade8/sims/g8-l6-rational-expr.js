@@ -289,8 +289,17 @@
     const scene = Scene(layer);
     const title = h("p", { class: "unit-big" }), cap = h("p", { "aria-live": "polite" }), count = h("span", { class: "note" });
     const next = h("button", { class: "btn", type: "button", onclick: () => { if (step < OPS[op].steps.length - 1) { step++; show(); } } }, "Next step ▶");
+    /** On a phone, zoom to the widest step of this example (the zoom stays fixed while stepping). */
+    function fit() {
+      if (!narrow) return;
+      let half = 120;
+      for (const st of OPS[op].steps) for (const sp of [...rowLayout(st.rows, 70, 300), ...(st.lcd ? rowLayout(st.lcd, 160, 300) : [])]) half = Math.max(half, Math.abs(sp.x - 300) + chipW(sp) / 2 + 8);
+      half = Math.min(300, half);
+      svg.setAttribute("viewBox", `${(300 - half).toFixed(0)} 0 ${(2 * half).toFixed(0)} 190`);
+    }
     function show() {
       const ex = OPS[op], st = ex.steps[step];
+      if (step === 0) fit();
       const specs = rowLayout(st.rows, 70, 300);
       if (st.lcd) specs.push(...rowLayout(st.lcd, 160, 300));
       if (st.pops) specs.push(...st.pops.map((id) => ({ id, pop: true })));
