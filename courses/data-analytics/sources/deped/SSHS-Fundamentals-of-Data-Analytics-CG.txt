@@ -1,0 +1,171 @@
+0
+                                              FUNDAMENTALS OF DATA ANALYTICS
+                                                          Pre-requisite: None
+
+Course Description:
+This course introduces foundational principles and practices in data analytics, while developing essential 21st-century skills. Learners
+enhance their information, visual, media, technology, and digital literacy through data collection, cleaning, processing, visualization,
+storytelling, and the responsible use of digital tools. The course also fosters creativity, critical thinking, problem solving, teamwork,
+collaboration, and communication skills in performing data analytics for informed decision making in data-driven fields. Throughout the
+course, learners gradually develop a project that applies data analytics concepts to solve real-world problems using datasets prepared for
+presentation by the end of the course.
+Elective: Academic
+Time Allotment: 80 hours for one term
+
+
+
+                                        CONTENT STANDARDS
+                                                                                             LEARNING COMPETENCIES
+        CONTENT                The learners demonstrate an understanding
+                                                                                                  The learners…
+                                                that...
+
+                                                             Data Analytics
+    1. Data                     1. data analytics involves understanding           1. define data analytics.
+                                   different types of data, the stages of the      2. differentiate data types.
+                                   data life cycle, and the various types of       3. discuss data life cycle and types of data analysis.
+                                   data analysis that support informed and
+                                   evidence-based decisions.
+    2. Data Privacy and         2. data privacy and ethical principles guide       4. explain the importance of data privacy.
+       Ethics                      the responsible collection, handling, and       5. discuss data ethics in performing tasks related
+                                   analysis of data, ensuring that                    to data analytics.
+                                   individuals’ rights are protected and that
+
+
+
+                                                                    1
+                                CONTENT STANDARDS
+                                                                                   LEARNING COMPETENCIES
+   CONTENT             The learners demonstrate an understanding
+                                                                                        The learners…
+                                        that...
+                           analytics practices adhere to legal and
+                           moral standards.
+
+3. Applications   of   3. data analytics is widely applied across        6. identify real-world applications of data analytics.
+   Data Analytics in      real-world contexts and industries, and        7. identify skills that data analysts should possess
+   Real-Life,             that the field requires specific skills and       and career opportunities in the field of data
+                          offers diverse career opportunities.              analytics.
+4. Data Sources and    4. data can come from various internal and        8. identify different types of data sources (e.g.
+   Collection             external sources, and that appropriate            internal, external, interview, and real-time data).
+   Methods                collection methods, such as using public       9. discuss data collection methods from public
+                          data sets, scripts, and manual entry, are         datasets scripts and manual data entry.
+                          essential for obtaining reliable and
+                          relevant information.
+5. Data Processing     5. effective data processing requires            10. recognize the importance of exploratory data
+                          securing data through backups,                    analysis in understanding data and guiding
+                          detecting and addressing missing or               subsequent analysis.
+                          inconsistent entries, converting data         11. create backups of data to maintain security and
+                          formats accurately based on given                 track changes.
+                          requirements, and refining datasets           12. identify    missing   values,   duplicates, and
+                          using tools such as filters and pivot             inconsistencies in data using spreadsheet
+                          tables to prepare information for deeper          functions.
+                          analysis.                                     13. convert data formats and types consistently and
+                                                                            accurately based on specific requirements.
+                                                                        14. filter pivot table data to refine and focus on
+                                                                            relevant subsets for further analysis.
+
+
+
+                                                            2
+                                 CONTENT STANDARDS
+                                                                                   LEARNING COMPETENCIES
+    CONTENT             The learners demonstrate an understanding
+                                                                                        The learners…
+                                         that...
+
+                                    Data Analysis, Visualization, and Storytelling
+                        1. descriptive and inferential statistics are   1. calculate measures of central tendency (mean,
+1. Descriptive and         essential tools for understanding,              median and mode) and variation (range, variance,
+   Inferential             summarizing, and analyzing data, and            standard deviation, percentiles and quartiles)
+   Statistics Using        that spreadsheets or statistical software       using spreadsheet or statistical software.
+   Spreadsheet or          enable them to compute measures,             2. conduct inferential statistical tests (e.g., t-test, z-
+   Statistical             perform tests, and draw meaningful              test, correlation, and regression) using
+   Software                conclusions from datasets.                      spreadsheet or statistical software.
+
+                        2. conditional and lookup functions enable      3. apply conditional functions (e.g., AVERAGEIF,
+                           efficient data analysis, retrieval, and         AVERAGEIFS, COUNTIF, COUNTIFS, IF, SUMIF,
+                           processing, and that combining these            and SUMIFS) to analyze and summarize data
+                           functions supports more complex and             based on specific areas.
+2. Conditional and         dynamic data analysis tasks.                 4. utilize lookup functions (e.g., XLOOKUP, INDEX,
+   Lookup Functions                                                        MATCH, and VLOOKUP) to retrieve data from
+                                                                           different locations within a spreadsheet.
+                                                                        5. construct formulas that combine conditional and
+                                                                           lookup functions to perform complex data
+                                                                           analysis and processing tasks.
+
+                        3. data visualization enhances the              6. discuss the importance of data visualization.
+                           interpretation and communication of          7. apply conditional formatting, sparklines, and
+                           information, and that spreadsheets              charts (e.g., column, line, pie, bar, scatter plot
+3. Data Visualization
+                           provide tools such as charts, conditional       and combo charts) to visualize data effectively in
+   Using Spreadsheet
+                           formatting, tables, pivot tables, and           spreadsheet.
+                           slicers for creating clear and effective
+                           visual representations of data.
+
+
+                                                            3
+                                 CONTENT STANDARDS
+                                                                                 LEARNING COMPETENCIES
+    CONTENT             The learners demonstrate an understanding
+                                                                                      The learners…
+                                         that...
+                                                                       8. organize datasets using tables, table slicers, and
+                                                                           aggregation methods (e.g., sum, average, and
+                                                                           count) to present data.
+                                                                       9. use pivot tables and charts to display multiple
+                                                                           aggregation values and perform calculations such
+                                                                           as percentages, differences, running totals, and
+                                                                           rankings.
+                                                                       10. use report filters, timelines, and slicers to display
+                                                                           customized pivot tables and charts.
+
+                        4. data visualization software enables the     11. discuss how to set up a data
+                           creation of interactive dashboards by           visualization software environment, import
+                           importing data, selecting appropriate           data, and add visual elements (e.g., cards,
+                           visual elements, and applying functions         columns, slicers, and tables) to create
+4. Data Visualization      such as sorting, filtering, and drilldown       interactive dashboards.
+   Software                to explore insights dynamically.            12. select appropriate visualizations to represent
+                                                                           transformed data effectively.
+                                                                       13. execute data visualization software functions
+                                                                           such as editing properties, sorting data, drilldown
+                                                                           and filtering, and creating hierarchy
+
+                        5. data storytelling is a powerful method of   14. apply effective data storytelling techniques to
+                           communicating insights by combining             communicate data insights.
+5. Data Storytelling       visuals, context, and narrative to help
+                           audiences understand and act on data.
+
+                        6. a data analytics project requires           15. present a project involving data analytics using
+6. Data Analytics
+                           planning, designing, analyzing, and             real-world data.
+   Project
+                           presenting real-world data to apply
+
+
+                                                            4
+                                      CONTENT STANDARDS
+                                                                                          LEARNING COMPETENCIES
+      CONTENT                The learners demonstrate an understanding
+                                                                                               The learners…
+                                              that...
+                                 statistical methods, visualization tools,
+                                 and ethical considerations in solving
+                                 practical problems.
+
+Performance Standards
+
+  •   The learners can illustrate data life cycle and uphold data privacy and ethical principles. They process data accurately and
+      securely by creating backups, cleaning datasets to address missing or inconsistent entries, converting data formats based on
+      specified requirements, and using spreadsheet tools such as filters and pivot tables to refine datasets and generate meaningful
+      insights for decision-making.
+  •   The learners can perform statistical analyses, apply conditional and lookup functions, create visualizations using spreadsheets
+      and data visualization software, communicate insights through data storytelling, and design and present a complete data
+      analytics project using real-world data.
+
+
+
+
+                                                                  5
+
