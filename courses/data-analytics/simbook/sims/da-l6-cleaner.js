@@ -381,7 +381,7 @@
   // ------------------------------------------------------------ register
 
   Sim.register({
-    id: "lesson6", unit: "3", num: 6, letter: "F", title: "Cleaning and Converting Data", simName: "Data Cleaner",
+    id: "lesson6", unit: "3", num: 6, title: "Cleaning and Converting Data", simName: "Data Cleaner",
     comps: ["A1.12", "A1.13", "L3", "M5"], sessions: "S22–S27", cg: "CG Part 1 · Content 5 (Data Processing)", deped: "CG Part 1 · Content 5 (Data Processing)",
     bigQuestion: "How do we turn messy data into a dataset we can trust?",
     mission: [

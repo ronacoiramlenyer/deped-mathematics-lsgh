@@ -231,7 +231,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson2", unit: "1", num: 2, letter: "B", title: "Data Privacy and Ethics", simName: "Privacy Shield",
+    id: "lesson2", unit: "1", num: 2, title: "Data Privacy and Ethics", simName: "Privacy Shield",
     comps: ["A1.4", "A1.5", "M2"], sessions: "S5–S6", cg: "CG Part 1 · Content 2 (Data Privacy and Ethics)", deped: "Sessions S5–S6",
     bigQuestion: "What can data tell us – and what should it never be used for?",
     mission: [

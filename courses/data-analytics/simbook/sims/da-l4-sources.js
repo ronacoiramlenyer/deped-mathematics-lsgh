@@ -414,7 +414,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson4", unit: "2", num: 4, letter: "D", title: "Data Sources and Collection Methods", simName: "Collect It Three Ways",
+    id: "lesson4", unit: "2", num: 4, title: "Data Sources and Collection Methods", simName: "Collect It Three Ways",
     comps: ["A1.8", "A1.9", "L1", "M3"], sessions: "S9–S13", cg: "CG Part 1 · Content 4 (Data Sources and Collection Methods)", deped: "Sessions S9–S13",
     bigQuestion: "Where does good data come from, and how do we keep it safe?",
     mission: [

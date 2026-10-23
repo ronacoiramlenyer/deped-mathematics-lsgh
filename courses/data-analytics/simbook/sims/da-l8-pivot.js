@@ -303,7 +303,7 @@
   const GRAND = DATA.reduce((a, r) => a + r.Sales, 0);
 
   Sim.register({
-    id: "lesson8", unit: "3", num: 8, letter: "H", title: "Tables, Pivot Tables, and Aggregation", simName: "Pivot Builder",
+    id: "lesson8", unit: "3", num: 8, title: "Tables, Pivot Tables, and Aggregation", simName: "Pivot Builder",
     comps: ["A1.14", "A2.8", "A2.9", "L4"], sessions: "S34–S37", cg: "CG Part 1 · Content 5 · Part 2 · Content 3", deped: "CG Part 1 · Content 5 · Part 2 · Content 3",
     bigQuestion: "How do we turn messy data into a dataset we can trust?",
     mission: [

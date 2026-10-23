@@ -262,7 +262,7 @@
   }
 
   Sim.register({
-    id: "lesson15", unit: "6", num: 15, letter: "O", title: "Independent Peer Verification", simName: "Verify It",
+    id: "lesson15", unit: "6", num: 15, title: "Independent Peer Verification", simName: "Verify It",
     comps: ["T6", "T7", "T8"], sessions: "S73–S79", deped: "Sessions S73–S79", cg: "CG Part 2 · Content 6 (Data Analytics Project)",
     bigQuestion: "Would our findings survive an independent check?",
     mission: [

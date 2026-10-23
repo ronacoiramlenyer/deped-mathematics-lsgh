@@ -429,7 +429,7 @@
   }
 
   Sim.register({
-    id: "lesson11", unit: "5", num: 11, letter: "K", title: "Visualizing Data in Spreadsheets", simName: "Chart Chooser",
+    id: "lesson11", unit: "5", num: 11, title: "Visualizing Data in Spreadsheets", simName: "Chart Chooser",
     comps: ["A2.6", "A2.7", "A2.10", "M9"], sessions: "S55–S59", deped: "Sessions S55–S59", cg: "CG Part 2 · Content 3 (Data Visualization Using Spreadsheet)",
     bigQuestion: "How do we show the data so others understand and act?",
     mission: [

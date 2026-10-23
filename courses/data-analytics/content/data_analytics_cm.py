@@ -12,6 +12,8 @@ throughout the course through four milestones (PM1–PM4) and finished in Unit 6
 Course design follows course-spec.md; see cg-alignment.md for the unit-to-CG mapping.
 """
 
+import re
+
 HEADER = {
     "lines": ["LA SALLE GREEN HILLS", "Senior High School · Fundamentals of Data Analytics (Academic Elective)",
               "One-Term Course, SY 2026 - 2027"],
@@ -156,23 +158,23 @@ ROADMAP = {
 R = "Course materials uploaded in Ranger 360"
 SIMBOOK = "Data Analytics SimBook"
 
-# Lesson letter -> (SimBook lesson number, sim name and tabs)
+# SimBook lesson number -> sim name and tabs
 SIMS = {
-    "A": (1, "Data Lens (Sort the Data, Life Cycle, Which Analysis?)"),
-    "B": (2, "Privacy Shield (Anonymize, Ethics Calls)"),
-    "C": (3, "Analytics Everywhere (Industry Map, Skill Builder)"),
-    "D": (4, "Collect It Three Ways (Source Sorter, Three Ways, Is It Reliable?)"),
-    "E": (5, "First Look (Explore, Version History)"),
-    "F": (6, "Data Cleaner (Spot the Problems, Clean It, Before / After)"),
-    "G": (7, "Formula Lab (Conditional, Lookup, Combine)"),
-    "H": (8, "Pivot Builder"),
-    "I": (9, "Spread Lab (Drag the Data, Box and Quartiles, Formulas)"),
-    "J": (10, "Test Lab (Two Groups, z-test, Correlation and Regression)"),
-    "K": (11, "Chart Chooser (Chart Types, Format It, Honest or Misleading?, Slicers)"),
-    "L": (12, "Dashboard Builder (Build, Explore, Choose the Visual)"),
-    "M": (13, "Story Builder (Story Arc, Emphasis, Know Your Audience)"),
-    "N": (14, "Project Pipeline (Workflow, Reproducibility Check)"),
-    "O": (15, "Verify It (Find the Issues, Write the Critique, Respond)"),
+    1: "Data Lens (Sort the Data, Life Cycle, Which Analysis?)",
+    2: "Privacy Shield (Anonymize, Ethics Calls)",
+    3: "Analytics Everywhere (Industry Map, Skill Builder)",
+    4: "Collect It Three Ways (Source Sorter, Three Ways, Is It Reliable?)",
+    5: "First Look (Explore, Version History)",
+    6: "Data Cleaner (Spot the Problems, Clean It, Before / After)",
+    7: "Formula Lab (Conditional, Lookup, Combine)",
+    8: "Pivot Builder",
+    9: "Spread Lab (Drag the Data, Box and Quartiles, Formulas)",
+    10: "Test Lab (Two Groups, z-test, Correlation and Regression)",
+    11: "Chart Chooser (Chart Types, Format It, Honest or Misleading?, Slicers)",
+    12: "Dashboard Builder (Build, Explore, Choose the Visual)",
+    13: "Story Builder (Story Arc, Emphasis, Know Your Audience)",
+    14: "Project Pipeline (Workflow, Reproducibility Check)",
+    15: "Verify It (Find the Issues, Write the Critique, Respond)",
 }
 
 
@@ -208,7 +210,7 @@ ROWS = [
         "“Guess the Data” – a mystery dashboard of school data. What happened, and how do we know?",
         [("Discussion on the following:", ["Course outline and roadmap", "Methods of assessment", "Accounts and tool setup (Sheets, Colab, Looker Studio)"])],
         ["Teacher’s Google presentation", "Student Handbook", R], ["ZS", "SF"]),
-    row("3 Sessions", "(S2 to S4)", "A. What Is Data Analytics?",
+    row("3 Sessions", "(S2 to S4)", "Lesson 1: What Is Data Analytics?",
         ["Data and data analytics", "Types of data (qualitative/quantitative; discrete/continuous; nominal, ordinal, interval, ratio; structured/unstructured)",
          "The data life cycle", "Types of data analysis: descriptive, diagnostic, predictive, prescriptive"],
         [("A1.1", True, "define data analytics."),
@@ -219,7 +221,7 @@ ROWS = [
         "“Data Everywhere” – learners list every piece of data their phones collected about them this morning.",
         ["LW1 – Data Type Sort: classify columns from three real datasets", "Life-cycle mapping of the LSGH Attendance Watch case"],
         ["Teacher’s Google presentation", "Sample datasets in Google Sheets", R], ["ZS"]),
-    row("2 Sessions", "(S5 to S6)", "B. Data Privacy and Ethics",
+    row("2 Sessions", "(S5 to S6)", "Lesson 2: Data Privacy and Ethics",
         ["Personal and sensitive personal information", "The Data Privacy Act of 2012 (RA 10173): consent, purpose, proportionality",
          "Anonymization and responsible sharing", "Ethics: bias, fairness, transparency"],
         [("A1.4", True, "explain the importance of data privacy."),
@@ -229,7 +231,7 @@ ROWS = [
         "“Would You Click Agree?” – learners read a real app’s privacy terms and decide what they gave away.",
         ["Case discussion: a leaked class list; a biased scholarship ranking", "Anonymize a sample student dataset"],
         ["Republic Act No. 10173 (Data Privacy Act of 2012) – summary", "National Privacy Commission learning materials", R], ["SF", "CM"]),
-    row("1 Session", "(S7)", "C. Applications and Careers in Data Analytics",
+    row("1 Session", "(S7)", "Lesson 3: Applications and Careers in Data Analytics",
         ["Data analytics in business, health, government, sports, and education", "Skills of a data analyst", "Careers in the field"],
         [("A1.6", True, "identify real-world applications of data analytics."),
          ("A1.7", True, "identify skills that data analysts should possess and career opportunities in the field of data analytics.")],
@@ -248,7 +250,7 @@ ROWS = [
     {"type": "banner", "title": "UNIT 2 · DATA COLLECTION AND MANAGEMENT",
      "sub": "CG Part 1 · Data Sources and Collection Methods; Data Processing (exploration and backups) · S9 to S21 (13 sessions)",
      "question": "Where does good data come from, and how do we keep it safe?"},
-    row("5 Sessions", "(S9 to S13)", "D. Data Sources and Collection Methods",
+    row("5 Sessions", "(S9 to S13)", "Lesson 4: Data Sources and Collection Methods",
         ["Internal, external, interview, and real-time data", "Manual data entry with Google Forms and Sheets",
          "Public datasets (e.g., PSA OpenSTAT, data.gov.ph, PAGASA)", "Scripts: loading a public CSV in Google Colab with pandas",
          "Importing and exporting files (CSV, XLSX); file naming and folders"],
@@ -261,7 +263,7 @@ ROWS = [
         ["Build a Google Form, collect class responses, and link them to Sheets", "Download a public dataset and import it into Sheets",
          "First Colab notebook: pd.read_csv() from a public URL", "LW2 – Collect It Three Ways: the same question answered by manual entry, a public dataset, and a script"],
         ["Google Forms, Sheets, and Colab", "Python reference sheet (teacher-provided)", "PSA OpenSTAT and data.gov.ph datasets", R], ["ZS"]),
-    row("5 Sessions", "(S14 to S18)", "E. Exploring and Securing Data",
+    row("5 Sessions", "(S14 to S18)", "Lesson 5: Exploring and Securing Data",
         ["Exploratory data analysis (EDA): shape, columns, types, ranges, first questions",
          "EDA in Sheets (column stats, sorting, filters) and in pandas (head, info, describe, value_counts)",
          "Backups, version history, and tracking changes", "Data documentation: data dictionary and change log"],
@@ -290,7 +292,7 @@ ROWS = [
     {"type": "banner", "title": "UNIT 3 · SPREADSHEET AND PYTHON PROCESSING",
      "sub": "CG Part 1 · Data Processing; Part 2 · Conditional and Lookup Functions; tables and pivot tables · S22 to S40 (19 sessions)",
      "question": "How do we turn messy data into a dataset we can trust?"},
-    row("6 Sessions", "(S22 to S27)", "F. Cleaning and Converting Data",
+    row("6 Sessions", "(S22 to S27)", "Lesson 6: Cleaning and Converting Data",
         ["Missing values, duplicates, and inconsistencies (COUNTBLANK, COUNTIF, UNIQUE, TRIM, PROPER, data validation)",
          "Converting formats and types (VALUE, DATEVALUE, TEXT, SPLIT, number and date formats)",
          "The same tasks in pandas: isna, drop_duplicates, str.strip, astype, to_datetime, to_csv",
@@ -305,7 +307,7 @@ ROWS = [
         ["LW4 – Spreadsheet Investigation: clean the Canteen Sales case data and summarize it with spreadsheet calculations",
          "LW5 – Python Cleaning Challenge: clean the same data in a prepared Colab notebook with the reference sheet, then compare results"],
         ["Google Sheets and Colab", "Canteen Sales case dataset", "Python reference sheet (teacher-provided)", R], ["ZS", "SF"]),
-    row("6 Sessions", "(S28 to S33)", "G. Conditional and Lookup Functions",
+    row("6 Sessions", "(S28 to S33)", "Lesson 7: Conditional and Lookup Functions",
         ["IF, COUNTIF, COUNTIFS, SUMIF, SUMIFS, AVERAGEIF, AVERAGEIFS", "VLOOKUP, XLOOKUP, INDEX, and MATCH",
          "Combining conditional and lookup functions in one formula"],
         [("A2.3", True, "apply conditional functions (e.g., AVERAGEIF, AVERAGEIFS, COUNTIF, COUNTIFS, IF, SUMIF, and SUMIFS) to analyze and summarize data based on specific areas."),
@@ -317,7 +319,7 @@ ROWS = [
         ["Function drills on the Canteen Sales case: sales per item, per day, and per cashier",
          "Lookup tables: prices, categories, and suppliers", "SA2 – Formula Challenge: answer ten management questions with combined formulas"],
         ["Google Sheets", "Function reference card", R], ["ZS"]),
-    row("4 Sessions", "(S34 to S37)", "H. Tables, Pivot Tables, and Aggregation",
+    row("4 Sessions", "(S34 to S37)", "Lesson 8: Tables, Pivot Tables, and Aggregation",
         ["Tables, table slicers, and aggregation (sum, average, count)",
          "Pivot tables with multiple values: percentages, differences, running totals, and rankings",
          "Filtering pivot table data to focus on relevant subsets", "Comparison: groupby in pandas"],
@@ -345,7 +347,7 @@ ROWS = [
     {"type": "banner", "title": "UNIT 4 · STATISTICAL DATA ANALYSIS",
      "sub": "CG Part 2 · Descriptive and Inferential Statistics Using Spreadsheet or Statistical Software · S41 to S54 (14 sessions)",
      "question": "What do the numbers really show – and what do they not prove?"},
-    row("6 Sessions", "(S41 to S46)", "I. Descriptive Statistics",
+    row("6 Sessions", "(S41 to S46)", "Lesson 9: Descriptive Statistics",
         ["Mean, median, and mode", "Range, variance, and standard deviation", "Percentiles and quartiles",
          "Choosing appropriate summaries; outliers", "Descriptives in Sheets and in jamovi or JASP"],
         [("A2.1", True, "calculate measures of central tendency (mean, median and mode) and variation (range, variance, standard deviation, percentiles and quartiles) using spreadsheet or statistical software."),
@@ -355,7 +357,7 @@ ROWS = [
         ["Compute descriptives of the Study Habits Survey case with AVERAGE, MEDIAN, MODE, VAR, STDEV, PERCENTILE, QUARTILE",
          "Demonstration: the same descriptives in jamovi or JASP", "LW8 – Describe the Data"],
         ["Google Sheets", "jamovi or JASP (optional)", "Study Habits Survey case dataset", R], ["ZS"]),
-    row("6 Sessions", "(S47 to S52)", "J. Inferential Statistics",
+    row("6 Sessions", "(S47 to S52)", "Lesson 10: Inferential Statistics",
         ["Population and sample; hypotheses; p-value and statistical significance",
          "z-test and t-test (Z.TEST, T.TEST; jamovi or JASP)", "Correlation (CORREL; scatter plots)",
          "Simple linear regression (SLOPE, INTERCEPT, RSQ; trendlines)", "Interpreting results and limitations; correlation is not causation"],
@@ -381,7 +383,7 @@ ROWS = [
     {"type": "banner", "title": "UNIT 5 · DATA VISUALIZATION AND STORYTELLING",
      "sub": "CG Part 2 · Data Visualization Using Spreadsheet; Data Visualization Software; Data Storytelling · S55 to S68 (14 sessions)",
      "question": "How do we show the data so others understand and act?"},
-    row("5 Sessions", "(S55 to S59)", "K. Visualizing Data in Spreadsheets",
+    row("5 Sessions", "(S55 to S59)", "Lesson 11: Visualizing Data in Spreadsheets",
         ["Why visualize: the same data as a table and as a chart", "Conditional formatting and sparklines",
          "Column, line, pie, bar, scatter plot, and combo charts – choosing the right one",
          "Report filters, timelines, and slicers on pivot tables and charts", "Avoiding misleading visualizations"],
@@ -394,7 +396,7 @@ ROWS = [
         ["Visualize the Metro Manila Air Quality case: conditional formatting, sparklines, and six chart types",
          "Interactive pivot charts with filters and slicers", "LW9 – Chart Makeover: redesign three misleading charts"],
         ["Google Sheets", "Metro Manila Air Quality case dataset (public data)", R], ["ZS", "SF"]),
-    row("6 Sessions", "(S60 to S65)", "L. Interactive Dashboards in Looker Studio",
+    row("6 Sessions", "(S60 to S65)", "Lesson 12: Interactive Dashboards in Looker Studio",
         ["Setting up Looker Studio and connecting a Google Sheets data source",
          "Visual elements: scorecards (cards), column charts, tables, and controls (slicers)",
          "Editing properties, sorting, filtering, drill-down, and dimension hierarchies",
@@ -408,7 +410,7 @@ ROWS = [
         ["Build a guided dashboard of the air quality case step by step",
          "SA4 – Dashboard Challenge: turn an analyzed dataset into an interactive Looker Studio dashboard with a short, evidence-based explanation"],
         ["Looker Studio", "Google Sheets data sources", R], ["ZS", "CM"]),
-    row("2 Sessions", "(S66 to S67)", "M. Data Storytelling",
+    row("2 Sessions", "(S66 to S67)", "Lesson 13: Data Storytelling",
         ["Context, narrative, and visuals", "Story structure: question, evidence, insight, recommendation",
          "Annotations, emphasis, and knowing the audience"],
         [("A2.14", True, "apply effective data storytelling techniques to communicate data insights."),
@@ -427,7 +429,7 @@ ROWS = [
     {"type": "banner", "title": "UNIT 6 · CULMINATING PROJECT AND PEER VERIFICATION",
      "sub": "CG Part 2 · Data Analytics Project · S69 to S80 (12 sessions)",
      "question": "Would our findings survive an independent check?"},
-    row("4 Sessions", "(S69 to S72)", "N. Completing the Analytics Project",
+    row("4 Sessions", "(S69 to S72)", "Lesson 14: Completing the Analytics Project",
         ["Applying the complete analytics workflow", "Final documentation: data dictionary, processing log, methods, and limitations"],
         [("A2.15", True, "present a project involving data analytics using real-world data."),
          ("T5", False, "Complete and document a data analytics project that applies the whole workflow to a real-world question.")],
@@ -435,7 +437,7 @@ ROWS = [
         "“Ready for Review?” – a checklist that a stranger could use to rebuild your results.",
         ["Groups finalize their projects using the teacher’s checklist", "Project packages are handed over to the reviewing group"],
         ["Teacher-prepared Project Guidelines and Rubric", "Project checklist", R], ["ZS", "SF"], kind="pt"),
-    row("4 Sessions", "(S73 to S76)", "O. Independent Peer Verification",
+    row("4 Sessions", "(S73 to S76)", "Lesson 15: Independent Peer Verification",
         ["Re-checking another group’s data, calculations, and visualizations",
          "Evaluating data quality, methods, and limitations", "Preparing an evidence-based critique"],
         [("T6", False, "Verify another group’s analytics project by re-checking its data, calculations, and visualizations."),
@@ -463,11 +465,12 @@ ROWS = [
         [R], ["SF", "ZS"], kind="buffer"),
 ]
 
-# Every lettered lesson opens with its SimBook sim as the hook and lists the SimBook as a resource.
+# Every numbered lesson opens with its SimBook sim as the hook and lists the SimBook as a resource.
 for _r in ROWS:
-    _letter = _r.get("topic", "")[:2]
-    if _r.get("type") == "row" and len(_letter) == 2 and _letter[1] == "." and _letter[0] in SIMS:
-        _n, _sim = SIMS[_letter[0]]
+    _m = re.match(r"Lesson (\d+):", _r.get("topic", ""))
+    if _r.get("type") == "row" and _m and int(_m.group(1)) in SIMS:
+        _n = int(_m.group(1))
+        _sim = SIMS[_n]
         _at = 1 if _r["acts"] and _r["acts"][0].startswith("^^HOOK") else 0
         _r["acts"].insert(_at, f"^^SIM HOOK:^^ SimBook – {_sim}")
         _r["res"].insert(0, f"{SIMBOOK} – Lesson {_n} (hook sim, lesson slides with notes, and Exercises)")

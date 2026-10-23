@@ -217,7 +217,7 @@
   // ------------------------------------------------------------ register
 
   Sim.register({
-    id: "lesson9", unit: "4", num: 9, letter: "I", title: "Descriptive Statistics", simName: "Spread Lab",
+    id: "lesson9", unit: "4", num: 9, title: "Descriptive Statistics", simName: "Spread Lab",
     comps: ["A2.1", "M7"], sessions: "S41–S46", cg: "CG Part 2 · Content 1 (Descriptive and Inferential Statistics)", deped: "CG Part 2 · Content 1 (Descriptive and Inferential Statistics)",
     bigQuestion: "What do the numbers really show – and what do they not prove?",
     mission: [

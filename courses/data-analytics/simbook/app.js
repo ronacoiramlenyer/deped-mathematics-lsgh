@@ -97,7 +97,7 @@
       const cards = h("div", { class: "cards" });
       for (const l of lessons.filter((x) => x.unit === u.key)) {
         cards.append(h("a", { class: "card", href: "#" + l.id },
-          h("span", { class: "k" }, `Lesson ${l.num} · ${l.letter}${done.has(l.id) ? " · ✓ mastered" : ""}`),
+          h("span", { class: "k" }, `Lesson ${l.num}${done.has(l.id) ? " · ✓ mastered" : ""}`),
           h("h3", {}, l.title),
           h("p", {}, `Sim: ${l.simName}`),
           h("p", {}, l.bigQuestion)));
@@ -137,7 +137,7 @@
     main.append(h("article", { class: "lesson" },
       h("header", { class: "lesson-head" },
         h("p", { class: "eyebrow" }, `Unit ${unit.key} · ${unit.title} · Lesson ${l.num}`),
-        h("h1", {}, `${l.letter}. ${l.title}`),
+        h("h1", {}, l.title),
         h("div", { class: "meta" },
           h("span", { class: "chip" }, `Sim: ${l.simName}`),
           h("span", { class: "chip" }, `Competencies ${l.comps.join(", ")}`),

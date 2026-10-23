@@ -348,7 +348,7 @@
   // ------------------------------------------------------------ register
 
   Sim.register({
-    id: "lesson7", unit: "3", num: 7, letter: "G", title: "Conditional and Lookup Functions", simName: "Formula Lab",
+    id: "lesson7", unit: "3", num: 7, title: "Conditional and Lookup Functions", simName: "Formula Lab",
     comps: ["A2.3", "A2.4", "A2.5", "M6"], sessions: "S28–S33", cg: "CG Part 2 · Content 2 (Conditional and Lookup Functions)", deped: "CG Part 2 · Content 2 (Conditional and Lookup Functions)",
     bigQuestion: "How do we turn messy data into a dataset we can trust?",
     mission: [

@@ -173,7 +173,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson3", unit: "1", num: 3, letter: "C", title: "Applications and Careers in Data Analytics", simName: "Analytics Everywhere",
+    id: "lesson3", unit: "1", num: 3, title: "Applications and Careers in Data Analytics", simName: "Analytics Everywhere",
     comps: ["A1.6", "A1.7"], sessions: "S7", cg: "CG Part 1 · Content 3 (Applications of Data Analytics)", deped: "Session S7",
     bigQuestion: "What can data tell us – and what should it never be used for?",
     mission: [

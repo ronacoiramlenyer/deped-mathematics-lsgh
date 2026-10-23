@@ -14,7 +14,7 @@
   function buildSlides(lesson, blocks) {
     const slides = [];
     slides.push({
-      kind: "title", title: `${lesson.letter}. ${lesson.title}`, kicker: `Lesson ${lesson.num} · ${lesson.sessions ? `Sessions ${lesson.sessions}` : lesson.deped}`,
+      kind: "title", title: lesson.title, kicker: `Lesson ${lesson.num} · ${lesson.sessions ? `Sessions ${lesson.sessions}` : lesson.deped}`,
       body: [{ el: () => h("p", { class: "s-bigq" }, h("span", {}, "Big question"), lesson.bigQuestion) },
         { el: () => h("p", { class: "s-meta" }, `Competencies ${lesson.comps.join(", ")}`) }],
       notes: [

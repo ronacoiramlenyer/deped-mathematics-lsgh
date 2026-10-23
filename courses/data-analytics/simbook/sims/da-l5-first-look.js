@@ -265,7 +265,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson5", unit: "2", num: 5, letter: "E", title: "Exploring and Securing Data", simName: "First Look",
+    id: "lesson5", unit: "2", num: 5, title: "Exploring and Securing Data", simName: "First Look",
     comps: ["A1.10", "A1.11", "L2", "M4"], sessions: "S14–S18", cg: "CG Part 1 · Content 5 (Data Processing)", deped: "Sessions S14–S18",
     bigQuestion: "Where does good data come from, and how do we keep it safe?",
     mission: [

@@ -336,7 +336,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson1", unit: "1", num: 1, letter: "A", title: "What Is Data Analytics?", simName: "Data Lens",
+    id: "lesson1", unit: "1", num: 1, title: "What Is Data Analytics?", simName: "Data Lens",
     comps: ["A1.1", "A1.2", "A1.3", "M1"], sessions: "S2–S4", cg: "CG Part 1 · Content 1 (Data)", deped: "Sessions S2–S4",
     bigQuestion: "What can data tell us – and what should it never be used for?",
     mission: [
