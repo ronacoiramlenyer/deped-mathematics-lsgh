@@ -217,14 +217,14 @@
         s("line", { x1: PX(ax), y1: PY(ay), x2: PX(bx), y2: PY(by), stroke: "var(--ink)", "stroke-width": 3.5 }));
       if (dx) P.dyn.append(s("text", { x: (PX(ax) + PX(C[0])) / 2, y: PY(C[1]) + (by > ay ? 24 : -12), "text-anchor": "middle", class: "svg-text", "font-size": 17, "font-weight": 700, "paint-order": "stroke", stroke: "var(--paper)", "stroke-width": 4, fill: "var(--shape-a)" }, `Δx = ${fm(dx)}`));
       if (dy) P.dyn.append(s("text", { x: PX(C[0]) + (bx >= ax ? 10 : -10), y: (PY(C[1]) + PY(by)) / 2 + 5, "text-anchor": bx >= ax ? "start" : "end", class: "svg-text", "font-size": 17, "font-weight": 700, "paint-order": "stroke", stroke: "var(--paper)", "stroke-width": 4, fill: "var(--shape-b)" }, `Δy = ${fm(dy)}`));
-      P.dyn.append(s("text", { x: (PX(ax) + PX(bx)) / 2 + (dx && dy ? (bx > ax === by > ay ? -14 : 14) : 0), y: (PY(ay) + PY(by)) / 2 - (dx && dy ? 10 : 12), "text-anchor": dx && dy ? (bx > ax === by > ay ? "end" : "start") : "middle", class: "svg-text", "font-size": 17, "font-weight": 700 }, `d ≈ ${fm(d, 2)}`));
+      P.dyn.append(s("text", { x: (PX(ax) + PX(bx)) / 2 + (dx && dy ? (bx > ax === by > ay ? -22 : 22) : 0), y: (PY(ay) + PY(by)) / 2 - (dx && dy ? 14 : 12), "text-anchor": dx && dy ? (bx > ax === by > ay ? "end" : "start") : "middle", class: "svg-text", "font-size": 17, "font-weight": 700 }, `d ${Number.isInteger(d) ? "=" : "≈"} ${fm(d, 2)}`));
       clear(out);
       out.append(stat("A =", pt(x1, y1)).el, stat("B =", pt(x2, y2)).el, stat("Distance:", `${fm(d, 2)} units`).el, stat("On the map:", `${fm(d * M_PER_UNIT, 1)} m`).el);
-      const lines = [`|x₂ − x₁| = |${fm(x2)} − ${fm(x1)}| = ${fm(dx)}      |y₂ − y₁| = |${fm(y2)} − ${fm(y1)}| = ${fm(dy)}`];
+      const lines = [`Δx = |x₂ − x₁| = |${fm(x2)} − ${paren(x1)}| = ${fm(dx)}`, `Δy = |y₂ − y₁| = |${fm(y2)} − ${paren(y1)}| = ${fm(dy)}`];
       if (!dy && !dx) lines.push("The points are the same: d = 0.");
       else if (!dy) lines.push(`Horizontal segment (same y): d = |x₂ − x₁| = ${fm(dx)} units`);
       else if (!dx) lines.push(`Vertical segment (same x): d = |y₂ − y₁| = ${fm(dy)} units`);
-      else lines.push(`Slanted: d = √(Δx² + Δy²) = √(${fm(dx)}² + ${fm(dy)}²) = √${fm(dx * dx + dy * dy)} ≈ ${fm(d, 2)} units`);
+      else lines.push(`Slanted: d = √(Δx² + Δy²) = √(${fm(dx)}² + ${fm(dy)}²)`, `  = √${fm(dx * dx + dy * dy)} ${Number.isInteger(d) ? "=" : "≈"} ${fm(d, 2)} units`);
       lines.push(`Scale: ${fm(d, 2)} × 50 m ≈ ${fm(d * 50, 1)} m`);
       work.textContent = lines.join("\n");
     }

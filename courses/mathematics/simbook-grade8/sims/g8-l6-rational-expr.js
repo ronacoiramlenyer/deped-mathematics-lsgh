@@ -150,7 +150,9 @@
 
   function simplify(root_) {
     let idx = 0, step = 0, x = 1;
-    const svg = s("svg", { viewBox: "0 0 600 130", role: "img", "aria-label": "A rational expression being factored and simplified" });
+    // On a phone the chip view zooms in on the middle so the factors stay readable.
+    const narrow = root_.getBoundingClientRect().width < 560;
+    const svg = s("svg", { viewBox: narrow ? "140 0 320 130" : "0 0 600 130", role: "img", "aria-label": "A rational expression being factored and simplified" });
     const layer = s("g"); svg.append(layer);
     const scene = Scene(layer);
     const cap = h("p", { class: "note", "aria-live": "polite" });
@@ -206,7 +208,7 @@
       clear(glayer);
       const X0 = 40, X1 = 560, Y0 = 220, Y1 = 14;
       const px = (v) => X0 + ((v + 6.5) / 13) * (X1 - X0), py = (v) => Y0 - ((v + 8) / 16) * (Y0 - Y1);
-      for (let k = -6; k <= 6; k++) glayer.append(s("line", { x1: px(k), y1: Y1, x2: px(k), y2: Y0, stroke: "var(--grid)" }), s("text", { x: px(k), y: py(0) + 15, "text-anchor": "middle", class: "svg-text", "font-size": 10, fill: "var(--muted)" }, k ? neg(k) : ""));
+      for (let k = -6; k <= 6; k++) glayer.append(s("line", { x1: px(k), y1: Y1, x2: px(k), y2: Y0, stroke: "var(--grid)" }), s("text", { x: px(k), y: py(0) + 15, "text-anchor": "middle", class: "svg-text", "font-size": 12, fill: "var(--muted)" }, k ? neg(k) : ""));
       glayer.append(s("line", { x1: X0, y1: py(0), x2: X1, y2: py(0), stroke: "var(--ink)", "stroke-width": 1.5 }), s("line", { x1: px(0), y1: Y1, x2: px(0), y2: Y0, stroke: "var(--ink)", "stroke-width": 1.5 }));
       const g = (v) => pval(RN, v) / pval(RD, v);
       let d = "", pen = false;
@@ -216,21 +218,25 @@
         d += `${pen ? "L" : "M"}${px(v).toFixed(1)},${py(y).toFixed(1)}`; pen = true;
       }
       glayer.append(s("path", { d, fill: "none", stroke: "var(--shape-a)", "stroke-width": 2.5 }));
-      an.excl.forEach((e) => {
+      an.excl.forEach((e, k) => {
         const ge = g(e);
         if (Number.isFinite(ge) && Math.abs(ge) < 9) glayer.append(s("circle", { cx: px(e), cy: py(ge), r: 6, fill: "var(--paper)", stroke: "var(--bad)", "stroke-width": 2.5 }));
         else glayer.append(s("line", { x1: px(e), y1: Y1, x2: px(e), y2: Y0, stroke: "var(--bad)", "stroke-width": 1.5, "stroke-dasharray": "5 4" }));
-        glayer.append(s("text", { x: px(e) + 4, y: Y1 + 10, class: "svg-text", "font-size": 11, fill: "var(--bad)" }, `x ≠ ${neg(e)}`));
+        glayer.append(s("text", { x: px(e) + 4, y: Y0 - 4 - 15 * k, class: "svg-text", "font-size": 12, fill: "var(--bad)" }, `x ≠ ${neg(e)}`));
       });
       const y = g(x), undef = an.excl.some((e) => Math.abs(e - x) < 1e-9);
       if (!undef && Number.isFinite(y) && Math.abs(y) < 9) glayer.append(s("circle", { cx: px(x), cy: py(y), r: 7, fill: "var(--shape-a)", stroke: "var(--paper)", "stroke-width": 2 }));
-      if (undef) glayer.append(s("text", { x: clamp(px(x), 70, 530), y: Y0 - 6, "text-anchor": "middle", class: "svg-text", "font-size": 14, "font-weight": 700, fill: "var(--bad)" }, "undefined here"));
+      if (undef) {
+        const hy = Number.isFinite(y) && Math.abs(y) < 9 ? py(y) : py(0);
+        glayer.append(s("circle", { cx: px(x), cy: hy, r: 11, fill: "none", stroke: "var(--bad)", "stroke-width": 2, opacity: 0.6 }),
+          s("text", { x: clamp(px(x) + 16, 60, 470), y: clamp(hy - 14, Y1 + 14, Y0 - 40), class: "svg-text", "font-size": 14, "font-weight": 700, fill: "var(--bad)" }, "original undefined here"));
+      }
     }
     const sel = h("select", { id: "g8l6-ex" }, BANK.map((ex, i) => { const an = analyse(ex); return h("option", { value: i }, `(${an.num})/(${an.den})`); }));
     sel.addEventListener("change", () => { idx = Number(sel.value); step = 0; scene.reset(); show(); });
     root_.append(h("div", { class: "controls" }, h("label", { for: "g8l6-ex" }, "Expression", sel)),
       svg, h("div", { class: "controls" }, btn, h("button", { class: "btn ghost", type: "button", onclick: () => { step = 0; show(); } }, "Start over")), cap,
-      h("div", { class: "controls" }, elasticSlider({ id: "g8l6-x", label: "x", min: -6, max: 6, value: x, step: 1, format: (v) => dec(v), onInput: (v) => { x = v; if (Math.abs(x - Math.round(x)) < 1e-6) x = Math.round(x); values(); } }).el),
+      h("div", { class: "controls" }, elasticSlider({ id: "g8l6-x", label: "x", min: -6, max: 6, value: x, step: 1, format: (v) => dec(v), onInput: (v) => { x = Math.abs(v - Math.round(v)) < 0.005 ? Math.round(v) : v; values(); } }).el),
       vals, graph, h("p", { class: "note" }, "Blue curve: the simplified expression. Red open circle: a hole where the original expression is undefined. Red dashed line: both are undefined there."));
     show();
     return () => scene.stop();
@@ -277,7 +283,8 @@
 
   function operate(root_) {
     let op = "×", step = 0;
-    const svg = s("svg", { viewBox: "0 0 600 190", role: "img", "aria-label": "Operations on rational expressions, step by step" });
+    const narrow = root_.getBoundingClientRect().width < 560;
+    const svg = s("svg", { viewBox: narrow ? "100 0 400 190" : "0 0 600 190", role: "img", "aria-label": "Operations on rational expressions, step by step" });
     const layer = s("g"); svg.append(layer);
     const scene = Scene(layer);
     const title = h("p", { class: "unit-big" }), cap = h("p", { "aria-live": "polite" }), count = h("span", { class: "note" });
@@ -325,10 +332,11 @@
     const svg = s("svg", { viewBox: "0 0 600 250", role: "img", "aria-label": "Rational expression and a number line with a probe" });
     const exLayer = s("g"), line = s("g"), marks = s("g"), probe = s("g", { class: "token", tabindex: 0, "aria-label": "x probe" });
     svg.append(exLayer, line, marks, probe);
+    if (root_.getBoundingClientRect().width < 560) exLayer.setAttribute("transform", "translate(300,60) scale(1.5) translate(-300,-60)");
     const scene = Scene(exLayer);
     probe.append(s("path", { d: "M0,0 l-13,-24 h26 z", fill: "var(--accent)" }), s("text", { y: -30, "text-anchor": "middle", class: "svg-text", "font-weight": 700 }, "x"));
     line.append(s("line", { x1: 30, y1: 180, x2: 570, y2: 180, stroke: "var(--ink)", "stroke-width": 2 }));
-    for (let n = -6; n <= 6; n++) line.append(s("line", { x1: X(n), y1: 172, x2: X(n), y2: 188, stroke: "var(--ink)", "stroke-width": n ? 1.5 : 2.5 }), s("text", { x: X(n), y: 206, "text-anchor": "middle", class: "svg-text", "font-size": 13 }, neg(n)));
+    for (let n = -6; n <= 6; n++) line.append(s("line", { x1: X(n), y1: 172, x2: X(n), y2: 188, stroke: "var(--ink)", "stroke-width": n ? 1.5 : 2.5 }), s("text", { x: X(n), y: 208, "text-anchor": "middle", class: "svg-text", "font-size": 16 }, neg(n)));
     const probeSp = new Spring(0, (v) => { xv = v; paintProbe(); }, { stiffness: 230, damping: 15 });
     springs.push(probeSp);
     const out = h("p", { class: "unit-big", "aria-live": "polite", style: "font-size:1.05rem" });
@@ -337,6 +345,7 @@
     function paintProbe() {
       probe.setAttribute("transform", `translate(${X(xv).toFixed(1)},176)`);
       if (!pr) return;
+      if (Math.abs(xv - Math.round(xv)) < 0.005) xv = Math.round(xv);
       const dv = pval(pr.den, xv), nv = pval(pr.numCs, xv);
       clear(out);
       out.append(`x = ${dec(xv)}:  denominator ${pr.denText} = ${dec(dv)}  →  `,
