@@ -24,6 +24,7 @@
   --bad: #c2362b;
   --grid: #e7ece8;
   --purple: #7b5ea7;
+  --sec-hook: #c2461d; --sec-learn: #23649f; --sec-check: #8a5d00; --sec-exercises: #6a4c9c; --sec-ink: #ffffff;
   --teal: #17807f;
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
@@ -37,7 +38,7 @@
     --gold: #f0b43c; --gold-soft: #3a2f14;
     --shape-a: #6fb2ee; --shape-a-soft: rgba(111, 178, 238, .2);
     --shape-b: #f08a63; --shape-b-soft: rgba(240, 138, 99, .2);
-    --good: #4cc67f; --bad: #f07267; --grid: #22312a; --purple: #b79be8; --teal: #4fc6c3;
+    --good: #4cc67f; --bad: #f07267; --grid: #22312a; --purple: #b79be8; --teal: #4fc6c3; --sec-hook: #f08a63; --sec-learn: #6fb2ee; --sec-check: #f0b43c; --sec-exercises: #b79be8; --sec-ink: #0c140f;
     color-scheme: dark;
   }
 }
@@ -47,7 +48,7 @@
   --gold: #f0b43c; --gold-soft: #3a2f14;
   --shape-a: #6fb2ee; --shape-a-soft: rgba(111, 178, 238, .2);
   --shape-b: #f08a63; --shape-b-soft: rgba(240, 138, 99, .2);
-  --good: #4cc67f; --bad: #f07267; --grid: #22312a; --purple: #b79be8; --teal: #4fc6c3;
+  --good: #4cc67f; --bad: #f07267; --grid: #22312a; --purple: #b79be8; --teal: #4fc6c3; --sec-hook: #f08a63; --sec-learn: #6fb2ee; --sec-check: #f0b43c; --sec-exercises: #b79be8; --sec-ink: #0c140f;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -207,10 +208,19 @@ details.discover summary { cursor: pointer; font-weight: 700; }
 .footer-nav a { color: var(--accent); font-weight: 700; text-decoration: none; }
 /* ---------- textbook sections ---------- */
 .section-nav { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
-.section-nav button { border: 1px solid var(--accent); color: var(--accent); background: var(--paper); border-radius: 999px; padding: 5px 12px; cursor: pointer; font-weight: 700; font-size: .88rem; }
-.section-nav button:hover { background: var(--accent-soft); }
-.lesson-section { display: grid; gap: 12px; scroll-margin-top: 70px; padding-top: 6px; border-top: 2px solid var(--line); }
-.section-title { font-size: 1.45rem; }
+.section-nav button { border: 2px solid var(--sec); color: color-mix(in srgb, var(--sec) 85%, var(--ink)); background: var(--paper); border-radius: 999px; padding: 5px 12px; cursor: pointer; font-weight: 700; font-size: .88rem; }
+.section-nav button:hover, .section-nav button:focus-visible { background: var(--sec); color: var(--sec-ink); }
+/* Lesson page parts: each has its own color, icon band, and tinted background. */
+.sec-hook { --sec: var(--sec-hook); } .sec-learn { --sec: var(--sec-learn); } .sec-check { --sec: var(--sec-check); } .sec-exercises { --sec: var(--sec-exercises); }
+.lesson-section { display: grid; gap: 12px; scroll-margin-top: 70px; padding: 0 18px 20px; border-radius: 16px; overflow: clip;
+  border: 1px solid color-mix(in srgb, var(--sec) 35%, var(--line)); background: color-mix(in srgb, var(--sec) 7%, var(--bg)); }
+.lesson-section.sec-hook { background-image: radial-gradient(color-mix(in srgb, var(--sec) 22%, transparent) 1px, transparent 1.4px); background-size: 16px 16px; }
+.sec-band { margin: 0 -18px; padding: 10px 18px; background: var(--sec); color: var(--sec-ink); display: flex; align-items: center; gap: 12px; }
+.sec-icon { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-size: 1.05rem; font-weight: 800; background: color-mix(in srgb, var(--sec-ink) 22%, transparent); }
+.sec-step { margin: 0; font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; opacity: .9; }
+.sec-band .section-title { margin: 0; color: inherit; font-size: 1.4rem; line-height: 1.15; }
+.lesson-section > .note { color: color-mix(in srgb, var(--sec) 45%, var(--muted)); font-weight: 600; }
+@media (max-width: 600px) { .lesson-section { padding: 0 12px 14px; } .sec-band { margin: 0 -12px; padding: 9px 12px; } .sec-band .section-title { font-size: 1.15rem; } }
 .learn { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 20px 22px; display: grid; gap: 12px; max-width: 900px; }
 .learn h3 { font-size: 1.15rem; color: var(--accent); margin-top: 6px; }
 .learn p { margin: 0; max-width: 72ch; }

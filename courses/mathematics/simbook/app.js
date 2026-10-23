@@ -128,6 +128,14 @@
 
   // ------------------------------------------------------------ lesson
 
+  // Each part of a lesson page has its own color, icon, and step label so learners always know where they are.
+  const SECTION_LOOK = {
+    hook: ["▶", "Step 1 · Play first"],
+    learn: ["≡", "Step 2 · Learn it"],
+    check: ["✓", "Step 3 · Quick quiz"],
+    exercises: ["✎", "Step 4 · Practice"],
+  };
+
   function renderLesson(l) {
     const unit = UNITS.find((u) => u.key === l.unit);
     const idx = lessons.indexOf(l);
@@ -157,9 +165,12 @@
           h("span", { class: "chip" }, `Competencies ${l.comps.join(", ")}`),
           h("span", { class: "chip gold" }, `${l.cycles} · ${l.deped}`)),
         h("p", { class: "bigq" }, h("b", {}, "Big question: "), l.bigQuestion),
-        h("nav", { class: "section-nav", "aria-label": "Lesson sections" }, sections.map((sec) => h("button", { type: "button", onclick: () => jumpTo(sec.id) }, sec.label)))),
-      sections.map((sec) => h("section", { class: "lesson-section", id: `sec-${sec.id}` },
-        h("h2", { class: "section-title" }, sec.title), sec.intro ? h("p", { class: "note" }, sec.intro) : null, sec.body)),
+        h("nav", { class: "section-nav", "aria-label": "Lesson sections" }, sections.map((sec) => h("button", { type: "button", class: `sec-${sec.id}`, onclick: () => jumpTo(sec.id) }, `${SECTION_LOOK[sec.id][0]} ${sec.label}`)))),
+      sections.map((sec) => h("section", { class: `lesson-section sec-${sec.id}`, id: `sec-${sec.id}` },
+        h("div", { class: "sec-band" },
+          h("span", { class: "sec-icon", "aria-hidden": "true" }, SECTION_LOOK[sec.id][0]),
+          h("div", {}, h("p", { class: "sec-step" }, SECTION_LOOK[sec.id][1]), h("h2", { class: "section-title" }, sec.title))),
+        sec.intro ? h("p", { class: "note" }, sec.intro) : null, sec.body)),
       h("nav", { class: "footer-nav" },
         idx > 0 ? h("a", { href: "#" + lessons[idx - 1].id }, `← ${lessons[idx - 1].title}`) : h("span"),
         idx < lessons.length - 1 ? h("a", { href: "#" + lessons[idx + 1].id }, `${lessons[idx + 1].title} →`) : h("a", { href: "#home" }, "Back to contents"))));
