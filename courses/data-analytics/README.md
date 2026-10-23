@@ -20,6 +20,32 @@ python3 tools/cm_builder.py courses/data-analytics/content/data_analytics_cm.py 
   courses/data-analytics/output/DataAnalytics-CM-SY2026-2027.docx
 ```
 
+## Data Analytics SimBook
+
+`simbook/` – an interactive book with one custom simulation per lesson (15 lessons, A–O), built on the same
+engine as the Math 7 SimBook. Each lesson page has a hook sim, the lesson as a slide deck with speaker notes
+(including Google Sheets formulas and pandas code blocks), five Check Yourself items, and 14 exercises.
+Published copy: https://claude.ai/artifact/9cN5TM7ne3kwXFBk2yMYJW (lesson pages `#lesson1` … `#lesson15`).
+All datasets are hand-made sample data with Filipino and LSGH contexts, not official statistics.
+
+| Lesson | Sim | Tabs |
+| --- | --- | --- |
+| 1 · A. What Is Data Analytics? | Data Lens | Sort the Data, Life Cycle, Which Analysis? |
+| 2 · B. Data Privacy and Ethics | Privacy Shield | Anonymize, Ethics Calls |
+| 3 · C. Applications and Careers | Analytics Everywhere | Industry Map, Skill Builder |
+| 4 · D. Data Sources and Collection Methods | Collect It Three Ways | Source Sorter, Three Ways, Is It Reliable? |
+| 5 · E. Exploring and Securing Data | First Look | Explore, Version History |
+| 6 · F. Cleaning and Converting Data | Data Cleaner | Spot the Problems, Clean It, Before / After |
+| 7 · G. Conditional and Lookup Functions | Formula Lab | Conditional, Lookup, Combine |
+| 8 · H. Tables, Pivot Tables, and Aggregation | Pivot Builder | – |
+| 9 · I. Descriptive Statistics | Spread Lab | Drag the Data, Box and Quartiles, Formulas |
+| 10 · J. Inferential Statistics | Test Lab | Two Groups, z-test, Correlation and Regression |
+| 11 · K. Visualizing Data in Spreadsheets | Chart Chooser | Chart Types, Format It, Honest or Misleading?, Slicers |
+| 12 · L. Interactive Dashboards in Looker Studio | Dashboard Builder | Build, Explore, Choose the Visual |
+| 13 · M. Data Storytelling | Story Builder | Story Arc, Emphasis, Know Your Audience |
+| 14 · N. Completing the Analytics Project | Project Pipeline | Workflow, Reproducibility Check |
+| 15 · O. Independent Peer Verification | Verify It | Find the Issues, Write the Critique, Respond |
+
 ## Course design decisions
 
 - One term of 80 one-hour sessions (S1–S80); no trimester split.

@@ -449,8 +449,7 @@
 
   Sim.register({
     id: "lesson12", unit: "5", num: 12, letter: "L", title: "Interactive Dashboards in Looker Studio", simName: "Dashboard Builder",
-    comps: ["A2.11", "A2.12", "A2.13", "M10"], sessions: "S60–S65", cg: "CG Part 2 · Content 4 (Data Visualization Software)",
-    deped: "CG Part 2 · Content 4 (Data Visualization Software)",
+    comps: ["A2.11", "A2.12", "A2.13", "M10"], sessions: "S60–S65", deped: "Sessions S60–S65", cg: "CG Part 2 · Content 4 (Data Visualization Software)",
     bigQuestion: "How do we show the data so others understand and act?",
     mission: [
       "Build: add a scorecard, a column chart, a table, and a drop-down control. Drag them on the grid and edit their properties until all five dashboard goals are checked.",

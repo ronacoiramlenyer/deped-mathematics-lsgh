@@ -244,8 +244,7 @@
 
   Sim.register({
     id: "lesson14", unit: "6", num: 14, letter: "N", title: "Completing the Analytics Project", simName: "Project Pipeline",
-    comps: ["A2.15", "T5"], sessions: "S69–S72", cg: "CG Part 2 · Content 6 (Data Analytics Project)",
-    deped: "CG Part 2 · Content 6 (Data Analytics Project)",
+    comps: ["A2.15", "T5"], sessions: "S69–S72", deped: "Sessions S69–S72", cg: "CG Part 2 · Content 6 (Data Analytics Project)",
     bigQuestion: "Would our findings survive an independent check?",
     mission: [
       "Workflow: drag all nine artifacts onto the five stages and check the package. Then load Group 2's package – what is missing, and why does it matter to a reviewer?",

@@ -263,8 +263,7 @@
 
   Sim.register({
     id: "lesson15", unit: "6", num: 15, letter: "O", title: "Independent Peer Verification", simName: "Verify It",
-    comps: ["T6", "T7", "T8"], sessions: "S73–S79", cg: "CG Part 2 · Content 6 (Data Analytics Project)",
-    deped: "CG Part 2 · Content 6 (Data Analytics Project) · LSGH transfer goals",
+    comps: ["T6", "T7", "T8"], sessions: "S73–S79", deped: "Sessions S73–S79", cg: "CG Part 2 · Content 6 (Data Analytics Project)",
     bigQuestion: "Would our findings survive an independent check?",
     mission: [
       "Find the Issues: flag all six planted issues in Group 4's project, then re-compute. Which sentence of their conclusion no longer holds?",

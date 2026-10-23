@@ -274,8 +274,7 @@
 
   Sim.register({
     id: "lesson13", unit: "5", num: 13, letter: "M", title: "Data Storytelling", simName: "Story Builder",
-    comps: ["A2.14", "M11"], sessions: "S66–S67", cg: "CG Part 2 · Content 5 (Data Storytelling)",
-    deped: "CG Part 2 · Content 5 (Data Storytelling)",
+    comps: ["A2.14", "M11"], sessions: "S66–S67", deped: "Sessions S66–S67", cg: "CG Part 2 · Content 5 (Data Storytelling)",
     bigQuestion: "How do we show the data so others understand and act?",
     mission: [
       "Story Arc: drag the five story cards into the arc and check the order. Which card answers “so what?” about the evidence?",
