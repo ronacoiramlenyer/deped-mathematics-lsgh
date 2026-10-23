@@ -309,7 +309,7 @@
   const WORK = [[2, 3], [3, 6], [4, 12], [6, 12], [2, 6], [4, 4], [10, 15], [12, 24], [6, 3], [5, 20]];
 
   Sim.register({
-    id: "lesson7", unit: "C", num: 7, letter: "G", title: "Rational Algebraic Equations", simName: "Work-Rate Lab",
+    id: "g8-lesson7", unit: "8C", num: 7, letter: "G", title: "Rational Algebraic Equations", simName: "Work-Rate Lab",
     comps: ["A12", "M7"], cycles: "C7,M3 – C8,M2", deped: "DepEd Weeks 7–8",
     bigQuestion: "If 3 friends can paint a wall in 4 hours, how long would it take 5 friends?",
     mission: [

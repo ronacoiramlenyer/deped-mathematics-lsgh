@@ -379,7 +379,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson5", unit: "B", num: 5, letter: "E", title: "Factoring Polynomials", simName: "Factor Puzzle",
+    id: "g8-lesson5", unit: "8B", num: 5, letter: "E", title: "Factoring Polynomials", simName: "Factor Puzzle",
     comps: ["A8", "A9", "M5", "T1"], cycles: "C4,M4 – C5,M4", deped: "DepEd Weeks 4–6",
     bigQuestion: "How can one expression describe every size of garden?",
     mission: [

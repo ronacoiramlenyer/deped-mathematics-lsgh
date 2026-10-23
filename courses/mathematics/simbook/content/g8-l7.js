@@ -1,5 +1,5 @@
 /* Grade 8 · Term 1 · Lesson 7 · G. Rational Algebraic Equations – lesson and exercises */
-Sim.addContent("lesson7", {
+Sim.addContent("g8-lesson7", {
   learn: [
     { t: "h", text: "What is a rational algebraic equation?" },
     { t: "defs", items: [

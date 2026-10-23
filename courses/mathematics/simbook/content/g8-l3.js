@@ -1,5 +1,5 @@
 /* Math 8 · Lesson 3 · C. Operations on Monomials and the Laws of Exponents – lesson and exercises */
-Sim.addContent("lesson3", {
+Sim.addContent("g8-lesson3", {
   learn: [
     { t: "h", text: "Monomials and like terms" },
     { t: "defs", items: [

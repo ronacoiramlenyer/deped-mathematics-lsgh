@@ -309,7 +309,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson9", unit: "D", num: 9, letter: "I", title: "The Cartesian Plane, Distance, and Midpoint", simName: "Barangay Map",
+    id: "g8-lesson9", unit: "8D", num: 9, letter: "I", title: "The Cartesian Plane, Distance, and Midpoint", simName: "Barangay Map",
     comps: ["A14", "A15", "A16", "M9", "T2"], cycles: "C9,M3 – C10,M1", deped: "DepEd Weeks 9–10",
     bigQuestion: "How far is the canteen from the gate – as the crow flies?",
     mission: [

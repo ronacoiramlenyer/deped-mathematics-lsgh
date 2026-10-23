@@ -1,5 +1,5 @@
 /* Grade 8 · Lesson 5 · E. Factoring Polynomials – lesson and exercises */
-Sim.addContent("lesson5", {
+Sim.addContent("g8-lesson5", {
   learn: [
     { t: "h", text: "Factoring undoes multiplying" },
     { t: "p", text: "Multiplying turns factors into a product: (x + 2)(x + 3) = x² + 5x + 6. **Factoring** goes the other way: it writes a polynomial as a product. With tiles, factoring means arranging the tiles into a rectangle and reading its side lengths." },

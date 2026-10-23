@@ -1,5 +1,5 @@
 /* Math 8 · Lesson 1 · A. Measures of Central Tendency – lesson and exercises */
-Sim.addContent("lesson1", {
+Sim.addContent("g8-lesson1", {
   learn: [
     { t: "h", text: "One number for a whole data set" },
     { t: "p", text: "A **measure of central tendency** is a single value that describes the centre, or typical value, of a data set. The three most common are the mean, the median, and the mode. Today we use **ungrouped data** – the raw values, not grouped into classes." },

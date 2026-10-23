@@ -1,5 +1,5 @@
 /* Grade 8 · Term 1 · Lesson 8 · H. Sequences and Patterns – lesson and exercises */
-Sim.addContent("lesson8", {
+Sim.addContent("g8-lesson8", {
   learn: [
     { t: "h", text: "Sequences and terms" },
     { t: "defs", items: [

@@ -311,7 +311,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson3", unit: "B", num: 3, letter: "C", title: "Operations on Monomials and the Laws of Exponents", simName: "Exponent Lab",
+    id: "g8-lesson3", unit: "8B", num: 3, letter: "C", title: "Operations on Monomials and the Laws of Exponents", simName: "Exponent Lab",
     comps: ["A4", "A5", "M3"], cycles: "C2,M3 – C3,M1", deped: "DepEd Week 2",
     bigQuestion: "How can one expression describe every size of garden?",
     mission: [

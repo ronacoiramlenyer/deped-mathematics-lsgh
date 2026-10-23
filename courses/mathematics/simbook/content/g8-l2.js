@@ -1,5 +1,5 @@
 /* Math 8 · Lesson 2 · B. Algebraic Expressions as Models – lesson and exercises */
-Sim.addContent("lesson2", {
+Sim.addContent("g8-lesson2", {
   learn: [
     { t: "h", text: "Expressions as models" },
     { t: "p", text: "A **mathematical model** describes a real situation with mathematics. An **algebraic expression** is a model when its variable stands for a quantity in the situation that can change. One expression then works for every value of that quantity." },

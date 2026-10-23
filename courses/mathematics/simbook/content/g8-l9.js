@@ -1,5 +1,5 @@
 /* Grade 8 · Term 1 · Lesson 9 · I. The Cartesian Plane, Distance, and Midpoint – lesson and exercises */
-Sim.addContent("lesson9", {
+Sim.addContent("g8-lesson9", {
   learn: [
     { t: "h", text: "The Cartesian coordinate plane" },
     { t: "defs", items: [

@@ -387,7 +387,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson4", unit: "B", num: 4, letter: "D", title: "Multiplying Polynomials and Special Products", simName: "Area Builder",
+    id: "g8-lesson4", unit: "8B", num: 4, letter: "D", title: "Multiplying Polynomials and Special Products", simName: "Area Builder",
     comps: ["A6", "A7", "M4"], cycles: "C3,M2 – C4,M3", deped: "DepEd Weeks 3–4",
     bigQuestion: "How can one expression describe every size of garden?",
     mission: [

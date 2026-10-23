@@ -281,7 +281,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson8", unit: "D", num: 8, letter: "H", title: "Sequences and Patterns", simName: "Pattern Builder",
+    id: "g8-lesson8", unit: "8D", num: 8, letter: "H", title: "Sequences and Patterns", simName: "Pattern Builder",
     comps: ["A13", "M8"], cycles: "C8,M4 – C9,M2", deped: "DepEd Week 9",
     bigQuestion: "How far is the canteen from the gate – as the crow flies?",
     mission: [

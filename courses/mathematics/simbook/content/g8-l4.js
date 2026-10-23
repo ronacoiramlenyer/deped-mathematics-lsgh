@@ -1,5 +1,5 @@
 /* Grade 8 · Lesson 4 · D. Multiplying Polynomials and Special Products – lesson and exercises */
-Sim.addContent("lesson4", {
+Sim.addContent("g8-lesson4", {
   learn: [
     { t: "h", text: "Multiplying a monomial by a polynomial" },
     { t: "p", text: "To multiply a monomial by a polynomial, multiply the monomial by **every** term of the polynomial. When the same variable is multiplied, add the exponents." },

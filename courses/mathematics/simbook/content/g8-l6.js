@@ -1,5 +1,5 @@
 /* Grade 8 · Lesson 6 · F. Rational Algebraic Expressions – lesson and exercises */
-Sim.addContent("lesson6", {
+Sim.addContent("g8-lesson6", {
   learn: [
     { t: "h", text: "What is a rational algebraic expression?" },
     { t: "p", text: "A rational number is a quotient of two integers, like 3/4. A **rational algebraic expression** is a quotient of two polynomials, like 12/n or (x² − 9)/(x² + 5x + 6)." },

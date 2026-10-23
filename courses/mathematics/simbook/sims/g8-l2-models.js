@@ -267,7 +267,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson2", unit: "B", num: 2, letter: "B", title: "Algebraic Expressions as Models", simName: "Expression Modeler",
+    id: "g8-lesson2", unit: "8B", num: 2, letter: "B", title: "Algebraic Expressions as Models", simName: "Expression Modeler",
     comps: ["A3", "M2"], cycles: "C2,M1 – C2,M2", deped: "DepEd Week 1",
     bigQuestion: "How can one expression describe every size of garden?",
     mission: [

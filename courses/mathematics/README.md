@@ -101,6 +101,16 @@ python3 ../../tools/lg_builder.py content/grade7_term3_lg.py \
 | 25 · G. Writing and Solving Equations | Equation Builder | Story to Equation, Solve It, Problem Solving |
 | 26 · H. Experiments and Outcomes | Chance Lab | Coin Toss, Die Roll, Spinner Booth |
 | 27 · I. Scientific Notation | Powers-of-Ten Zoom | Zoom, Convert, Operate |
+| **Grade 8 · Term 1** (ids `g8-lesson1`…) | | |
+| 1 · A. Measures of Central Tendency | Center Finder | Balance Point, Outlier Effect, Which Measure? |
+| 2 · B. Algebraic Expressions as Models | Expression Modeler | Build the Model, Match It |
+| 3 · C. Operations on Monomials and the Laws of Exponents | Exponent Lab | Like Terms, Expand the Powers, Laws Table |
+| 4 · D. Multiplying Polynomials and Special Products | Area Builder | Area Model, Special Products, Pattern Match |
+| 5 · E. Factoring Polynomials | Factor Puzzle | Make a Rectangle, Factor Detective, Problems |
+| 6 · F. Rational Algebraic Expressions | Fraction Machine | Simplify, Operate, Restrictions |
+| 7 · G. Rational Algebraic Equations | Work-Rate Lab | Cross-Multiply, Work Together, Proportion Problems |
+| 8 · H. Sequences and Patterns | Pattern Builder | Growing Patterns, Find the Rule, Real Patterns |
+| 9 · I. The Cartesian Plane, Distance, and Midpoint | Barangay Map | Plot It, Distance, Midpoint |
 
 **Motion.** Manipulatives never jump. `Sim.Spring` eases every animated value with a
 slightly under-damped spring (a small elastic overshoot); `Sim.elasticSlider` follows the

@@ -400,7 +400,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson6", unit: "C", num: 6, letter: "F", title: "Rational Algebraic Expressions", simName: "Fraction Machine",
+    id: "g8-lesson6", unit: "8C", num: 6, letter: "F", title: "Rational Algebraic Expressions", simName: "Fraction Machine",
     comps: ["A10", "A11", "M6"], cycles: "C6,M1 – C7,M2", deped: "DepEd Weeks 6–7",
     bigQuestion: "If 3 friends can paint a wall in 4 hours, how long would it take 5 friends?",
     mission: [

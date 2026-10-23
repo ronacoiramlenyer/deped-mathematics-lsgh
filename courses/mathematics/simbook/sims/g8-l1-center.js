@@ -269,7 +269,7 @@
   // ------------------------------------------------------------ lesson
 
   Sim.register({
-    id: "lesson1", unit: "A", num: 1, letter: "A", title: "Measures of Central Tendency", simName: "Center Finder",
+    id: "g8-lesson1", unit: "8A", num: 1, letter: "A", title: "Measures of Central Tendency", simName: "Center Finder",
     comps: ["A1", "A2", "M1"], cycles: "C1,M2 – C1,M5", deped: "DepEd Week 1",
     bigQuestion: "Which “average” tells the truth about our class?",
     mission: [
