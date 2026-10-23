@@ -99,6 +99,7 @@
         h("p", { class: "note" }, `${done.size} of ${lessons.length} lessons mastered on this device.`)),
       coverArt()));
     const units = h("div", { class: "units" });
+    let tone = 0;
     for (const u of UNITS) {
       if (!lessons.some((x) => x.unit === u.key)) continue;
       if (u === UNITS.find((v) => v.term === u.term)) {
@@ -117,6 +118,7 @@
       }
       // Units share a row when there is room, so cards keep their size and more of them fit across.
       unit.style.setProperty("--n", cards.children.length);
+      unit.classList.add(`tone-${tone++ % 6}`);
       unit.append(cards);
       units.append(unit);
     }
