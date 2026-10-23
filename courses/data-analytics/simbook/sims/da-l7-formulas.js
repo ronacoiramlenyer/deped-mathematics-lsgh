@@ -23,12 +23,12 @@
 .fl-ptr { position: absolute; top: 0; left: 0; height: 30px; border: 3px solid var(--shape-b); border-radius: 4px; pointer-events: none; box-sizing: border-box; }
 .fl-ptr.ok { border-color: var(--good); }
 .fl-ptr.err { border-color: var(--bad); }
-.fl-tokens { display: flex; flex-wrap: wrap; gap: 6px; min-height: 44px; padding: 6px; border: 1px dashed var(--line); border-radius: 8px; align-content: flex-start; }
+.fl-tokens { min-width: 0; display: flex; flex-wrap: wrap; gap: 6px; min-height: 44px; padding: 6px; border: 1px dashed var(--line); border-radius: 8px; align-content: flex-start; }
 .fl-tokens.line { border-style: solid; border-color: var(--accent); background: var(--accent-soft); }
-.fl-tok { font-family: var(--mono); font-size: .86rem; border: 1px solid var(--shape-a); background: var(--paper); color: var(--ink); border-radius: 6px; padding: 5px 8px; cursor: pointer; will-change: transform; position: relative; }
+.fl-tok { font-family: var(--mono); font-size: .86rem; border: 1px solid var(--shape-a); background: var(--paper); color: var(--ink); border-radius: 6px; padding: 5px 8px; cursor: pointer; will-change: transform; position: relative; white-space: normal; overflow-wrap: anywhere; max-width: 100%; text-align: left; }
 .fl-tok:hover { background: var(--shape-a-soft); }
-.fl-two { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
-.fl-two > div { min-width: 0; max-width: 100%; }
+.fl-two { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; min-width: 0; }
+.fl-two > div { flex: 0 1 auto; min-width: 0; max-width: 100%; }
 .fl-res { align-items: center; }
 .fl-cap { font-size: .8rem; color: var(--muted); margin: 0 0 4px; font-weight: 700; letter-spacing: .04em; }
 `));
@@ -335,7 +335,7 @@
         if (wrong && wrong.animate && !Sim.reducedMotion()) wrong.animate([{ transform: "translateX(0)" }, { transform: "translateX(-6px)" }, { transform: "translateX(6px)" }, { transform: "translateX(0)" }], { duration: 280 });
       }
     }
-    root.append(h("div", { class: "controls" }, segmented([0, 1, 2, 3], 0, (v) => load(v), (v) => `Question ${v + 1}`)),
+    root.append(h("div", { class: "controls" }, segmented([0, 1, 2, 3], 0, (v) => load(v), (v) => `Q${v + 1}`)),
       ask, h("p", { class: "fl-cap" }, "Pieces (click to add, click again to remove)"), pool, h("p", { class: "fl-cap" }, "Your formula"), line,
       h("div", { class: "controls" }, h("button", { class: "btn", type: "button", onclick: evaluate }, "Evaluate"),
         h("button", { class: "btn ghost", type: "button", onclick: () => load(task) }, "Start over")),
