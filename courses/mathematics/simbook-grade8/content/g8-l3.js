@@ -1,0 +1,51 @@
+/* Math 8 · Lesson 3 · C. Operations on Monomials and the Laws of Exponents – lesson and exercises */
+Sim.addContent("lesson3", {
+  learn: [
+    { t: "h", text: "Monomials and like terms" },
+    { t: "defs", items: [
+      ["Monomial", "a number, a variable, or a product of a number and variables with whole-number exponents: 7, x, −3x², 5ab"],
+      ["Numerical coefficient", "the number part of a monomial: −3 in −3x²"],
+      ["Literal coefficient", "the variable part, with its exponents: x² in −3x²"],
+      ["Like terms", "monomials with the same variables raised to the same exponents: 4x² and −9x²"],
+    ] },
+    { t: "p", text: "4x and 4x² are **unlike** terms: the variable is the same, but the exponents differ. In algebra tiles, an x tile and an x² tile have different shapes, so they never merge." },
+    { t: "h", text: "Adding and subtracting monomials" },
+    { t: "rule", title: "Combining like terms", text: ["Add or subtract the numerical coefficients.", "Keep the literal coefficient (the variable part) the same.", "Unlike terms cannot be combined: 3x + 2x² stays as it is."] },
+    { t: "ex", title: "Adding and subtracting", problem: "Simplify (a) 3x + 2x, (b) 5y² − 8y², (c) 4x − 4x.", steps: ["(a) 3 + 2 = 5, so 3x + 2x = 5x", "(b) 5 − 8 = −3, so 5y² − 8y² = −3y²", "(c) 4 − 4 = 0: four zero pairs, so 4x − 4x = 0"], answer: "5x, −3y², and 0." },
+    { t: "ex", title: "Several terms", problem: "Simplify 2x² − x + 3 − x² + 2x − 1.", steps: ["Group like terms: (2x² − x²) + (−x + 2x) + (3 − 1)", "Combine each group: x² + x + 2"], answer: "x² + x + 2." },
+    { t: "h", text: "Exponents count factors" },
+    { t: "p", text: "An exponent tells how many times the base is used as a factor: x⁴ = x · x · x · x. Writing a power as repeated multiplication explains every law of exponents." },
+    { t: "table", head: ["Law", "Rule", "Why (repeated multiplication)"], rows: [["Product of powers", "aᵐ · aⁿ = aᵐ⁺ⁿ", "x³ · x² = (x·x·x)(x·x) = x⁵"], ["Quotient of powers", "aᵐ ÷ aⁿ = aᵐ⁻ⁿ", "x⁵ ÷ x² = (x·x·x·x·x) ÷ (x·x) = x³"], ["Power of a power", "(aᵐ)ⁿ = aᵐⁿ", "(x²)³ = (x·x)(x·x)(x·x) = x⁶"], ["Power of a product", "(ab)ᵐ = aᵐbᵐ", "(2x)³ = (2x)(2x)(2x) = 8x³"], ["Zero exponent", "a⁰ = 1 (a ≠ 0)", "x³ ÷ x³ = 1 and also x³⁻³ = x⁰"]] },
+    { t: "h", text: "Multiplying monomials" },
+    { t: "rule", title: "Multiplying monomials", text: ["Multiply the numerical coefficients.", "Multiply the variable parts: for the same base, add the exponents."] },
+    { t: "ex", title: "Product", problem: "Multiply (3x²)(4x⁵).", steps: ["Coefficients: 3 × 4 = 12", "Variables: x² · x⁵ = x²⁺⁵ = x⁷", "Product: 12x⁷"], answer: "12x⁷." },
+    { t: "ex", title: "Power of a monomial", problem: "Simplify (−2a³)².", steps: ["(−2a³)² = (−2)² · (a³)²", "(−2)² = 4 and (a³)² = a⁶", "Result: 4a⁶"], answer: "4a⁶." },
+    { t: "h", text: "Dividing monomials" },
+    { t: "rule", title: "Dividing monomials", text: ["Divide the numerical coefficients.", "Divide the variable parts: for the same nonzero base, subtract the exponents."] },
+    { t: "ex", title: "Quotient", problem: "Divide 15y⁶ ÷ 3y².", steps: ["Coefficients: 15 ÷ 3 = 5", "Variables: y⁶ ÷ y² = y⁶⁻² = y⁴", "Quotient: 5y⁴"], answer: "5y⁴." },
+    { t: "ex", title: "The zero exponent", problem: "Explain why x⁰ = 1, then simplify 7x⁰.", steps: ["x³ ÷ x³ = 1, because any nonzero number divided by itself is 1", "By the quotient law, x³ ÷ x³ = x³⁻³ = x⁰", "So x⁰ = 1, and 7x⁰ = 7 · 1 = 7"], answer: "7 (only x has the exponent 0)." },
+    { t: "remember", items: ["Add or subtract only like terms: combine the coefficients, keep the variable part.", "Multiply: multiply coefficients, ADD exponents of the same base.", "Divide: divide coefficients, SUBTRACT exponents of the same base.", "Power of a power: MULTIPLY exponents; any nonzero base to the 0 power is 1."] },
+  ],
+  exercises: [
+    { title: "A. Skills Practice", note: "Simplify. Choose the correct answer.", items: [
+      { q: "6x + 9x", choices: ["15x", "15x²", "54x", "15"], answer: "15x", solution: "Like terms: 6 + 9 = 15, so 15x." },
+      { q: "4a² − 10a²", choices: ["−6a²", "6a²", "−6", "−6a⁴"], answer: "−6a²", solution: "4 − 10 = −6; the variable part a² stays: −6a²." },
+      { q: "5x + 2x²", choices: ["7x³", "7x²", "10x³", "5x + 2x² (cannot be combined)"], answer: "5x + 2x² (cannot be combined)", solution: "x and x² are unlike terms, so the expression is already simplified." },
+      { q: "x⁴ · x⁶", choices: ["x¹⁰", "x²⁴", "2x¹⁰", "x²"], answer: "x¹⁰", solution: "Same base: add the exponents, 4 + 6 = 10." },
+      { q: "(2y³)(5y⁴)", choices: ["10y⁷", "7y⁷", "10y¹²", "7y¹²"], answer: "10y⁷", solution: ["Coefficients: 2 × 5 = 10", "y³ · y⁴ = y⁷", "10y⁷"] },
+      { q: "m⁹ ÷ m³", choices: ["m⁶", "m³", "m¹²", "m²⁷"], answer: "m⁶", solution: "Same base: subtract the exponents, 9 − 3 = 6." },
+      { q: "(x⁵)²", choices: ["x¹⁰", "x⁷", "x²⁵", "2x⁵"], answer: "x¹⁰", solution: "Power of a power: multiply, 5 × 2 = 10." },
+      { q: "If 9⁰ + 2³ = n, what is n?", num: 9, solution: ["9⁰ = 1 and 2³ = 8", "1 + 8 = 9"] },
+    ] },
+    { title: "B. Problem Solving", items: [
+      { q: "A square tile has side 3x cm. Which expression is its area?", choices: ["9x²", "3x²", "6x", "9x"], answer: "9x²", solution: "Area = (3x)² = 3² · x² = 9x² cm²." },
+      { q: "A rectangular garden is 4x m wide and 6x m long. A second garden has area 8x² m². What is the total area of the two gardens?", choices: ["32x²", "24x² + 8x", "18x²", "32x⁴"], answer: "32x²", solution: ["First garden: (4x)(6x) = 24x²", "Total: 24x² + 8x² = 32x² (like terms)"] },
+      { q: "The area of a rectangle is 18a⁵ and its width is 3a². Which expression is its length?", choices: ["6a³", "15a³", "6a⁷", "6a¹⁰"], answer: "6a³", solution: "Length = area ÷ width = 18a⁵ ÷ 3a² = 6a³." },
+      { q: "A cube-shaped box has edge 2x cm. Its volume is kxⁿ cm³. What is k + n?", num: 11, solution: ["V = (2x)³ = 2³x³ = 8x³", "k = 8 and n = 3, so k + n = 11"] },
+    ] },
+    { title: "C. Challenge", items: [
+      { q: "Simplify (2x³)² · x⁴ ÷ (4x⁵).", choices: ["x⁵", "x³", "4x⁵", "x¹⁵"], answer: "x⁵", solution: ["(2x³)² = 4x⁶", "4x⁶ · x⁴ = 4x¹⁰", "4x¹⁰ ÷ 4x⁵ = x⁵"] },
+      { q: "Rina says x² · x³ = x⁶ because “the exponents multiply.” Use repeated multiplication to explain the error and give the correct answer.", open: true, solution: ["x² · x³ = (x · x)(x · x · x): there are 2 + 3 = 5 factors of x, not 6.", "The correct answer is x⁵. Exponents are multiplied only for a power of a power, such as (x²)³ = x⁶."] },
+    ] },
+  ],
+});

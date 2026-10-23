@@ -59,7 +59,7 @@
       L: (x) => (x === q ? null : (x + p) / (x - q)), R: (x) => (x === q ? null : r / (x - q)),
       linear: `${paren(lin(p))}${paren(lin(-q))} = ${r}${paren(lin(-q))}`,
       steps: [`${paren(lin(p))}${paren(lin(-q))} − ${r}${paren(lin(-q))} = 0`, `${paren(lin(-q))}${paren(lin(sP))} = 0   (common factor)`, `x = ${q}  or  x = ${fm(x0)}`, none ? `Both give x = ${q}.` : `Two candidates: ${q} and ${fm(x0)}.`],
-      check: none ? `x = ${q} makes x − ${q} = 0, so it is REJECTED (extraneous). The equation has no solution.` : `x = ${q} makes x − ${q} = 0 → REJECTED (extraneous).  x = ${fm(x0)}: (${fm(x0)} + ${p})/(${fm(x0)} − ${q}) = ${frs(new Frac(r, x0 - q))} = ${r}/(${fm(x0 - q)}) ✓`,
+      check: none ? `x = ${q} makes x − ${q} = 0, so it is REJECTED (extraneous).\n  The equation has no solution.` : `x = ${q} makes x − ${q} = 0 → REJECTED (extraneous).\n  x = ${fm(x0)}: left (${fm(x0)} + ${p})/(${fm(x0)} − ${q}) = ${frs(new Frac(r, x0 - q))}, right ${r}/(${fm(x0)} − ${q}) = ${frs(new Frac(r, x0 - q))} ✓`,
       exclude: `x = ${q} is not allowed: it makes x − ${q} = 0.`,
     };
   }
@@ -77,17 +77,17 @@
     const CW = 20.4; // monospace character width at 34px
     const W = (t) => t.length * CW;
 
+    const PW = (t) => W(t) + (/[+−]/.test(t) ? 2 * CW : 0); // width with parentheses
     function finalLayout() {
-      // a × d = c × (x + b): positions of the four tokens in the bottom row
+      // (numL)(denR) = (numR)(denL): centres of the four tokens in the bottom row
       const [nL, dL, nR, dR] = eq.tok;
-      const pL = /[+−]/.test(dR) ? 2 * CW : 0, pR = /[+−]/.test(dL) ? 2 * CW : 0;
-      const gap = 30, eqW = 40;
-      const left = W(nL) + gap + W(dR) + pL, right = W(nR) + gap + W(dL) + pR;
-      let x = 300 - (left + eqW + right) / 2;
+      const gap = 26, eqW = 40;
+      let x = 300 - (PW(nL) + gap + PW(dR) + eqW + PW(nR) + gap + PW(dL)) / 2;
       const pos = {};
-      pos.nL = x + W(nL) / 2; x += W(nL) + gap; pos.dR = x + (W(dR) + pL) / 2; x += W(dR) + pL; pos.eq = x + eqW / 2; x += eqW;
-      pos.nR = x + W(nR) / 2; x += W(nR) + gap; pos.dL = x + (W(dL) + pR) / 2;
-      pos.dot1 = pos.nL + W(nL) / 2 + gap / 2; pos.dot2 = pos.nR + W(nR) / 2 + gap / 2;
+      pos.nL = x + PW(nL) / 2; x += PW(nL); pos.dot1 = x + gap / 2; x += gap;
+      pos.dR = x + PW(dR) / 2; x += PW(dR); pos.eq = x + eqW / 2; x += eqW;
+      pos.nR = x + PW(nR) / 2; x += PW(nR); pos.dot2 = x + gap / 2; x += gap;
+      pos.dL = x + PW(dL) / 2;
       return pos;
     }
 
@@ -122,17 +122,16 @@
         const o = Math.min(1, (k - 0.85) / 0.15);
         const add = (x, t) => svg.append(s("text", { x, y: FY, "text-anchor": "middle", class: "svg-text", "font-size": 34, opacity: o }, t));
         add(P.dot1, "·"); add(P.dot2, "·"); add(P.eq, "=");
-        if (/[+−]/.test(dR)) { add(P.dR - W(dR) / 2 - CW / 2, "("); add(P.dR + W(dR) / 2 + CW / 2, ")"); }
-        if (/[+−]/.test(dL)) { add(P.dL - W(dL) / 2 - CW / 2, "("); add(P.dL + W(dL) / 2 + CW / 2, ")"); }
+        [[nL, P.nL], [dR, P.dR], [nR, P.nR], [dL, P.dL]].forEach(([tk, c]) => { if (/[+−]/.test(tk)) { add(c - W(tk) / 2 - CW / 2, "("); add(c + W(tk) / 2 + CW / 2, ")"); } });
       }
     }
 
     function showWork() {
-      const lines = [`Equation:        ${eq.tok[0].includes("x") ? paren(eq.tok[0]) : eq.tok[0]}/${paren(eq.tok[1])} = ${eq.tok[2]}/${paren(eq.tok[3])}`,
-        `Restriction:     ${eq.exclude}`];
-      if (stage >= 1) lines.push(`Cross-multiply:  ${eq.linear}`);
-      if (stage >= 2) eq.steps.forEach((t) => lines.push(`                 ${t}`));
-      if (stage >= 3) lines.push(`Check:           ${eq.check}`);
+      const lines = [`Equation: ${paren(eq.tok[0])}/${paren(eq.tok[1])} = ${eq.tok[2]}/${paren(eq.tok[3])}`,
+        `Restriction: ${eq.exclude}`];
+      if (stage >= 1) lines.push(`Cross-multiply: ${eq.linear}`);
+      if (stage >= 2) eq.steps.forEach((t) => lines.push(`  ${t}`));
+      if (stage >= 3) lines.push(`Check: ${eq.check}`);
       work.textContent = lines.join("\n");
       clear(res);
       if (stage >= 3) res.append(pill(eq.valid, `Solution: x = ${fm(eq.x0)}`, "No solution – the only candidate was rejected."));
@@ -211,10 +210,10 @@
     function equations() {
       const C = CREWS[crew], tt = T();
       work.textContent = [
-        `${C.a} does 1/${fm(a)} of the job per hour; ${C.b} does 1/${fm(b)} per hour.`,
-        `Together, in t hours:   t/${fm(a)} + t/${fm(b)} = 1   or   1/${fm(a)} + 1/${fm(b)} = 1/t`,
-        `Multiply by the LCD ${fm(a)}·${fm(b)}·t:   ${fm(b)}t + ${fm(a)}t = ${fm(a * b)}`,
-        `${fm(a + b)}t = ${fm(a * b)}   →   t = ${fm(a * b)} ÷ ${fm(a + b)} = ${fm(tt, 2)} h  (about ${hm(tt)})`,
+        `Rates: ${C.a} 1/${fm(a)}, ${C.b} 1/${fm(b)} (job per hour)`,
+        `Equation: 1/${fm(a)} + 1/${fm(b)} = 1/t`,
+        `× LCD ${fm(a)}·${fm(b)}·t: ${fm(b)}t + ${fm(a)}t = ${fm(a * b)}`,
+        `${fm(a + b)}t = ${fm(a * b)} → t = ${fm(tt, 2)} h${Math.abs(tt - Math.round(tt)) > 1e-9 ? ` ≈ ${hm(tt)}` : ""}`,
         `Check: ${fm(tt, 2)}/${fm(a)} + ${fm(tt, 2)}/${fm(b)} = ${fm(tt / a, 3)} + ${fm(tt / b, 3)} = ${fm(tt / a + tt / b, 3)} ✓`,
       ].join("\n");
       clear(out);
@@ -236,7 +235,7 @@
 
     const sa = elasticSlider({ id: "g8l7-a", label: "A alone (h)", min: 1, max: 12, value: a, step: 0.5, format: (v) => fm(v, 1), onInput: (v) => { a = v; reset(); } });
     const sb = elasticSlider({ id: "g8l7-b", label: "B alone (h)", min: 1, max: 12, value: b, step: 0.5, format: (v) => fm(v, 1), onInput: (v) => { b = v; reset(); } });
-    const sg = elasticSlider({ id: "g8l7-g", label: "Your prediction (h)", min: 0.5, max: 12, value: guess, step: 0.25, format: (v) => fm(v, 2), onInput: (v) => { guess = v; } });
+    const sg = elasticSlider({ id: "g8l7-g", label: "Guess (h)", min: 0.5, max: 12, value: guess, step: 0.25, format: (v) => fm(v, 2), onInput: (v) => { guess = v; } });
     const intro = h("p", {});
     const setIntro = () => { const C = CREWS[crew]; intro.textContent = `${C.a} can ${C.job} alone in a hours. ${C.b} can do it alone in b hours. How long if they work together? Predict, then press Start.`; };
     root.append(h("div", { class: "controls" }, segmented(["pipes", "clean"], crew, (v) => { crew = v; setIntro(); reset(); }, (v) => (v === "pipes" ? "Two pipes, one tank" : "Two learners, one room"))),

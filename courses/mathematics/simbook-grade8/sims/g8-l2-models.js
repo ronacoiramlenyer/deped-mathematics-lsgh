@@ -127,33 +127,33 @@
       clear(svg);
       const v = shown;
       if (M.key === "per" || M.key === "area") {
-        const S = 24, w = v * S, L = (v + 3) * S, x0 = 320 - L / 2, y0 = 135 - w / 2;
+        const S = 24, w = v * S, L = (v + 3) * S, x0 = 320 - L / 2, y0 = 130 - w / 2;
         if (M.key === "area") {
           for (let i = 1; i < v + 3; i++) svg.append(s("line", { x1: x0 + i * S, y1: y0, x2: x0 + i * S, y2: y0 + w, stroke: "var(--shape-a)", "stroke-opacity": 0.25 }));
           for (let j = 1; j < v; j++) svg.append(s("line", { x1: x0, y1: y0 + j * S, x2: x0 + L, y2: y0 + j * S, stroke: "var(--shape-a)", "stroke-opacity": 0.25 }));
         }
         svg.append(s("rect", { x: x0, y: y0, width: L, height: w, fill: M.key === "area" ? "var(--shape-a-soft)" : "var(--good)", "fill-opacity": M.key === "area" ? 1 : 0.12, stroke: M.key === "per" ? "var(--accent)" : "var(--shape-a)", "stroke-width": M.key === "per" ? 5 : 2 }));
-        svg.append(s("text", { x: 320, y: y0 - 10, "text-anchor": "middle", class: "svg-text", "font-size": 16 }, `x + 3 = ${fmt(v + 3, 1)} m`));
-        svg.append(s("text", { x: x0 - 10, y: 140, "text-anchor": "end", class: "svg-text", "font-size": 16 }, `x = ${fmt(v, 1)} m`));
-        svg.append(s("text", { x: 320, y: y0 + w + 24, "text-anchor": "middle", class: "svg-label", "font-size": 15 }, M.key === "per" ? `fence: ${fmt(4 * v + 6, 1)} m` : `area: ${fmt(v * (v + 3), 2)} m²`));
+        svg.append(s("text", { x: 320, y: y0 - 12, "text-anchor": "middle", class: "svg-text", "font-size": 20 }, `x + 3 = ${fmt(v + 3, 1)} m`));
+        svg.append(s("text", { x: x0 - 10, y: 140, "text-anchor": "end", class: "svg-text", "font-size": 20 }, `x = ${fmt(v, 1)} m`));
+        svg.append(s("text", { x: 320, y: y0 + w + 28, "text-anchor": "middle", class: "svg-label", "font-size": 19 }, M.key === "per" ? `fence: ${fmt(4 * v + 6, 1)} m` : `area: ${fmt(v * (v + 3), 2)} m²`));
       } else if (M.key === "fare") {
         const K = (km) => 30 + km * 35;
         svg.append(s("rect", { x: K(0), y: 150, width: K(4) - K(0), height: 14, fill: "var(--shape-b-soft)" }), s("rect", { x: K(4), y: 150, width: Math.max(0, K(4 + v) - K(4)), height: 14, fill: "var(--gold-soft)", stroke: "var(--gold)" }));
         svg.append(s("line", { x1: K(0), y1: 164, x2: K(16), y2: 164, stroke: "var(--ink)", "stroke-width": 2 }));
-        for (let km = 0; km <= 16; km++) svg.append(s("line", { x1: K(km), y1: 160, x2: K(km), y2: 170, stroke: "var(--ink)" }), km % 2 ? null : s("text", { x: K(km), y: 190, "text-anchor": "middle", class: "svg-text", "font-size": 14 }, String(km)));
-        svg.append(s("text", { x: K(2), y: 140, "text-anchor": "middle", class: "svg-label", "font-size": 14 }, "first 4 km: ₱13"));
-        if (v > 0.3) svg.append(s("text", { x: (K(4) + K(4 + v)) / 2, y: 212, "text-anchor": "middle", class: "svg-label", "font-size": 14 }, `k = ${fmt(v, 1)} km × ₱1.80`));
+        for (let km = 0; km <= 16; km++) svg.append(s("line", { x1: K(km), y1: 160, x2: K(km), y2: 170, stroke: "var(--ink)" }), km % 2 ? null : s("text", { x: K(km), y: 194, "text-anchor": "middle", class: "svg-text", "font-size": 19 }, String(km)));
+        svg.append(s("text", { x: K(2), y: 222, "text-anchor": "middle", class: "svg-label", "font-size": 19 }, "first 4 km: ₱13"));
+        if (v > 0.3) svg.append(s("text", { x: Math.max(K(4) + 120, (K(4) + K(4 + v)) / 2), y: 252, "text-anchor": "middle", class: "svg-label", "font-size": 19 }, `k = ${fmt(v, 1)} km × ₱1.80`));
         const jx = K(4 + v);
-        const jeep = s("g", { transform: `translate(${jx - 60},92)` });
+        const jeep = s("g", { transform: `translate(${jx - 72},80) scale(1.2)` });
         jeep.append(s("rect", { x: 0, y: 8, width: 64, height: 38, rx: 6, fill: "var(--shape-a)" }), s("rect", { x: 6, y: 14, width: 40, height: 14, rx: 2, fill: "var(--paper)" }), s("rect", { x: 50, y: 14, width: 10, height: 14, rx: 2, fill: "var(--paper)" }),
           s("rect", { x: -2, y: 2, width: 68, height: 8, rx: 3, fill: "var(--gold)" }), s("circle", { cx: 14, cy: 48, r: 8, fill: "var(--ink)" }), s("circle", { cx: 50, cy: 48, r: 8, fill: "var(--ink)" }));
-        svg.append(jeep, s("text", { x: 320, y: 250, "text-anchor": "middle", class: "svg-text", "font-size": 17, "font-weight": 700 }, `fare = ₱${fmt(13 + 1.8 * v, 2)}`));
+        svg.append(jeep, s("text", { x: 320, y: 44, "text-anchor": "middle", class: "svg-text", "font-size": 22, "font-weight": 700 }, `fare = ₱${fmt(13 + 1.8 * v, 2)}`));
       } else {
-        const P = 2.6, base = 99 * P, add = 5 * v * P;
-        svg.append(s("rect", { x: 30, y: 110, width: base, height: 50, fill: "var(--shape-b)", opacity: 0.8 }), s("text", { x: 30 + base / 2, y: 141, "text-anchor": "middle", class: "svg-text", "font-size": 16, fill: "var(--paper)" }, "₱99"));
-        for (let i = 0; i < Math.ceil(v - 1e-9); i++) svg.append(s("rect", { x: 30 + base + i * 5 * P, y: 110, width: Math.max(0, Math.min(1, v - i)) * 5 * P - 1, height: 50, fill: "var(--gold)", opacity: 0.85 }));
-        svg.append(s("text", { x: 30 + base + add / 2, y: 186, "text-anchor": "middle", class: "svg-label", "font-size": 14 }, v > 0.5 ? `${fmt(v, 1)} days × ₱5` : ""));
-        svg.append(s("text", { x: 320, y: 70, "text-anchor": "middle", class: "svg-text", "font-size": 17, "font-weight": 700 }, `total = ₱${fmt(99 + 5 * v, 2)}`));
+        const P = 2.2, base = 99 * P, add = 5 * v * P;
+        svg.append(s("rect", { x: 30, y: 100, width: base, height: 70, fill: "var(--shape-b)", opacity: 0.8 }), s("text", { x: 30 + base / 2, y: 142, "text-anchor": "middle", class: "svg-text", "font-size": 20, fill: "var(--paper)" }, "₱99"));
+        for (let i = 0; i < Math.ceil(v - 1e-9); i++) svg.append(s("rect", { x: 30 + base + i * 5 * P, y: 100, width: Math.max(0, Math.min(1, v - i)) * 5 * P - 1, height: 70, fill: "var(--gold)", opacity: 0.85 }));
+        svg.append(s("text", { x: Math.max(30 + base + 80, 30 + base + add / 2), y: 200, "text-anchor": "middle", class: "svg-label", "font-size": 19 }, v > 0.5 ? `${fmt(v, 1)} days × ₱5` : ""));
+        svg.append(s("text", { x: 320, y: 70, "text-anchor": "middle", class: "svg-text", "font-size": 22, "font-weight": 700 }, `total = ₱${fmt(99 + 5 * v, 2)}`));
       }
     }
 
@@ -170,7 +170,7 @@
       const ok = same(f, M.target);
       status.append(pill(ok, `Your model works for every ${M.v}!`, `Not yet – your expression does not match the situation for every ${M.v}.`));
       if (ok) meaning.append(h("p", { class: "note" }, `A model: ${M.model}. What each part means:`),
-        h("div", { class: "table-wrap" }, h("table", { class: "data" }, h("tbody", {}, M.parts.map(([a, b]) => h("tr", {}, h("td", { class: "num" }, a), h("td", {}, b)))))));
+        h("div", { class: "table-wrap" }, h("table", { class: "data" }, h("tbody", {}, M.parts.map(([a, b]) => h("tr", {}, h("td", { style: "white-space:nowrap;font-family:var(--mono)" }, a), h("td", {}, b)))))));
     }
     function addToken(lab, src, btn) {
       const from = btn.getBoundingClientRect();

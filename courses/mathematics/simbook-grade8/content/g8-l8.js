@@ -1,0 +1,55 @@
+/* Grade 8 · Term 1 · Lesson 8 · H. Sequences and Patterns – lesson and exercises */
+Sim.addContent("lesson8", {
+  learn: [
+    { t: "h", text: "Sequences and terms" },
+    { t: "defs", items: [
+      ["Sequence", "a list of numbers (or figures) in a definite order, such as 4, 7, 10, 13, …"],
+      ["Term", "each number in a sequence. a₁ is the 1st term, a₂ the 2nd, and aₙ the nth term."],
+      ["Rule", "a description that tells how to get the terms – in words (“start at 4, add 3”) or as a formula (aₙ = 3n + 1)."],
+    ] },
+    { t: "p", text: "The three dots “…” mean the sequence goes on. To describe a pattern, look at how each term changes into the next one." },
+    { t: "h", text: "Looking for the pattern" },
+    { t: "table", head: ["Kind of pattern", "Example", "What happens"], rows: [
+      ["Add a constant", "5, 9, 13, 17, …", "+4 each time"],
+      ["Multiply by a constant", "3, 6, 12, 24, …", "×2 each time"],
+      ["Add increasing amounts", "1, 3, 6, 10, 15, …", "+2, +3, +4, +5, …"],
+      ["Alternating", "2, 7, 5, 10, 8, …", "+5, −2, +5, −2, …"],
+    ] },
+    { t: "steps", title: "Finding the next term", items: ["Write the differences between consecutive terms.", "If the differences are the same, keep adding that number.", "If not, check the ratios (÷), or the differences of the differences.", "Describe the rule in words, then test it on the given terms."] },
+    { t: "ex", title: "Differences that grow", problem: "Find the next two terms: 2, 3, 5, 8, 12, …", steps: ["Differences: +1, +2, +3, +4", "The differences increase by 1, so next add 5, then 6.", "12 + 5 = 17 and 17 + 6 = 23"], answer: "17 and 23." },
+    { t: "ex", title: "Multiplying", problem: "Find the next term: 5, 15, 45, 135, …", steps: ["Differences: 10, 30, 90 – not the same.", "Ratios: 15 ÷ 5 = 3, 45 ÷ 15 = 3, 135 ÷ 45 = 3", "Rule: multiply by 3. 135 × 3 = 405"], answer: "405." },
+    { t: "h", text: "The rule for the nth term" },
+    { t: "rule", title: "When the same number d is added each time", text: ["aₙ = dn + c", "d = the common difference; find c from the first term: c = a₁ − d."] },
+    { t: "ex", title: "Writing the rule", problem: "Write the rule for the nth term of 5, 9, 13, 17, … and find the 20th term.", steps: ["The common difference is 4, so the rule starts with 4n.", "n = 1: 4(1) = 4, but a₁ = 5, so add 1.", "Rule: aₙ = 4n + 1", "Test: n = 3 → 13 ✓  n = 4 → 17 ✓", "a₂₀ = 4(20) + 1 = 81"], answer: "aₙ = 4n + 1; the 20th term is 81." },
+    { t: "ex", title: "A decreasing sequence", problem: "Write the rule for 20, 17, 14, 11, …", steps: ["The common difference is −3, so the rule starts with −3n.", "n = 1: −3(1) = −3, but a₁ = 20, so add 23.", "Rule: aₙ = −3n + 23", "Test: n = 4 → −12 + 23 = 11 ✓"], answer: "aₙ = −3n + 23." },
+    { t: "h", text: "Patterns made of figures" },
+    { t: "ex", title: "Matchstick squares", problem: "1 square uses 4 matchsticks, 2 squares use 7, 3 squares use 10. How many for 50 squares?", steps: ["Terms: 4, 7, 10, … (each new square adds 3 sticks)", "In words: start with 1 stick, then add 3 for every square.", "Rule: aₙ = 3n + 1", "a₅₀ = 3(50) + 1 = 151"], answer: "151 matchsticks." },
+    { t: "ex", title: "Triangle dots", problem: "The dot triangles have 1, 3, 6, 10, … dots. How many dots are in the 6th triangle?", steps: ["Differences: +2, +3, +4 – each new row has one more dot.", "5th: 10 + 5 = 15", "6th: 15 + 6 = 21"], answer: "21 dots." },
+    { t: "h", text: "Patterns in real life" },
+    { t: "ex", title: "Savings", problem: "Jo saves ₱50 in week 1 and adds ₱20 every week. How much is saved after week 12?", steps: ["Terms: 50, 70, 90, … (add 20)", "Rule: aₙ = 20n + 30", "a₁₂ = 20(12) + 30 = 270"], answer: "₱270." },
+    { t: "ex", title: "Doubling", problem: "A culture of 50 bacteria doubles every hour. How many are there after 5 hours?", steps: ["50 → 100 → 200 → 400 → 800 → 1 600", "This is a multiply-by-2 pattern, not a linear one."], answer: "1 600 bacteria." },
+    { t: "remember", items: ["Compare consecutive terms: differences first, then ratios.", "Same difference d → linear rule aₙ = dn + c.", "Describe the pattern in words AND as a rule, then test it on the next terms."] },
+  ],
+  exercises: [
+    { title: "A. Skills Practice", note: "Find the next term, or answer the question.", items: [
+      { q: "7, 12, 17, 22, …  What is the next term?", num: 27, solution: "Add 5: 22 + 5 = 27." },
+      { q: "40, 34, 28, 22, …  What is the next term?", num: 16, solution: "Subtract 6: 22 − 6 = 16." },
+      { q: "2, 6, 18, 54, …  What is the next term?", num: 162, solution: "Multiply by 3: 54 × 3 = 162." },
+      { q: "1, 2, 4, 7, 11, …  What is the next term?", num: 16, solution: ["Differences: +1, +2, +3, +4", "Next add 5: 11 + 5 = 16"] },
+      { q: "3, 8, 6, 11, 9, …  What is the next term?", num: 14, solution: ["Pattern: +5, −2, +5, −2, …", "Next is +5: 9 + 5 = 14"] },
+      { q: "Which rule gives the nth term of 6, 10, 14, 18, …?", choices: ["n + 4", "4n + 2", "4n", "6n + 4"], answer: "4n + 2", solution: ["Common difference 4 → 4n", "4(1) = 4; a₁ = 6, so add 2: aₙ = 4n + 2"] },
+      { q: "Which rule gives the nth term of 9, 7, 5, 3, …?", choices: ["−2n + 11", "2n + 7", "−2n + 9", "n − 2"], answer: "−2n + 11", solution: ["Common difference −2 → −2n", "−2(1) = −2; a₁ = 9, so add 11: aₙ = −2n + 11"] },
+      { q: "The rule of a sequence is aₙ = 5n − 3. What is the 15th term?", num: 72, solution: "5(15) − 3 = 75 − 3 = 72." },
+    ] },
+    { title: "B. Problem Solving", items: [
+      { q: "Matchstick squares in a row use 4, 7, 10, … sticks. How many sticks are needed for 25 squares?", num: 76, solution: ["Rule: aₙ = 3n + 1", "3(25) + 1 = 76"] },
+      { q: "Row 1 of an auditorium has 20 seats, and each row has 2 more seats than the row before it. How many seats are in row 15?", num: 48, solution: ["Rule: aₙ = 2n + 18", "2(15) + 18 = 48"] },
+      { q: "Mika saves ₱30 in week 1 and adds ₱20 each week after. In which week will the savings first reach ₱250?", num: 12, solution: ["Rule: aₙ = 20n + 10", "20n + 10 = 250 → 20n = 240 → n = 12"] },
+      { q: "A culture of 25 bacteria doubles every hour. How many bacteria are there after 6 hours?", num: 1600, solution: ["25 × 2 × 2 × 2 × 2 × 2 × 2 = 25 × 64", "= 1 600"] },
+    ] },
+    { title: "C. Challenge", items: [
+      { q: "The L-shaped tile figures have 3, 5, 7, 9, … tiles. Which figure number uses exactly 61 tiles?", num: 30, solution: ["Rule: aₙ = 2n + 1", "2n + 1 = 61 → 2n = 60 → n = 30"] },
+      { q: "Describe the pattern 4, 9, 14, 19, … in words and as a rule for the nth term. Then use your rule to check the 5th term.", open: true, solution: ["In words: start at 4 and add 5 each time.", "Rule: aₙ = 5n − 1 (5 × 1 = 5, and 5 − 1 = 4).", "Test: a₅ = 5(5) − 1 = 24, and 19 + 5 = 24 ✓"] },
+    ] },
+  ],
+});

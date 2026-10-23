@@ -20,9 +20,9 @@
 
   const PATTERNS = {
     sticks: {
-      name: "Matchstick squares", unit: "matchsticks", count: (n) => 3 * n + 1, words: "Start with 4 matchsticks; each new square adds 3.", rule: "3n + 1",
+      name: "Matchstick squares", unit: "matchsticks", view: "0 0 600 120", count: (n) => 3 * n + 1, words: "Start with 4 matchsticks; each new square adds 3.", rule: "3n + 1",
       elems() {
-        const out = [], side = 46, x0 = 300 - 4 * side, y0 = 100;
+        const out = [], side = 60, x0 = 300 - 4 * side, y0 = 30;
         const stick = (b, x1, y1, x2, y2) => out.push({ b, draw: (svg, g) => {
           const cx = (x1 + x2) / 2, cy = (y1 + y2) / 2, k = ease(g);
           svg.append(s("line", { x1: cx + (x1 - cx) * k, y1: cy + (y1 - cy) * k, x2: cx + (x2 - cx) * k, y2: cy + (y2 - cy) * k, stroke: "var(--gold)", "stroke-width": 7, "stroke-linecap": "round", opacity: clamp(g * 1.5, 0, 1) }),
@@ -37,9 +37,9 @@
       },
     },
     ltiles: {
-      name: "L-shaped tiles", unit: "tiles", count: (n) => 2 * n + 1, words: "Start with 3 tiles; each step adds 2 (one on each arm).", rule: "2n + 1",
+      name: "L-shaped tiles", unit: "tiles", view: "0 0 600 290", count: (n) => 2 * n + 1, words: "Start with 3 tiles; each step adds 2 (one on each arm).", rule: "2n + 1",
       elems() {
-        const out = [], t = 26, cx0 = 210, cy0 = 250;
+        const out = [], t = 30, cx0 = 300 - 4.5 * 30, cy0 = 255;
         const tile = (b, x, y, color) => out.push({ b, draw: (svg, g) => {
           const k = ease(g), w = t * k;
           svg.append(s("rect", { x: x + (t - w) / 2, y: y + (t - w) / 2, width: w, height: w, rx: 3, fill: color, stroke: "var(--ink)", "stroke-width": 1, opacity: clamp(g * 1.5, 0, 1) }));
@@ -50,11 +50,11 @@
       },
     },
     dots: {
-      name: "Triangle dots", unit: "dots", count: (n) => (n * (n + 1)) / 2, words: "Step n adds a new row of n dots: add 2, then 3, then 4, …", rule: "n(n + 1)/2 (not linear)",
+      name: "Triangle dots", unit: "dots", view: "0 0 600 270", count: (n) => (n * (n + 1)) / 2, words: "Step n adds a new row of n dots: add 2, then 3, then 4, …", rule: "n(n + 1)/2 (not linear)",
       elems() {
         const out = [];
         for (let r = 1; r <= 8; r++) for (let j = 0; j < r; j++) {
-          const x = 300 + (j - (r - 1) / 2) * 30, y = 30 + (r - 1) * 31;
+          const x = 300 + (j - (r - 1) / 2) * 32, y = 24 + (r - 1) * 32;
           out.push({ b: r, draw: (svg, g) => svg.append(s("circle", { cx: x, cy: y, r: 10 * ease(g), fill: r % 2 ? "var(--shape-a)" : "var(--purple)", opacity: clamp(g * 1.5, 0, 1) })) });
         }
         return out;
@@ -79,9 +79,10 @@
     function table() {
       clear(tableBox);
       const ns = [1, 2, 3, 4, 5, 6, 7, 8];
-      tableBox.append(h("table", { class: "data" },
-        h("tbody", {}, h("tr", {}, h("th", {}, "Step n"), ns.map((n) => h("td", { class: "num" }, String(n)))),
-          h("tr", {}, h("th", {}, P.unit), ns.map((n) => h("td", { class: "num" }, rec[n] !== undefined ? h("b", {}, String(rec[n])) : "·"))))));
+      const cell = "padding:5px 4px;text-align:center";
+      tableBox.append(h("table", { class: "data", style: "font-size:.9rem" },
+        h("tbody", {}, h("tr", {}, h("th", { style: cell }, "Step n"), ns.map((n) => h("td", { class: "num", style: cell }, String(n)))),
+          h("tr", {}, h("th", { style: cell }, "Count"), ns.map((n) => h("td", { class: "num", style: cell }, rec[n] !== undefined ? h("b", {}, String(rec[n])) : "·"))))));
     }
     function record() {
       const n = clamp(Math.round(v), 1, 8); rec[n] = P.count(n); table();
@@ -90,7 +91,7 @@
       if (got >= 3) fb.append(h("p", { class: "note" }, "Look at the row of numbers: what do you add (or do) to get from one term to the next?"));
     }
     function setup(k) {
-      key = k; P = PATTERNS[k]; els = P.elems(); rec = {}; slider.jump(1); v = 1; ruleBox.hidden = true; clear(fb); pred.input.value = ""; draw(); table();
+      key = k; P = PATTERNS[k]; els = P.elems(); svg.setAttribute("viewBox", P.view); rec = {}; slider.jump(1); v = 1; ruleBox.hidden = true; clear(fb); pred.input.value = ""; draw(); table();
       ruleBox.textContent = `In words: ${P.words}\nAs a rule: number of ${P.unit} at step n = ${P.rule}\nTest: step 4 → ${P.count(4)}, step 5 → ${P.count(5)}, step 10 → ${P.count(10)}`;
     }
     const slider = elasticSlider({ id: "g8l8-step", label: "Step", min: 1, max: 8, value: 1, step: 1, format: (x) => String(clamp(Math.round(x), 1, 8)), onInput: (x) => { v = x; draw(); } });
@@ -140,17 +141,17 @@
         const sc = last && solved ? ease(reveal) : 1;
         svg.append(s("rect", { x: CX(i) - 38, y: 22, width: 76, height: 56, rx: 10, fill: last ? "var(--gold-soft)" : "var(--shape-a-soft)", stroke: last ? "var(--gold)" : "var(--shape-a)", "stroke-width": 2 }));
         svg.append(s("text", { x: CX(i), y: 60, "text-anchor": "middle", class: "svg-text", "font-size": 24 * (open ? sc : 1), "font-weight": 700 }, open ? fm(t) : "?"));
-        svg.append(s("text", { x: CX(i), y: 14, "text-anchor": "middle", class: "svg-label", "font-size": 13 }, `term ${i + 1}`));
+        svg.append(s("text", { x: CX(i), y: 15, "text-anchor": "middle", class: "svg-label", "font-size": 15 }, `term ${i + 1}`));
       });
       const rows = seq.type === "mul" ? [seq.ratios.map((r) => `×${r}`), ...seq.diffs.slice(0, 1).map((r) => r.map((x) => (x >= 0 ? `+${x}` : fm(x))))] : seq.diffs.map((r) => r.map((x) => (x >= 0 ? `+${x}` : fm(x))));
       rows.forEach((row, ri) => {
         const y = 120 + ri * 62;
         row.forEach((lab, i) => {
-          const visible = solved ? row.length : 4 - ri;
+          const visible = solved ? row.length : row.length - 1;
           if (i >= visible) return;
           const g = clamp(pop * (row.length + 1) - i - ri * 0.5, 0, 1.15);
           if (g <= 0) return;
-          const off = (ri * 49);
+          const off = seq.type === "inc" && ri === 1 ? 49 : 0;
           const x1 = CX(i) + off + 8, x2 = CX(i + 1) + off - 8, mid = (x1 + x2) / 2, yy = y - 18 * g;
           svg.append(s("path", { d: `M${x1},${y - 30} Q${mid},${y - 2} ${x2},${y - 30}`, fill: "none", stroke: ri === 0 ? "var(--shape-b)" : "var(--purple)", "stroke-width": 2, opacity: Math.min(1, g) }));
           svg.append(s("text", { x: mid, y: yy + 30, "text-anchor": "middle", class: "svg-text", "font-size": 19 * Math.min(1.1, g), "font-weight": 700, fill: ri === 0 ? "var(--shape-b)" : "var(--purple)" }, lab));
@@ -173,7 +174,7 @@
           clear(res);
           const ok = o === right;
           res.append(pill(ok, `Yes: aₙ = ${right}`, `Test it: n = 1 gives ${fm(evalRule(o, 1))}, but term 1 is ${fm(seq.terms[0])}.`));
-          if (ok) res.append(h("pre", { class: "workings" }, [1, 2, 3, 6, 10].map((n) => `n = ${n}:  ${fm(seq.d)}(${n}) ${seq.c < 0 ? "−" : "+"} ${Math.abs(seq.c)} = ${fm(seq.d * n + seq.c)}${n <= 6 ? (seq.d * n + seq.c === seq.terms[n - 1] ? " ✓" : "") : "   ← the 10th term"}`).join("\n")));
+          if (ok) res.append(h("pre", { class: "workings" }, [1, 2, 3, 6, 10].map((n) => `n = ${n}:  ${fm(seq.d)}(${n}) ${seq.c < 0 ? "−" : "+"} ${Math.abs(seq.c)} = ${fm(seq.d * n + seq.c)}${n <= 6 ? (seq.d * n + seq.c === seq.terms[n - 1] ? " ✓" : "") : "  ← 10th term"}`).join("\n")));
         } }, o))), res);
     }
     function evalRule(str, n) {
@@ -183,7 +184,7 @@
       return a * n + (m[2] ? +m[2] : 0);
     }
     function fresh() {
-      seq = makeSeq(type); shown = false; solved = false; popSp.jump(0); revSp.jump(0); clear(fb); pred.input.value = ""; ruleChoices(); draw();
+      seq = makeSeq(type); svg.setAttribute("viewBox", `0 0 600 ${type === "mul" || type === "inc" ? 240 : 172}`); shown = false; solved = false; popSp.jump(0); revSp.jump(0); clear(fb); pred.input.value = ""; ruleChoices(); draw();
     }
     const pred = answerBox("g8l8-next", "Term 6 =", (x) => {
       clear(fb);
@@ -231,11 +232,12 @@
         svg.append(s("rect", { x: 220, y: 8, width: 160, height: 26, rx: 6, fill: "var(--accent)" }), s("text", { x: 300, y: 27, "text-anchor": "middle", class: "svg-label", "font-size": 15, fill: "var(--accent-ink)" }, "STAGE"));
         for (let r = 1; r <= Math.min(10, n + 1); r++) {
           const g = r <= n ? 1 : f; if (g <= 0.01) continue;
-          const seats = 2 * r + 18, rad = 40 + r * 24, half = 0.42 + r * 0.035;
+          const seats = 2 * r + 18;
           for (let j = 0; j < seats; j++) {
-            const ang = Math.PI / 2 + half * (1 - (2 * j) / (seats - 1));
-            svg.append(s("circle", { cx: 300 + rad * Math.cos(ang) * 1.9, cy: 20 + rad * Math.sin(ang), r: 4.2 * ease(g), fill: r % 2 ? "var(--shape-a)" : "var(--gold)" }));
+            const x = 300 + (j - (seats - 1) / 2) * 14;
+            svg.append(s("circle", { cx: x, cy: 40 + r * 24 + (x - 300) ** 2 * 0.00025, r: 5.5 * ease(g), fill: r % 2 ? "var(--shape-a)" : "var(--gold)", opacity: clamp(g * 1.5, 0, 1) }));
           }
+          svg.append(s("text", { x: 300 - ((seats - 1) / 2) * 14 - 12, y: 45 + r * 24 + ((seats - 1) * 7) ** 2 * 0.00025, "text-anchor": "end", class: "svg-text", "font-size": 15, opacity: clamp(g, 0, 1) }, String(seats)));
         }
       } else if (key === "savings") {
         const bw = 44;
@@ -251,16 +253,16 @@
         const full = show(n), next = n < 8 ? show(n + 1) : full;
         for (let i = 0; i < next; i++) {
           const g = i < full ? 1 : f; if (g <= 0.01) continue;
-          const cx = 180 + (i % 16) * 15, cy = 30 + Math.floor(i / 16) * 15;
-          svg.append(s("circle", { cx, cy, r: 6 * ease(g), fill: "var(--purple)", opacity: 0.85 }));
+          const cx = 300 + ((i % 24) - 11.5) * 22, cy = 26 + Math.floor(i / 24) * 22;
+          svg.append(s("circle", { cx, cy, r: 8 * ease(g), fill: "var(--purple)", opacity: 0.85 }));
         }
-        svg.append(s("text", { x: 300, y: 292, "text-anchor": "middle", class: "svg-label", "font-size": 14 }, "each dot = 50 bacteria"));
+        svg.append(s("text", { x: 300, y: 290, "text-anchor": "middle", class: "svg-label", "font-size": 18 }, "each dot = 50 bacteria"));
       }
       const sn = clamp(Math.round(v), R.min, R.max);
       clear(out);
       out.append(stat(`${R.label}:`, String(sn)).el, stat("Term:", `${key === "savings" ? "₱" : ""}${fm(R.value(sn), 0)} ${key === "savings" ? "" : R.unit}`).el);
       const lines = [];
-      for (let k = R.min; k <= Math.min(R.max, sn + 1); k++) lines.push(`${R.label} ${k}: ${fm(R.value(k), 0)}${k > R.min ? `   (${key === "bacteria" ? "×2" : `+${R.value(k) - R.value(k - 1)}`})` : ""}`);
+      for (let k = R.min; k <= sn; k++) lines.push(`${R.label} ${k}: ${fm(R.value(k), 0)}${k > R.min ? `   (${key === "bacteria" ? "×2" : `+${R.value(k) - R.value(k - 1)}`})` : ""}`);
       work.textContent = lines.slice(-6).join("\n") + `\n\nIn words: ${R.words}\nRule: ${R.rule}`;
     }
     function setup(k) {
