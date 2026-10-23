@@ -1,10 +1,10 @@
 """Builds an LSGH Learning Guide (.docx) from a content module.
 
 Usage:
-    python3 tools/lg_builder.py content/grade7_term1_lg.py output/grade7/<name>.docx
+    python3 tools/lg_builder.py courses/<course>/content/<module>.py courses/<course>/output/<name>.docx
 
 The content module defines HEADER, OVERVIEW, OUTCOMES, POLICIES, ASSESSMENT,
-STANDARDS, UNITS, MARK, STAGES and SIGNATORIES (see content/grade7_term1_lg.py).
+STANDARDS, UNITS, MARK, STAGES and SIGNATORIES (see courses/mathematics/content/grade7_term1_lg.py).
 
 Lesson bodies are lists of blocks:
     ("cycle", text)            yellow-highlighted cycle/meeting range

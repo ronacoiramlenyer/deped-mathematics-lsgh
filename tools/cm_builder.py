@@ -1,10 +1,10 @@
 """Builds an LSGH Curriculum Map (.docx) from a content module.
 
 Usage:
-    python3 tools/cm_builder.py content/grade7_term1_cm.py output/grade7/<name>.docx
+    python3 tools/cm_builder.py courses/<course>/content/<module>.py courses/<course>/output/<name>.docx
 
 The content module defines HEADER, STANDARDS, ROADMAP, ROWS and SIGNATORIES
-(see content/grade7_term1_cm.py). Inline markup inside any text:
+(see courses/mathematics/content/grade7_term1_cm.py). Inline markup inside any text:
     **bold**          bold
     ^^text^^          bold, LSGH green
     __text__          italic
