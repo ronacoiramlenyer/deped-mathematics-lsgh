@@ -1,0 +1,51 @@
+/* Grade 8 · Term 1 · Lesson 7 · G. Rational Algebraic Equations – lesson and exercises */
+Sim.addContent("lesson7", {
+  learn: [
+    { t: "h", text: "What is a rational algebraic equation?" },
+    { t: "defs", items: [
+      ["Rational algebraic equation", "an equation that contains at least one rational algebraic expression – a fraction with a variable in the denominator, such as 4/(x + 1) = 2/3."],
+      ["Restriction", "a value of the variable that makes a denominator 0. It can never be a solution."],
+      ["Extraneous solution", "a value found while solving that does not satisfy the original equation (usually because it makes a denominator 0). It is rejected."],
+    ] },
+    { t: "p", text: "Before solving, always write the restrictions. For 4/(x + 1) = 2/3, the restriction is x ≠ −1, because −1 + 1 = 0." },
+    { t: "h", text: "Solving by cross-multiplication" },
+    { t: "rule", title: "Cross-multiplication", text: ["If a/b = c/d (with b ≠ 0 and d ≠ 0), then a · d = b · c.", "Solve the new equation, then CHECK each answer in the original equation."] },
+    { t: "steps", title: "Steps", items: ["Write the restrictions (denominators ≠ 0).", "Cross-multiply to clear the fractions.", "Solve the resulting equation.", "Check: substitute; reject any value that makes a denominator 0."] },
+    { t: "ex", title: "A proportion", problem: "Solve 6/(x + 2) = 3/4.", steps: ["Restriction: x ≠ −2.", "Cross-multiply: 6 × 4 = 3(x + 2)", "24 = 3x + 6", "18 = 3x, so x = 6", "Check: 6/(6 + 2) = 6/8 = 3/4 ✓"], answer: "x = 6." },
+    { t: "ex", title: "x on both sides", problem: "Solve 5/(x − 1) = 3/(x + 1).", steps: ["Restrictions: x ≠ 1 and x ≠ −1.", "Cross-multiply: 5(x + 1) = 3(x − 1)", "5x + 5 = 3x − 3", "2x = −8, so x = −4", "Check: 5/(−5) = −1 and 3/(−3) = −1 ✓"], answer: "x = −4." },
+    { t: "h", text: "Checking and rejecting" },
+    { t: "p", text: "Cross-multiplying can produce a value that makes a denominator 0. That value is extraneous: it came out of the work, but it does not solve the original equation." },
+    { t: "ex", title: "An extraneous value", problem: "Solve (x + 1)/(x − 3) = 4/(x − 3).", steps: ["Restriction: x ≠ 3.", "Cross-multiply: (x + 1)(x − 3) = 4(x − 3)", "(x − 3)(x + 1 − 4) = 0, so (x − 3)(x − 3) = 0", "The only candidate is x = 3.", "x = 3 makes x − 3 = 0, so it is rejected."], answer: "No solution." },
+    { t: "ex", title: "One kept, one rejected", problem: "Solve (x + 2)/(x − 1) = 5/(x − 1).", steps: ["Restriction: x ≠ 1.", "Cross-multiply: (x + 2)(x − 1) = 5(x − 1)", "(x − 1)(x + 2 − 5) = 0, so (x − 1)(x − 3) = 0", "Candidates: x = 1 or x = 3. Reject x = 1.", "Check x = 3: 5/2 = 5/2 ✓"], answer: "x = 3." },
+    { t: "h", text: "Work problems" },
+    { t: "rule", title: "Rates add", text: ["If a worker finishes a job in a hours, the rate is 1/a of the job per hour.", "Working together for t hours: 1/a + 1/b = 1/t"] },
+    { t: "ex", title: "Two pipes", problem: "Pipe A fills a tank in 3 hours; Pipe B fills it in 6 hours. How long if both pipes are open?", steps: ["1/3 + 1/6 = 1/t", "Multiply by the LCD 6t: 2t + t = 6", "3t = 6, so t = 2", "Check: in 2 h, A fills 2/3 and B fills 2/6 = 1/3; 2/3 + 1/3 = 1 ✓"], answer: "2 hours." },
+    { t: "ex", title: "Cleaning the classroom", problem: "Bea can clean the classroom in 2 hours and Migs in 3 hours. How long if they clean together?", steps: ["1/2 + 1/3 = 1/t", "Multiply by 6t: 3t + 2t = 6", "5t = 6, so t = 6/5 = 1.2", "1.2 h = 1 h 12 min"], answer: "1.2 hours (1 h 12 min)." },
+    { t: "h", text: "Proportion problems" },
+    { t: "ex", title: "Speed", problem: "A jeepney travels 60 km in the same time a bicycle travels 20 km. The jeepney is 20 km/h faster. Find the bicycle’s speed.", steps: ["Time = distance ÷ speed. Let x = bicycle speed.", "60/(x + 20) = 20/x", "Cross-multiply: 60x = 20x + 400", "40x = 400, so x = 10", "Check: 60/30 = 2 h and 20/10 = 2 h ✓"], answer: "10 km/h." },
+    { t: "ex", title: "The Big Question", problem: "3 friends can paint a wall in 4 hours. How long would 5 friends take?", steps: ["The job is 3 × 4 = 12 friend-hours; each friend paints 1/12 of the wall per hour.", "5 friends: 5/12 = 1/x", "Cross-multiply: 5x = 12", "x = 12/5 = 2.4 h = 2 h 24 min"], answer: "2.4 hours." },
+    { t: "remember", items: ["Write the restrictions first: no denominator may be 0.", "a/b = c/d → ad = bc.", "In work problems, add the RATES: 1/a + 1/b = 1/t.", "Always check. Reject any extraneous value."] },
+  ],
+  exercises: [
+    { title: "A. Skills Practice", items: [
+      { q: "Solve 4/x = 2/5.", num: 10, solution: ["Restriction: x ≠ 0.", "Cross-multiply: 4 × 5 = 2x", "20 = 2x, so x = 10"] },
+      { q: "Solve 3/(x + 1) = 1/2.", num: 5, solution: ["Restriction: x ≠ −1.", "3 × 2 = x + 1", "x = 5"] },
+      { q: "Solve 8/(x − 2) = 4/3.", num: 8, solution: ["Restriction: x ≠ 2.", "8 × 3 = 4(x − 2)", "24 = 4x − 8 → 4x = 32 → x = 8"] },
+      { q: "Solve 6/(x + 4) = 2/x.", num: 2, solution: ["Restrictions: x ≠ −4, x ≠ 0.", "6x = 2(x + 4)", "6x = 2x + 8 → 4x = 8 → x = 2"] },
+      { q: "Solve 5/(x − 1) = 3/(x + 1).", num: -4, solution: ["5(x + 1) = 3(x − 1)", "5x + 5 = 3x − 3", "2x = −8 → x = −4"] },
+      { q: "Which value of x must be rejected in 7/(x − 5) = 2/9?", choices: ["5", "−5", "0", "7"], answer: "5", solution: "x = 5 makes the denominator x − 5 equal to 0." },
+      { q: "Solve (x + 2)/(x − 4) = 6/(x − 4).", choices: ["x = 4", "x = −4", "x = 2", "No solution"], answer: "No solution", solution: ["Restriction: x ≠ 4.", "The numerators must be equal: x + 2 = 6, so x = 4.", "x = 4 makes the denominator 0, so it is extraneous. No solution."] },
+      { q: "Solve 1/3 + 1/6 = 1/t.", num: 2, solution: ["Multiply by 6t: 2t + t = 6", "3t = 6 → t = 2"] },
+    ] },
+    { title: "B. Problem Solving", items: [
+      { q: "Pipe A fills a tank in 4 hours and Pipe B in 12 hours. How many hours do they take together?", num: 3, unit: "h", solution: ["1/4 + 1/12 = 1/t", "Multiply by 12t: 3t + t = 12", "4t = 12 → t = 3 h"] },
+      { q: "Nica can clean the room in 3 hours and Paolo in 6 hours. How many hours if they clean together?", num: 2, unit: "h", solution: ["1/3 + 1/6 = 1/t", "Multiply by 6t: 2t + t = 6", "t = 2 h"] },
+      { q: "On a map, 2 cm stands for 5 km. How many centimetres on the map stand for 35 km?", num: 14, unit: "cm", solution: ["2/5 = x/35", "5x = 70", "x = 14 cm"] },
+      { q: "A banca goes 12 km downstream in the same time it goes 8 km upstream. The current is 2 km/h. What is the banca’s speed in still water?", num: 10, unit: "km/h", solution: ["12/(x + 2) = 8/(x − 2), with x ≠ 2 and x ≠ −2", "12(x − 2) = 8(x + 2)", "12x − 24 = 8x + 16 → 4x = 40 → x = 10 km/h"] },
+    ] },
+    { title: "C. Challenge", items: [
+      { q: "6 learners can decorate the room for Family Day in 2 hours. Working at the same rate, how many hours would 4 learners take?", num: 3, unit: "h", solution: ["The job is 6 × 2 = 12 learner-hours.", "Each learner does 1/12 per hour; 4 learners: 4/12 = 1/x", "4x = 12 → x = 3 h"] },
+      { q: "Lia solved (x + 3)/(x − 2) = 5/(x − 2) and got x = 2. Lia wrote “x = 2” as the answer. Explain the mistake and give the correct answer.", open: true, solution: ["x = 2 makes the denominator x − 2 equal to 0, so the fractions are undefined.", "x = 2 is extraneous and must be rejected.", "Cross-multiplying gives (x − 2)(x + 3 − 5) = 0, whose only root is x = 2, so the equation has no solution."] },
+    ] },
+  ],
+});
