@@ -1,0 +1,91 @@
+/* Unit 3 · Lesson 8 · H. Tables, Pivot Tables, and Aggregation – lesson and exercises */
+Sim.addContent("lesson8", {
+  learn: [
+    { t: "h", text: "Which item really sells?" },
+    { t: "p", text: "The canteen has 25 sales records for one week (sample data): Item, Category, Day, Cashier, Qty and Sales. Answering “which item sells best?” row by row takes a long time. A **pivot table** answers it in seconds – and it shows the answer depends on the question: Iced Tea sold the most pieces (75), but Siomai earned the most money (₱2,745)." },
+    { t: "defs", items: [
+      ["Table", "a range turned into a named, formatted table (Format ▸ Convert to table) with a header row and filter buttons"],
+      ["Aggregation", "combining many values into one: SUM, AVERAGE, COUNT"],
+      ["Pivot table", "a summary that groups records by one or more fields and aggregates another field"],
+      ["Slicer", "a set of buttons that filters a table, pivot table or chart (Data ▸ Add a slicer)"],
+      ["Grand total", "the aggregate of all records that pass the filter"],
+    ] },
+    { t: "h", text: "Tables, slicers, and aggregation" },
+    { t: "p", text: "Before pivoting, organize the data as a **table**: one header row, one record per row, one kind of value per column, no blank rows. A table keeps its formatting as rows are added, and a slicer on Cashier or Day lets anyone filter it with one click." },
+    { t: "code", lang: "Google Sheets", lines: [
+      "=SUM(F2:F26)        → 7615   total sales",
+      "=AVERAGE(F2:F26)    → 304.6  average sale per record",
+      "=COUNTA(A2:A26)     → 25     number of records",
+      "=SUBTOTAL(9, F2:F26)         sum of visible rows only",
+    ], note: "SUBTOTAL(9, …) adds only the rows that the filter or slicer shows; SUM adds everything." },
+    { t: "h", text: "Building a pivot table" },
+    { t: "steps", items: [
+      "Select the data, then Insert ▸ Pivot table ▸ New sheet.",
+      "**Rows**: the field to group by (Item).",
+      "**Columns** (optional): a second field to cross with (Day).",
+      "**Values**: the number to aggregate (Sales), and how: SUM, AVERAGE or COUNT.",
+      "**Filter**: keep only some records (Day is Mon or Fri).",
+    ] },
+    { t: "table", head: ["Item (Rows)", "SUM of Qty", "SUM of Sales"], rows: [
+      ["Banana Cue", "30", "750"], ["Iced Tea", "75", "1,350"], ["Pancit Canton", "37", "1,850"], ["Siomai", "61", "2,745"], ["Turon", "46", "920"], ["**Grand total**", "**249**", "**7,615**"],
+    ] },
+    { t: "h", text: "Showing values as %, difference, running total, rank" },
+    { t: "p", text: "In the pivot editor, each value has a **Show as** menu. The totals stay the same; only how they are shown changes." },
+    { t: "table", head: ["Day", "SUM of Sales", "Running total", "Rank"], rows: [
+      ["Mon", "1,395", "1,395", "3"], ["Tue", "1,330", "2,725", "4"], ["Wed", "1,624", "4,349", "2"], ["Thu", "1,296", "5,645", "5"], ["Fri", "1,970", "7,615", "1"],
+    ] },
+    { t: "list", items: [
+      "**% of grand total** = value ÷ grand total × 100. Friday: 1,970 ÷ 7,615 × 100 ≈ 25.9%.",
+      "**Difference from** the previous row: Tue − Mon = 1,330 − 1,395 = −65.",
+      "**Running total** adds row by row; the last value equals the grand total.",
+      "**Rank**: largest = 1 (use RANK in a helper column if your tool has no built-in option).",
+    ] },
+    { t: "ex", title: "Percent of the grand total", problem: "Siomai sales are ₱2,745 and the grand total is ₱7,615. What does “% of grand total” show for Siomai?", steps: ["Percent = part ÷ whole × 100.", "2,745 ÷ 7,615 = 0.3605", "0.3605 × 100 = 36.05%"], answer: "About 36.0% – more than a third of the week’s sales." },
+    { t: "h", text: "Filtering pivot table data" },
+    { t: "p", text: "A filter or slicer keeps only the records you care about, and every number in the pivot is **recomputed** from that subset. The source data is not deleted." },
+    { t: "ex", title: "Only Monday and Friday", problem: "Filter the Item pivot to Day = Mon or Fri. Siomai sold ₱540 on Monday and ₱720 on Friday. What does the filtered pivot show for Siomai?", steps: ["The filter keeps the 10 records from Mon and Fri.", "Siomai rows left: Mon ₱540 and Fri ₱720.", "540 + 720 = 1,260"], answer: "₱1,260 (and the grand total becomes 1,395 + 1,970 = ₱3,365)." },
+    { t: "h", text: "The same summary in pandas" },
+    { t: "code", lang: "Python", lines: [
+      "t = df.groupby('item')['sales'].sum()",
+      "t.sort_values(ascending=False)",
+      "t / t.sum() * 100           # % of grand total",
+      "t.cumsum()                  # running total",
+      "t.rank(ascending=False)     # rank, largest = 1",
+    ], note: "t.diff() gives the difference from the previous row. Compare each result with the pivot table – they should match." },
+    { t: "code", lang: "Python", lines: [
+      "sub = df[df['day'].isin(['Mon', 'Fri'])]",
+      "sub.groupby('item')['sales'].sum()",
+      "df.pivot_table(index='item', columns='day',",
+      "    values='sales', aggfunc='sum', margins=True)",
+    ], note: "Filter first, then group. pivot_table with margins=True adds the grand totals, like the pivot table in Sheets." },
+    { t: "remember", items: [
+      "Organize data as a table first: one header row, one record per row.",
+      "Rows (and Columns) = how to group; Values = what to aggregate; Filter = which records.",
+      "SUM adds, AVERAGE gives the mean per record, COUNT counts records.",
+      "Show as % of total, difference, running total or rank to answer different questions.",
+      "pandas: df.groupby('item')['sales'].sum() – check it against the pivot table.",
+    ] },
+  ],
+  exercises: [
+    { title: "A. Skills Practice", note: "Use the canteen week (sample data). SUM of Sales by Item: Banana Cue 750, Iced Tea 1,350, Pancit Canton 1,850, Siomai 2,745, Turon 920 (grand total 7,615). By Day: Mon 1,395, Tue 1,330, Wed 1,624, Thu 1,296, Fri 1,970.", items: [
+      { q: "You want total Sales for each Cashier. Which field goes in Rows?", choices: ["Cashier", "Sales", "Qty", "Day"], answer: "Cashier", solution: "Rows hold the field you group by; Sales goes in Values." },
+      { q: "Which aggregation tells how many sales records each item has?", choices: ["COUNT", "SUM", "AVERAGE", "MAX"], answer: "COUNT", solution: "COUNT (COUNTA for text) counts records instead of adding values." },
+      { q: "What percent of the grand total is Pancit Canton? (Round to 1 decimal place.)", num: 24.3, tol: 0.06, unit: "%", solution: ["1,850 ÷ 7,615 × 100", "= 24.29…% ≈ 24.3%"] },
+      { q: "In a running total by Day (Mon to Fri), what value appears for Wednesday?", num: 4349, tol: 0, unit: "₱", solution: "1,395 + 1,330 + 1,624 = 4,349." },
+      { q: "“Difference from previous row” by Day: what value appears for Friday?", num: 674, tol: 0, unit: "₱", solution: "Fri − Thu = 1,970 − 1,296 = 674." },
+      { q: "Ranking the items by Sales (largest = 1), what rank does Iced Tea get?", num: 3, tol: 0, solution: ["Order: Siomai 2,745; Pancit Canton 1,850; Iced Tea 1,350; Turon 920; Banana Cue 750.", "Iced Tea is 3rd."] },
+      { q: "Which pandas line gives the total sales for each day?", choices: ["df.groupby('day')['sales'].sum()", "df.groupby('sales')['day'].sum()", "df['day'].sum()", "df.sort_values('day')"], answer: "df.groupby('day')['sales'].sum()", solution: "Group by the category column (day), select the number column (sales), then sum()." },
+      { q: "Each item has 5 records. What is the AVERAGE of Sales for Siomai?", num: 549, tol: 0, unit: "₱", solution: "2,745 ÷ 5 = 549." },
+    ] },
+    { title: "B. Problem Solving", items: [
+      { q: "Iced Tea sold 75 pieces (the most) but earned ₱1,350, while Siomai sold 61 pieces and earned ₱2,745. Which statement is correct?", choices: ["Iced Tea sells most often, but Siomai brings in the most money", "Iced Tea is the best seller in every way", "Siomai sells the most pieces", "The data cannot compare them"], answer: "Iced Tea sells most often, but Siomai brings in the most money", solution: ["SUM of Qty answers “most pieces”; SUM of Sales answers “most money”.", "Put both in Values to see the difference."] },
+      { q: "The pivot is filtered to Day = Mon or Fri. What is the new grand total of Sales?", num: 3365, tol: 0, unit: "₱", solution: "Only Monday and Friday records are used: 1,395 + 1,970 = 3,365." },
+      { q: "Snacks (Siomai, Turon, Banana Cue) earned ₱4,415 of the ₱7,615 total. What percent of the grand total is that? (1 decimal place)", num: 58, tol: 0.06, unit: "%", solution: "4,415 ÷ 7,615 × 100 = 57.97…% ≈ 58.0%." },
+      { q: "A learner puts Sales in Rows and Item in Values. What will the pivot table show?", choices: ["A row for each different peso amount, with a count of items", "Total sales for each item", "An error", "The same as Item in Rows"], answer: "A row for each different peso amount, with a count of items", solution: ["Rows group by every distinct value of Sales, and a text field in Values is counted.", "The question “sales per item” needs Item in Rows and Sales in Values."] },
+    ] },
+    { title: "C. Challenge", items: [
+      { q: "With a slicer set to Cashier = Bea, the Item pivot shows Siomai 990, Iced Tea 486, Turon 460, Pancit Canton 450, Banana Cue 100. What percent of Bea’s total is Siomai? (1 decimal place)", num: 39.8, tol: 0.06, unit: "%", solution: ["Bea’s total: 990 + 486 + 460 + 450 + 100 = 2,486.", "990 ÷ 2,486 × 100 = 39.82…% ≈ 39.8%"] },
+      { q: "The canteen manager asks: “Which day should we prepare the most food, and which item matters most?” Describe the pivot tables you would build (Rows, Values, Show as, Filter), the pandas code that checks them, and your answer.", open: true, solution: ["Pivot 1: Rows Day, Values SUM of Sales and SUM of Qty, sorted largest first – Friday is highest (₱1,970, 64 pieces).", "Pivot 2: Rows Item, Values SUM of Sales shown as % of grand total, plus Rank – Siomai earns 36%, rank 1; Iced Tea sells the most pieces.", "Check: df.groupby('day')['sales'].sum() and t / t.sum() * 100 in pandas give the same numbers.", "Answer: prepare the most on Fridays; keep Siomai stocked (most money) and Iced Tea (most pieces). This is one week of sample data, so check more weeks before deciding."] },
+    ] },
+  ],
+});

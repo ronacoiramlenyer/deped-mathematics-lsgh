@@ -7,7 +7,7 @@
     a: ["var(--shape-a-soft)", "var(--shape-a)"], b: ["var(--shape-b-soft)", "var(--shape-b)"],
     g: ["var(--accent-soft)", "var(--accent)"], y: ["var(--gold-soft)", "var(--gold)"],
   };
-  const fitSize = (text, maxW, base) => Math.min(base, maxW / (String(text).length * 0.56));
+  const fitSize = (text, maxW, base) => Math.min(base, maxW / (String(text).length * 0.64));
 
   // ------------------------------------------------------------ drag-to-bin sorter
 

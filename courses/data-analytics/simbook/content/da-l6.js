@@ -52,7 +52,7 @@ Sim.addContent("lesson6", {
     { t: "h", text: "Sorting, filtering, and the processing log" },
     { t: "table", head: ["Step", "Action", "Changed", "Reason"], rows: [
       ["1", "TRIM item and cashier", "2 cells", "spaces split one item into two"],
-      ["2", "PROPER item", "4 cells", "one spelling per item"],
+      ["2", "PROPER item", "3 cells", "one spelling per item"],
       ["3", "VALUE price", "2 cells", "text prices were skipped by SUM"],
       ["4", "Remove duplicates", "2 rows", "the same sale was typed twice"],
       ["5", "Drop incomplete rows", "2 rows", "no date or no quantity"],

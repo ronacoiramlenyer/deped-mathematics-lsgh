@@ -411,7 +411,7 @@
       ]);
       if (kind === 1) return pick([
         { q: "Which pandas line removes repeated rows?", choices: ["df.drop_duplicates()", "df.dropna()", "df.isna()", "df.duplicated"], answer: "df.drop_duplicates()", explain: "drop_duplicates() keeps the first copy of each row." },
-        { q: "Which pandas line removes rows that have missing values?", choices: ["df.dropna()", "df.fillna(0)", "df.drop_duplicates()", "df.str.strip()"], answer: "df.dropna()", explain: "dropna() drops rows with NaN (blank) cells." },
+        { q: "Which pandas line removes rows that have missing values?", choices: ["df.dropna()", "df.fillna(0)", "df.drop_duplicates()", "df.str.strip()"], answer: "df.dropna()", explain: "dropna() drops rows that have missing (blank) cells." },
         { q: "Which pandas code does the same job as TRIM then PROPER on the item column?", choices: ["df['item'].str.strip().str.title()", "df['item'].dropna()", "pd.to_numeric(df['item'])", "df['item'].str.upper()"], answer: "df['item'].str.strip().str.title()", explain: "str.strip() removes spaces and str.title() capitalizes each word." },
         { q: "Which pandas function converts a column of text like \"45\" into numbers?", choices: ["pd.to_numeric", "pd.to_datetime", "df.dropna", "df.to_csv"], answer: "pd.to_numeric", explain: "pd.to_numeric turns numeric text into numbers." },
       ]);

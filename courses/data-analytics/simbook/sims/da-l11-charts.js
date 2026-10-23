@@ -40,14 +40,12 @@
   const K = 40;
   function rectPoly(x, y, w, hh) {
     w = Math.max(0.01, w); hh = Math.max(0.01, hh);
-    const P = 2 * (w + hh);
-    return Array.from({ length: K }, (_, i) => {
-      let d = (i / K) * P;
-      if (d < w) return [x + d, y]; d -= w;
-      if (d < hh) return [x + w, y + d]; d -= hh;
-      if (d < w) return [x + w - d, y + hh]; d -= w;
-      return [x, y + hh - d];
-    }).flat();
+    const c = [[x, y], [x + w, y], [x + w, y + hh], [x, y + hh]], n = K / 4, out = [];
+    for (let side = 0; side < 4; side++) {
+      const [a, b] = [c[side], c[(side + 1) % 4]];
+      for (let i = 0; i < n; i++) out.push(a[0] + ((b[0] - a[0]) * i) / n, a[1] + ((b[1] - a[1]) * i) / n);
+    }
+    return out;
   }
   function circlePoly(cx, cy, r) {
     return Array.from({ length: K }, (_, i) => { const a = -0.75 * Math.PI + (i / K) * 2 * Math.PI; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; }).flat();
@@ -74,6 +72,7 @@
     combo: { label: "Combo", polys: () => QC.pm.map((v, i) => rectPoly(band(i) - 26, yPm(v), 52, PY1 - yPm(v))), color: () => "var(--shape-a-soft)" },
   };
 
+  const noun = (k) => (k === "scatter" ? "scatter plot" : CHARTS[k].label.toLowerCase() + " chart");
   const QUESTIONS = [
     { q: "Which month had the highest average PM2.5?", kind: "compare", ok: ["column", "bar"], why: "Comparing amounts across categories: columns (or bars) put every month side by side on one baseline." },
     { q: "How did PM2.5 change from January to June?", kind: "trend", ok: ["line"], why: "Change over time is a trend: a line connects the months in order so the rise and fall are easy to see." },
@@ -125,8 +124,8 @@
         M6.forEach((m, i) => axes.append(txt(band(i), PY1 + 22, m, { "text-anchor": "middle" })));
         axes.append(s("line", { x1: PX0, y1: PY1, x2: PX1, y2: PY1, stroke: "var(--ink)", "stroke-width": 1.5 }));
         if (type !== "combo") QC.pm.forEach((v, i) => overlay.append(txt(band(i), yPm(v) - 10, String(v), { "text-anchor": "middle", "font-weight": 700, "font-size": 13 })));
-        else overlay.append(s("rect", { x: PX0 + 8, y: 6, width: 14, height: 14, fill: "var(--shape-a-soft)", stroke: "var(--shape-a)" }), s("text", { x: PX0 + 28, y: 18, class: "svg-label" }, "PM2.5"),
-          s("line", { x1: PX0 + 100, y1: 13, x2: PX0 + 124, y2: 13, stroke: "var(--shape-b)", "stroke-width": 3 }), s("text", { x: PX0 + 130, y: 18, class: "svg-label" }, "Rainfall"));
+        else overlay.append(s("rect", { x: PX0 + 168, y: 6, width: 14, height: 14, fill: "var(--shape-a-soft)", stroke: "var(--shape-a)" }), s("text", { x: PX0 + 188, y: 18, class: "svg-label" }, "PM2.5"),
+          s("line", { x1: PX0 + 250, y1: 13, x2: PX0 + 274, y2: 13, stroke: "var(--shape-b)", "stroke-width": 3 }), s("text", { x: PX0 + 280, y: 18, class: "svg-label" }, "Rainfall"));
       } else if (type === "bar") {
         for (let v = 0; v <= 40; v += 10) { const x = PX0 + 20 + (v / 40) * (PX1 - PX0 - 20); axes.append(s("line", { x1: x, y1: PY0, x2: x, y2: PY0 + 6 * 39, stroke: "var(--grid)" }), txt(x, PY0 + 6 * 39 + 20, String(v), { "text-anchor": "middle" })); }
         M6.forEach((m, i) => axes.append(txt(PX0 + 12, PY0 + i * 39 + 25, m, { "text-anchor": "end" })));
@@ -135,7 +134,7 @@
         QC.pm.forEach((v, i) => overlay.append(txt(PX0 + 28 + (v / 40) * (PX1 - PX0 - 20), PY0 + i * 39 + 25, String(v), { "font-weight": 700, "font-size": 13 })));
       } else if (type === "pie") {
         const T = sum(QC.bad);
-        M6.forEach((m, i) => overlay.append(s("rect", { x: 380, y: 60 + i * 34, width: 18, height: 18, rx: 3, fill: PIE_COLORS[i] }), txt(406, 75 + i * 34, `${m}: ${QC.bad[i]} days (${fmt((QC.bad[i] / T) * 100, 0)}%)`)));
+        M6.forEach((m, i) => overlay.append(s("rect", { x: 380, y: 60 + i * 34, width: 18, height: 18, rx: 3, fill: PIE_COLORS[i] }), txt(406, 75 + i * 34, `${m}: ${QC.bad[i]} ${QC.bad[i] === 1 ? "day" : "days"} (${fmt((QC.bad[i] / T) * 100, 0)}%)`)));
         overlay.append(s("text", { x: 380, y: 40, class: "svg-label" }, `Unhealthy-air days, total ${T}`));
       } else if (type === "scatter") {
         gridY(40, "PM2.5 (µg/m³)");
@@ -165,7 +164,7 @@
       tried++; if (ok) right++;
       score.set(`${right} / ${tried}`);
       fb.className = "feedback " + (ok ? "ok" : "bad");
-      fb.textContent = (ok ? `Yes – a ${CHARTS[type].label.toLowerCase()} chart fits. ` : `A ${CHARTS[type].label.toLowerCase()} chart is not the best fit. `) + Q.why;
+      fb.textContent = (ok ? `Yes – a ${noun(type)} fits. ` : `A ${noun(type)} is not the best fit. `) + Q.why;
     }
     const seg = segmented(Object.keys(CHARTS), type, show, (k) => CHARTS[k].label);
     root.append(qBox,
@@ -259,7 +258,7 @@
     let base = 20;
     const svg = s("svg", { viewBox: "0 0 600 300", role: "img", "aria-label": "Column chart with an adjustable y-axis start" });
     const out = h("div", { class: "readout" });
-    const vis = stat("Makati looks", ""), real = stat("Real ratio", "");
+    const vis = stat("Manila’s bar looks", ""), real = stat("Real ratio", "");
     out.append(vis.el, real.el);
     function draw() {
       clear(svg);
@@ -275,7 +274,7 @@
       svg.append(s("line", { x1: 70, y1: 260, x2: 570, y2: 260, stroke: "var(--ink)", "stroke-width": 1.5 }));
       if (base > 0.5) svg.append(s("path", { d: "M62,248 l10,-6 l-10,-6 l10,-6", fill: "none", stroke: "var(--bad)", "stroke-width": 2 }));
       svg.append(s("text", { x: 300, y: 20, "text-anchor": "middle", class: "svg-label", "font-size": 15 }, "Annual average PM2.5 (µg/m³), sample data"));
-      vis.set(`${fmt((31 - base) / (26 - base), 1)}× shorter than Manila`); real.set(`31 ÷ 26 = ${fmt(31 / 26, 2)}`);
+      vis.set(`${fmt((31 - base) / (26 - base), 2)}× as tall as Makati’s`); real.set(`31 ÷ 26 = ${fmt(31 / 26, 2)}`);
     }
     const sl = elasticSlider({ id: "l11-base", label: "Y-axis starts at", min: 0, max: 25, value: 20, snaps: [0, 5, 10, 15, 20, 25], format: (v) => fmt(v, 0), onInput: (v) => { base = v; draw(); } });
     root.append(h("p", {}, "A news post says: “Makati’s air is FAR cleaner than Manila’s!” Slide where the y-axis starts and watch the gap."), h("div", { class: "controls" }, sl.el), svg, out,
@@ -285,10 +284,10 @@
   }
 
   function pie3d(root) {
-    const D = [["Vehicles", 30, "var(--shape-a)"], ["Cooking & burning", 20, "var(--gold)"], ["Road dust", 15, "var(--accent)"], ["Others", 15, "var(--muted)"], ["Industry", 20, "var(--shape-b)"]];
+    const D = [["Vehicles", 30, "var(--shape-a)"], ["Open burning", 20, "var(--gold)"], ["Road dust", 15, "var(--accent)"], ["Others", 15, "var(--muted)"], ["Industry", 20, "var(--shape-b)"]];
     let tilt = 0.42;
     const svg = s("svg", { viewBox: "0 0 600 300", role: "img", "aria-label": "Pie chart that can be tilted into 3D or flattened" });
-    const out = h("div", { class: "readout" }), aInd = stat("Industry (20%) covers", ""), aCook = stat("Cooking (20%) covers", "");
+    const out = h("div", { class: "readout" }), aInd = stat("Industry (20%) covers", ""), aCook = stat("Open burning (20%) covers", "");
     out.append(aInd.el, aCook.el);
     const area = (pts) => Math.abs(pts.reduce((a, p, i) => { const q = pts[(i + 1) % pts.length]; return a + p[0] * q[1] - q[0] * p[1]; }, 0)) / 2;
     function draw() {
@@ -311,14 +310,14 @@
       });
       sides.forEach(({ pts, c }) => svg.append(s("path", { d: "M" + pts.map((p) => p.map((x) => x.toFixed(1)).join(",")).join("L") + "Z", fill: `color-mix(in srgb, ${c} 70%, #000)`, stroke: "var(--paper)" })));
       tops.forEach(({ pts, c }) => svg.append(s("path", { d: "M" + pts.map((p) => p.map((x) => x.toFixed(1)).join(",")).join("L") + "Z", fill: c, stroke: "var(--paper)", "stroke-width": 1.5 })));
-      D.forEach(([n, v, c], i) => svg.append(s("rect", { x: 370, y: 70 + i * 36, width: 18, height: 18, rx: 3, fill: c }), s("text", { x: 396, y: 85 + i * 36, class: "svg-text", "font-size": 14 }, `${n} ${v}%`)));
+      D.forEach(([n, v, c], i) => svg.append(s("rect", { x: 370, y: 66 + i * 40, width: 20, height: 20, rx: 3, fill: c }), s("text", { x: 398, y: 82 + i * 40, class: "svg-text", "font-size": 16 }, `${n} ${v}%`)));
       svg.append(s("text", { x: 370, y: 46, class: "svg-label" }, "Sources of PM2.5 (sample data)"));
-      aInd.set(`${fmt((areas.Industry / total) * 100, 0)}% of the ink`); aCook.set(`${fmt((areas["Cooking & burning"] / total) * 100, 0)}% of the ink`);
+      aInd.set(`${fmt((areas.Industry / total) * 100, 0)}% of the ink`); aCook.set(`${fmt((areas["Open burning"] / total) * 100, 0)}% of the ink`);
     }
     const sp = new Spring(tilt, (v) => { tilt = v; draw(); }, { stiffness: 70, damping: 9 });
     let flat = false;
     const btn = h("button", { class: "btn", type: "button", onclick: () => { flat = !flat; sp.set(flat ? 1 : 0.42); btn.textContent = flat ? "Tilt into 3D" : "Flatten to 2D"; } }, "Flatten to 2D");
-    root.append(h("p", {}, "Industry and Cooking & burning are both 20%. In 3D, which slice looks bigger?"), h("div", { class: "controls" }, btn), svg, out,
+    root.append(h("p", {}, "Industry and Open burning are both 20%. In 3D, which slice looks bigger?"), h("div", { class: "controls" }, btn), svg, out,
       judgeRow(() => tilt > 0.97, () => (tilt > 0.97 ? "A flat pie gives equal shares equal areas." : "The tilt squashes the back slices and the thick side adds ink to the front slice, so equal 20% shares look unequal. Avoid 3D charts.")));
     draw();
     return () => sp.stop();
@@ -411,9 +410,9 @@
     });
     function paintTl() {
       clear(tlBase);
-      tlBase.append(s("text", { x: 40, y: 16, class: "svg-label" }, "Timeline: Month"), s("line", { x1: 40, y1: 46, x2: 560, y2: 46, stroke: "var(--line)", "stroke-width": 10, "stroke-linecap": "round" }),
+      tlBase.append(s("text", { x: 40, y: 18, class: "svg-label", "font-size": 15 }, "Timeline: Month"), s("line", { x1: 40, y1: 46, x2: 560, y2: 46, stroke: "var(--line)", "stroke-width": 10, "stroke-linecap": "round" }),
         s("line", { x1: TX(clamp(v0, -1, 12)), y1: 46, x2: TX(clamp(v1, -1, 12)), y2: 46, stroke: "var(--shape-a)", "stroke-width": 10, "stroke-linecap": "round" }));
-      M12.forEach((m, i) => tlBase.append(s("text", { x: TX(i), y: 78, "text-anchor": "middle", class: "svg-text", "font-size": 12, fill: i >= m0 && i <= m1 ? "var(--ink)" : "var(--muted)", "font-weight": i >= m0 && i <= m1 ? 700 : 400 }, m[0] + m.slice(1, 3))));
+      M12.forEach((m, i) => tlBase.append(s("text", { x: TX(i), y: 80, "text-anchor": "middle", class: "svg-text", "font-size": 15, fill: i >= m0 && i <= m1 ? "var(--ink)" : "var(--muted)", "font-weight": i >= m0 && i <= m1 ? 700 : 400 }, m[0] + m.slice(1, 3))));
       handles.sync([{ x: TX(v0), y: 46 }, { x: TX(v1), y: 46 }]);
     }
     const chips = h("div", { class: "l11-chips", role: "group", "aria-label": "Slicer: City" });
@@ -460,7 +459,7 @@
         { q: "Which chart best compares the average PM2.5 of six cities?", choices: shuffle(CH), answer: "Column chart", explain: "Comparing categories → column (or bar) chart." },
         { q: "Which chart shows monthly rainfall (mm) and PM2.5 (µg/m³) together with two axes?", choices: shuffle(CH), answer: "Combo chart", explain: "Two measures with different units → combo chart." },
       ]);
-      if (kind === 1) { const a = randInt(30, 40), b = a - randInt(2, 6), base = pick([20, 22, 24, 25]); return { q: `A column chart shows ${a} and ${b}, but its y-axis starts at ${base}. How many times taller does the ${a} bar look than the ${b} bar? (2 decimal places)`, answer: round((a - base) / (b - base), 2), tol: 0.01, explain: `Visible lengths: ${a} − ${base} = ${a - base} and ${b} − ${base} = ${b - base}; ${a - base} ÷ ${b - base} ≈ ${fmt((a - base) / (b - base), 2)} – but the true ratio is only ${fmt(a / b, 2)}.` }; }
+      if (kind === 1) { const a = randInt(32, 40), b = a - randInt(2, 6), base = pick([18, 20, 22, 24]); return { q: `A column chart shows ${a} and ${b}, but its y-axis starts at ${base}. How many times taller does the ${a} bar look than the ${b} bar? (2 decimal places)`, answer: round((a - base) / (b - base), 2), tol: 0.01, explain: `Visible lengths: ${a} − ${base} = ${a - base} and ${b} − ${base} = ${b - base}; ${a - base} ÷ ${b - base} ≈ ${fmt((a - base) / (b - base), 2)} – but the true ratio is only ${fmt(a / b, 2)}.` }; }
       if (kind === 2) { const v = pick([3, 5, 7, 9, 4]); return { q: `There were 29 unhealthy-air days in all, and ${v} were in one month. What angle does that month's pie slice get? (1 decimal place)`, answer: round((v / 29) * 360, 1), tol: 0.1, unit: "°", explain: `${v}/29 × 360° ≈ ${fmt((v / 29) * 360, 1)}°.` }; }
       if (kind === 3) return pick([
         { q: "Which Google Sheets formula draws a tiny line chart of B2:G2 inside one cell?", choices: ["=SPARKLINE(B2:G2)", "=CHART(B2:G2)", "=LINE(B2:G2)", "=TREND(B2:G2)"], answer: "=SPARKLINE(B2:G2)", explain: "SPARKLINE makes a mini chart in a single cell." },

@@ -1,0 +1,73 @@
+/* Unit 4 · Lesson 9 · I. Descriptive Statistics – lesson and exercises */
+Sim.addContent("lesson9", {
+  learn: [
+    { t: "h", text: "Average allowance?" },
+    { t: "p", text: "Twelve Grade 11 learners reported their weekly allowance (sample data): ₱300, 350, 400, 400, 450, 500, 500, 500, 550, 600, 650, 700. The mean is ₱491.67. Change the ₱700 to ₱1,800 and the mean jumps to ₱583.33 – but the median stays ₱500. **Descriptive statistics** summarize data with a few numbers; choosing the right ones is what makes a summary fair." },
+    { t: "defs", items: [
+      ["Mean", "the sum of the values divided by how many there are (=AVERAGE)"],
+      ["Median", "the middle value of the sorted data; the mean of the two middle values if n is even (=MEDIAN)"],
+      ["Mode", "the value that occurs most often (=MODE); #N/A if no value repeats"],
+      ["Range", "maximum − minimum (=MAX(…)-MIN(…))"],
+      ["Outlier", "a value far from the rest of the data"],
+    ] },
+    { t: "h", text: "Measures of centre" },
+    { t: "ex", title: "Mean, median and mode", problem: "Find the mean, median and mode of the allowances ₱300, 350, 400, 400, 450, 500, 500, 500, 550, 600, 650, 700.", steps: ["Mean = 5,900 ÷ 12 = ₱491.67", "n = 12 is even, so the median is the mean of the 6th and 7th values: (500 + 500) ÷ 2 = ₱500.", "₱500 appears three times, more than any other value: mode = ₱500.", "In Sheets: =AVERAGE(B2:B13), =MEDIAN(B2:B13), =MODE(B2:B13)."], answer: "Mean ₱491.67, median ₱500, mode ₱500." },
+    { t: "p", text: "The **mean** uses every value, so one extreme value pulls it. The **median** depends only on the middle, so it resists outliers. The **mode** suits categories (the most common snack) and repeated values." },
+    { t: "h", text: "Measures of spread" },
+    { t: "rule", title: "Variance and standard deviation", text: ["sample variance  s² = Σ(x − x̄)² ÷ (n − 1)     =VAR.S(range)", "population variance  σ² = Σ(x − μ)² ÷ n     =VAR.P(range)", "standard deviation = √variance     =STDEV.S(range), =STDEV.P(range)"] },
+    { t: "ex", title: "Variance by hand", problem: "Hours of sleep of five learners (sample data): 4, 8, 6, 5, 7. Find the sample variance and standard deviation.", steps: ["Mean = 30 ÷ 5 = 6", "Deviations from 6: −2, 2, 0, −1, 1", "Squares: 4, 4, 0, 1, 1; sum = 10", "Sample variance = 10 ÷ (5 − 1) = 2.5", "Sample SD = √2.5 ≈ 1.58 hours"], answer: "s² = 2.5 and s ≈ 1.58 (population: σ² = 2, σ ≈ 1.41)." },
+    { t: "h", text: "Sample or population?" },
+    { t: "table", head: ["The data are…", "Use", "Divide by"], rows: [
+      ["a sample used to describe a bigger group", "VAR.S, STDEV.S", "n − 1"],
+      ["the whole group you care about", "VAR.P, STDEV.P", "n"],
+    ] },
+    { t: "p", text: "Dividing by n − 1 makes the sample variance a better estimate of the population variance. Most survey data are samples, so **.S** is the usual choice. The SD is in the same units as the data (pesos, hours), so it reads as “a typical distance from the mean”." },
+    { t: "h", text: "Percentiles and quartiles" },
+    { t: "rule", title: "Position in the data", text: ["The p-th percentile: about p% of the values are at or below it.     =PERCENTILE(range, p)", "Q1 = 25th, Q2 = median = 50th, Q3 = 75th percentile.     =QUARTILE(range, 1), (…, 2), (…, 3)", "IQR = Q3 − Q1, the spread of the middle half."] },
+    { t: "ex", title: "Quartiles in Sheets", problem: "Find Q1 and Q3 of the 12 allowances with Google Sheets’ method.", steps: ["Sort the data. Position of Q1 = 0.25 × (12 − 1) = 2.75, counting the first value as position 0.", "Positions 2 and 3 are 400 and 400, so Q1 = 400.", "Position of Q3 = 0.75 × 11 = 8.25: between 550 (position 8) and 600 (position 9).", "Q3 = 550 + 0.25 × (600 − 550) = 562.5; IQR = 562.5 − 400 = 162.5"], answer: "Q1 = ₱400, Q3 = ₱562.50, IQR = ₱162.50." },
+    { t: "p", text: "A **box plot** draws the box from Q1 to Q3 with a line at the median, and whiskers to the smallest and largest values that are not outliers. Values more than 1.5 × IQR beyond the box are shown as outliers. Different tools use slightly different quartile methods, so small differences are normal." },
+    { t: "h", text: "Choosing a fair summary" },
+    { t: "table", head: ["Data", "Centre", "Spread"], rows: [
+      ["roughly symmetric, no outliers", "mean", "standard deviation"],
+      ["skewed or with outliers", "median", "IQR (Q1 to Q3)"],
+      ["categories (snack, barangay)", "mode", "counts or percentages"],
+    ] },
+    { t: "p", text: "With the ₱1,800 outlier, the mean (₱583.33) is higher than 10 of the 12 allowances, so it is not a typical value. Report the median (₱500) and the IQR, and mention the outlier." },
+    { t: "h", text: "Descriptives in Sheets and jamovi" },
+    { t: "code", lang: "Google Sheets", lines: [
+      "=AVERAGE(B2:B13)    =MEDIAN(B2:B13)    =MODE(B2:B13)",
+      "=MAX(B2:B13)-MIN(B2:B13)",
+      "=VAR.S(B2:B13)      =STDEV.S(B2:B13)",
+      "=PERCENTILE(B2:B13, 0.9)   =QUARTILE(B2:B13, 3)",
+    ], note: "In jamovi or JASP: Exploration ▸ Descriptives, choose the variable, and tick mean, median, mode, SD, variance, range and quartiles." },
+    { t: "remember", items: [
+      "Centre: mean (AVERAGE), median (MEDIAN), mode (MODE).",
+      "Spread: range, variance (VAR.S / VAR.P), standard deviation (STDEV.S / STDEV.P), percentiles and quartiles.",
+      "Use .S for a sample (divide by n − 1) and .P for a whole population (divide by n).",
+      "Outliers pull the mean and the range; the median and IQR resist them.",
+      "Choose the summary that represents the data fairly, and say why.",
+    ] },
+  ],
+  exercises: [
+    { title: "A. Skills Practice", items: [
+      { q: "Weekly study hours of seven learners (sample data): 12, 15, 11, 18, 14, 20, 15. What is the mean?", num: 15, tol: 0.01, solution: "Sum = 105; 105 ÷ 7 = 15." },
+      { q: "What is the median of 12, 15, 11, 18, 14, 20, 15?", num: 15, tol: 0, solution: ["Sorted: 11, 12, 14, 15, 15, 18, 20.", "The 4th of 7 values is 15."] },
+      { q: "What is the range of 12, 15, 11, 18, 14, 20, 15?", num: 9, tol: 0, solution: "20 − 11 = 9." },
+      { q: "What does =MODE(B2:B9) return for 2, 4, 4, 4, 5, 5, 7, 9?", num: 4, tol: 0, solution: "4 appears three times, more than any other value." },
+      { q: "Find the median of 2, 4, 4, 4, 5, 5, 7, 9.", num: 4.5, tol: 0.001, solution: ["n = 8 is even: the 4th and 5th values are 4 and 5.", "(4 + 5) ÷ 2 = 4.5"] },
+      { q: "Find the sample variance (=VAR.S) of 12, 15, 11, 18, 14, 20, 15.", num: 10, tol: 0.01, solution: ["Mean = 15. Deviations: −3, 0, −4, 3, −1, 5, 0.", "Squares: 9, 0, 16, 9, 1, 25, 0; sum = 60.", "60 ÷ (7 − 1) = 10"] },
+      { q: "Find the population standard deviation (=STDEV.P) of 2, 4, 4, 4, 5, 5, 7, 9.", num: 2, tol: 0.01, solution: ["Mean = 40 ÷ 8 = 5.", "Squared deviations: 9, 1, 1, 1, 0, 0, 4, 16; sum = 32.", "Variance = 32 ÷ 8 = 4; SD = √4 = 2."] },
+      { q: "Which function should you use for the standard deviation of a survey of 50 learners that describes all Grade 11 learners?", choices: ["=STDEV.S(range)", "=STDEV.P(range)", "=VAR.P(range)", "=MEDIAN(range)"], answer: "=STDEV.S(range)", solution: "The 50 learners are a sample of a bigger group, so use the sample version (divide by n − 1)." },
+    ] },
+    { title: "B. Problem Solving", items: [
+      { q: "Quiz scores (sample data), sorted: 60, 72, 75, 80, 85, 88, 90, 95. What does =QUARTILE(B2:B9, 1) return?", num: 74.25, tol: 0.01, solution: ["Position = 0.25 × (8 − 1) = 1.75, counting the first value as position 0.", "Between 72 (position 1) and 75 (position 2): 72 + 0.75 × 3 = 74.25"] },
+      { q: "Eleven learners’ allowances average ₱500. A twelfth learner reports ₱1,800. What is the new mean of all twelve?", num: 608.33, tol: 0.01, unit: "₱", solution: ["Sum of eleven = 11 × 500 = 5,500.", "New sum = 5,500 + 1,800 = 7,300; 7,300 ÷ 12 = 608.33"] },
+      { q: "Monthly household electricity bills in a barangay survey (sample data) are mostly ₱1,200–₱2,000, with three bills above ₱9,000. Which summary is fairest for a typical bill?", choices: ["Median and IQR", "Mean and SD", "Range only", "Mode of the three big bills"], answer: "Median and IQR", solution: "The large bills skew the data; the median and IQR resist outliers. Report the outliers separately." },
+      { q: "Section A’s scores have mean 80 and SD 4; Section B’s have mean 80 and SD 11. Which statement is correct?", choices: ["Section B’s scores are more spread out", "Section B did better", "Section A has a wider range for sure", "The sections are identical"], answer: "Section B’s scores are more spread out", solution: "Same centre, but a larger SD means B’s scores are farther from the mean on average." },
+    ] },
+    { title: "C. Challenge", items: [
+      { q: "For the 12 allowances with the ₱1,800 outlier (300, 350, 400, 400, 450, 500, 500, 500, 550, 600, 650, 1,800), how many values are greater than the mean? (The mean is ₱583.33.)", num: 3, tol: 0, solution: ["Values above 583.33: 600, 650 and 1,800.", "Only 3 of 12 are above the mean – the outlier pulled it up, so the mean is not typical."] },
+      { q: "The class wants to report “the average allowance” of its section to the Student Council. Write a short paragraph choosing the summaries (centre and spread) to report, giving the Sheets formulas, and explaining why your choice is fair.", open: true, solution: ["Check the shape first: sort the data or draw a box plot to look for outliers.", "If there is an outlier (like ₱1,800), report the median =MEDIAN(B2:B13) and the IQR =QUARTILE(B2:B13,3)-QUARTILE(B2:B13,1), and mention the outlier.", "If the data are balanced, the mean =AVERAGE(B2:B13) and SD =STDEV.S(B2:B13) are fine (.S because the section is a sample of all learners).", "State that the data are a small sample, so the numbers describe these learners and may not hold for the whole school."] },
+    ] },
+  ],
+});

@@ -1,0 +1,98 @@
+/* Unit 5 · Lesson 13 · M. Data Storytelling – lesson and exercises */
+Sim.addContent("lesson13", {
+  learn: [
+    { t: "h", text: "What is data storytelling?" },
+    { t: "p", text: "A dashboard shows the data; a **data story** tells the audience what it means and what to do. Data storytelling combines three parts so that people understand and act." },
+    { t: "defs", items: [
+      ["Context", "why the question matters, to whom, and what the data covers (where, when, how collected)"],
+      ["Visuals", "the chart or dashboard that shows the evidence clearly and honestly"],
+      ["Narrative", "the words that connect the evidence to an insight and a recommendation"],
+      ["Insight", "the meaning behind the numbers – the “so what?”, not just a restated value"],
+    ] },
+    { t: "p", text: "Without context, a chart makes readers guess. Without visuals, a claim is hard to trust. Without narrative, the audience sees numbers but not the point." },
+    { t: "h", text: "The story structure" },
+    { t: "steps", title: "Five steps of a data story", items: [
+      "**Question & context** – the problem and why it matters: “Why is the canteen line so long?”",
+      "**Evidence** – the key data, honestly shown: “59% of sales happen in the first 15 minutes.”",
+      "**Insight** – what the evidence means: “Everyone arrives at once because all grades share one break.”",
+      "**Recommendation** – what should change, with its limits: “Stagger lunch; we observed only two weeks.”",
+      "**Call to action** – a specific request to a specific person: “Approve a two-week trial starting Monday.”",
+    ] },
+    { t: "ex", title: "Evidence or insight?", problem: "Which sentence is the insight? (a) “Late arrivals were 14 per day on rainy days and 5 on dry days.” (b) “Rain, not laziness, drives late arrivals: learners on flooded jeepney routes cannot get to school on time.”", steps: [
+      "Sentence (a) reports the numbers – that is evidence.",
+      "Sentence (b) explains why the numbers look that way – that is the insight.",
+      "A good insight still needs evidence behind it (route data for the late learners).",
+    ], answer: "(b) is the insight; (a) is the evidence." },
+    { t: "h", text: "Emphasis and annotation" },
+    { t: "list", items: [
+      "**Declutter:** remove heavy gridlines, one-series legends, 3D, borders, and decoration.",
+      "**One highlight color:** color the bars that carry the message; grey the rest.",
+      "**Annotate:** add a short note or bracket right on the chart where the reader must look.",
+      "**Insight headline:** a title that states the finding, not just the topic.",
+    ] },
+    { t: "table", head: ["Boring title", "Insight headline"], rows: [
+      ["Canteen Transactions by Time Slot", "59% of lunch sales happen in the first 15 minutes"],
+      ["Monthly PM2.5, Quezon City", "PM2.5 drops by half when the rainy season starts"],
+      ["Late Arrivals by Weather", "Rainy days nearly triple late arrivals"],
+    ] },
+    { t: "rule", title: "A headline must follow from the evidence", text: ["“Learners hate waiting in line” is not supported by sales counts.", "State only what the chart shows; put opinions and guesses aside."] },
+    { t: "steps", title: "Adding emphasis in Google Sheets and Looker Studio", items: [
+      "Sheets: Chart editor › Customize › Series › Format data point › choose a color for one bar.",
+      "Sheets: Customize › Gridlines and ticks – lighten or remove; Legend › Position: None.",
+      "Looker Studio: Style › Bar colors; Add a text box or a shape for the annotation.",
+      "Write the insight headline in the chart title or a text box above it.",
+    ] },
+    { t: "ex", title: "Compute the number in the headline", problem: "Sample data: canteen sales per 5-minute slot were 220, 240, 230, 150, 115, 90, 70, 55. What percent happened in the first 15 minutes?", steps: [
+      "The first 15 minutes are the first three slots: 220 + 240 + 230 = 690.",
+      "Total sales: 220 + 240 + 230 + 150 + 115 + 90 + 70 + 55 = 1,170.",
+      "690 ÷ 1,170 ≈ 0.590 → about 59%.",
+      "Headline: “59% of lunch sales happen in the first 15 minutes.”",
+    ], answer: "About 59%." },
+    { t: "code", lang: "Google Sheets", lines: ["=SUM(B2:B4)/SUM(B2:B9)", "=TEXT(SUM(B2:B4)/SUM(B2:B9), \"0%\") & \" of sales in the first 15 minutes\""], note: "A formula can build the headline, so it updates when the data changes." },
+    { t: "h", text: "Knowing your audience" },
+    { t: "table", head: ["Audience", "They need", "Tell them"], rows: [
+      ["Principal", "a decision, fast", "the request, one key number, cost, timeline"],
+      ["Parents", "how it affects their child", "plain words: what changes and why"],
+      ["Classmates", "something relatable", "a hook, one number, what they can do"],
+      ["Teachers / panel", "how you know", "methods, data quality, limitations"],
+    ] },
+    { t: "p", text: "Change the words, the detail, and the request for each audience – but never the evidence or its limits." },
+    { t: "h", text: "Writing a recommendation that states its limits (M11)" },
+    { t: "rule", title: "Recommendation template", text: ["Based on [evidence], we recommend [specific action] so that [expected result].", "Limit: [what the data does not cover]. Next: [how we will check]."] },
+    { t: "ex", title: "Strengthen a weak recommendation", problem: "Weak: “The school should fix the canteen.” Rewrite it using the canteen evidence (59% of sales in the first 15 minutes; two weeks of data in June).", steps: [
+      "Evidence: 59% of sales happen in the first 15 minutes of one shared break.",
+      "Action: stagger lunch – Grades 7–9 at 11:30, Grades 10–12 at 11:50 – for a two-week trial.",
+      "Expected result: shorter lines and more time to eat.",
+      "Limit and next step: only two weeks in June were observed, so log the line again during the trial.",
+    ], answer: "“Based on two weeks of sales (59% in the first 15 minutes), we recommend a two-week staggered-lunch trial so lines are shorter. Our data covers only June, so we will log the line again during the trial.”" },
+    { t: "remember", items: [
+      "Data story = context + visuals + narrative.",
+      "Structure: question → evidence → insight → recommendation → call to action.",
+      "Declutter, use one highlight color, annotate, and write an insight headline.",
+      "Fit the words and detail to the audience; keep the evidence and its limits the same.",
+      "A good recommendation follows from the evidence, is specific, and states its limits.",
+    ] },
+  ],
+  exercises: [
+    { title: "A. Skills Practice", items: [
+      { q: "Which three parts does data storytelling combine?", choices: ["Context, visuals, and narrative", "Charts, colors, and fonts", "Data, formulas, and code", "Title, legend, and axis"], answer: "Context, visuals, and narrative", solution: "A data story joins why it matters (context), the evidence (visuals), and the meaning (narrative)." },
+      { q: "“Rainy days had 14 late arrivals per day; dry days had 5.” Which story part is this?", choices: ["Evidence", "Insight", "Call to action", "Context"], answer: "Evidence", solution: "It reports what the data shows – evidence." },
+      { q: "“Please approve a two-week trial starting Monday.” Which story part is this?", choices: ["Call to action", "Evidence", "Insight", "Context"], answer: "Call to action", solution: "It asks a specific person to do a specific thing." },
+      { q: "Which is an insight headline?", choices: ["Rainy days nearly triple late arrivals", "Late Arrivals by Weather", "Chart 2", "Attendance Data June–August"], answer: "Rainy days nearly triple late arrivals", solution: "An insight headline states the finding; the others name only the topic." },
+      { q: "To make the reader notice one month in a 12-month column chart, what is the best emphasis?", choices: ["Color that month's column and grey the others", "Give every column a different color", "Make the chart 3D", "Add a thicker border to all columns"], answer: "Color that month's column and grey the others", solution: "One highlight color on the bar that carries the message." },
+      { q: "Sample data: 690 of 1,170 canteen sales happened in the first 15 minutes. What percent is that? (nearest whole percent)", num: 59, tol: 0.5, unit: "%", solution: ["690 ÷ 1,170 ≈ 0.590", "≈ 59%"] },
+      { q: "Rainy days averaged 14 late arrivals and dry days 5. How many times as many late arrivals do rainy days have? (1 decimal place)", num: 2.8, tol: 0.05, solution: "14 ÷ 5 = 2.8 – so “Rainy days nearly triple late arrivals.”" },
+      { q: "Which formula returns the share of sales in B2:B4 out of all sales in B2:B9?", choices: ["=SUM(B2:B4)/SUM(B2:B9)", "=SUM(B2:B9)/SUM(B2:B4)", "=AVERAGE(B2:B4)", "=COUNT(B2:B4)/COUNT(B2:B9)"], answer: "=SUM(B2:B4)/SUM(B2:B9)", solution: "Part ÷ whole: the sum of the first three slots divided by the sum of all slots." },
+    ] },
+    { title: "B. Problem Solving", items: [
+      { q: "Which version of the canteen finding fits parents best?", choices: ["“For two weeks, your child will eat at 11:30 or 11:50 so lines are shorter and there is more time to eat.”", "“56.8% of POS transactions cluster in slots 1–3 (n = 1,170).”", "“The canteen is badly run.”", "“See the attached COUNTIFS output.”"], answer: "“For two weeks, your child will eat at 11:30 or 11:50 so lines are shorter and there is more time to eat.”", solution: "Plain language about what changes for their child and why." },
+      { q: "Which recommendation follows from the evidence and states its limits?", choices: ["“Try staggered lunch for two weeks; our data covers only June, so we will measure the line again.”", "“Staggered lunch will end all lines forever.”", "“Learners should just be more patient.”", "“Close the canteen at noon.”"], answer: "“Try staggered lunch for two weeks; our data covers only June, so we will measure the line again.”", solution: ["It is specific, it follows from the timing evidence, and it names its limitation.", "The others overclaim or ignore the evidence."] },
+      { q: "A barangay chart shows flood reports: 46 on Mabini St. out of 120 reports in all. What percent of reports came from Mabini St.? (1 decimal place)", num: 38.3, tol: 0.06, unit: "%", solution: ["46 ÷ 120 ≈ 0.3833", "≈ 38.3% – headline: “More than a third of flood reports come from Mabini St.”"] },
+      { q: "Put the story in order: (1) “Approve a drainage clean-up before June.” (2) “Mabini St. has 38% of flood reports.” (3) “Which streets flood most, and why?” (4) “Its drains are the oldest and most clogged.” (5) “Clean Mabini St. drains first; we have only one year of reports.”", choices: ["3, 2, 4, 5, 1", "2, 3, 4, 1, 5", "3, 4, 2, 1, 5", "1, 2, 3, 4, 5"], answer: "3, 2, 4, 5, 1", solution: ["Question (3) → evidence (2) → insight (4) → recommendation with limit (5) → call to action (1)."] },
+    ] },
+    { title: "C. Challenge", items: [
+      { q: "Sample data: late arrivals were 14, 15, 13, 16 on four rainy days and 5, 4, 6, 5 on four dry days. By how many late arrivals per day is the rainy-day average higher? (1 decimal place)", num: 9.5, tol: 0.05, solution: ["Rainy average = (14 + 15 + 13 + 16) ÷ 4 = 58 ÷ 4 = 14.5", "Dry average = (5 + 4 + 6 + 5) ÷ 4 = 20 ÷ 4 = 5", "14.5 − 5 = 9.5 more late arrivals per day"] },
+      { q: "Write a two-minute data story (about 5 sentences) for the principal from the late-arrival data above. Label each sentence with its part of the story, and state one limitation.", open: true, solution: ["Question & context: “Why do so many learners arrive late on rainy days?”", "Evidence: “Over 8 sample days, rainy days averaged 14.5 late arrivals and dry days 5 – almost three times as many.”", "Insight: “Most late learners ride jeepney routes that flood along España.”", "Recommendation with limit: “Allow a 15-minute grace period on days with a rainfall warning; we observed only eight days, so we will keep logging.”", "Call to action: “Please approve the grace period for the rest of the rainy season.”"] },
+    ] },
+  ],
+});
