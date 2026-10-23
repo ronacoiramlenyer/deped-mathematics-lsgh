@@ -281,13 +281,14 @@
   Sim.register({
     id: "lesson8", unit: "D", num: 8, letter: "H", title: "Sequences and Patterns", simName: "Pattern Builder",
     comps: ["A13", "M8"], cycles: "C8,M4 – C9,M2", deped: "DepEd Week 9",
-    bigQuestion: "How many matchsticks do you need for 50 squares in a row – without building them all?",
+    bigQuestion: "How far is the canteen from the gate – as the crow flies?",
     mission: [
       "Growing Patterns: build Matchstick squares from step 1 to step 5. Record each step in the table.",
       "How many new matchsticks appear at each step? Predict step 10, then show the rule.",
       "Find the Rule: predict term 6 for each kind of sequence, then show the differences.",
       "For an “Add a constant” sequence, choose the rule for the nth term and test it.",
       "Real Patterns: which pattern grows fastest – seats, savings, or bacteria? Why?",
+      "Without building them, how many matchsticks do 50 squares in a row need?",
     ],
     discovery: "When the same amount d is added each time, the terms follow a linear rule aₙ = dn + c: the common difference is the number in front of n. Matchstick squares add 3 each step, so step n needs 3n + 1 sticks, and 50 squares need 151. When the differences change, or each term is multiplied, the rule is not linear – look at the second differences or the ratio.",
     mount(stage) {
