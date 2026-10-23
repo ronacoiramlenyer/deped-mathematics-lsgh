@@ -107,7 +107,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .unit-head { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
 .unit-head h2 { font-size: 1.4rem; }
 .unit-head .tag { font-size: .8rem; color: var(--muted); letter-spacing: .04em; }
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px; }
+.units { display: flex; flex-wrap: wrap; gap: 24px 20px; align-items: flex-start; }
+.units > .term-head { flex: 1 0 100%; }
+.units > .unit { flex: var(--n, 3) 1 calc(var(--n, 3) * 200px + (var(--n, 3) - 1) * 12px); min-width: 0; max-width: 100%; }
+.cards { display: flex; flex-wrap: wrap; gap: 12px; }
+.cards > .card { flex: 1 1 200px; max-width: 300px; }
+@media (max-width: 600px) { .cards > .card { max-width: none; } }
 .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 6px; text-decoration: none; color: var(--ink); align-content: start; }
 .card:hover { border-color: var(--accent); }
 .card .k { font-family: var(--mono); font-size: .78rem; color: var(--accent); }

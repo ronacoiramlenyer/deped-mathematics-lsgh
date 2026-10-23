@@ -98,11 +98,12 @@
         h("p", {}, "Every lesson in this book has its own simulation. Drag, build, shop, race, and cook your way to each rule – then check yourself. Aligned with the DepEd MATATAG Grade 7 competencies for Terms 1 to 3."),
         h("p", { class: "note" }, `${done.size} of ${lessons.length} lessons mastered on this device.`)),
       coverArt()));
+    const units = h("div", { class: "units" });
     for (const u of UNITS) {
       if (!lessons.some((x) => x.unit === u.key)) continue;
       if (u === UNITS.find((v) => v.term === u.term)) {
         const n = lessons.filter((x) => termOf(x) === u.term).length;
-        wrap.append(h("h2", { class: "term-head" }, `Term ${u.term}`, h("span", {}, ` · ${n} lessons`)));
+        units.append(h("h2", { class: "term-head" }, `Term ${u.term}`, h("span", {}, ` · ${n} lessons`)));
       }
       const unit = h("section", { class: "unit" },
         h("div", { class: "unit-head" }, h("h2", {}, `Unit ${u.key} · ${u.title}`), h("span", { class: "tag" }, `${u.sub} · ${u.domain} · ${u.weeks}`)));
@@ -114,9 +115,12 @@
           h("p", {}, `Sim: ${l.simName}`),
           h("p", {}, l.bigQuestion)));
       }
+      // Units share a row when there is room, so cards keep their size and more of them fit across.
+      unit.style.setProperty("--n", cards.children.length);
       unit.append(cards);
-      wrap.append(unit);
+      units.append(unit);
     }
+    wrap.append(units);
     main.append(wrap);
   }
 

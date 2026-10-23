@@ -88,6 +88,7 @@
         h("p", {}, "Every lesson in this book has its own simulation. Sort, clean, pivot, test, chart, and verify real-looking data – then check yourself and practice the skills you will use in Google Sheets, Google Colab, and Looker Studio. Aligned with the DepEd Strengthened SHS Curriculum Guide for Fundamentals of Data Analytics."),
         h("p", { class: "note" }, `${done.size} of ${lessons.length} lessons mastered on this device.`)),
       coverArt()));
+    const units = h("div", { class: "units" });
     for (const u of UNITS) {
       if (!lessons.some((x) => x.unit === u.key)) continue;
       const unit = h("section", { class: "unit" },
@@ -100,9 +101,12 @@
           h("p", {}, `Sim: ${l.simName}`),
           h("p", {}, l.bigQuestion)));
       }
+      // Units share a row when there is room, so cards keep their size and more of them fit across.
+      unit.style.setProperty("--n", cards.children.length);
       unit.append(cards);
-      wrap.append(unit);
+      units.append(unit);
     }
+    wrap.append(units);
     main.append(wrap);
   }
 
