@@ -9,7 +9,7 @@ document builders and LSGH templates are shared.
 
 | Course | Folder | Curriculum | Status |
 | --- | --- | --- | --- |
-| Mathematics (Grades 1–12) | [`courses/mathematics/`](courses/mathematics/README.md) | DepEd MATATAG | Grade 7 Terms 1–3: CM, LG, and the Math 7 SimBook (27 lessons) |
+| Mathematics (Grades 1–12) | [`courses/mathematics/`](courses/mathematics/README.md) | DepEd MATATAG | Grade 7 Terms 1–3 and Grade 8 Term 1: CM and LG; the Math SimBook for all grade levels |
 | Fundamentals of Data Analytics | [`courses/data-analytics/`](courses/data-analytics/README.md) | DepEd Strengthened SHS Curriculum (Academic Elective) | Curriculum Map and Learning Guide (80 one-hour sessions, 6 units, 29 CG competencies) and the Data Analytics SimBook (15 lessons) |
 
 ## Layout
@@ -19,7 +19,7 @@ document builders and LSGH templates are shared.
 | `courses/<course>/sources/` | Official DepEd documents – the source of truth for that course |
 | `courses/<course>/content/` | CM and LG content as Python data (one module per document) |
 | `courses/<course>/output/` | Generated `.docx` documents |
-| `courses/<course>/simbook/` | SimBook – one custom simulation, slide deck, and exercise set per lesson (Math 7; Data Analytics) |
+| `courses/<course>/simbook/` | SimBook – one custom simulation, slide deck, and exercise set per lesson (Math SimBook for all grades; Data Analytics SimBook) |
 | `tools/cm_builder.py` | Builds the LSGH-format Curriculum Map `.docx` (landscape) from a content module |
 | `tools/lg_builder.py` | Builds the LSGH-format Learning Guide `.docx` (portrait) from a content module |
 | `templates/` | LSGH document templates (header logo, page numbers; landscape and portrait) |

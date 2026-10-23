@@ -1,4 +1,4 @@
-/* Math 7 SimBook – the textbook side: lesson exposition and exercise sets. */
+/* Math SimBook – the textbook side: lesson exposition and exercise sets. */
 (function () {
   "use strict";
   const { h, clear, parseNumber, Frac } = Sim;

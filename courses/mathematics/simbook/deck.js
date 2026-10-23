@@ -1,4 +1,4 @@
-/* Math 7 SimBook – lesson discussion as a slide deck with speaker notes. */
+/* Math SimBook – lesson discussion as a slide deck with speaker notes. */
 (function () {
   "use strict";
   const { h, clear } = Sim;

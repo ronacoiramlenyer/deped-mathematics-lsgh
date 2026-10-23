@@ -29,7 +29,7 @@ performance standards, and competencies marked ★ in the CMs are quoted verbati
 | --- | --- |
 | `content/` | CM and LG content as Python data (one file per grade/term) |
 | `sources/deped/` | DepEd source documents (source of truth) |
-| `simbook/` | LSGH Math 7 SimBook – interactive book with one custom simulation per lesson |
+| `simbook/` | LSGH Math SimBook – one interactive book for all grade levels, one custom simulation per lesson |
 | `output/` | Generated documents |
 
 ## Building
@@ -52,9 +52,9 @@ python3 ../../tools/lg_builder.py content/grade7_term3_lg.py \
   output/grade7/Grade7-LG-3rd_Trim-SY2026-2027-Mathematics.docx
 ```
 
-## Math 7 SimBook
+## Math SimBook
 
-`simbook/` is a dependency-free web book (HTML, CSS, vanilla JS, SVG). Every lesson page
+`simbook/` is the **Math SimBook**: one dependency-free web book (HTML, CSS, vanilla JS, SVG) for every grade level, grouped Grade → Term → Unit → Lesson. Grade 7 lessons use the ids `lesson1`–`lesson27`; Grade 8 lessons use `g8-lesson1`, `g8-lesson2`, … and unit keys `8A`, `8B`, … (shown to learners as A, B, …). Every lesson page
 (Terms 1–3, 27 lessons) has four parts:
 
 1. **Hook** – the lesson's own simulation, with a mission and a discovery reveal.

@@ -35,7 +35,7 @@ OVERVIEW = [
     "school’s Family Day: they invent a chance game, test it with at least 50 trial plays, show the outcomes in words, "
     "symbols, tables, and graphs, write the scoring and earnings rules as equations with integers, and defend a fair "
     "prize plan.",
-    "Each lesson opens with a short simulation from the **LSGH Math 7 SimBook** as its hook. The lesson itself is "
+    "Each lesson opens with a short simulation from the **LSGH Math SimBook** as its hook. The lesson itself is "
     "taught in the usual way – the teacher’s discussion, definitions, and step-by-step worked examples, presented on "
     "the SimBook’s lesson slides with speaker notes – and practiced through the SimBook’s Check Yourself items and its "
     "Exercises (Part A Skills Practice, Part B Problem Solving, Part C Challenge).",
@@ -133,7 +133,7 @@ for r in _cm.ROWS:
 
 def card(n_global, n_term, sim, tab, mission, questions, discovery, setup="Pairs, one device; record findings in the notebook"):
     return ("sim", {"kind": "SIM HOOK", "title": f"{sim} – {tab}",
-                    "tool": f"LSGH Math 7 SimBook · Term 3 Lesson {n_term} · {sim} ({tab} tab)",
+                    "tool": f"LSGH Math SimBook · Term 3 Lesson {n_term} · {sim} ({tab} tab)",
                     "link": f"{SIMBOOK}#lesson{n_global}", "setup": setup, "mission": mission,
                     "questions": questions, "discovery": discovery})
 
@@ -160,7 +160,7 @@ def quiz(cycle, code, title, coverage, items=25, sep=True):
 
 
 def res(n_term, n_global, title, extra):
-    return [f"LSGH Math 7 SimBook - Term 3 Lesson {n_term} ({SIMBOOK}#lesson{n_global})",
+    return [f"LSGH Math SimBook - Term 3 Lesson {n_term} ({SIMBOOK}#lesson{n_global})",
             f"SimBook Lesson {n_term} slides with speaker notes (use Present for the projector)",
             f"SimBook Exercises {n_term} – Part A as seatwork; Parts B and C as homework",
             f"Teacher’s Google presentation - Lesson {n_term}: {title}", *extra, R360]

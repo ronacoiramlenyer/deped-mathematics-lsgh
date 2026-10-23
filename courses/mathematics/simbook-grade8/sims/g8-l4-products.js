@@ -23,6 +23,8 @@
   const pmul = (a, b) => { const r = Array(a.length + b.length - 1).fill(0); a.forEach((x, i) => b.forEach((y, j) => { r[i + j] += x * y; })); return r; };
   const bin = (m, c) => `(${poly([m, c])})`;
   const fac = (a) => (a ? bin(1, a) : "x");
+  /** Terms [coefficient, power] written in order without combining: x² + 3x + 3x + 9. */
+  const joinTerms = (ts) => ts.filter(([c]) => c).map(([c, p], i) => { const t = poly([Math.abs(c), ...Array(p).fill(0)]); return i === 0 ? (c < 0 ? "−" : "") + t : (c < 0 ? " − " : " + ") + t; }).join("");
   /** Up to four distinct answer choices that always include the answer. */
   function choiceSet(answer, others) {
     const out = [answer];
@@ -117,7 +119,7 @@
         `O  x · ${par(B)} = ${poly([B, 0])}`,
         `I  ${par(A)} · x = ${poly([A, 0])}`,
         `L  ${par(A)} · ${par(B)} = ${neg(A * B)}`,
-        `   x² ${A + B < 0 ? "−" : "+"} ${Math.abs(A + B)}x ${A * B < 0 ? "−" : "+"} ${Math.abs(A * B)}  →  ${poly(P)}`,
+        `Combine like terms: ${joinTerms([[1, 2], [B, 1], [A, 1], [A * B, 0]])} = ${poly(P)}`,
       ].join("\n");
       note.textContent = A * B < 0 ? `The x-tiles have opposite signs: ${Math.abs(A)} and ${Math.abs(B)} cancel in zero pairs, leaving ${poly([A + B, 0])}. The ${Math.abs(A * B)} unit tiles are negative, so the last term is ${neg(A * B)}.`
         : A === 0 || B === 0 ? "When one constant is 0, the product has only two terms." : `Like terms combine: ${poly([A, 0])} + ${poly([B, 0])} = ${poly([A + B, 0])}. Dashed, striped tiles are negative.`;
@@ -131,7 +133,7 @@
 
   function monoTri(root) {
     let m = 3, p = 2, q = -4;
-    const svg = s("svg", { viewBox: "0 0 600 230", role: "img", "aria-label": "Grid for a monomial times a trinomial" });
+    const svg = s("svg", { viewBox: "0 0 500 200", role: "img", "aria-label": "Grid for a monomial times a trinomial" });
     const look = tileDefs(svg);
     const layer = s("g");
     svg.append(layer);
@@ -146,17 +148,17 @@
       const heads = ["x²", poly([P, 0]), neg(Q)], kinds = [2, 1, 0];
       const cells = [poly([M, 0, 0, 0]), poly([M * P, 0, 0]), poly([M * Q, 0])];
       const cellKinds = [[2, M < 0], [1, M * P < 0], [0, M * Q < 0]];
-      const gx = 150, gy = 70, w = 140, ht = 90;
-      layer.append(s("text", { x: gx - 16, y: gy + ht / 2 + 6, "text-anchor": "end", class: "svg-text", "font-size": 18, "font-weight": 700 }, poly([M, 0])));
+      const gx = 84, gy = 50, w = 136, ht = 100;
+      layer.append(s("text", { x: gx - 16, y: gy + ht / 2 + 6, "text-anchor": "end", class: "svg-text", "font-size": 22, "font-weight": 700 }, poly([M, 0])));
       heads.forEach((t, i) => {
-        layer.append(s("text", { x: gx + i * w + w / 2, y: gy - 14, "text-anchor": "middle", class: "svg-text", "font-size": 16, "font-weight": 700, fill: TILE[kinds[i]][0] }, t));
+        layer.append(s("text", { x: gx + i * w + w / 2, y: gy - 14, "text-anchor": "middle", class: "svg-text", "font-size": 20, "font-weight": 700, fill: TILE[kinds[i]][0] }, t));
         const cx = gx + i * w + w / 2, cy = gy + ht / 2, k = pulse[i];
         const g = s("g", { transform: `translate(${cx},${cy}) scale(${k.toFixed(3)})` });
         g.append(s("rect", { x: -w / 2 + 3, y: -ht / 2 + 3, width: w - 6, height: ht - 6, rx: 6, ...look(cellKinds[i][0] === 2 ? 2 : cellKinds[i][0], cellKinds[i][1]) }),
-          s("text", { y: 7, "text-anchor": "middle", class: "svg-text", "font-size": 20, "font-weight": 700 }, cells[i]));
+          s("text", { y: 8, "text-anchor": "middle", class: "svg-text", "font-size": 24, "font-weight": 700 }, cells[i]));
         layer.append(g);
       });
-      layer.append(s("text", { x: 300, y: 210, "text-anchor": "middle", class: "svg-label" }, "Multiply the monomial by every term of the trinomial (distributive property)."));
+      layer.append(s("text", { x: 288, y: 186, "text-anchor": "middle", class: "svg-label", "font-size": 14 }, "Multiply the monomial by every term."));
       prod.textContent = `${poly([M, 0])}(${poly([1, P, Q])}) = ${poly(pmul([M, 0], [1, P, Q]))}`;
       work.textContent = `${poly([M, 0])} · x² = ${cells[0]}\n${poly([M, 0])} · ${par(P)}x = ${cells[1]}\n${poly([M, 0])} · ${par(Q)} = ${cells[2]}\nSum: ${poly(pmul([M, 0], [1, P, Q]))}   (add the exponents: x · x² = x³)`;
       const now = [M, P, Q];
@@ -200,8 +202,8 @@
 
   function squareBin(root) {
     let a = 5, b = 2, k = 0;
-    const u = 25, O = { x: 70, y: 40 }, g0 = 24;
-    const svg = s("svg", { viewBox: "0 0 600 360", role: "img", "aria-label": "A square of side a + b split into a², 2ab, and b²" });
+    const u = 25, O = { x: 60, y: 44 }, g0 = 24;
+    const svg = s("svg", { viewBox: "0 0 400 350", role: "img", "aria-label": "A square of side a + b split into a², 2ab, and b²" });
     const layer = s("g"); svg.append(layer);
     const eq = h("p", { class: "unit-big", "aria-live": "polite" }), work = h("pre", { class: "workings" });
     const sp = new Spring(0, (v) => { k = v; draw(); }, { stiffness: 120, damping: 11 });
@@ -216,13 +218,8 @@
         s("text", { x: O.x + A + B / 2 + g, y: O.y - 10 - g, "text-anchor": "middle", class: "svg-text", "font-weight": 700 }, `b = ${bi}`),
         s("text", { x: O.x - 10 - g, y: O.y + A / 2 - g, "text-anchor": "end", class: "svg-text", "font-weight": 700 }, "a"),
         s("text", { x: O.x - 10 - g, y: O.y + A + B / 2 + g, "text-anchor": "end", class: "svg-text", "font-weight": 700 }, "b"));
-      const tx = 430;
-      layer.append(s("text", { x: tx, y: 80, "text-anchor": "middle", class: "svg-label" }, k > 0.5 ? "The pieces:" : "One big square:"),
-        s("text", { x: tx, y: 112, "text-anchor": "middle", class: "svg-text", "font-size": 18, "font-weight": 700 }, k > 0.5 ? "a² + 2ab + b²" : "(a + b)²"),
-        s("text", { x: tx, y: 140, "text-anchor": "middle", class: "svg-text", "font-size": 14 }, k > 0.5 ? `${ai * ai} + ${2 * ai * bi} + ${bi * bi}` : `(${ai} + ${bi})²`),
-        s("text", { x: tx, y: 166, "text-anchor": "middle", class: "svg-text", "font-size": 14 }, `= ${(ai + bi) ** 2}`));
-      eq.textContent = `(a + b)² = a² + 2ab + b²`;
-      work.textContent = `(${ai} + ${bi})² = ${ai}² + 2(${ai})(${bi}) + ${bi}² = ${ai * ai} + ${2 * ai * bi} + ${bi * bi} = ${(ai + bi) ** 2}\nWith a = x: (x + ${bi})² = ${poly([1, 2 * bi, bi * bi])}   (NOT x² + ${bi * bi} – the two ab pieces are missing!)`;
+      eq.textContent = k > 0.5 ? `Pieces: a² + 2ab + b² = ${ai * ai} + ${2 * ai * bi} + ${bi * bi} = ${(ai + bi) ** 2}` : `One square: (a + b)² = (${ai} + ${bi})² = ${(ai + bi) ** 2}`;
+      work.textContent = `(a + b)² = a² + 2ab + b²\n(${ai} + ${bi})² = ${ai}² + 2(${ai})(${bi}) + ${bi}² = ${ai * ai} + ${2 * ai * bi} + ${bi * bi} = ${(ai + bi) ** 2}\nWith a = x: (x + ${bi})² = ${poly([1, 2 * bi, bi * bi])}   (NOT x² + ${bi * bi} – the two ab pieces are missing!)`;
     }
     const toggle = h("button", { class: "btn", type: "button", onclick: () => { const t = sp.target > 0.5 ? 0 : 1; sp.set(t); toggle.textContent = t ? "Put it back together" : "Pull the square apart"; } }, "Pull the square apart");
     root.append(h("div", { class: "controls" },
@@ -235,8 +232,8 @@
 
   function sumDiff(root) {
     let a = 6, b = 2, k = 0;
-    const u = 34, O = { x: 50, y: 50 };
-    const svg = s("svg", { viewBox: "0 0 600 360", role: "img", "aria-label": "A square a² with the corner b² removed, rearranged into (a + b)(a − b)" });
+    const u = 30, O = { x: 64, y: 44 };
+    const svg = s("svg", { viewBox: "0 0 430 320", role: "img", "aria-label": "A square a² with the corner b² removed, rearranged into (a + b)(a − b)" });
     const layer = s("g"); svg.append(layer);
     const eq = h("p", { class: "unit-big", "aria-live": "polite" }), work = h("pre", { class: "workings" });
     const sp = new Spring(0, (v) => { k = v; draw(); }, { stiffness: 90, damping: 12 });
@@ -253,7 +250,7 @@
       piece(strip, -D / 2, -B / 2, D, B, 1, "b(a − b)", `${bi} × ${ai - bi}`);
       // the corner b² slides away and leaves a dashed hole
       layer.append(s("rect", { x: O.x + D, y: O.y + D, width: B, height: B, fill: "none", stroke: "var(--muted)", "stroke-width": 1.5, "stroke-dasharray": "5 4", opacity: k1 }));
-      const cg = s("g", { transform: `translate(${(k1 * 120).toFixed(1)},${(k1 * 10).toFixed(1)})`, opacity: (1 - 0.75 * k1).toFixed(2) });
+      const cg = s("g", { transform: `translate(${(k1 * 50).toFixed(1)},${(k1 * 60).toFixed(1)})`, opacity: (1 - 0.75 * k1).toFixed(2) });
       piece(cg, O.x + D, O.y + D, B, B, 0, "b²", `${bi * bi}`);
       layer.append(cg, strip);
       layer.append(s("text", { x: O.x + A / 2, y: O.y - 12, "text-anchor": "middle", class: "svg-text", "font-weight": 700 }, k2 > 0.5 ? "" : `a = ${ai}`));
@@ -263,12 +260,8 @@
           s("text", { x: O.x - 8, y: O.y + D / 2 + 20, "text-anchor": "end", class: "svg-text", "font-size": 12 }, `= ${ai - bi}`));
       } else layer.append(s("text", { x: O.x - 8, y: O.y + A / 2 + 4, "text-anchor": "end", class: "svg-text", "font-weight": 700 }, "a"));
       const msg = k < 0.5 ? ["Start with a square:", "a²", `${ai}² = ${ai * ai}`] : k < 1.5 ? ["Take away the corner:", "a² − b²", `${ai * ai} − ${bi * bi} = ${ai * ai - bi * bi}`] : ["Rearranged:", "(a + b)(a − b)", `${ai + bi} × ${ai - bi} = ${(ai + bi) * (ai - bi)}`];
-      const tx = 470;
-      layer.append(s("text", { x: tx, y: 250, "text-anchor": "middle", class: "svg-label" }, msg[0]),
-        s("text", { x: tx, y: 280, "text-anchor": "middle", class: "svg-text", "font-size": 18, "font-weight": 700 }, msg[1]),
-        s("text", { x: tx, y: 306, "text-anchor": "middle", class: "svg-text", "font-size": 14 }, msg[2]));
-      eq.textContent = "(a + b)(a − b) = a² − b²";
-      work.textContent = `(${ai} + ${bi})(${ai} − ${bi}) = ${ai + bi} × ${ai - bi} = ${(ai + bi) * (ai - bi)}   and   ${ai}² − ${bi}² = ${ai * ai} − ${bi * bi} = ${ai * ai - bi * bi}\nWith a = x: (x + ${bi})(x − ${bi}) = ${poly([1, 0, -bi * bi])}   – the middle terms +${bi}x and −${bi}x cancel.`;
+      eq.textContent = `${msg[0]} ${msg[1]} = ${msg[2]}`;
+      work.textContent = `(a + b)(a − b) = a² − b²\n(${ai} + ${bi})(${ai} − ${bi}) = ${ai + bi} × ${ai - bi} = ${(ai + bi) * (ai - bi)}   and   ${ai}² − ${bi}² = ${ai * ai} − ${bi * bi} = ${ai * ai - bi * bi}\nWith a = x: (x + ${bi})(x − ${bi}) = ${poly([1, 0, -bi * bi])}   – the middle terms +${bi}x and −${bi}x cancel.`;
     }
     root.append(h("div", { class: "controls" },
       elasticSlider({ id: "g8l4-da", label: "a", min: 4, max: 7, value: a, step: 1, format: (v) => String(Math.round(v)), onInput: (v) => { a = v; draw(); } }).el,
@@ -285,8 +278,8 @@
   function squareTri(root) {
     const v = [4, 2, 1];
     let k = 0;
-    const u = 22, O = { x: 60, y: 40 }, g0 = 16, names = ["a", "b", "c"];
-    const svg = s("svg", { viewBox: "0 0 600 360", role: "img", "aria-label": "A square of side a + b + c split into nine pieces" });
+    const u = 22, O = { x: 50, y: 44 }, g0 = 16, names = ["a", "b", "c"];
+    const svg = s("svg", { viewBox: "0 0 380 360", role: "img", "aria-label": "A square of side a + b + c split into nine pieces" });
     const layer = s("g"); svg.append(layer);
     const eq = h("p", { class: "unit-big" }), work = h("pre", { class: "workings" });
     const sp = new Spring(0, (x) => { k = x; draw(); }, { stiffness: 120, damping: 11 });
@@ -308,8 +301,8 @@
       let x = O.x;
       for (let i = 0; i < 3; i++) { layer.append(s("text", { x: x + L[i] / 2 + (i - 1) * g0 * k, y: O.y - 10 - g0 * k, "text-anchor": "middle", class: "svg-text", "font-weight": 700 }, `${names[i]}=${n[i]}`)); x += L[i]; }
       const [A, B, C] = n;
-      eq.textContent = "(a + b + c)² = a² + b² + c² + 2ab + 2ac + 2bc";
-      work.textContent = `(${A} + ${B} + ${C})² = ${(A + B + C) ** 2}\n${A * A} + ${B * B} + ${C * C} + ${2 * A * B} + ${2 * A * C} + ${2 * B * C} = ${A * A + B * B + C * C + 2 * A * B + 2 * A * C + 2 * B * C}\nThree squares on the diagonal, and each rectangle (ab, ac, bc) appears twice.`;
+      eq.textContent = `(${A} + ${B} + ${C})² = ${(A + B + C) ** 2}`;
+      work.textContent = `(a + b + c)² = a² + b² + c² + 2ab + 2ac + 2bc\n${A * A} + ${B * B} + ${C * C} + ${2 * A * B} + ${2 * A * C} + ${2 * B * C} = ${A * A + B * B + C * C + 2 * A * B + 2 * A * C + 2 * B * C}\nThree squares on the diagonal, and each rectangle (ab, ac, bc) appears twice.`;
     }
     const toggle = h("button", { class: "btn", type: "button", onclick: () => { const t = sp.target > 0.5 ? 0 : 1; sp.set(t); toggle.textContent = t ? "Put it back together" : "Pull the square apart"; } }, "Pull the square apart");
     root.append(h("div", { class: "controls" },

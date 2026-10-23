@@ -34,7 +34,7 @@ OVERVIEW = [
     "fundraising activity for a partner community. They apply percentages, rates, and "
     "operations on rational numbers, and justify every peso with mathematical evidence – "
     "practicing responsible stewardship of resources in the service of others.",
-    "Each lesson opens with a short simulation from the **LSGH Math 7 SimBook** as its hook, "
+    "Each lesson opens with a short simulation from the **LSGH Math SimBook** as its hook, "
     "to spark curiosity and a first look at the pattern. The lesson itself is then taught in "
     "the usual way – the teacher’s discussion, definitions, and step-by-step worked examples, "
     "presented on the SimBook’s lesson slides with speaker notes – and practiced through the SimBook’s Check Yourself items and its Exercises (Part A "
@@ -500,7 +500,7 @@ LESSON_A = [
       "panes and tiles – squares (4); the outline of a star parol – a 10-sided figure."]),
     ("ts", "All of these shapes are made of straight sides joined end to end. Mathematicians "
            "call them polygons. Let’s define them carefully."),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Polygon Studio – Explore', 'tool': 'LSGH Math 7 SimBook · Lesson 1 · Polygon Studio (Explore tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson1', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Choose 5, 6, 8, and 10 sides. Record the interior angle of each regular polygon.', 'Press “Mess it up,” then drag the vertices. Watch the side and angle readouts.', 'Try to make a hexagon whose sides are all equal but whose angles are not.'], 'questions': ['When does the sim say REGULAR?', 'What happens to each angle as the number of sides grows?'], 'discovery': 'A polygon is regular only when all sides AND all angles are equal; each interior angle grows with the number of sides (108°, 120°, 135°, 144°).'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Polygon Studio – Explore', 'tool': 'LSGH Math SimBook · Lesson 1 · Polygon Studio (Explore tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson1', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Choose 5, 6, 8, and 10 sides. Record the interior angle of each regular polygon.', 'Press “Mess it up,” then drag the vertices. Watch the side and angle readouts.', 'Try to make a hexagon whose sides are all equal but whose angles are not.'], 'questions': ['When does the sim say REGULAR?', 'What happens to each angle as the number of sides grows?'], 'discovery': 'A polygon is regular only when all sides AND all angles are equal; each interior angle grows with the number of sides (108°, 120°, 135°, 144°).'}),
     ("step", "(ID#3) The teacher will discuss the definition and parts of a polygon (sides, "
              "vertices, interior angles, diagonals) and the difference between regular and "
              "irregular polygons."),
@@ -525,7 +525,7 @@ LESSON_A = [
     ("meet", "Meeting 3 (C1, M4): Drawing Regular Polygons"),
     ("ts", "Now let’s combine our ruler and protractor to draw a perfect regular hexagon – "
            "the shape of a honeycomb cell."),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Polygon Studio – Build It', 'tool': 'LSGH Math 7 SimBook · Lesson 1 · Polygon Studio (Build It tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson1', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Enter a side length, an interior angle, and the number of sides, then press “Draw it.”', 'Find the interior angle that closes each regular polygon in the challenge list.', 'Try 6 sides with 110°. What happens to the gap?'], 'questions': ['Why does the wrong angle leave a gap?', 'What turn does the pen make at each corner?'], 'discovery': 'Only the correct interior angle closes the polygon; the pen turns 180° minus that angle at every corner.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Polygon Studio – Build It', 'tool': 'LSGH Math SimBook · Lesson 1 · Polygon Studio (Build It tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson1', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Enter a side length, an interior angle, and the number of sides, then press “Draw it.”', 'Find the interior angle that closes each regular polygon in the challenge list.', 'Try 6 sides with 110°. What happens to the gap?'], 'questions': ['Why does the wrong angle leave a gap?', 'What turn does the pen make at each corner?'], 'discovery': 'Only the correct interior angle closes the polygon; the pen turns 180° minus that angle at every corner.'}),
     ("step", "(ID#6) The teacher will demonstrate the steps in drawing a regular hexagon with "
              "sides of 4 cm."),
     ("ex", "Expected Output: Drawing a Regular Hexagon (side 4 cm)", [
@@ -582,7 +582,7 @@ LESSON_A = [
           "irregular polygons, and how to draw them accurately using a ruler and a "
           "protractor. Next meeting, we will explore how angles relate to one another and how "
           "to classify polygons."),
-    ("res", ["LSGH Math 7 SimBook - Lesson 1 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson1)",
+    ("res", ["LSGH Math SimBook - Lesson 1 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson1)",
              "SimBook Lesson 1 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 1 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 1: Drawing Polygons",
@@ -615,7 +615,7 @@ LESSON_B = [
     ("step", "(ID#2) ^^HOOK:^^ “Scissors and Clocks” – Students open a pair of scissors and "
              "observe the four angles formed. Which angles look equal? Which ones together "
              "make a straight line?"),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Angle Pair Lab – Intersecting Lines and Split an Angle', 'tool': 'LSGH Math 7 SimBook · Lesson 2 · Angle Pair Lab (Intersecting Lines and Split an Angle tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson2', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Intersecting Lines: rotate both lines and record three positions in a table.', 'Use “Highlight” to show the vertical pair, then the linear pair.', 'Split an Angle: drag the ray inside a 90° angle, then a 180° angle.'], 'questions': ['Which angles are always equal?', 'Which pairs always add up to the same total?'], 'discovery': 'Vertical angles are always equal; a linear pair always adds to 180°; complementary angles add to 90°, supplementary angles to 180°.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Angle Pair Lab – Intersecting Lines and Split an Angle', 'tool': 'LSGH Math SimBook · Lesson 2 · Angle Pair Lab (Intersecting Lines and Split an Angle tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson2', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Intersecting Lines: rotate both lines and record three positions in a table.', 'Use “Highlight” to show the vertical pair, then the linear pair.', 'Split an Angle: drag the ray inside a 90° angle, then a 180° angle.'], 'questions': ['Which angles are always equal?', 'Which pairs always add up to the same total?'], 'discovery': 'Vertical angles are always equal; a linear pair always adds to 180°; complementary angles add to 90°, supplementary angles to 180°.'}),
     ("step", "(ID#3) The teacher will discuss the five kinds of angle pairs."),
     ("ex", "Key Ideas and Examples", [
         "- **Complementary angles** – two angles whose measures add up to 90°. The "
@@ -658,7 +658,7 @@ LESSON_B = [
     ("meet", "Meeting 4 (C2, M5): Classifying Polygons"),
     ("ts", "We have names for angle pairs. Polygons have names too – and a polygon can be "
            "described in more than one way."),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Angle Pair Lab – Classify Polygons', 'tool': 'LSGH Math 7 SimBook · Lesson 2 · Angle Pair Lab (Classify Polygons tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson2', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Build a pentagon, then push one vertex toward the centre until an angle turns red.', 'Turn on “Show diagonals.” Count the diagonals that fall outside.', 'Repeat with a hexagon and an octagon.'], 'questions': ['What makes a polygon non-convex?', 'What happens to the diagonals when it is non-convex?'], 'discovery': 'A polygon is non-convex when an interior angle is greater than 180°; then at least one diagonal lies outside.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Angle Pair Lab – Classify Polygons', 'tool': 'LSGH Math SimBook · Lesson 2 · Angle Pair Lab (Classify Polygons tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson2', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Build a pentagon, then push one vertex toward the centre until an angle turns red.', 'Turn on “Show diagonals.” Count the diagonals that fall outside.', 'Repeat with a hexagon and an octagon.'], 'questions': ['What makes a polygon non-convex?', 'What happens to the diagonals when it is non-convex?'], 'discovery': 'A polygon is non-convex when an interior angle is greater than 180°; then at least one diagonal lies outside.'}),
     ("step", "(ID#3) The teacher will discuss how polygons are classified."),
     ("table", ["Sides", "Name", "Sides", "Name"], [
         ["3", "Triangle", "7", "Heptagon"],
@@ -701,7 +701,7 @@ LESSON_B = [
           "angles. We also classified polygons by their number of sides, whether they are "
           "regular or irregular, and whether they are convex or non-convex. Next, we will "
           "discover the rules for the angles inside and outside polygons."),
-    ("res", ["LSGH Math 7 SimBook - Lesson 2 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson2)",
+    ("res", ["LSGH Math SimBook - Lesson 2 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson2)",
              "SimBook Lesson 2 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 2 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 2: Angle Pairs and Classifying Polygons",
@@ -745,7 +745,7 @@ LESSON_C = [
     ]),
     ("meet", "Meeting 2 (C3, M3): Triangle Split"),
     ("ts", "Can we use triangles to find the angle sum of any polygon? Let’s find out."),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Angle Sum Machine – Triangle Split', 'tool': 'LSGH Math 7 SimBook · Lesson 3 · Angle Sum Machine (Triangle Split tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson3', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Visit at least five polygons and let the sim fill the data table.', 'Tick “Irregular.” Compare the measured sum with the formula.'], 'questions': ['How many triangles does an n-sided polygon split into?', 'Does the sum change when the polygon is irregular?'], 'discovery': 'An n-sided polygon splits into n − 2 triangles, so its interior angles add up to (n − 2) × 180°, regular or not.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Angle Sum Machine – Triangle Split', 'tool': 'LSGH Math SimBook · Lesson 3 · Angle Sum Machine (Triangle Split tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson3', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Visit at least five polygons and let the sim fill the data table.', 'Tick “Irregular.” Compare the measured sum with the formula.'], 'questions': ['How many triangles does an n-sided polygon split into?', 'Does the sum change when the polygon is irregular?'], 'discovery': 'An n-sided polygon splits into n − 2 triangles, so its interior angles add up to (n − 2) × 180°, regular or not.'}),
     ("step", "(ID#4) “Triangle Split” discovery table – From one vertex, students draw all "
              "possible diagonals of each polygon, count the triangles formed, and look for "
              "the pattern."),
@@ -766,7 +766,7 @@ LESSON_C = [
              "Recitation)."),
     ("meet", "Meeting 3 (C3, M4): Walk the Polygon"),
     ("ts", "What happens if we walk around a polygon and turn at every corner?"),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Angle Sum Machine – Turtle Walk and Honeycomb Test', 'tool': 'LSGH Math 7 SimBook · Lesson 3 · Angle Sum Machine (Turtle Walk and Honeycomb Test tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson3', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Turtle Walk: walk a triangle, a hexagon, and a decagon. Record the total turn each time.', 'Honeycomb Test: add copies of each regular polygon around a point.'], 'questions': ['What is the total turn for every polygon?', 'Which polygons fit around a point with no gaps?'], 'discovery': 'The exterior angles of a convex polygon add up to 360°; triangles, squares, and hexagons tile because their angles divide 360° exactly.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Angle Sum Machine – Turtle Walk and Honeycomb Test', 'tool': 'LSGH Math SimBook · Lesson 3 · Angle Sum Machine (Turtle Walk and Honeycomb Test tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson3', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Turtle Walk: walk a triangle, a hexagon, and a decagon. Record the total turn each time.', 'Honeycomb Test: add copies of each regular polygon around a point.'], 'questions': ['What is the total turn for every polygon?', 'Which polygons fit around a point with no gaps?'], 'discovery': 'The exterior angles of a convex polygon add up to 360°; triangles, squares, and hexagons tile because their angles divide 360° exactly.'}),
     ("step", "(ID#6) “Walk the Polygon” – Volunteers walk along a polygon taped on the floor, "
              "turning at each vertex. After one full trip, they have turned exactly once "
              "around: the exterior angles add up to 360°."),
@@ -813,7 +813,7 @@ LESSON_C = [
           "180°, that the interior angles of a polygon add up to (n − 2) × 180°, and that the "
           "exterior angles add up to 360°. With these, we can find any angle of a regular "
           "polygon, or its number of sides."),
-    ("res", ["LSGH Math 7 SimBook - Lesson 3 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson3)",
+    ("res", ["LSGH Math SimBook - Lesson 3 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson3)",
              "SimBook Lesson 3 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 3 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 3: Angles of Polygons",
@@ -870,13 +870,13 @@ LESSON_D = [
         "If you need two shirts, Stores A and B tie. If you need only one, Store A is best "
         "(₱300). “30% + 20% off” is only 44% off, not 50%!",
     ]),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'LSGH Mini Mall – Promo Lab', 'tool': 'LSGH Math 7 SimBook · Lesson 4 · LSGH Mini Mall (Promo Lab tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson4', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Buy 2 school shirts with 50% off, then with Buy 1 Take 1. Compare the totals.', 'Set 30% off plus an extra 20% off. Read the REAL discount on the percent bar.', 'Turn the 12% VAT on and off. Watch the receipt.'], 'questions': ['Why is 30% + 20% off not 50% off?', 'When is Buy 1 Take 1 the same as 50% off?'], 'discovery': 'Each percentage is taken of a base; successive discounts use different bases, so 30% + 20% off is only 44% off.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'LSGH Mini Mall – Promo Lab', 'tool': 'LSGH Math SimBook · Lesson 4 · LSGH Mini Mall (Promo Lab tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson4', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Buy 2 school shirts with 50% off, then with Buy 1 Take 1. Compare the totals.', 'Set 30% off plus an extra 20% off. Read the REAL discount on the percent bar.', 'Turn the 12% VAT on and off. Watch the receipt.'], 'questions': ['Why is 30% + 20% off not 50% off?', 'When is Buy 1 Take 1 the same as 50% off?'], 'discovery': 'Each percentage is taken of a base; successive discounts use different bases, so 30% + 20% off is only 44% off.'}),
     ("step", "(ID#3) The teacher will review finding the percentage of a number and "
              "converting among percentages, decimals, and fractions (e.g., 15% of 240 = "
              "0.15 × 240 = 36)."),
     ("meet", "Meeting 2 (C4, M3): Percentage Increase and Decrease"),
     ("ts", "Prices go up and down all the time. How do we describe these changes fairly?"),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'LSGH Mini Mall – Price Change', 'tool': 'LSGH Math 7 SimBook · Lesson 4 · LSGH Mini Mall (Price Change tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson4', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Enter ₱50 → ₱55, then ₱600 → ₱800, then ₱800 → ₱600.', 'Compare each percentage change with its reverse change.'], 'questions': ['Why do ₱600 → ₱800 and ₱800 → ₱600 give different percentages?'], 'discovery': 'Percentage change is always computed from the ORIGINAL amount.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'LSGH Mini Mall – Price Change', 'tool': 'LSGH Math SimBook · Lesson 4 · LSGH Mini Mall (Price Change tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson4', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Enter ₱50 → ₱55, then ₱600 → ₱800, then ₱800 → ₱600.', 'Compare each percentage change with its reverse change.'], 'questions': ['Why do ₱600 → ₱800 and ₱800 → ₱600 give different percentages?'], 'discovery': 'Percentage change is always computed from the ORIGINAL amount.'}),
     ("step", "(ID#4) The teacher will discuss percentage increase and percentage decrease."),
     ("ex", "Key Idea and Examples", [
         "- Percentage change = (amount of change ÷ original amount) × 100%",
@@ -892,7 +892,7 @@ LESSON_D = [
     ("meet", "Meeting 3 (C4, M4): Money Problems"),
     ("ts", "Percentages are everywhere in business: in discounts, taxes, commissions, and "
            "interest. Let’s learn each one."),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'LSGH Mini Mall – Money Tools', 'tool': 'LSGH Math 7 SimBook · Lesson 4 · LSGH Mini Mall (Money Tools tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson4', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Compute the commission on ₱80 000 at 5%.', 'Find the simple interest on ₱10 000 at 3% for 2 years, then for 5 years.'], 'questions': ['How does the interest grow each year?'], 'discovery': 'Commission and simple interest are a rate times a base; simple interest grows by the same amount every year (I = P × r × t).'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'LSGH Mini Mall – Money Tools', 'tool': 'LSGH Math SimBook · Lesson 4 · LSGH Mini Mall (Money Tools tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson4', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Compute the commission on ₱80 000 at 5%.', 'Find the simple interest on ₱10 000 at 3% for 2 years, then for 5 years.'], 'questions': ['How does the interest grow each year?'], 'discovery': 'Commission and simple interest are a rate times a base; simple interest grows by the same amount every year (I = P × r × t).'}),
     ("step", "(ID#4) The teacher will discuss discount, sales tax, commission, and simple "
              "interest."),
     ("ex", "Worked Examples", [
@@ -939,7 +939,7 @@ LESSON_D = [
     ("q", "We learned how to compute percentage increase and decrease, discounts, sales tax, "
           "commission, and simple interest. We also learned to look closely before trusting "
           "a promo. Next, we will use these skills to build our own financial plan."),
-    ("res", ["LSGH Math 7 SimBook - Lesson 4 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson4)",
+    ("res", ["LSGH Math SimBook - Lesson 4 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson4)",
              "SimBook Lesson 4 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 4 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 4: Percentages in Real Life",
@@ -968,7 +968,7 @@ LESSON_E = [
     ("meet", "Meeting 1 (C5, M2): The ₱500 Baon Challenge"),
     ("step", "(ID#2) ^^HOOK:^^ “₱500 Baon Challenge” – Students list how they would spend "
              "₱500 for five school days, then compare plans with a partner."),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Baon Life Sim – Plan and Live the Week', 'tool': 'LSGH Math 7 SimBook · Lesson 5 · Baon Life Sim (Plan and Live the Week tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson5', 'setup': 'Individual, one device each', 'mission': ['Plan: split a ₱500 baon using 50-30-20.', 'Live the Week: play five days of Life Cards and decide on every optional card.', 'Change your plan and play again. Compare the two weeks.'], 'questions': ['Which Life Card hurt your budget the most?', 'Did you reach your savings target?'], 'discovery': 'A financial plan gives every peso a job before the week starts; a reserve and daily tracking keep the savings goal within reach.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Baon Life Sim – Plan and Live the Week', 'tool': 'LSGH Math SimBook · Lesson 5 · Baon Life Sim (Plan and Live the Week tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson5', 'setup': 'Individual, one device each', 'mission': ['Plan: split a ₱500 baon using 50-30-20.', 'Live the Week: play five days of Life Cards and decide on every optional card.', 'Change your plan and play again. Compare the two weeks.'], 'questions': ['Which Life Card hurt your budget the most?', 'Did you reach your savings target?'], 'discovery': 'A financial plan gives every peso a job before the week starts; a reserve and daily tracking keep the savings goal within reach.'}),
     ("step", "(ID#3) The teacher will discuss the parts of a financial plan: goal, income, "
              "expenses (needs and wants), savings, and timeline."),
     ("step", "(ID#5) “Needs or Wants?” quick-sort game – transportation fare, lunch, school "
@@ -991,7 +991,7 @@ LESSON_E = [
         "- To reach the goal in 12 weeks: 1 800 ÷ 12 = **₱150 per week**, which is 30% of a "
         "₱500 weekly baon.",
     ]),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Baon Life Sim – Savings Goal', 'tool': 'LSGH Math 7 SimBook · Lesson 5 · Baon Life Sim (Savings Goal tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson5', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['How many weeks to save ₱1 800 at ₱100 a week?', 'How much a week to reach ₱1 800 in 12 weeks? What percent of the baon is that?'], 'questions': [], 'discovery': 'weeks = goal ÷ weekly savings; weekly savings = goal ÷ weeks.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Baon Life Sim – Savings Goal', 'tool': 'LSGH Math SimBook · Lesson 5 · Baon Life Sim (Savings Goal tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson5', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['How many weeks to save ₱1 800 at ₱100 a week?', 'How much a week to reach ₱1 800 in 12 weeks? What percent of the baon is that?'], 'questions': [], 'discovery': 'weeks = goal ÷ weekly savings; weekly savings = goal ÷ weeks.'}),
     ("step", "(ID#6) Budget Builder – Students build their own weekly budget in a Google "
              "Sheets template, using formulas to compute each item as a percentage of the "
              "total (e.g., =C2/500)."),
@@ -1022,7 +1022,7 @@ LESSON_E = [
     ("h", "EXIT TICKET: (ID#9)"),
     ("bul", ["Why is a contingency reserve important in a financial plan?",
              "Give one need and one want in your own weekly budget."]),
-    ("res", ["LSGH Math 7 SimBook - Lesson 5 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson5)",
+    ("res", ["LSGH Math SimBook - Lesson 5 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson5)",
              "SimBook Lesson 5 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 5 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 5: Creating a Financial Plan",
@@ -1052,7 +1052,7 @@ LESSON_F = [
     ("step", "(ID#2) ^^HOOK:^^ “Hallway Speed Trial” – In pairs, students time each other "
              "walking 20 meters and compute their walking speed (e.g., 20 m in 16 s = "
              "1.25 m/s)."),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Rate Racer – Race', 'tool': 'LSGH Math 7 SimBook · Lesson 6 · Rate Racer (Race tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson6', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Predict the faster vehicle, then race: jeepney 12 km in 45 min vs. train 12 km in 30 min.', 'Change the train’s distance and time so both have the SAME speed.', 'Read the double number lines: what is the distance in 1 hour?'], 'questions': ['Is the vehicle that finishes first always the faster one?'], 'discovery': 'Speed is a unit rate – distance per 1 hour; equal unit rates mean equal speeds.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Rate Racer – Race', 'tool': 'LSGH Math SimBook · Lesson 6 · Rate Racer (Race tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson6', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Predict the faster vehicle, then race: jeepney 12 km in 45 min vs. train 12 km in 30 min.', 'Change the train’s distance and time so both have the SAME speed.', 'Read the double number lines: what is the distance in 1 hour?'], 'questions': ['Is the vehicle that finishes first always the faster one?'], 'discovery': 'Speed is a unit rate – distance per 1 hour; equal unit rates mean equal speeds.'}),
     ("step", "(ID#3) The teacher will discuss rates and unit rates."),
     ("ex", "Key Ideas", [
         "- A **rate** compares two quantities with different units (e.g., 150 km in 3 hours).",
@@ -1099,7 +1099,7 @@ LESSON_F = [
     ("h", "EXIT TICKET: (ID#9)"),
     ("bul", ["A faucet fills a 36-L pail in 4 minutes. What is the rate of flow? (9 L/min)",
              "Name one rate you used this week outside of school."]),
-    ("res", ["LSGH Math 7 SimBook - Lesson 6 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson6)",
+    ("res", ["LSGH Math SimBook - Lesson 6 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson6)",
              "SimBook Lesson 6 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 6 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 6: Rates",
@@ -1139,7 +1139,7 @@ LESSON_G = [
     ("meet", "Meeting 1 (C7, M1): Same Number, Different Outfit"),
     ("step", "(ID#2) ^^HOOK:^^ “Same Number, Different Outfit” – Students race to match "
              "cards: ½, 0.5, 50%; ¾, 0.75, 75%; ⅕, 0.2, 20%; ⅛, 0.125, 12.5%."),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Number Line Explorer – Converter', 'tool': 'LSGH Math 7 SimBook · Lesson 7 · Number Line Explorer (Converter tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson7', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Type 3/8, 2/3, 7/20, and 5/12. Record each decimal and percentage.', 'Read why each decimal terminates or repeats.'], 'questions': ['Which denominators give terminating decimals?'], 'discovery': 'A fraction in lowest terms terminates only when its denominator has no prime factors other than 2 and 5.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Number Line Explorer – Converter', 'tool': 'LSGH Math SimBook · Lesson 7 · Number Line Explorer (Converter tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson7', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Type 3/8, 2/3, 7/20, and 5/12. Record each decimal and percentage.', 'Read why each decimal terminates or repeats.'], 'questions': ['Which denominators give terminating decimals?'], 'discovery': 'A fraction in lowest terms terminates only when its denominator has no prime factors other than 2 and 5.'}),
     ("step", "(ID#3) The teacher will discuss rational numbers and how to convert among their "
              "forms."),
     ("ex", "Key Ideas and Examples", [
@@ -1162,7 +1162,7 @@ LESSON_G = [
     ("step", "(ID#5) “Conversion Dominoes” – In small groups, students connect domino cards "
              "showing equal fractions, decimals, and percentages."),
     ("meet", "Meeting 3 (C7, M3): Human Number Line"),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Number Line Explorer – Order It and Zoom Between', 'tool': 'LSGH Math 7 SimBook · Lesson 7 · Number Line Explorer (Order It and Zoom Between tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson7', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Order It: deal three sets of mixed cards and order them from least to greatest.', 'Zoom Between: find three numbers between 0.7 and 0.72.'], 'questions': ['Which strategy made ordering easiest?', 'Do you ever run out of numbers in between?'], 'discovery': 'Converting to one form (decimals) makes ordering easy; between any two rational numbers there is always another.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Number Line Explorer – Order It and Zoom Between', 'tool': 'LSGH Math SimBook · Lesson 7 · Number Line Explorer (Order It and Zoom Between tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson7', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Order It: deal three sets of mixed cards and order them from least to greatest.', 'Zoom Between: find three numbers between 0.7 and 0.72.'], 'questions': ['Which strategy made ordering easiest?', 'Do you ever run out of numbers in between?'], 'discovery': 'Converting to one form (decimals) makes ordering easy; between any two rational numbers there is always another.'}),
     ("step", "(ID#6) The students will accomplish LW1.4 Human Number Line: each student holds "
              "a card and the class arranges itself from least to greatest, then justifies "
              "the order."),
@@ -1189,7 +1189,7 @@ LESSON_G = [
     ("h", "EXIT TICKET: (ID#9)"),
     ("bul", ["Will 7/40 give a terminating or a repeating decimal? Why?",
              "Order from least to greatest: 0.4, 3/8, 45%."]),
-    ("res", ["LSGH Math 7 SimBook - Lesson 7 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson7)",
+    ("res", ["LSGH Math SimBook - Lesson 7 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson7)",
              "SimBook Lesson 7 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 7 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 7: Rational Numbers",
@@ -1217,7 +1217,7 @@ LESSON_H = [
     ("step", "(ID#2) ^^HOOK:^^ “Recipe Rescale” – A leche flan recipe needs ¾ cup of sugar. "
              "How much is needed for half a recipe? (⅜ cup) For three times the recipe? "
              "(2¼ cups)"),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Fraction Kitchen – Kakanin Kitchen and Fraction Bars', 'tool': 'LSGH Math 7 SimBook · Lesson 8 · Fraction Kitchen (Kakanin Kitchen and Fraction Bars tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson8', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Kakanin Kitchen: scale the puto recipe for ½, 2½, and 3 batches.', 'Serve five orders for the kitchen inspector.', 'Fraction Bars: show 2/3 + 3/4 and 5/6 − 1/4.'], 'questions': ['Why must both bars be cut into the same-size pieces?'], 'discovery': 'Adding and subtracting need a common denominator; scaling a recipe multiplies every amount by the same number.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Fraction Kitchen – Kakanin Kitchen and Fraction Bars', 'tool': 'LSGH Math SimBook · Lesson 8 · Fraction Kitchen (Kakanin Kitchen and Fraction Bars tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson8', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Kakanin Kitchen: scale the puto recipe for ½, 2½, and 3 batches.', 'Serve five orders for the kitchen inspector.', 'Fraction Bars: show 2/3 + 3/4 and 5/6 − 1/4.'], 'questions': ['Why must both bars be cut into the same-size pieces?'], 'discovery': 'Adding and subtracting need a common denominator; scaling a recipe multiplies every amount by the same number.'}),
     ("step", "(ID#3) The teacher will discuss adding and subtracting fractions and mixed "
              "numbers."),
     ("ex", "Worked Examples", [
@@ -1236,7 +1236,7 @@ LESSON_H = [
     ("step", "(ID#5) “Mental Math Sprint” – Timed warm-up of 10 quick fraction and decimal "
              "sums and differences."),
     ("meet", "Meeting 3 (C8, M2): Multiplying and Dividing Fractions"),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Fraction Kitchen – Fraction Bars (× and ÷)', 'tool': 'LSGH Math 7 SimBook · Lesson 8 · Fraction Kitchen (Fraction Bars (× and ÷) tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson8', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Show 2/5 × 15/8 with the area model.', 'Show 3/4 ÷ 3/8 and 2½ ÷ 1/4.'], 'questions': ['Why can dividing by a fraction give a bigger answer?'], 'discovery': 'Dividing asks “how many of these fit?”, so dividing by a number less than 1 gives a larger result.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Fraction Kitchen – Fraction Bars (× and ÷)', 'tool': 'LSGH Math SimBook · Lesson 8 · Fraction Kitchen (Fraction Bars (× and ÷) tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson8', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Show 2/5 × 15/8 with the area model.', 'Show 3/4 ÷ 3/8 and 2½ ÷ 1/4.'], 'questions': ['Why can dividing by a fraction give a bigger answer?'], 'discovery': 'Dividing asks “how many of these fit?”, so dividing by a number less than 1 gives a larger result.'}),
     ("step", "(ID#4) The teacher will discuss multiplying and dividing fractions using area "
              "models and the fraction wall."),
     ("ex", "Worked Examples", [
@@ -1246,7 +1246,7 @@ LESSON_H = [
         "- 2½ ÷ 1/4 = 5/2 × 4 = **10**",
     ]),
     ("meet", "Meeting 4 (C8, M3): Multiplying and Dividing Decimals; Practice Set #3"),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Fraction Kitchen – Decimal Grid', 'tool': 'LSGH Math 7 SimBook · Lesson 8 · Fraction Kitchen (Decimal Grid tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson8', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Show 0.6 × 0.5, 0.3 × 0.4, and 0.8 × 0.9 on the hundred grid.'], 'questions': ['Why is the product smaller than both factors?'], 'discovery': 'Multiplying by a number less than 1 gives a smaller product; the number of decimal places adds up.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Fraction Kitchen – Decimal Grid', 'tool': 'LSGH Math SimBook · Lesson 8 · Fraction Kitchen (Decimal Grid tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson8', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Show 0.6 × 0.5, 0.3 × 0.4, and 0.8 × 0.9 on the hundred grid.'], 'questions': ['Why is the product smaller than both factors?'], 'discovery': 'Multiplying by a number less than 1 gives a smaller product; the number of decimal places adds up.'}),
     ("step", "(ID#4) The teacher will discuss multiplying and dividing decimals."),
     ("ex", "Worked Examples", [
         "- 3.2 × 0.15 = **0.48**",
@@ -1305,7 +1305,7 @@ LESSON_H = [
     ("bul", ["Compute 1.5 × 2/3 in two ways: using fractions and using decimals. Which was "
              "easier?",
              "How many ⅓-cup servings are in 2½ cups of juice? (7½)"]),
-    ("res", ["LSGH Math 7 SimBook - Lesson 8 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson8)",
+    ("res", ["LSGH Math SimBook - Lesson 8 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson8)",
              "SimBook Lesson 8 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 8 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 8: Operations on Rational Numbers",
@@ -1336,7 +1336,7 @@ LESSON_I = [
     ("step", "(ID#2) ^^HOOK:^^ “Build the Square” – Using square tiles, students find which "
              "numbers from 1 to 30 can form a complete square (1, 4, 9, 16, 25). Using unit "
              "cubes, which numbers can form a complete cube? (1, 8, 27)"),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Roots Lab – Square Builder and Cube Builder', 'tool': 'LSGH Math 7 SimBook · Lesson 9 · Roots Lab (Square Builder and Cube Builder tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson9', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Square Builder: slide from 1 to 100 tiles and list every perfect square.', 'Cube Builder: build cubes with edges 1 to 5 and list the perfect cubes.'], 'questions': ['Which numbers of tiles make a complete square?'], 'discovery': 'Perfect squares and cubes are whole numbers multiplied by themselves two or three times; the side or edge is the root.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Roots Lab – Square Builder and Cube Builder', 'tool': 'LSGH Math SimBook · Lesson 9 · Roots Lab (Square Builder and Cube Builder tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson9', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Square Builder: slide from 1 to 100 tiles and list every perfect square.', 'Cube Builder: build cubes with edges 1 to 5 and list the perfect cubes.'], 'questions': ['Which numbers of tiles make a complete square?'], 'discovery': 'Perfect squares and cubes are whole numbers multiplied by themselves two or three times; the side or edge is the root.'}),
     ("step", "(ID#3) The teacher will discuss perfect squares, perfect cubes, square roots, "
              "and cube roots."),
     ("ex", "Key Ideas", [
@@ -1367,7 +1367,7 @@ LESSON_I = [
         "1.414 units. Draw it on dot paper using the diagonals of four 1 × 1 squares: the "
         "tilted square takes up half of a 2 × 2 square.",
     ]),
-    ("sim", {'kind': 'SIM HOOK', 'title': 'Roots Lab – Root Estimator and Square of Area 2', 'tool': 'LSGH Math 7 SimBook · Lesson 9 · Roots Lab (Root Estimator and Square of Area 2 tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson9', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Root Estimator: estimate √10 and ∛20 to two decimal places with as few guesses as possible.', 'Square of Area 2: explain why the tilted square has an area of 2, then show more digits of √2.'], 'questions': ['Do the digits of √2 ever end or repeat?'], 'discovery': 'Roots that are not whole numbers lie between two whole numbers; √2 is irrational – its decimal never ends and never repeats.'}),
+    ("sim", {'kind': 'SIM HOOK', 'title': 'Roots Lab – Root Estimator and Square of Area 2', 'tool': 'LSGH Math SimBook · Lesson 9 · Roots Lab (Root Estimator and Square of Area 2 tab)', 'link': 'https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson9', 'setup': 'Pairs, one device; record findings in the notebook', 'mission': ['Root Estimator: estimate √10 and ∛20 to two decimal places with as few guesses as possible.', 'Square of Area 2: explain why the tilted square has an area of 2, then show more digits of √2.'], 'questions': ['Do the digits of √2 ever end or repeat?'], 'discovery': 'Roots that are not whole numbers lie between two whole numbers; √2 is irrational – its decimal never ends and never repeats.'}),
     ("step", "(ID#6) The students will accomplish LW1.5 Root Locator: estimate and plot √2, "
              "√5, √10, ∛20, and √50 on a number line, then check with a calculator."),
     ("step", "(ID#9) Using the given rubric and sample output, the students reflect on their "
@@ -1387,7 +1387,7 @@ LESSON_I = [
     ("h", "EXIT TICKET: (ID#9)"),
     ("bul", ["Between which two consecutive whole numbers is √30? (5 and 6)",
              "Is √36 rational or irrational? Explain."]),
-    ("res", ["LSGH Math 7 SimBook - Lesson 9 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson9)",
+    ("res", ["LSGH Math SimBook - Lesson 9 (https://claude.ai/artifact/LrpohtVMd8ifUt7nkd7FFr#lesson9)",
              "SimBook Lesson 9 slides with speaker notes (use Present for the projector)",
              "SimBook Exercises 9 – Part A as seatwork; Parts B and C as homework",
              "Teacher’s Google presentation - Lesson 9: Square Roots, Cube Roots, and "

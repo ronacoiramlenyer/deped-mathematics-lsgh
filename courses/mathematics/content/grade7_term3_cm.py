@@ -93,7 +93,7 @@ STANDARDS = [
 ROADMAP = {
     "title": "TERM 3 ROADMAP AT A GLANCE",
     "subtitle": "5 meetings per cycle · 10 usable cycles (50 meetings) · Cycle 11 reserved as buffer · "
-                "Every lesson has its own simulation in the LSGH Math 7 SimBook",
+                "Every lesson has its own simulation in the LSGH Math SimBook",
     "columns": ["UNIT", "BIG QUESTION", "DepEd WEEKS", "CYCLES", "SIGNATURE SIMS", "SIGNATURE TASK"],
     "widths": [2500, 3000, 1300, 1600, 2560, 2000],
     "rows": [
@@ -112,7 +112,7 @@ ROADMAP = {
 }
 
 R360 = "Uploaded materials in Ranger 360"
-SB = lambda n, sim: f"LSGH Math 7 SimBook – Term 3 Lesson {n} (hook sim, lesson slides with notes, and Exercises)"
+SB = lambda n, sim: f"LSGH Math SimBook – Term 3 Lesson {n} (hook sim, lesson slides with notes, and Exercises)"
 
 
 def lesson(meetings, rng, topic, subtopics, comps, assess, hook, sim, acts, res, pillars, kind=None):

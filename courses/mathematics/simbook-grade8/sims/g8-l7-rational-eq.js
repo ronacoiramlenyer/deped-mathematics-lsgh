@@ -74,7 +74,7 @@
     const tryOut = h("div", { class: "readout" });
     const btnBox = h("div", { class: "controls" });
     const swing = new Spring(0, (v) => { k = v; draw(); }, { stiffness: 70, damping: 11 });
-    const CW = 16.8; // monospace character width at 28px
+    const CW = 20.4; // monospace character width at 34px
     const W = (t) => t.length * CW;
 
     function finalLayout() {
@@ -109,10 +109,10 @@
       const P = finalLayout();
       // path of a token: from (x0,y0) to (x1,y1) with an arc that bulges sideways
       const fly = (t, x0, y0, x1, y1, bulge, color, ghost) => {
-        if (ghost) svg.append(s("text", { x: x0, y: y0, "text-anchor": "middle", class: "svg-text", "font-size": 28, opacity: 0.18 * Math.min(1, k * 3) }, t));
+        if (ghost) svg.append(s("text", { x: x0, y: y0, "text-anchor": "middle", class: "svg-text", "font-size": 34, opacity: 0.18 * Math.min(1, k * 3) }, t));
         const kk = Math.max(0, k);
         const x = x0 + (x1 - x0) * kk + bulge * Math.sin(Math.PI * Math.min(kk, 1)), y = y0 + (y1 - y0) * kk;
-        svg.append(s("text", { x, y, "text-anchor": "middle", class: "svg-text", "font-size": 28, "font-weight": 700, fill: color }, t));
+        svg.append(s("text", { x, y, "text-anchor": "middle", class: "svg-text", "font-size": 34, "font-weight": 700, fill: color }, t));
       };
       fly(nL, LX, NY + 10, P.nL, FY, -40, "var(--shape-a)", true);
       fly(dR, RX, DY + 10, P.dR, FY, -60, "var(--shape-a)", true);
@@ -120,7 +120,7 @@
       fly(dL, LX, DY + 10, P.dL, FY, 60, "var(--shape-b)", true);
       if (k > 0.85) {
         const o = Math.min(1, (k - 0.85) / 0.15);
-        const add = (x, t) => svg.append(s("text", { x, y: FY, "text-anchor": "middle", class: "svg-text", "font-size": 28, opacity: o }, t));
+        const add = (x, t) => svg.append(s("text", { x, y: FY, "text-anchor": "middle", class: "svg-text", "font-size": 34, opacity: o }, t));
         add(P.dot1, "·"); add(P.dot2, "·"); add(P.eq, "=");
         if (/[+−]/.test(dR)) { add(P.dR - W(dR) / 2 - CW / 2, "("); add(P.dR + W(dR) / 2 + CW / 2, ")"); }
         if (/[+−]/.test(dL)) { add(P.dL - W(dL) / 2 - CW / 2, "("); add(P.dL + W(dL) / 2 + CW / 2, ")"); }
@@ -177,7 +177,7 @@
 
   function workTab(root) {
     let crew = "pipes", a = 3, b = 6, guess = 2.5, t = 0, run = null, done = false;
-    const svg = s("svg", { viewBox: "0 0 600 300", role: "img", "aria-label": "Two workers filling one job together" });
+    const svg = s("svg", { viewBox: "0 0 600 300", role: "img", "aria-label": "Two workers filling one job together", style: "max-width:640px;margin:0 auto" });
     const out = h("div", { class: "readout", "aria-live": "polite" });
     const work = h("pre", { class: "workings" });
     const verdict = h("div", { "aria-live": "polite" });
@@ -193,8 +193,8 @@
         acc += Math.max(0, Math.min(1 - acc, f));
       });
       for (let q = 1; q < 4; q++) svg.append(s("line", { x1: x, y1: top + (H * q) / 4, x2: x + 10, y2: top + (H * q) / 4, stroke: "var(--muted)" }));
-      svg.append(s("text", { x: x + w / 2, y: 264, "text-anchor": "middle", class: "svg-label", "font-size": 15, fill: "var(--ink)" }, label),
-        s("text", { x: x + w / 2, y: 286, "text-anchor": "middle", class: "svg-text", "font-size": 14 }, cap));
+      svg.append(s("text", { x: x + w / 2, y: 266, "text-anchor": "middle", class: "svg-label", "font-size": 20, fill: "var(--ink)" }, label),
+        s("text", { x: x + w / 2, y: 292, "text-anchor": "middle", class: "svg-text", "font-size": 19 }, cap));
     }
 
     function draw() {
@@ -204,7 +204,7 @@
       bar(40, 110, `${C.a} alone`, [[fa, "var(--shape-a)"]], `${fm(Math.min(fa, 1) * 100, 0)}%`);
       bar(450, 110, `${C.b} alone`, [[fb, "var(--gold)"]], `${fm(Math.min(fb, 1) * 100, 0)}%`);
       bar(225, 150, "Together", [[fa, "var(--shape-a)"], [fb, "var(--gold)"]], `${fm(Math.min(fa + fb, 1) * 100, 0)}%`);
-      svg.append(s("text", { x: 300, y: 24, "text-anchor": "middle", class: "svg-text", "font-size": 18, "font-weight": 700 }, `t = ${hm(t)}`));
+      svg.append(s("text", { x: 300, y: 24, "text-anchor": "middle", class: "svg-text", "font-size": 22, "font-weight": 700 }, `t = ${hm(t)}`));
       if (done) svg.append(s("text", { x: 300, y: 150, "text-anchor": "middle", class: "svg-text", "font-size": 22, "font-weight": 700, fill: "var(--paper)" }, "DONE!"));
     }
 
@@ -234,8 +234,8 @@
       });
     }
 
-    const sa = elasticSlider({ id: "g8l7-a", label: "Worker A (h)", min: 1, max: 12, value: a, step: 0.5, format: (v) => fm(v, 1), onInput: (v) => { a = v; reset(); } });
-    const sb = elasticSlider({ id: "g8l7-b", label: "Worker B (h)", min: 1, max: 12, value: b, step: 0.5, format: (v) => fm(v, 1), onInput: (v) => { b = v; reset(); } });
+    const sa = elasticSlider({ id: "g8l7-a", label: "A alone (h)", min: 1, max: 12, value: a, step: 0.5, format: (v) => fm(v, 1), onInput: (v) => { a = v; reset(); } });
+    const sb = elasticSlider({ id: "g8l7-b", label: "B alone (h)", min: 1, max: 12, value: b, step: 0.5, format: (v) => fm(v, 1), onInput: (v) => { b = v; reset(); } });
     const sg = elasticSlider({ id: "g8l7-g", label: "Your prediction (h)", min: 0.5, max: 12, value: guess, step: 0.25, format: (v) => fm(v, 2), onInput: (v) => { guess = v; } });
     const intro = h("p", {});
     const setIntro = () => { const C = CREWS[crew]; intro.textContent = `${C.a} can ${C.job} alone in a hours. ${C.b} can do it alone in b hours. How long if they work together? Predict, then press Start.`; };
@@ -270,7 +270,7 @@
   function propTab(root) {
     let pr = PROBS[0], x = 0;
     const story = h("p", {}), eqEl = h("p", { class: "unit-big" }), sliderBox = h("div", { class: "controls" });
-    const svg = s("svg", { viewBox: "0 0 600 170", role: "img", "aria-label": "The values of both sides of the equation" });
+    const svg = s("svg", { viewBox: "0 0 440 150", role: "img", "aria-label": "The values of both sides of the equation", style: "max-width:640px" });
     const out = h("div", { "aria-live": "polite" }), work = h("pre", { class: "workings" });
     const showBtn = h("button", { class: "btn ghost", type: "button", onclick: () => { work.hidden = false; } }, "Show the solution");
     function draw() {
@@ -278,14 +278,14 @@
       const L = pr.L(x), R = pr.R(x);
       const top = Math.max(L || 0, R || 0) || 1;
       const row = (y, label, v, color) => {
-        svg.append(s("text", { x: 20, y: y + 24, class: "svg-label", "font-size": 15, fill: "var(--ink)" }, label));
-        if (v === null) { svg.append(s("text", { x: 160, y: y + 24, class: "svg-text", "font-size": 16, fill: "var(--bad)" }, "undefined – denominator is 0")); return; }
-        const w = Math.max(2, (v / top) * 400);
-        svg.append(s("rect", { x: 160, y, width: w, height: 34, rx: 6, fill: color, opacity: 0.8 }),
-          s("text", { x: Math.min(160 + w + 8, 520), y: y + 24, class: "svg-text", "font-size": 15 }, fm(v, 3)));
+        svg.append(s("text", { x: 10, y: y - 8, class: "svg-text", "font-size": 18, fill: "var(--ink)" }, label));
+        if (v === null) { svg.append(s("text", { x: 10, y: y + 24, class: "svg-text", "font-size": 18, fill: "var(--bad)" }, "undefined – denominator is 0")); return; }
+        const w = Math.max(2, (v / top) * 350);
+        svg.append(s("rect", { x: 10, y, width: w, height: 34, rx: 6, fill: color, opacity: 0.8 }),
+          s("text", { x: 10 + w + 8, y: y + 24, class: "svg-text", "font-size": 18 }, fm(v, 3)));
       };
-      row(25, pr.lt(x), L, "var(--shape-a)");
-      row(95, pr.rt(x), R, "var(--shape-b)");
+      row(32, `left side = ${pr.lt(x)}`, L, "var(--shape-a)");
+      row(106, `right side = ${pr.rt(x)}`, R, "var(--shape-b)");
       clear(out);
       const near = Math.abs(x - pr.ans) < pr.step / 4;
       if (L !== null && R !== null && Math.abs(L - R) < 1e-9 && near) out.append(pill(true, `Both sides are equal: x = ${fm(pr.ans, 2)} ${pr.unit}.`, ""));

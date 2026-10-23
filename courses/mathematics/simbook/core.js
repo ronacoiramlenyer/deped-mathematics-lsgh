@@ -1,4 +1,4 @@
-/* Math 7 SimBook – shared helpers used by every simulation. */
+/* Math SimBook – shared helpers used by every simulation. */
 (function () {
   "use strict";
 
