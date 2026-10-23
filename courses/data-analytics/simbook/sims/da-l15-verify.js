@@ -31,6 +31,7 @@
   .l15-col { display: grid; gap: 10px; min-width: 0; grid-template-columns: minmax(0, 1fr); }
   .l15-box { border: 1px solid var(--line); border-radius: 8px; background: var(--paper); padding: 8px; min-width: 0; }
   .l15-box h4 { margin: 0 0 6px; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-family: var(--body); }
+  .l15-box .table-wrap { contain: inline-size; }
   .l15-sheet { border-collapse: collapse; width: 100%; font-size: .8rem; }
   .l15-sheet th, .l15-sheet td { border: 1px solid var(--line); padding: 3px 6px; text-align: left; white-space: nowrap; }
   .l15-sheet th { background: var(--bg); color: var(--muted); font-weight: 700; font-size: .72rem; }
@@ -148,15 +149,14 @@
       recOut.append(stat("Juice:", `₱${WRONG.Juice} → ₱${RIGHT.Juice}`).el, stat("Iced tea:", `₱${WRONG["Iced tea"]} → ₱${RIGHT["Iced tea"]}`).el, stat("Water:", `₱${RIGHT.Water} (unchanged)`).el,
         h("p", { class: "note", style: "flex-basis:100%" }, `Re-computed: Juice is now clearly the top seller (₱${RIGHT.Juice}), more than twice iced tea (₱${RIGHT["Iced tea"]}). The group's sentence “Juice and iced tea sold about the same” does not survive the check.${found.has("axis") ? "" : " Flag the axis too, then re-compute to fix the chart."}`));
     } }, "Re-compute with fixes");
-    root.append(h("p", {}, "Group 4 handed over their mini project on canteen drink sales (sample data, fictional names). Verify it: click anything that is wrong. Six issues are planted – flagged issues fly into your critique panel."),
+    root.append(h("p", {}, "Group 4 handed over their mini project on canteen drink sales (sample data, fictional names). Verify it: click anything that is wrong. Six issues are planted – flagged issues fly into your critique panel."), toast,
       h("div", { class: "l15-proj" },
         h("div", { class: "l15-col" },
           h("div", { class: "l15-box" }, h("h4", {}, "Sheet1 · Sales log"), sheet),
           h("div", { class: "l15-box" }, h("h4", {}, "Summary sheet"), summary),
           h("div", { class: "l15-box" }, h("h4", {}, "Chart"), svg),
           h("div", { class: "l15-box" }, h("h4", {}, "Conclusion"), concl)),
-        h("div", { class: "l15-col" }, h("div", { class: "controls" }, count.el), panel, h("div", { class: "controls" }, recBtn), recOut)),
-      toast);
+        h("div", { class: "l15-col" }, h("div", { class: "controls" }, count.el), panel, h("div", { class: "controls" }, recBtn), recOut)));
     drawChart();
     return () => { sp.stop(); timers.forEach(clearTimeout); ghosts.forEach((g) => { if (g.sp) g.sp.stop(); if (g.ghost) g.ghost.remove(); }); };
   }
