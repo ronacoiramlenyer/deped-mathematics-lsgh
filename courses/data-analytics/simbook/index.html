@@ -93,7 +93,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .rail a.on .done { color: var(--accent-ink); }
 @media (max-width: 900px) { .frame { grid-template-columns: minmax(0, 1fr); } .rail { display: none; } }
 @media (min-width: 901px) { .topbar select { display: none; } }
-@media (max-width: 520px) { .brand span { display: none; } }
+@media (max-width: 520px) { .brand span, .nav-toggle span { display: none; } }
 
 /* ---------- cover ---------- */
 .cover { display: grid; gap: 24px; }
@@ -295,14 +295,30 @@ details.answer-key ol { columns: 2 220px; margin: 8px 0 0; font-family: var(--mo
 .deck-main:fullscreen { background: #0d1511; display: grid; align-content: center; justify-items: center; padding: 12px; }
 .deck-main:fullscreen .slide-frame { width: min(100%, calc((100vh - 90px) * 16 / 9)); }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* ---------- hideable navigation: full-width sims and lesson resources ---------- */
+.nav-toggle { background: transparent; color: inherit; border: 1px solid currentColor; border-radius: 8px; padding: 5px 10px; font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; opacity: .9; display: inline-flex; align-items: center; gap: 6px; }
+.nav-toggle:hover, .nav-toggle:focus-visible { opacity: 1; background: rgba(255, 255, 255, .12); }
+.nav-restore { position: fixed; z-index: 20; top: calc(10px + env(safe-area-inset-top, 0px)); left: max(10px, env(safe-area-inset-left, 0px));
+  background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: .85rem; font-weight: 700;
+  cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); opacity: .55; transition: opacity .2s; }
+.nav-restore:hover, .nav-restore:focus-visible { opacity: 1; }
+.nav-restore[hidden] { display: none; }
+body.nav-hidden .topbar, body.nav-hidden .rail { display: none; }
+body.nav-hidden .frame { grid-template-columns: minmax(0, 1fr); max-width: none; padding-top: 52px; }
+@media (min-width: 1101px) { body.nav-hidden .spread { grid-template-columns: minmax(0, 2.6fr) minmax(260px, 1fr); } }
+@media (min-width: 1001px) { body.nav-hidden .deck { grid-template-columns: minmax(0, 2.6fr) minmax(260px, 1fr); } }
+body.nav-hidden .learn, body.nav-hidden .exercises { max-width: 1100px; }
 </style>
 
 <header class="topbar">
+  <button type="button" class="nav-toggle" id="navToggle" aria-controls="rail" aria-expanded="true" title="Hide the menu to give the sim and lesson the whole window">⤢ <span>Hide menu</span></button>
   <a class="brand" href="#home"><b>Data Analytics SimBook</b><span>La Salle Green Hills · Senior High School</span></a>
   <div class="spacer"></div>
   <label for="jump" hidden>Go to lesson</label>
   <select id="jump" aria-label="Go to lesson"></select>
 </header>
+<button type="button" class="nav-restore" id="navRestore" hidden title="Show the menu">☰ Menu</button>
 <div class="frame">
   <nav class="rail" id="rail" aria-label="Lessons"></nav>
   <main id="main"></main>

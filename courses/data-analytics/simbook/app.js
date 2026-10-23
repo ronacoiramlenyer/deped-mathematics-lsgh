@@ -46,6 +46,22 @@
   }
   jump.addEventListener("change", () => { location.hash = jump.value; });
 
+  // Hideable navigation: the top bar and lesson rail fold away so the sim, slides,
+  // and exercises get the whole window. The choice is remembered on this device.
+  const NAV_KEY = "simbook-nav-hidden";
+  const navToggle = document.getElementById("navToggle");
+  const navRestore = document.getElementById("navRestore");
+  function setNav(hidden, remember = true) {
+    document.body.classList.toggle("nav-hidden", hidden);
+    navToggle.setAttribute("aria-expanded", String(!hidden));
+    navRestore.hidden = !hidden;
+    if (remember) { try { localStorage.setItem(NAV_KEY, hidden ? "1" : "0"); } catch (e) { /* storage unavailable */ } }
+    window.dispatchEvent(new Event("resize"));
+  }
+  navToggle.addEventListener("click", () => { setNav(true); navRestore.focus(); });
+  navRestore.addEventListener("click", () => { setNav(false); navToggle.focus(); });
+  try { if (localStorage.getItem(NAV_KEY) === "1") setNav(true, false); } catch (e) { /* storage unavailable */ }
+
   // ------------------------------------------------------------ cover
 
   function coverArt() {
