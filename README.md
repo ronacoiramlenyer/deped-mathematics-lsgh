@@ -22,6 +22,8 @@ document builders and LSGH templates are shared.
 | `courses/<course>/simbook/` | SimBook – one custom simulation, slide deck, and exercise set per lesson (Math SimBook for all grades; Data Analytics SimBook) |
 | `tools/cm_builder.py` | Builds the LSGH-format Curriculum Map `.docx` (landscape) from a content module |
 | `tools/lg_builder.py` | Builds the LSGH-format Learning Guide `.docx` (portrait) from a content module |
+| `tools/build_site.py` | Builds the SimBook web app (all SimBooks in one site) into `dist/` for Netlify |
+| `netlify.toml` | Netlify build settings for the SimBook web app |
 | `templates/` | LSGH document templates (header logo, page numbers; landscape and portrait) |
 
 ## Building
@@ -33,6 +35,26 @@ python3 tools/lg_builder.py courses/<course>/content/<module>.py courses/<course
 ```
 
 See each course's README for its calendar assumptions, codes, and conventions.
+
+## SimBook web app (Netlify)
+
+All SimBooks are served together as one static site, **SimBook**: a home page with one card per book,
+the Math SimBook at `/math/`, and the Data Analytics SimBook at `/data-analytics/`.
+
+```bash
+python3 tools/build_site.py                      # builds dist/ (not committed)
+python3 tools/build_site.py --zip SimBook-site   # also makes SimBook-site.zip for Netlify Drop
+```
+
+`netlify.toml` tells Netlify to run the build and publish `dist/`. To deploy:
+
+1. In Netlify, choose **Add new site → Import an existing project → GitHub**, pick this repository and the
+   branch to publish, and keep the build settings from `netlify.toml`.
+2. Under **Site configuration → Change site name**, set the name to `simbook` (the address becomes
+   `simbook.netlify.app` if that name is free; otherwise choose a variant such as `lsgh-simbook`).
+
+Every push to the chosen branch then rebuilds the site. Alternatively, drag the zip (or the `dist/` folder) onto
+https://app.netlify.com/drop for a one-off upload. To add a book, add an entry to `BOOKS` in `tools/build_site.py`.
 
 ## Adding a course
 
